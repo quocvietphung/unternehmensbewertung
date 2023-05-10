@@ -8,7 +8,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    <img src={logo} alt="Logo" width="400" height="50" />
+                    <img src={logo} alt="Logo" width="450" height="50" />
                 </a>
                 <button
                     className="navbar-toggler"
@@ -39,7 +39,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/kontakt" activeClassName="active" className="nav-link me-3">
+                            <NavLink to="/kontakt" activeClassName="active" className="nav-link me-4">
                                 Kontakt
                             </NavLink>
                         </li>
