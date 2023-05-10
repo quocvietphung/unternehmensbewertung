@@ -1,4 +1,4 @@
-.PHONY: install start build test help docker-compose-build docker-compose-up docker-compose-down
+.PHONY: install start build test help dc-build dc-up dc-down
 
 install:
 	@echo "Installing dependencies..."
@@ -34,7 +34,7 @@ help:
 	@echo "  make start               - Start development server"
 	@echo "  make build               - Build production version"
 	@echo "  make test                - Run tests"
-	@echo "  make docker-compose-build - Build Docker Compose services"
-	@echo "  make docker-compose-up   - Start Docker Compose services"
-	@echo "  make docker-compose-down - Stop Docker Compose services"
+	@echo "  make dc-build			  - Build Docker Compose services"
+	@echo "  make dc-start    		  - Start Docker Compose services"
+	@echo "  make docker-stop  		  - Stop Docker  Compose services"
 	@echo "  make help                - Show help information"
