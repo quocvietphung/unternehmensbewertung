@@ -1,0 +1,47 @@
+.Unternehmenswertrechner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88vh;
+
+  .unternehmenswertrechner-container {
+    width: 100vh;
+    height: 40vh;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+
+    .welcome-column {
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .input-group .ui.button {
+      margin: 0 5px;
+    }
+
+    .input-group input {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    p {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .ui.button.primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .header-green {
+      color: green;
+    }
+  }
+}
