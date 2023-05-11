@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Image, Icon } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 import logo from '../../images/logo.png';
 import './App.scss';
 
@@ -12,9 +12,9 @@ const menuItems = [
 ];
 
 const Navbar = () => (
-    <Menu inverted className="Navbar">
-        <Menu.Item as={NavLink} exact to="/" activeClassName="active">
-            <Image src={logo} alt="Logo" className="logo-image" />
+    <Menu className="Navbar" style={{ backgroundColor: 'white' }}>
+        <Menu.Item as={NavLink} exact to="/" activeClassName="active" className="logo-item">
+            <span className="logo-text">ORGAPLAN Beratung GmbH</span>
         </Menu.Item>
         <Menu.Menu position="right">
             {menuItems.map((item) => (

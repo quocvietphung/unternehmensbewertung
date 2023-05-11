@@ -4,7 +4,7 @@ import './App.scss';
 
 const Footer = () => {
     return (
-        <Segment inverted vertical className="Footer">
+        <Segment vertical className="Footer" style={{ backgroundColor: 'black'}}>
             <Container textAlign="center">
                 <p className="text-orange">
                     © {new Date().getFullYear()} ORGAPLAN Beratung GmbH.

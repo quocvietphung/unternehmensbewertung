@@ -8,17 +8,24 @@
     border-bottom: 2px solid #2185d0;
     height: 70px;
 
-    .logo-image {
-      width: 450px;
-      height: 50px;
+    .logo-item {
+      background-color: #1b1c1d;
+      padding: 15px 20px;
+      margin-right: 1rem;
+
+      .logo-text {
+        color: #f2711c;
+        font-size: 18px;
+        font-weight: bold;
+      }
     }
 
-  a {
-    color: #ffffff !important;
-  }
+    a {
+      color: #000000 !important;  // Thay đổi màu sắc của liên kết menu
+    }
 
     a.active {
-      color: #2185d0 !important;
+      color: #2185d0 !important;  // Thay đổi màu sắc của liên kết menu đang hoạt động
     }
 
     .icon {
@@ -26,7 +33,7 @@
     }
 
     .contact-item {
-      margin-right: 20rem;
+      margin-right: 5rem;
     }
   }
 
