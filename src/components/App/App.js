@@ -14,7 +14,7 @@ class App extends Component {
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/unternehmenswert-rechner" element={<Unternehmenswertrechner />} />
+                        <Route path="/unternehmenswert-berechnen" element={<Unternehmenswertrechner />} />
                     </Routes>
                     <Footer />
                 </div>

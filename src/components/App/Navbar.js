@@ -2,10 +2,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.png';
+import './Navbar.scss';
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
                     <img src={logo} alt="Logo" width="450" height="50" />
@@ -29,7 +30,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/unternehmenswert-rechner" activeClassName="active" className="nav-link">
+                            <NavLink to="/unternehmenswert-berechnen" activeClassName="active" className="nav-link">
                                 Unternehmenswert Berechnen
                             </NavLink>
                         </li>
