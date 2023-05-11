@@ -1,10 +1,10 @@
-// src/components/Navbar.js
+// src/components/Header.js
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../images/logo.png';
-import './Navbar.scss';
+import './Header.scss';
 
-const Navbar = () => {
+const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
             <div className="container-fluid">
@@ -51,4 +51,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default Header;
