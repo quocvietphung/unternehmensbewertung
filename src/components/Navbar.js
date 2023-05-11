@@ -29,7 +29,7 @@ const Navbar = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/unternehmenswert-berechnen" activeClassName="active" className="nav-link">
+                            <NavLink to="/unternehmenswert-rechner" activeClassName="active" className="nav-link">
                                 Unternehmenswert Berechnen
                             </NavLink>
                         </li>
