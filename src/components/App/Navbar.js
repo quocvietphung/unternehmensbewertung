@@ -12,7 +12,7 @@ const menuItems = [
 ];
 
 const Navbar = () => (
-    <Menu inverted className="home-header">
+    <Menu inverted className="Navbar">
         <Menu.Item as={NavLink} exact to="/" activeClassName="active">
             <Image src={logo} alt="Logo" className="logo-image" />
         </Menu.Item>
@@ -24,6 +24,7 @@ const Navbar = () => (
                     exact={item.to === "/"}
                     to={item.to}
                     activeClassName="active"
+                    className={item.to === "/kontakt" ? "contact-item" : ""}
                 >
                     <Icon name={item.icon} />
                     {item.label}

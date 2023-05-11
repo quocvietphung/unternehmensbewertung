@@ -2,37 +2,40 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
 
-home-header {
-  background-color: #1b1c1d; // Màu nền của header
-  border-bottom: 2px solid #2185d0; // Đường viền dưới của header
-  height: 70px; // Chiều cao của header
+  .Navbar {
+    background-color: #1b1c1d;
+    border-bottom: 2px solid #2185d0;
+    height: 70px;
 
-  .logo-image {
-    margin-top: 10px; // Khoảng cách trên của logo
-    width: 450px; // Chiều rộng của logo
-    height: 50px; // Chiều cao của logo
-  }
+    .logo-image {
+      width: 450px;
+      height: 50px;
+    }
 
   a {
-    color: #ffffff !important; // Màu chữ của menu item
+    color: #ffffff !important;
   }
 
-  a.active {
-    color: #2185d0 !important; // Màu chữ của menu item đang hoạt động
+    a.active {
+      color: #2185d0 !important;
+    }
+
+    .icon {
+      margin-right: 5px;
+    }
+
+    .contact-item {
+      margin-right: 20rem;
+    }
   }
 
-  .icon {
-    margin-right: 5px; // Khoảng cách giữa biểu tượng và chữ
-  }
-}
+  .Footer {
+    background-color: #1b1c1d;
+    padding: 20px 0;
 
-.footer {
-  background-color: #1b1c1d;
-  padding: 20px 0;
-
-  .text-orange {
-    color: #f2711c;
+    .text-orange {
+      color: #f2711c;
+    }
   }
 }
