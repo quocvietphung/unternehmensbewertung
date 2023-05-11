@@ -1,20 +1,5 @@
 import React, { Component } from 'react';
-
-const styles = {
-    h1: {
-        color: '#1a1a1a'
-    },
-    h2: {
-        color: '#1a1a1a',
-        marginBottom: '1rem'
-    },
-    form: {
-        backgroundColor: '#f8f9fa',
-        padding: '1.5rem',
-        borderRadius: '5px',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-    }
-};
+import './Unternehmenswertrechner.scss'; // Import SCSS file
 
 class Unternehmenswertrechner extends Component {
     constructor(props) {
@@ -36,30 +21,23 @@ class Unternehmenswertrechner extends Component {
     render() {
         const { branche, lage, alter } = this.state;
         return (
-            <div className="container my-5">
-                <h1 className="text-center mb-4" style={styles.h1}>
-                    Willkommen beim Unternehmenswertrechner
-                </h1>
-                <form style={styles.form}>
-                    <h2 style={styles.h2}>1. Basisinformationen zum Unternehmen</h2>
-                    <div className="mb-3">
-                        <label htmlFor="branche" className="form-label">
-                            Branche*
-                        </label>
+            <div className="unternehmenswertrechner-container"> {/* Use the matching class name */}
+                <h1>Willkommen beim Unternehmenswertrechner</h1>
+                <form>
+                    <h2>1. Basisinformationen zum Unternehmen</h2>
+                    <div>
+                        <label htmlFor="branche">Branche*</label>
                         <input
                             type="text"
                             id="branche"
                             name="branche"
                             value={branche}
                             onChange={this.handleChange}
-                            className="form-control"
                             required
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="lage" className="form-label">
-                            Lage*
-                        </label>
+                    <div>
+                        <label>Lage*</label>
                         <div>
                             <input
                                 type="radio"
@@ -67,12 +45,10 @@ class Unternehmenswertrechner extends Component {
                                 name="lage"
                                 value="städtisch"
                                 onChange={this.handleChange}
-                                className="form-check-input"
                                 required
+                                // eslint-disable-next-line
                             />
-                            <label htmlFor="staedtisch" className="form-check-label ms-2">
-                                städtisch
-                            </label>
+                            <label htmlFor="staedtisch">städtisch</label>
                         </div>
                         <div>
                             <input
@@ -81,29 +57,24 @@ class Unternehmenswertrechner extends Component {
                                 name="lage"
                                 value="ländlich"
                                 onChange={this.handleChange}
-                                className="form-check-input"
                                 required
                             />
-                            <label htmlFor="laendlich" className="form-check-label ms-2">
-                                ländlich
-                            </label>
+                            <label htmlFor="laendlich">ländlich</label>
                         </div>
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="alter" className="form-label">
-                            Alter der Firma in Jahren*
-                        </label>
+                    <div>
+                        <label htmlFor="alter">Alter der Firma in Jahren*</label>
                         <input
                             type="number"
                             id="alter"
                             name="alter"
                             value={alter}
                             onChange={this.handleChange}
-                            className="form-control"
                             required
                         />
                     </div>
-                    <p className="text-muted">*Diese Eingaben sind Pflichtfelder</p>
+                    <p>*Diese Eingaben sind Pflichtfelder</p>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         );
