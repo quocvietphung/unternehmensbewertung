@@ -4,12 +4,10 @@
   flex-direction: column;
 
   .Navbar {
-    background-color: #1b1c1d;
-    border-bottom: 2px solid #2185d0;
-    height: 70px;
+    background-color: #f0f0f0;
 
     .logo-item {
-      background-color: #1b1c1d;
+      background-color: white;
       padding: 15px 20px;
       margin-right: 1rem;
 
@@ -21,7 +19,7 @@
     }
 
     a {
-      color: #000000 !important;  // Thay đổi màu sắc của liên kết menu
+      color: #000000 !important; // Thay đổi màu sắc của liên kết menu
     }
 
     a.active {
@@ -33,7 +31,7 @@
     }
 
     .contact-item {
-      margin-right: 5rem;
+      margin-right: 3rem;
     }
   }
 
@@ -41,8 +39,13 @@
     background-color: #1b1c1d;
     padding: 20px 0;
 
+    .text-white {
+      color: black;
+    }
+
     .text-orange {
       color: #f2711c;
     }
+
   }
 }
