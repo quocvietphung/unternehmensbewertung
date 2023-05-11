@@ -1,9 +1,14 @@
 .Unternehmenswertrechner {
+  display: flex;
+  justify-content: space-between;
+
   .unternehmenswertrechner-container {
-    min-height: 89vh;
+    width: 100%;
+    min-height: 85vh;
     padding: 20px;
 
     .unternehmenswertrechner-info {
+      width: 30%;
       padding: 20px;
       background-color: #f2f2f2;
 
@@ -16,25 +21,29 @@
       }
     }
 
-    form {
-      padding: 20px;
+    .form-container {
+      width: 70%;
 
-      h3 {
-        margin-bottom: 20px;
-      }
+      form {
+        padding: 20px;
 
-      label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-      }
+        h3 {
+          margin-bottom: 20px;
+        }
 
-      input, .field {
-        margin-bottom: 20px;
-      }
+        label {
+          font-weight: bold;
+          display: block;
+          margin-bottom: 5px;
+        }
 
-      button {
-        float: right;
+        input, .field {
+          margin-bottom: 20px;
+        }
+
+        button {
+          float: right;
+        }
       }
     }
   }

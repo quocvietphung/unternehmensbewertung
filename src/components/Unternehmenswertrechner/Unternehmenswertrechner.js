@@ -25,7 +25,7 @@ class Unternehmenswertrechner extends Component {
         return (
             <div className="Unternehmenswertrechner">
                 <Grid className="unternehmenswertrechner-container">
-                    <Grid.Column width={4} className="unternehmenswertrechner-info">
+                    <Grid.Column width={5} className="unternehmenswertrechner-info">
                         <Segment>
                             <Header as="h3">Individuelle Einschätzung Ihres Unternehmens</Header>
                             <Divider />
@@ -36,7 +36,7 @@ class Unternehmenswertrechner extends Component {
                             <p>Bitte füllen Sie weitere Felder des Unternehmenswertrechners aus, um ein Ergebnis zu erhalten.</p>
                         </Segment>
                     </Grid.Column>
-                    <Grid.Column width={8}>
+                    <Grid.Column width={11}>
                         <Header as="h1">Willkommen beim Unternehmenswertrechner</Header>
                         <Form>
                             <Header as="h3">1. Basisinformationen zum Unternehmen</Header>
