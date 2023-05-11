@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Segment } from 'semantic-ui-react';
-import './Footer.scss';
+import './App.scss';
 
 const Footer = () => {
     return (

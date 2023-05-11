@@ -1,56 +1,55 @@
-.unternehmenswertrechner-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
-  align-items: center;
-  margin: 2rem;
+.Unternehmenswertrechner {
+  .unternehmenswertrechner-container {
+    margin-top: 50px;
 
-  .unternehmenswertrechner-info {
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    .unternehmenswertrechner-info {
+      background-color: #f9f9f9;
+      padding: 20px;
 
-    h3 {
-      margin-bottom: 1rem;
+      h3 {
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
     }
 
-    p {
-      margin-bottom: 1rem;
-    }
-  }
-
-  .form-container {
     h1 {
-      margin-bottom: 2rem;
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
-    h3 {
-      margin-bottom: 1rem;
-    }
+    form {
+      h3 {
+        margin-bottom: 20px;
+      }
 
-    label {
-      font-weight: bold;
-    }
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
 
-    .field {
-      margin-bottom: 1rem;
-    }
+      p {
+        margin-top: 10px;
+      }
 
-    input,
-    .radio {
-      width: 100%;
-      margin-bottom: 1rem;
-    }
+      .required.field > label::after {
+        content: '*';
+        color: red;
+      }
 
-    p {
-      color: red;
-      font-style: italic;
-      margin-top: 1rem;
-    }
+      .field > label {
+        display: block;
+      }
 
-    .submit-button {
-      margin-top: 1rem;
+      .radio.checkbox label {
+        margin-right: 10px;
+      }
+
+      button[type="submit"] {
+        margin-top: 20px;
+      }
     }
   }
 }

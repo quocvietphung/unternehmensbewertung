@@ -2,11 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, Image } from 'semantic-ui-react';
 import logo from '../../images/logo.png';
-import './Header.scss';
+import './App.scss';
 
-const Header = () => {
+const Navbar = () => {
     return (
-        <Menu inverted className="header">
+        <Menu inverted className="home-header">
             <Menu.Item as={NavLink} exact to="/" activeClassName="active">
                 <Image src={logo} alt="Logo" className="logo-image" />
             </Menu.Item>
@@ -28,4 +28,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Navbar;
