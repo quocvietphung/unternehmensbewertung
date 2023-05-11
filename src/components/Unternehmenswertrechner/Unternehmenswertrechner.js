@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Form, Header, Radio, Input, Button } from 'semantic-ui-react';
+import { Grid, Form, Header, Radio, Input, Button, Segment, Divider, Placeholder } from 'semantic-ui-react';
 import './Unternehmenswertrechner.scss';
 
 class Unternehmenswertrechner extends Component {
@@ -26,10 +26,15 @@ class Unternehmenswertrechner extends Component {
             <div className="Unternehmenswertrechner">
                 <Grid className="unternehmenswertrechner-container">
                     <Grid.Column width={4} className="unternehmenswertrechner-info">
-                        <Header as="h3">Individuelle Einschätzung Ihres Unternehmens</Header>
-                        <p>vorläufiger Unternehmenswert</p>
-                        <p>Wert ungültig</p>
-                        <p>Bitte füllen Sie weitere Felder des Unternehmenswertrechners aus, um ein Ergebnis zu erhalten.</p>
+                        <Segment>
+                            <Header as="h3">Individuelle Einschätzung Ihres Unternehmens</Header>
+                            <Divider />
+                            <Placeholder>
+                                <Placeholder.Line />
+                                <Placeholder.Line />
+                            </Placeholder>
+                            <p>Bitte füllen Sie weitere Felder des Unternehmenswertrechners aus, um ein Ergebnis zu erhalten.</p>
+                        </Segment>
                     </Grid.Column>
                     <Grid.Column width={8}>
                         <Header as="h1">Willkommen beim Unternehmenswertrechner</Header>
@@ -46,33 +51,31 @@ class Unternehmenswertrechner extends Component {
                                     required
                                 />
                             </Form.Field>
-                            <Form.Field>
+                            <Form.Group grouped>
                                 <label>Lage*</label>
-                                <Form.Group>
-                                    <Form.Field>
-                                        <Radio
-                                            id="staedtisch"
-                                            name="lage"
-                                            value="städtisch"
-                                            label="städtisch"
-                                            checked={lage === 'städtisch'}
-                                            onChange={this.handleChange}
-                                            required
-                                        />
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <Radio
-                                            id="laendlich"
-                                            name="lage"
-                                            value="ländlich"
-                                            label="ländlich"
-                                            checked={lage === 'ländlich'}
-                                            onChange={this.handleChange}
-                                            required
-                                        />
-                                    </Form.Field>
-                                </Form.Group>
-                            </Form.Field>
+                                <Form.Field>
+                                    <Radio
+                                        id="staedtisch"
+                                        name="lage"
+                                        value="städtisch"
+                                        label="städtisch"
+                                        checked={lage === 'städtisch'}
+                                        onChange={this.handleChange}
+                                        required
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Radio
+                                        id="laendlich"
+                                        name="lage"
+                                        value="ländlich"
+                                        label="ländlich"
+                                        checked={lage === 'ländlich'}
+                                        onChange={this.handleChange}
+                                        required
+                                    />
+                                </Form.Field>
+                            </Form.Group>
                             <Form.Field>
                                 <label>Alter der Firma in Jahren*</label>
                                 <Input
