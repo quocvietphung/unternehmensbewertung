@@ -13,7 +13,7 @@ class Unternehmenswertrechner extends Component {
         };
     }
 
-    handleChange = (event, { name, value }) => {
+    handleChange = (event, name, value) => {
         if (name === "alter" && (value === "+" || value === "-")) {
             const currentValue = this.state.alter;
             const newValue = value === "+" ? currentValue + 1 : currentValue - 1;
@@ -90,7 +90,7 @@ class Unternehmenswertrechner extends Component {
                                                 icon="minus"
                                                 data-type="minus"
                                                 data-field="alter"
-                                                onClick={(event) => this.handleChange(event, { name: 'alter', value: '-' })}
+                                                onClick={(event) => this.handleChange(event, 'alter', '-')}
                                             />
                                             <input
                                                 type="number"
@@ -98,14 +98,14 @@ class Unternehmenswertrechner extends Component {
                                                 className="form-control input-number-plusminus"
                                                 min="0"
                                                 value={alter}
-                                                onChange={this.handleChange}
+                                                onChange={(event) => this.handleChange(event, 'alter')}
                                                 required
                                             />
                                             <Button
                                                 icon="plus"
                                                 data-type="plus"
                                                 data-field="alter"
-                                                onClick={(event) => this.handleChange(event, { name: 'alter', value: '+' })}
+                                                onClick={(event) => this.handleChange(event, 'alter', '+')}
                                             />
                                         </div>
                                     </Form.Field>
