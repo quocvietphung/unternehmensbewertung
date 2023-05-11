@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from '../Home/Home';
 import Unternehmenswertrechner from '../Unternehmenswertrechner/Unternehmenswertrechner';
-import Navbar from './Header';
 import Footer from './Footer';
 import './App.scss';
 import Header from "./Header";

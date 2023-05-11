@@ -1,53 +1,30 @@
-// src/components/Header.js
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Menu, Image } from 'semantic-ui-react';
 import logo from '../../images/logo.png';
 import './Header.scss';
 
 const Header = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-            <div className="container-fluid">
-                <a className="navbar-brand" href="/">
-                    <img src={logo} alt="Logo" width="450" height="50" />
-                </a>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            <NavLink exact to="/" activeClassName="active" className="nav-link">
-                                Home
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/unternehmenswert-berechnen" activeClassName="active" className="nav-link">
-                                Unternehmenswert Berechnen
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/unternehmensboerse" activeClassName="active" className="nav-link">
-                                Unternehmensbörse
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to="/kontakt" activeClassName="active" className="nav-link me-5">
-                                Kontakt
-                            </NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <Menu inverted className="header">
+            <Menu.Item as={NavLink} exact to="/" activeClassName="active">
+                <Image src={logo} alt="Logo" className="logo-image" />
+            </Menu.Item>
+            <Menu.Menu position="right">
+                <Menu.Item as={NavLink} exact to="/" activeClassName="active">
+                    Home
+                </Menu.Item>
+                <Menu.Item as={NavLink} to="/unternehmenswert-berechnen" activeClassName="active">
+                    Unternehmenswert Berechnen
+                </Menu.Item>
+                <Menu.Item as={NavLink} to="/unternehmensboerse" activeClassName="active">
+                    Unternehmensbörse
+                </Menu.Item>
+                <Menu.Item as={NavLink} to="/kontakt" activeClassName="active">
+                    Kontakt
+                </Menu.Item>
+            </Menu.Menu>
+        </Menu>
     );
 };
 
