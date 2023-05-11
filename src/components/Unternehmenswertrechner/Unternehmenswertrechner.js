@@ -83,7 +83,7 @@ class Unternehmenswertrechner extends Component {
                             </Form.Field>
                             <p>*Diese Eingaben sind Pflichtfelder</p>
                             <Button type="submit" primary>
-                                Submit
+                                Weiter
                             </Button>
                         </Form>
                     </div>
