@@ -21,11 +21,11 @@ class Unternehmenswertrechner extends Component {
     render() {
         const { branche, lage, alter } = this.state;
         return (
-            <div className="unternehmenswertrechner-container"> {/* Use the matching class name */}
+            <div className="unternehmenswertrechner-container">
                 <h1>Willkommen beim Unternehmenswertrechner</h1>
                 <form>
-                    <h2>1. Basisinformationen zum Unternehmen</h2>
-                    <div>
+                    <h3>1. Basisinformationen zum Unternehmen</h3>
+                    <div className="form-group">
                         <label htmlFor="branche">Branche*</label>
                         <input
                             type="text"
@@ -34,11 +34,12 @@ class Unternehmenswertrechner extends Component {
                             value={branche}
                             onChange={this.handleChange}
                             required
+                            className="form-control"
                         />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>Lage*</label>
-                        <div>
+                        <div className="form-check">
                             <input
                                 type="radio"
                                 id="staedtisch"
@@ -46,11 +47,11 @@ class Unternehmenswertrechner extends Component {
                                 value="städtisch"
                                 onChange={this.handleChange}
                                 required
-                                // eslint-disable-next-line
+                                className="form-check-input"
                             />
-                            <label htmlFor="staedtisch">städtisch</label>
+                            <label htmlFor="staedtisch" className="form-check-label">städtisch</label>
                         </div>
-                        <div>
+                        <div className="form-check">
                             <input
                                 type="radio"
                                 id="laendlich"
@@ -58,11 +59,12 @@ class Unternehmenswertrechner extends Component {
                                 value="ländlich"
                                 onChange={this.handleChange}
                                 required
+                                className="form-check-input"
                             />
-                            <label htmlFor="laendlich">ländlich</label>
+                            <label htmlFor="laendlich" className="form-check-label">ländlich</label>
                         </div>
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="alter">Alter der Firma in Jahren*</label>
                         <input
                             type="number"
@@ -71,10 +73,11 @@ class Unternehmenswertrechner extends Component {
                             value={alter}
                             onChange={this.handleChange}
                             required
+                            className="form-control"
                         />
                     </div>
                     <p>*Diese Eingaben sind Pflichtfelder</p>
-                    <button type="submit">Submit</button>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
         );
