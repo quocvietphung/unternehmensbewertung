@@ -1,45 +1,39 @@
-import React, { Component } from 'react';
-import { Grid, Form, Header, Radio, Input, Button, Segment, Divider, Placeholder } from 'semantic-ui-react';
+import React, {Component} from 'react';
+import {Form, Header, Radio, Input, Button} from 'semantic-ui-react';
 import './Unternehmenswertrechner.scss';
 
 class Unternehmenswertrechner extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            branche: 'Telekommunikation',
-            lage: '',
-            alter: ''
-        };
+    state = {
+        branche: 'Telekommunikation',
+        lage: '',
+        alter: '',
+        isValid: false
+    };
 
-        this.handleChange = this.handleChange.bind(this);
+    handleChange = (event) => {
+        const {name, value} = event.target;
+        this.setState({[name]: value}, this.checkValidity);
     }
 
-    handleChange(event) {
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
+    checkValidity = () => {
+        const {branche, lage, alter} = this.state;
+        if (branche && lage && alter) {
+            this.setState({isValid: true});
+        } else {
+            this.setState({isValid: false});
+        }
     }
 
     render() {
-        const { branche, lage, alter } = this.state;
+        const {branche, lage, alter, isValid} = this.state;
 
         return (
             <div className="Unternehmenswertrechner">
-                <Grid className="unternehmenswertrechner-container">
-                    <Grid.Column width={5} className="unternehmenswertrechner-info">
-                        <Segment>
-                            <Header as="h3">Individuelle Einschätzung Ihres Unternehmens</Header>
-                            <Divider />
-                            <Placeholder>
-                                <Placeholder.Line />
-                                <Placeholder.Line />
-                            </Placeholder>
-                            <p>Bitte füllen Sie weitere Felder des Unternehmenswertrechners aus, um ein Ergebnis zu erhalten.</p>
-                        </Segment>
-                    </Grid.Column>
-                    <Grid.Column width={11}>
+                <div className="unternehmenswertrechner-container">
+                    <div className="welcome-column">
                         <Header as="h1">Willkommen beim Unternehmenswertrechner</Header>
                         <Form>
-                            <Header as="h3">1. Basisinformationen zum Unternehmen</Header>
+                            <Header as="h2">1. Basisinformationen zum Unternehmen</Header>
                             <Form.Field>
                                 <label>Branche*</label>
                                 <Input
@@ -88,10 +82,12 @@ class Unternehmenswertrechner extends Component {
                                 />
                             </Form.Field>
                             <p>*Diese Eingaben sind Pflichtfelder</p>
-                            <Button type="submit" primary>Submit</Button>
+                            <Button type="submit" primary>
+                                Submit
+                            </Button>
                         </Form>
-                    </Grid.Column>
-                </Grid>
+                    </div>
+                </div>
             </div>
         );
     }
