@@ -1,22 +1,17 @@
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 
-.unternehmenswertrechner-container {
-  margin: 2rem auto;
-  max-width: 600px;
-  padding: 2rem;
-  background-color: #f8f9fa;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.row {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 85vh;
 
-  h1 {
-    color: green;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  form {
-    margin-top: 2rem;
+  .unternehmenswertrechner-info {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
 
     h3 {
       color: #1a1a1a;
@@ -24,62 +19,72 @@ $secondary-color: #6c757d;
       margin-bottom: 1rem;
     }
 
-    label {
-      font-weight: bold;
+    p {
+      margin-bottom: 1rem;
     }
+  }
 
-    .form-group {
+  .unternehmenswertrechner-container {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+
+    h1 {
+      color: green;
+      text-align: center;
       margin-bottom: 1rem;
     }
 
-    input[type='text'],
-    input[type='number'] {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ced4da;
-      border-radius: 4px;
-    }
+    form {
+      margin-top: 2rem;
 
-    .form-check {
-      margin-bottom: 1rem;
+      h3 {
+        color: #1a1a1a;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
 
-      .form-check-label {
-        margin-left: 0.5rem;
+      label {
+        font-weight: bold;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      input[type='text'],
+      input[type='number'] {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+      }
+
+      .form-check {
+        margin-bottom: 1rem;
+
+        .form-check-label {
+          margin-left: 0.5rem;
+        }
+      }
+
+      button[type='submit'] {
+        width: 100%;
+        padding: 0.75rem;
+        color: #fff;
+        background-color: $primary-color;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      p {
+        color: $secondary-color;
+        font-style: italic;
       }
     }
-
-    button[type='submit'] {
-      width: 100%;
-      padding: 0.75rem;
-      color: #fff;
-      background-color: $primary-color;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    p {
-      color: $secondary-color;
-      font-style: italic;
-    }
-  }
-}
-
-.unternehmenswertrechner-info {
-  background-color: #f8f9fa;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin-bottom: 2rem;
-
-  h3 {
-    color: #1a1a1a;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  p {
-    margin-bottom: 1rem;
   }
 }
