@@ -1,31 +1,36 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Image } from 'semantic-ui-react';
+import { Menu, Image, Icon } from 'semantic-ui-react';
 import logo from '../../images/logo.png';
 import './App.scss';
 
-const Navbar = () => {
-    return (
-        <Menu inverted className="home-header">
-            <Menu.Item as={NavLink} exact to="/" activeClassName="active">
-                <Image src={logo} alt="Logo" className="logo-image" />
-            </Menu.Item>
-            <Menu.Menu position="right">
-                <Menu.Item as={NavLink} exact to="/" activeClassName="active">
-                    Home
+const menuItems = [
+    { to: "/", label: "Home", icon: "home" },
+    { to: "/unternehmenswert-berechnen", label: "Unternehmenswert Berechnen", icon: "calculator" },
+    { to: "/unternehmensboerse", label: "Unternehmensbörse", icon: "exchange" },
+    { to: "/kontakt", label: "Kontakt", icon: "envelope" }
+];
+
+const Navbar = () => (
+    <Menu inverted className="home-header">
+        <Menu.Item as={NavLink} exact to="/" activeClassName="active">
+            <Image src={logo} alt="Logo" className="logo-image" />
+        </Menu.Item>
+        <Menu.Menu position="right">
+            {menuItems.map((item) => (
+                <Menu.Item
+                    key={item.to}
+                    as={NavLink}
+                    exact={item.to === "/"}
+                    to={item.to}
+                    activeClassName="active"
+                >
+                    <Icon name={item.icon} />
+                    {item.label}
                 </Menu.Item>
-                <Menu.Item as={NavLink} to="/unternehmenswert-berechnen" activeClassName="active">
-                    Unternehmenswert Berechnen
-                </Menu.Item>
-                <Menu.Item as={NavLink} to="/unternehmensboerse" activeClassName="active">
-                    Unternehmensbörse
-                </Menu.Item>
-                <Menu.Item as={NavLink} to="/kontakt" activeClassName="active">
-                    Kontakt
-                </Menu.Item>
-            </Menu.Menu>
-        </Menu>
-    );
-};
+            ))}
+        </Menu.Menu>
+    </Menu>
+);
 
 export default Navbar;
