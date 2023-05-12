@@ -1,4 +1,9 @@
 .Unternehmenswertrechner {
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .nav-wrapper {
     background-color: #f5f5f5;
     padding: 20px;
@@ -57,6 +62,7 @@
         .form-control {
           width: 50%;
           margin: 0 10px;
+          text-align: center; // To center the number
         }
       }
     }
