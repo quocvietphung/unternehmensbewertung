@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid } from 'semantic-ui-react';
 
-const Progress = () => {
-    const [activeItem, setActiveItem] = useState('basis');
-
+const ProgressSection = ({ setActiveSection, activeSection }) => {
     const handleItemClick = (target) => {
-        setActiveItem(target);
+        setActiveSection(target);
     };
 
     return (
@@ -13,7 +11,7 @@ const Progress = () => {
             <Grid columns={6}>
                 <Grid.Row>
                     <Grid.Column
-                        className={`nav-item ${activeItem === 'basis' ? 'finished' : 'inactive'}`}
+                        className={`nav-item ${activeSection === 'basis' ? 'finished' : 'inactive'}`}
                         data-target="basis"
                         onClick={() => handleItemClick('basis')}
                     >
@@ -21,7 +19,7 @@ const Progress = () => {
                         <div className="heading">Basis-Infos</div>
                     </Grid.Column>
                     <Grid.Column
-                        className={`nav-item ${activeItem === 'kennzahlen' ? 'active' : 'inactive'} ${activeItem === 'kennzahlen' ? 'error' : ''}`}
+                        className={`nav-item ${activeSection === 'kennzahlen' ? 'active' : 'inactive'} ${activeSection === 'kennzahlen' ? 'error' : ''}`}
                         data-target="kennzahlen"
                         onClick={() => handleItemClick('kennzahlen')}
                     >
@@ -29,7 +27,7 @@ const Progress = () => {
                         <div className="heading">Kennzahlen</div>
                     </Grid.Column>
                     <Grid.Column
-                        className={`nav-item ${activeItem === 'bereinigung' ? 'inactive' : 'inactive'}`}
+                        className={`nav-item ${activeSection === 'bereinigung' ? 'inactive' : 'inactive'}`}
                         data-target="bereinigung"
                         onClick={() => handleItemClick('bereinigung')}
                     >
@@ -37,7 +35,7 @@ const Progress = () => {
                         <div className="heading">Bereinigung</div>
                     </Grid.Column>
                     <Grid.Column
-                        className={`nav-item ${activeItem === 'equity' ? 'inactive' : 'inactive'}`}
+                        className={`nav-item ${activeSection === 'equity' ? 'inactive' : 'inactive'}`}
                         data-target="equity"
                         onClick={() => handleItemClick('equity')}
                     >
@@ -45,7 +43,7 @@ const Progress = () => {
                         <div className="heading">Equity Bridge</div>
                     </Grid.Column>
                     <Grid.Column
-                        className={`nav-item ${activeItem === 'qualitaet' ? 'inactive' : 'inactive'}`}
+                        className={`nav-item ${activeSection === 'qualitaet' ? 'inactive' : 'inactive'}`}
                         data-target="qualitaet"
                         onClick={() => handleItemClick('qualitaet')}
                     >
@@ -53,7 +51,7 @@ const Progress = () => {
                         <div className="heading">Qualität</div>
                     </Grid.Column>
                     <Grid.Column
-                        className={`nav-item ${activeItem === 'anlass' ? 'inactive' : 'inactive'}`}
+                        className={`nav-item ${activeSection === 'anlass' ? 'inactive' : 'inactive'}`}
                         data-target="anlass"
                         onClick={() => handleItemClick('anlass')}
                     >
@@ -66,4 +64,4 @@ const Progress = () => {
     );
 };
 
-export default Progress;
+export default ProgressSection;
