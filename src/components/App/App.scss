@@ -2,13 +2,14 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  color: #333;  // Set default text color
 
   .Navbar {
     background-color: #f0f0f0;
     height: 60px;
 
     .logo-item {
-      background-color: white;
+      background-color: #fff;  // More readable color name
       padding: 15px 20px;
       margin-right: 1rem;
 
@@ -20,7 +21,11 @@
     }
 
     a {
-      color: #000000 !important;
+      color: #000 !important;  // More readable color name
+
+      &:hover {
+        color: #2185d0 !important;  // Change color on hover
+      }
     }
 
     a.active {
@@ -28,7 +33,7 @@
     }
 
     .icon {
-      margin-right: 5px;
+      margin-right: .5rem;  // Reduced for better visual balance
     }
 
     .contact-item {
@@ -45,14 +50,14 @@
   .Footer {
     background-color: #1b1c1d;
     padding: 20px 0;
+    color: #fff;  // Set default text color for footer
 
     .text-white {
-      color: black;
+      color: #000;  // More readable color name
     }
 
     .text-orange {
-      color: #f2711c;
+      color: #d35400; /* Màu cam đậm hơn */
     }
-
   }
 }
