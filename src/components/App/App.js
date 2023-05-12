@@ -5,7 +5,7 @@ import Home from '../Home/Home';
 import Unternehmenswertrechner from '../Unternehmenswertrechner/Unternehmenswertrechner';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import StepContent from "../../StepContent";
+import Kennzahlen from "../Unternehmenswertrechner/Kennzahlen";
 
 const App = () => {
     return (
@@ -16,7 +16,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/unternehmenswert-berechnen" element={<Unternehmenswertrechner />} />
-                        <Route path="/unternehmensboerse" element={<StepContent />} />
+                        <Route path="/unternehmensboerse" element={<Kennzahlen />} />
                     </Routes>
                 </Container>
                 <Footer />
