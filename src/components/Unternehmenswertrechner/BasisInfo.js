@@ -73,6 +73,7 @@ class BasisInfo extends Component {
                                 <Form.Field>
                                     <label>Branche*</label>
                                     <Select
+                                        className="wideSelect"
                                         options={branchOptions}
                                         name="branche"
                                         value={branche}

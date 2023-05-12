@@ -83,7 +83,7 @@
             margin-bottom: 8px;
           }
 
-          & > .input-group {
+          > .input-group {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -100,6 +100,10 @@
             button {
               margin: 0 8px;
             }
+          }
+
+          .wideSelect {
+            width: 560px !important;
           }
         }
 
