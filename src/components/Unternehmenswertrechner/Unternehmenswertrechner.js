@@ -3,6 +3,7 @@ import BasisInfo from './BasisInfo';
 import ProgressSection from './ProgressSection';
 import './Unternehmenswertrechner.scss';
 import Kennzahlen from './Kennzahlen';
+import {Header} from "semantic-ui-react";
 
 class Unternehmenswertrechner extends Component {
     constructor(props) {
@@ -25,6 +26,7 @@ class Unternehmenswertrechner extends Component {
 
         return (
             <div className="Unternehmenswertrechner">
+                <Header as="h1" className="main-header">Willkommen beim Unternehmenswertrechner</Header>
                 <ProgressSection setActiveSection={this.setActiveSection} activeSection={activeSection} />
                 <div className="unternehmenswertrechner-container">
                     {activeSection === 'kennzahlen' ? <Kennzahlen /> : <BasisInfo onWeiterClick={this.handleWeiterClick} />}

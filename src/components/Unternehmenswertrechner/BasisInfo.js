@@ -64,7 +64,6 @@ class BasisInfo extends Component {
 
         return (
             <Grid padded className="basis-info">
-                <Header as="h1" className="header-green">Willkommen beim Unternehmenswertrechner</Header>
                 <Form>
                     <Header as="h2">1. Basisinformationen zum Unternehmen</Header>
                     <Grid columns={2} stackable>

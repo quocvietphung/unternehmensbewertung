@@ -17,7 +17,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/unternehmenswert-berechnen" element={<Unternehmenswertrechner />} />
-                        <Route path="/unternehmensboerse" element={<Kennzahlen />} />
+                        <Route path="/test" element={<Kennzahlen />} />
                     </Routes>
                 </Container>
                 <Footer />
