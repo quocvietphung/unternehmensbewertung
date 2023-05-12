@@ -54,55 +54,65 @@
 
   .unternehmenswertrechner-container {
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-    .kennzahlen,
-    .basis-info {
-      background-color: #f5f5f5;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .basis-info,
+    .kennzahlen {
+      padding: 16px;
+      margin: 16px;
+      width: 100%;
 
-      h2, h3 {
-        color: #333;
+      .header {
+        font-size: 24px;
+        margin-bottom: 16px;
       }
 
-      .input-group,
-      .button-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 20px;
-      }
+      .form {
+        .field {
+          margin-bottom: 16px;
 
-      .form-control {
-        width: 50%;
-        margin: 0 10px;
-        text-align: center;
-        border-radius: 5px;
-      }
+          label {
+            font-weight: bold;
+            margin-bottom: 8px;
+          }
 
-      .segment {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-      }
+          & > .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-      .button {
-        background-color: #007bff;
-        color: #fff;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.2s ease;
+            button {
+              margin: 0 8px;
+            }
+          }
+        }
 
-        &:hover {
-          background-color: #0056b3;
+        .group {
+          display: flex;
+          align-items: center;
+
+          label {
+            margin-right: 16px;
+          }
         }
       }
 
-      input[type='range'] {
-        width: 100%;
-        cursor: pointer;
+      p {
+        margin-top: 16px;
+        font-style: italic;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 32px;
       }
     }
   }
