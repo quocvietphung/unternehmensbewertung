@@ -1,87 +1,62 @@
 .Unternehmenswertrechner {
   .nav-wrapper {
-    // Căn chỉnh và khoảng cách giữa các column
-    .column {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 1rem;
-      position: relative;
+    background-color: #f5f5f5;
+    padding: 20px;
+
+    .nav-item {
+      text-align: center;
+      padding: 10px;
 
       .nav-border {
-        // Định dạng cho đường viền
-        height: 2px;
+        height: 4px;
         width: 100%;
-        background-color: #000;
-      }
-
-      .heading {
-        // Định dạng cho tiêu đề
-        font-weight: bold;
-        margin-top: 0.5rem;
+        background-color: #ddd;
+        margin-bottom: 10px;
       }
 
       &.finished {
-        // Kiểu dáng cho column đã hoàn thành
         .nav-border {
-          background-color: green;
-        }
-      }
-
-      &.inactive {
-        // Kiểu dáng cho column chưa hoàn thành
-        .nav-border {
-          background-color: gray;
+          background-color: #008000;
         }
       }
 
       &.active {
-        // Kiểu dáng cho column hiện tại
         .nav-border {
-          background-color: blue;
+          background-color: #0000ff;
         }
       }
 
       &.error {
-        // Kiểu dáng cho column khi có lỗi
         .nav-border {
-          background-color: red;
+          background-color: #ff0000;
         }
       }
+    }
+
+    .heading {
+      font-size: 14px;
+      font-weight: bold;
     }
   }
 
   .unternehmenswertrechner-container {
-    // Căn giữa và định dạng cho phần container chính
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 20px;
 
-    .welcome-column {
-      // Căn giữa và định dạng cho cột chứa nội dung chào mừng
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    .header-green {
+      color: #008000;
+    }
 
-      .header-green {
-        // Định dạng cho tiêu đề chào mừng
-        color: green;
-        font-size: 2rem;
-        margin-bottom: 2rem;
-      }
+    form {
+      margin-top: 20px;
 
       .input-group {
-        // Định dạng cho nhóm input và button
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
-        .input-number-plusminus {
-          // Định dạng cho input number
-          width: 60px;
-          text-align: center;
+        .form-control {
+          width: 50%;
+          margin: 0 10px;
         }
       }
     }
