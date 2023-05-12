@@ -39,9 +39,9 @@
     }
 
     .heading {
-      font-size: 16px; // Tăng kích thước font
+      font-size: 16px;
       font-weight: bold;
-      color: #333; // Thay đổi màu sắc
+      color: #333;
     }
   }
 
@@ -49,11 +49,10 @@
     margin: 20px;
 
     .basis-info {
-      // Các tùy chỉnh cho component BasisInfo
 
       .header-green {
         color: #008000;
-        font-size: 2rem; // Tăng kích thước font
+        font-size: 2rem;
       }
 
       .input-group {
@@ -65,17 +64,16 @@
           width: 50%;
           margin: 0 10px;
           text-align: center;
-          border-radius: 5px; // Thêm border radius
+          border-radius: 5px;
         }
       }
     }
 
     .kennzahlen {
-      // Các tùy chỉnh cho component Kennzahlen
 
       .header-green {
         color: #008000;
-        font-size: 2rem; // Tăng kích thước font
+        font-size: 2rem;
       }
 
       .input-group {
@@ -87,7 +85,7 @@
           width: 50%;
           margin: 0 10px;
           text-align: center;
-          border-radius: 5px; // Thêm border radius
+          border-radius: 5px;
         }
       }
     }
