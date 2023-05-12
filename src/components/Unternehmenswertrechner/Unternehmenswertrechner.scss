@@ -1,8 +1,8 @@
 .Unternehmenswertrechner {
   margin-top: 1rem;
-  height: 88vh;
   flex-direction: column;
   justify-content: center;
+  //height: 88vh;
 
   .nav-wrapper {
     background-color: #f5f5f5;
@@ -39,20 +39,22 @@
     }
 
     .heading {
-      font-size: 14px;
+      font-size: 16px; // Tăng kích thước font
       font-weight: bold;
+      color: #333; // Thay đổi màu sắc
     }
   }
 
   .unternehmenswertrechner-container {
     margin: 20px;
 
-    .header-green {
-      color: #008000;
-    }
+    .basis-info {
+      // Các tùy chỉnh cho component BasisInfo
 
-    form {
-      margin-top: 20px;
+      .header-green {
+        color: #008000;
+        font-size: 2rem; // Tăng kích thước font
+      }
 
       .input-group {
         display: flex;
@@ -63,8 +65,32 @@
           width: 50%;
           margin: 0 10px;
           text-align: center;
+          border-radius: 5px; // Thêm border radius
         }
       }
     }
+
+    .kennzahlen {
+      // Các tùy chỉnh cho component Kennzahlen
+
+      .header-green {
+        color: #008000;
+        font-size: 2rem; // Tăng kích thước font
+      }
+
+      .input-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .form-control {
+          width: 50%;
+          margin: 0 10px;
+          text-align: center;
+          border-radius: 5px; // Thêm border radius
+        }
+      }
+    }
+
   }
 }

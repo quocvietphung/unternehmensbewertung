@@ -4,7 +4,7 @@ import { Checkbox, Input, Label, Grid, Header, Segment, Form, Divider, Button } 
 class Kennzahlen extends Component {
     render() {
         return (
-            <Grid padded>
+            <Grid padded className="kennzahlen">
                 <Grid.Row>
                     <Grid.Column>
                         <Header as='h2'>2. Finanzwirtschaftliche Kennzahlen</Header>
