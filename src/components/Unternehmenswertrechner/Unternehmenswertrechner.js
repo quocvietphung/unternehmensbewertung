@@ -23,11 +23,7 @@ class Unternehmenswertrechner extends Component {
             <div className="Unternehmenswertrechner">
                 <Progress />
                 <div className="unternehmenswertrechner-container">
-                    {showKennzahlen ? (
-                        <Kennzahlen />
-                    ) : (
-                        <BasisInfo onWeiterClick={this.handleWeiterClick} />
-                    )}
+                    {showKennzahlen ? <Kennzahlen /> : <BasisInfo onWeiterClick={this.handleWeiterClick} />}
                 </div>
             </div>
         );
