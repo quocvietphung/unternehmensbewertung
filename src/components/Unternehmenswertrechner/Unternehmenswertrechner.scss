@@ -88,6 +88,15 @@
             align-items: center;
             justify-content: space-between;
 
+            label {
+              font-weight: bold;
+              margin-bottom: 8px;
+            }
+
+            input {
+              text-align: center; /* Căn giữa số trong input */
+            }
+
             button {
               margin: 0 8px;
             }
