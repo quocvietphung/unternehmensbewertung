@@ -1,4 +1,8 @@
 .App {
+  background-image: url('../../images/cover.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
