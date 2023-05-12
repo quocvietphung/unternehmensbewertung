@@ -65,6 +65,19 @@
         color: #333;
       }
 
+      .input-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .form-control {
+          width: 50%;
+          margin: 0 10px;
+          text-align: center;
+          border-radius: 5px;
+        }
+      }
+
       .segment {
         background-color: #fff;
         border-radius: 10px;
@@ -73,15 +86,23 @@
         margin-top: 20px;
       }
 
-      .button {
-        background-color: #007bff;
-        color: #fff;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.2s ease;
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
 
-        &:hover {
-          background-color: #0056b3;
+        .button {
+          background-color: #007bff;
+          color: #fff;
+          border-radius: 5px;
+          font-weight: bold;
+          transition: background-color 0.2s ease;
+          display: flex;
+          justify-content: center;
+
+          &:hover {
+            background-color: #0056b3;
+          }
         }
       }
 

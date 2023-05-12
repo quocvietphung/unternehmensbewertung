@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Form, Grid, Select, Radio, Button } from "semantic-ui-react";
+import {Header, Form, Grid, Select, Radio, Button, Divider} from "semantic-ui-react";
 
 class BasisInfo extends Component {
     constructor(props) {
@@ -66,6 +66,7 @@ class BasisInfo extends Component {
             <Grid padded className="basis-info">
                 <Form>
                     <Header as="h2">1. Basisinformationen zum Unternehmen</Header>
+                    <Divider />
                     <Grid columns={2} stackable>
                         <Grid.Column>
                             <Form.Field>
@@ -131,9 +132,11 @@ class BasisInfo extends Component {
                         </Grid.Column>
                     </Grid>
                     <p>* Diese Eingaben sind Pflichtfelder</p>
-                    <Button type="submit" primary onClick={this.handleWeiterClick}>
-                        Weiter
-                    </Button>
+                    <div className="button-container">
+                        <Button type="submit" primary onClick={this.handleWeiterClick}>
+                            Weiter
+                        </Button>
+                    </div>
                 </Form>
             </Grid>
         );

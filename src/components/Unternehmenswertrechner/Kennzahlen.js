@@ -75,7 +75,9 @@ const Kennzahlen = () => {
                             </Form.Group>
                         </Segment>
                         <Form.Field>
-                            <Button primary type='submit'>Submit</Button>
+                            <div className="button-container">
+                                <Button primary type='submit'>Submit</Button>
+                            </div>
                         </Form.Field>
                     </Form>
                 </Grid.Column>
