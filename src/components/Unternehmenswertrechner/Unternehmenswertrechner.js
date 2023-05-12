@@ -13,7 +13,7 @@ class Unternehmenswertrechner extends Component {
         };
     }
 
-    handleChange = (event, name, value) => {
+    handleChange = (event, { name, value }) => {
         if (name === "alter" && (value === "+" || value === "-")) {
             const currentValue = this.state.alter;
             const newValue = value === "+" ? currentValue + 1 : currentValue - 1;
@@ -42,6 +42,36 @@ class Unternehmenswertrechner extends Component {
 
         return (
             <div className="Unternehmenswertrechner">
+                <div className="nav-wrapper">
+                    <Grid columns={6}>
+                        <Grid.Row>
+                            <Grid.Column className="nav-item finished" data-target="basis" id="nav-basis">
+                                <div className="nav-border"></div>
+                                <div className="heading">Basis-Infos</div>
+                            </Grid.Column>
+                            <Grid.Column className="nav-item inactive active error" data-target="kennzahlen" id="nav-kennzahlen">
+                                <div className="nav-border"></div>
+                                <div className="heading">Kennzahlen</div>
+                            </Grid.Column>
+                            <Grid.Column className="nav-item inactive" data-target="bereinigung" id="nav-bereinigung">
+                                <div className="nav-border"></div>
+                                <div className="heading">Bereinigung</div>
+                            </Grid.Column>
+                            <Grid.Column className="nav-item inactive" data-target="equity" id="nav-equity">
+                                <div className="nav-border"></div>
+                                <div className="heading">Equity Bridge</div>
+                            </Grid.Column>
+                            <Grid.Column className="nav-item inactive" data-target="qualitaet" id="nav-qualitaet">
+                                <div className="nav-border"></div>
+                                <div className="heading">Qualität</div>
+                            </Grid.Column>
+                            <Grid.Column className="nav-item inactive" data-target="anlass" id="nav-anlass">
+                                <div className="nav-border"></div>
+                                <div className="heading">Anlass</div>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </div>
                 <div className="unternehmenswertrechner-container">
                     <div className="welcome-column">
                         <Header as="h1" className="header-green">Willkommen beim Unternehmenswertrechner</Header>
@@ -90,7 +120,7 @@ class Unternehmenswertrechner extends Component {
                                                 icon="minus"
                                                 data-type="minus"
                                                 data-field="alter"
-                                                onClick={(event) => this.handleChange(event, 'alter', '-')}
+                                                onClick={(event) => this.handleChange(event, { name: 'alter', value: '-' })}
                                             />
                                             <input
                                                 type="number"
@@ -98,14 +128,14 @@ class Unternehmenswertrechner extends Component {
                                                 className="form-control input-number-plusminus"
                                                 min="0"
                                                 value={alter}
-                                                onChange={(event) => this.handleChange(event, 'alter')}
+                                                onChange={(event) => this.handleChange(event, { name: 'alter', value: event.target.value })}
                                                 required
                                             />
                                             <Button
                                                 icon="plus"
                                                 data-type="plus"
                                                 data-field="alter"
-                                                onClick={(event) => this.handleChange(event, 'alter', '+')}
+                                                onClick={(event) => this.handleChange(event, { name: 'alter', value: '+' })}
                                             />
                                         </div>
                                     </Form.Field>
