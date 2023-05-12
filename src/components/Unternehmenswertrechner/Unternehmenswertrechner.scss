@@ -55,7 +55,8 @@
   .unternehmenswertrechner-container {
     margin: 20px;
 
-    .basis-info, .kennzahlen {
+    .kennzahlen,
+    .basis-info {
       background-color: #f5f5f5;
       padding: 20px;
       border-radius: 10px;
@@ -65,17 +66,19 @@
         color: #333;
       }
 
-      .input-group {
+      .input-group,
+      .button-container {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
 
-        .form-control {
-          width: 50%;
-          margin: 0 10px;
-          text-align: center;
-          border-radius: 5px;
-        }
+      .form-control {
+        width: 50%;
+        margin: 0 10px;
+        text-align: center;
+        border-radius: 5px;
       }
 
       .segment {
@@ -83,47 +86,23 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        margin-top: 20px;
       }
 
-      .button-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
+      .button {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
 
-        .button {
-          background-color: #007bff;
-          color: #fff;
-          border-radius: 5px;
-          font-weight: bold;
-          transition: background-color 0.2s ease;
-          display: flex;
-          justify-content: center;
-
-          &:hover {
-            background-color: #0056b3;
-          }
+        &:hover {
+          background-color: #0056b3;
         }
       }
 
       input[type='range'] {
         width: 100%;
         cursor: pointer;
-      }
-    }
-
-    .basis-info {
-      .input-group {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .form-control {
-          width: 50%;
-          margin: 0 10px;
-          text-align: center;
-          border-radius: 5px;
-        }
       }
     }
   }
