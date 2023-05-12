@@ -6,6 +6,7 @@ import Unternehmenswertrechner from '../Unternehmenswertrechner/Unternehmenswert
 import Footer from './Footer';
 import Navbar from './Navbar';
 import Kennzahlen from "../Unternehmenswertrechner/Kennzahlen";
+import './App.scss';
 
 const App = () => {
     return (
