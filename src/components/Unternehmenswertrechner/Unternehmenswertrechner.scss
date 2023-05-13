@@ -1,47 +1,137 @@
 .Unternehmenswertrechner {
-  display: flex;
+  margin-top: 1rem;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 88vh;
+  min-height: 88vh;
+
+  .main-header {
+    color: #008000 !important;
+    font-size: 2rem !important;
+    text-align: center !important;
+  }
+
+  .nav-wrapper {
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+
+    .nav-item {
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+
+      .nav-border {
+        height: 4px;
+        width: 100%;
+        background-color: #ddd; // inactive color
+        margin-bottom: 10px;
+      }
+
+      &.finished {
+        .nav-border {
+          background-color: #008000;
+        }
+      }
+
+      &.active {
+        .nav-border {
+          background-color: #e0aa3e; // active color
+        }
+      }
+
+      &.inactive {
+        opacity: 0.5;
+        cursor: not-allowed; // This will show the "not allowed" cursor
+      }
+
+      &.error {
+        .nav-border {
+          background-color: #ff0000;
+        }
+      }
+    }
+
+    .heading {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+  }
 
   .unternehmenswertrechner-container {
-    width: 100vh;
-    height: 40vh;
-    margin-bottom: 20px;
-    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: #f5f5f5;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-    .welcome-column {
-      margin-bottom: 20px;
-    }
+    .basis-info,
+    .kennzahlen {
+      padding: 16px;
+      margin: 16px;
+      width: 100%;
 
-    .input-group {
-      display: flex;
-      align-items: center;
-    }
+      .header {
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
 
-    .input-group .ui.button {
-      margin: 0 5px;
-    }
+      .form {
+        .field {
+          margin-bottom: 16px;
 
-    .input-group input {
-      flex-grow: 1;
-      text-align: center;
-    }
+          label {
+            font-weight: bold;
+            margin-bottom: 8px;
+          }
 
-    p {
-      font-size: 12px;
-      color: #888;
-    }
+          > .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-    .ui.button.primary:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+            label {
+              font-weight: bold;
+              margin-bottom: 8px;
+            }
 
-    .header-green {
-      color: green;
+            input {
+              text-align: center; /* Căn giữa số trong input */
+            }
+
+            button {
+              margin: 0 8px;
+            }
+          }
+
+          .wideSelect {
+            width: 560px !important;
+          }
+        }
+
+        .group {
+          display: flex;
+          align-items: center;
+
+          label {
+            margin-right: 16px;
+          }
+        }
+      }
+
+      p {
+        margin-top: 16px;
+        font-style: italic;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 32px;
+      }
     }
   }
 }

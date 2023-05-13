@@ -1,13 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, Icon } from 'semantic-ui-react';
-import logo from '../../images/logo.png';
-import './App.scss';
 
 const menuItems = [
     { to: "/", label: "Home", icon: "home" },
     { to: "/unternehmenswert-berechnen", label: "Unternehmenswert Berechnen", icon: "calculator" },
-    { to: "/unternehmensboerse", label: "Unternehmensbörse", icon: "exchange" },
+    { to: "/test", label: "Testseite", icon: "flask" },
     { to: "/kontakt", label: "Kontakt", icon: "envelope" }
 ];
 
