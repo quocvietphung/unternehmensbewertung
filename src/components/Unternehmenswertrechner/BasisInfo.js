@@ -37,7 +37,7 @@ class BasisInfo extends Component {
     };
 
     handleWeiterClick = () => {
-        this.props.onWeiterClick(); // Gọi hàm xử lý khi người dùng nhấp vào nút "Weiter"
+        this.props.onWeiterClick(this.props.sectionName);  // Gọi hàm xử lý khi người dùng nhấp vào nút "Weiter"
     };
 
     render() {

@@ -22,25 +22,25 @@
       .nav-border {
         height: 4px;
         width: 100%;
-        background-color: #ddd;
+        background-color: #ddd; // inactive color
         margin-bottom: 10px;
       }
 
       &.finished {
         .nav-border {
-          background-color: #008000;
+          background-color: #008000; // finished color
         }
       }
 
       &.active {
         .nav-border {
-          background-color: #0000ff;
+          background-color: #0000ff; // active color
         }
       }
 
       &.error {
         .nav-border {
-          background-color: #ff0000;
+          background-color: #ff0000; // error color
         }
       }
     }

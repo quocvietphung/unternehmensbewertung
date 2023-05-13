@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 
-const ProgressSection = ({ setActiveSection, activeSection }) => {
+const ProgressSection = ({ setActiveSection, activeSection, finishedSections }) => {
     const handleItemClick = (target) => {
         setActiveSection(target);
     };
@@ -11,7 +11,7 @@ const ProgressSection = ({ setActiveSection, activeSection }) => {
             <Grid columns={6}>
                 <Grid.Row>
                     <Grid.Column
-                        className={`nav-item ${activeSection === 'basis' ? 'finished' : 'inactive'}`}
+                        className={`nav-item ${activeSection === 'basis' ? 'active' : finishedSections.includes('basis') ? 'finished' : 'inactive'}`}
                         data-target="basis"
                         onClick={() => handleItemClick('basis')}
                     >

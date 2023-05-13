@@ -9,7 +9,8 @@ class Unternehmenswertrechner extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeSection: 'basis'
+            activeSection: 'basis',
+            finishedSections: [] // Add this to keep track of finished sections
         };
     }
 
@@ -18,18 +19,21 @@ class Unternehmenswertrechner extends Component {
     };
 
     handleWeiterClick = () => {
-        this.setState({activeSection: 'kennzahlen'});
+        this.setState(prevState => ({
+            activeSection: 'kennzahlen',
+            finishedSections: [...prevState.finishedSections, 'basis'] // Add 'basis' to finished sections
+        }));
     };
 
     render() {
-        const {activeSection} = this.state;
+        const {activeSection, finishedSections} = this.state; // Get finishedSections from state
 
         return (
             <div className="Unternehmenswertrechner">
                 <Header as="h1" className="main-header">Willkommen beim Unternehmenswertrechner</Header>
-                <ProgressSection setActiveSection={this.setActiveSection} activeSection={activeSection}/>
+                <ProgressSection setActiveSection={this.setActiveSection} activeSection={activeSection} finishedSections={finishedSections}/>
                 <div className="unternehmenswertrechner-container">
-                    {activeSection === 'kennzahlen' ? <Kennzahlen /> : <BasisInfo onWeiterClick={this.handleWeiterClick} />}
+                    {activeSection === 'kennzahlen' ? <Kennzahlen /> : <BasisInfo sectionName="basis" onWeiterClick={this.handleWeiterClick} />}
                 </div>
             </div>
         );
