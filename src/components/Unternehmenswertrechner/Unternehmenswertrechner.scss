@@ -28,19 +28,24 @@
 
       &.finished {
         .nav-border {
-          background-color: #008000; // finished color
+          background-color: #008000;
         }
       }
 
       &.active {
         .nav-border {
-          background-color: #0000ff; // active color
+          background-color: #e0aa3e; // active color
         }
+      }
+
+      &.inactive {
+        opacity: 0.5;
+        cursor: not-allowed; // This will show the "not allowed" cursor
       }
 
       &.error {
         .nav-border {
-          background-color: #ff0000; // error color
+          background-color: #ff0000;
         }
       }
     }

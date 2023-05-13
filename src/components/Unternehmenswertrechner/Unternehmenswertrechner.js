@@ -10,23 +10,32 @@ class Unternehmenswertrechner extends Component {
         super(props);
         this.state = {
             activeSection: 'basis',
-            finishedSections: [] // Add this to keep track of finished sections
+            finishedSections: []
         };
     }
 
     setActiveSection = (section) => {
-        this.setState({activeSection: section});
+        this.setState(state => {
+            const finishedSections = [...state.finishedSections];
+            if (!finishedSections.includes(state.activeSection)) {
+                finishedSections.push(state.activeSection);
+            }
+            return {
+                activeSection: section,
+                finishedSections
+            };
+        });
     };
 
     handleWeiterClick = () => {
         this.setState(prevState => ({
             activeSection: 'kennzahlen',
-            finishedSections: [...prevState.finishedSections, 'basis'] // Add 'basis' to finished sections
+            finishedSections: [...prevState.finishedSections, prevState.activeSection] // Add current activeSection to finished sections
         }));
     };
 
     render() {
-        const {activeSection, finishedSections} = this.state; // Get finishedSections from state
+        const {activeSection, finishedSections} = this.state;
 
         return (
             <div className="Unternehmenswertrechner">

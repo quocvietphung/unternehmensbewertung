@@ -3,7 +3,9 @@ import { Grid } from 'semantic-ui-react';
 
 const ProgressSection = ({ setActiveSection, activeSection, finishedSections }) => {
     const handleItemClick = (target) => {
-        setActiveSection(target);
+        if (activeSection === target || finishedSections.includes(target)) {
+            setActiveSection(target);
+        }
     };
 
     return (
@@ -11,7 +13,7 @@ const ProgressSection = ({ setActiveSection, activeSection, finishedSections }) 
             <Grid columns={6}>
                 <Grid.Row>
                     <Grid.Column
-                        className={`nav-item ${activeSection === 'basis' ? 'active' : finishedSections.includes('basis') ? 'finished' : 'inactive'}`}
+                        className={`nav-item ${finishedSections.includes('basis') ? 'finished' : activeSection === 'basis' ? 'active' : 'inactive'}`}
                         data-target="basis"
                         onClick={() => handleItemClick('basis')}
                     >
@@ -19,7 +21,7 @@ const ProgressSection = ({ setActiveSection, activeSection, finishedSections }) 
                         <div className="heading">Basis-Infos</div>
                     </Grid.Column>
                     <Grid.Column
-                        className={`nav-item ${activeSection === 'kennzahlen' ? 'active' : 'inactive'} ${activeSection === 'kennzahlen' ? 'error' : ''}`}
+                        className={`nav-item ${finishedSections.includes('kennzahlen') ? 'finished' : activeSection === 'kennzahlen' ? 'active' : 'inactive'}`}
                         data-target="kennzahlen"
                         onClick={() => handleItemClick('kennzahlen')}
                     >
