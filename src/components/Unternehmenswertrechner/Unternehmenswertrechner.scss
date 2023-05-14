@@ -27,7 +27,7 @@
       .nav-border {
         height: 4px;
         width: 100%;
-        background-color: #ddd; // inactive color
+        background-color: black; /* inactive color */
         margin-bottom: 10px;
       }
 
@@ -39,13 +39,13 @@
 
       &.active {
         .nav-border {
-          background-color: #e0aa3e; // active color
+          background-color: #e0aa3e; /* active color */
         }
       }
 
       &.inactive {
         opacity: 0.5;
-        cursor: not-allowed; // This will show the "not allowed" cursor
+        cursor: not-allowed; /* This will show the "not allowed" cursor */
       }
 
       &.error {

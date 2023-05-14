@@ -36,7 +36,6 @@ class Unternehmenswertrechner extends Component {
 
     render() {
         const {activeSection, finishedSections} = this.state;
-
         return (
             <div className="Unternehmenswertrechner">
                 <Header as="h1" className="main-header">Willkommen beim Unternehmenswertrechner</Header>
