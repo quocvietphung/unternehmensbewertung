@@ -3,6 +3,16 @@ import {Checkbox, Label, Grid, Header, Segment, Form, Divider, Button} from "sem
 
 const Kennzahlen = () => {
     const [checked, setChecked] = useState(false);
+    const [umsatz2020, setUmsatz2020] = useState(0);
+    const [umsatz2021, setUmsatz2021] = useState(0);
+    const [umsatz2022, setUmsatz2022] = useState(0);
+    const [prognose2023, setPrognose2023] = useState(0);
+    const [ebit2020, setEbit2020] = useState(0);
+    const [ebit2021, setEbit2021] = useState(0);
+    const [ebit2022, setEbit2022] = useState(0);
+    const [ebitPrognose2023, setEbitPrognose2023] = useState(0);
+
+    // Similar useState variables for EBIT...
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
@@ -31,22 +41,26 @@ const Kennzahlen = () => {
                             <Form.Field>
                                 <label>Umsatz 2020</label>
                                 <input type="range" min="100000" max="50000000" step="50000"
-                                       onChange={(e) => console.log(e.target.value)}/>
+                                       onChange={(e) => setUmsatz2020(e.target.value)}/>
+                                <input type="text" value={umsatz2020} readOnly/>
                             </Form.Field>
                             <Form.Field>
                                 <label>Umsatz 2021</label>
                                 <input type="range" min="100000" max="50000000" step="50000"
-                                       onChange={(e) => console.log(e.target.value)}/>
+                                       onChange={(e) => setUmsatz2021(e.target.value)}/>
+                                <input type="text" value={umsatz2021} readOnly/>
                             </Form.Field>
                             <Form.Field>
                                 <label>Umsatz 2022</label>
                                 <input type="range" min="100000" max="50000000" step="50000"
-                                       onChange={(e) => console.log(e.target.value)}/>
+                                       onChange={(e) => setUmsatz2022(e.target.value)}/>
+                                <input type="text" value={umsatz2022} readOnly/>
                             </Form.Field>
                             <Form.Field>
                                 <label>Prognose 2023</label>
                                 <input type="range" disabled={!checked} min="100000" max="50000000" step="50000"
-                                       onChange={(e) => console.log(e.target.value)}/>
+                                       onChange={(e) => setPrognose2023(e.target.value)}/>
+                                <input type="text" value={prognose2023} disabled={!checked} readOnly/>
                             </Form.Field>
                         </Form.Group>
                     </Segment>
@@ -63,22 +77,26 @@ const Kennzahlen = () => {
                             <Form.Field>
                                 <label>EBIT 2020</label>
                                 <input type="range" min="0" max="50000" step="1000"
-                                       onChange={(e) => console.log(e.target.value)}/>
+                                       onChange={(e) => setEbit2020(e.target.value)}/>
+                                <input type="text" value={ebit2020} readOnly/>
                             </Form.Field>
                             <Form.Field>
                                 <label>EBIT 2021</label>
                                 <input type="range" min="0" max="50000" step="1000"
-                                       onChange={(e) => console.log(e.target.value)}/>
+                                       onChange={(e) => setEbit2021(e.target.value)}/>
+                                <input type="text" value={ebit2021} readOnly/>
                             </Form.Field>
                             <Form.Field>
                                 <label>EBIT 2022</label>
                                 <input type="range" min="0" max="50000" step="1000"
-                                       onChange={(e) => console.log(e.target.value)}/>
+                                       onChange={(e) => setEbit2022(e.target.value)}/>
+                                <input type="text" value={ebit2022} readOnly/>
                             </Form.Field>
                             <Form.Field>
                                 <label>Prognose 2023</label>
                                 <input type="range" disabled={!checked} min="0" max="50000" step="1000"
-                                       onChange={(e) => console.log(e.target.value)}/>
+                                       onChange={(e) => setEbitPrognose2023(e.target.value)}/>
+                                <input type="text" value={ebitPrognose2023} disabled={!checked} readOnly/>
                             </Form.Field>
                         </Form.Group>
                     </Segment>
