@@ -36,59 +36,85 @@ const Kennzahlen = () => {
                     </Label>
                     <Segment>
                         <Form>
-                            <Form.Group widths='equal'>
-                                <Form.Field>
+                            <Form.Group widths={[3, 6, 3]} className="form-group-3-6-3">
+                                <Form.Field width={3}>
                                     <label>Umsatz 2020</label>
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="range" min="100000" max="50000000" step="50000"
-                                           value={umsatz2020}
-                                           onChange={(e) => setUmsatz2020(e.target.value)}/>
+                                <Form.Field width={6}>
+                                    <input
+                                        type="range"
+                                        min="100000"
+                                        max="50000000"
+                                        step="50000"
+                                        value={umsatz2020}
+                                        onChange={(e) => setUmsatz2020(e.target.value)}
+                                    />
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="text" value={umsatz2020} readOnly/>
+                                <Form.Field width={3}>
+                                    <input type="text" value={umsatz2020} readOnly />
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths='equal'>
-                                <Form.Field>
+                            <Form.Group widths={[3, 6, 3]} className="form-group-3-6-3">
+                                <Form.Field width={3}>
                                     <label>Umsatz 2021</label>
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="range" min="100000" max="50000000" step="50000"
-                                           value={umsatz2021}
-                                           onChange={(e) => setUmsatz2021(e.target.value)}/>
+                                <Form.Field width={6}>
+                                    <input
+                                        type="range"
+                                        min="100000"
+                                        max="50000000"
+                                        step="50000"
+                                        value={umsatz2021}
+                                        onChange={(e) => setUmsatz2021(e.target.value)}
+                                    />
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="text" value={umsatz2021} readOnly/>
+                                <Form.Field width={3}>
+                                    <input type="text" value={umsatz2021} readOnly />
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths='equal'>
-                                <Form.Field>
+                            <Form.Group widths={[3, 6, 3]} className="form-group-3-6-3">
+                                <Form.Field width={3}>
                                     <label>Umsatz 2022</label>
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="range" min="100000" max="50000000" step="50000"
-                                           value={umsatz2022}
-                                           onChange={(e) => setUmsatz2022(e.target.value)}/>
+                                <Form.Field width={6}>
+                                    <input
+                                        type="range"
+                                        min="100000"
+                                        max="50000000"
+                                        step="50000"
+                                        value={umsatz2022}
+                                        onChange={(e) => setUmsatz2022(e.target.value)}
+                                    />
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="text" value={umsatz2022} readOnly/>
+                                <Form.Field width={3}>
+                                    <input type="text" value={umsatz2022} readOnly />
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths='equal'>
-                                <Form.Field>
+                            <Form.Group widths={[3, 6, 3]} className="form-group-3-6-3">
+                                <Form.Field width={3}>
                                     <label>Prognose 2023</label>
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="range" disabled={!checked} min="100000" max="50000000" step="50000"
-                                           value={prognose2023}
-                                           onChange={(e) => setPrognose2023(e.target.value)}/>
+                                <Form.Field width={6}>
+                                    <input
+                                        type="range"
+                                        disabled={!checked}
+                                        min="100000"
+                                        max="50000000"
+                                        step="50000"
+                                        value={prognose2023}
+                                        onChange={(e) => setPrognose2023(e.target.value)}
+                                    />
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="text" value={prognose2023} disabled={!checked} readOnly/>
+                                <Form.Field width={3}>
+                                    <input
+                                        type="text"
+                                        value={prognose2023}
+                                        disabled={!checked}
+                                        readOnly
+                                    />
                                 </Form.Field>
                             </Form.Group>
                         </Form>
@@ -103,59 +129,85 @@ const Kennzahlen = () => {
                     </Label>
                     <Segment>
                         <Form>
-                            <Form.Group widths='equal'>
-                                <Form.Field>
+                            <Form.Group widths={[3, 6, 3]}>
+                                <Form.Field width={3}>
                                     <label>EBIT 2020</label>
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="range" min="0" max="10000000" step="1000"
-                                           value={ebit2020}
-                                           onChange={(e) => setEbit2020(e.target.value)}/>
+                                <Form.Field width={6}>
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="10000000"
+                                        step="1000"
+                                        value={ebit2020}
+                                        onChange={(e) => setEbit2020(e.target.value)}
+                                    />
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="text" value={ebit2020} readOnly/>
+                                <Form.Field width={3}>
+                                    <input type="text" value={ebit2020} readOnly />
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths='equal'>
-                                <Form.Field>
+                            <Form.Group widths={[3, 6, 3]}>
+                                <Form.Field width={3}>
                                     <label>EBIT 2021</label>
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="range" min="0" max="10000000" step="1000"
-                                           value={ebit2021}
-                                           onChange={(e) => setEbit2021(e.target.value)}/>
+                                <Form.Field width={6}>
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="10000000"
+                                        step="1000"
+                                        value={ebit2021}
+                                        onChange={(e) => setEbit2021(e.target.value)}
+                                    />
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="text" value={ebit2021} readOnly/>
+                                <Form.Field width={3}>
+                                    <input type="text" value={ebit2021} readOnly />
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths='equal'>
-                                <Form.Field>
+                            <Form.Group widths={[3, 6, 3]}>
+                                <Form.Field width={3}>
                                     <label>EBIT 2022</label>
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="range" min="0" max="10000000" step="1000"
-                                           value={ebit2022}
-                                           onChange={(e) => setEbit2022(e.target.value)}/>
+                                <Form.Field width={6}>
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="10000000"
+                                        step="1000"
+                                        value={ebit2022}
+                                        onChange={(e) => setEbit2022(e.target.value)}
+                                    />
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="text" value={ebit2022} readOnly/>
+                                <Form.Field width={3}>
+                                    <input type="text" value={ebit2022} readOnly />
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths='equal'>
-                                <Form.Field>
+                            <Form.Group widths={[3, 6, 3]}>
+                                <Form.Field width={3}>
                                     <label>Prognose 2023</label>
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="range" disabled={!checked} min="0" max="10000000" step="1000"
-                                           value={ebitPrognose2023}
-                                           onChange={(e) => setEbitPrognose2023(e.target.value)}/>
+                                <Form.Field width={6}>
+                                    <input
+                                        type="range"
+                                        disabled={!checked}
+                                        min="0"
+                                        max="10000000"
+                                        step="1000"
+                                        value={ebitPrognose2023}
+                                        onChange={(e) => setEbitPrognose2023(e.target.value)}
+                                    />
                                 </Form.Field>
-                                <Form.Field>
-                                    <input type="text" value={ebitPrognose2023} disabled={!checked} readOnly/>
+                                <Form.Field width={3}>
+                                    <input
+                                        type="text"
+                                        value={ebitPrognose2023}
+                                        disabled={!checked}
+                                        readOnly
+                                    />
                                 </Form.Field>
                             </Form.Group>
                         </Form>

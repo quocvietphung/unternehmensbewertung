@@ -96,72 +96,7 @@
       }
 
       .kennzahlen {
-        .header {
-          &.h2 {
-            font-size: 1.5em;
-            margin-top: 0;
-            margin-bottom: 1em;
-          }
 
-          &.h3 {
-            font-size: 1.2em;
-            margin-bottom: 0.5em;
-          }
-        }
-
-        .segment {
-          margin-top: 1em;
-
-          .form {
-            .field {
-              margin-bottom: 1em;
-              &:last-child {
-                margin-bottom: 0;
-              }
-
-              label {
-                font-weight: bold;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 8em;
-              }
-
-              input[type="range"],
-              input[type="text"] {
-                width: 100%;
-                padding: 0.5em;
-                font-size: 1em;
-                background-color: #f9f9f9;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-                transition: border-color 0.2s ease-in-out;
-
-                &:hover {
-                  border-color: #999;
-                }
-
-                &:focus {
-                  outline: none;
-                  border-color: #2185d0;
-                  box-shadow: 0 0 0 1px #2185d0;
-                }
-
-                &[readonly] {
-                  background-color: #fff;
-                  cursor: not-allowed;
-                }
-              }
-            }
-
-            .group {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            }
-          }
-        }
       }
     }
   }
