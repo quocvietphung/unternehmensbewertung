@@ -7,19 +7,27 @@ const BasisInfo = (props) => {
     const [alter, setAlter] = useState(0);
     const [isValid, setIsValid] = useState(false);
 
-    const handleChange = (event, {name, value}) => {
-        if (name === "alter" && (value === "+" || value === "-")) {
-            const currentValue = alter;
-            const newValue =
-                value === "+"
-                    ? currentValue + 1
-                    : currentValue > 0
-                        ? currentValue - 1
-                        : 0;
-            setAlter(newValue);
-        } else {
-            if (name === 'branche') setBranche(value);
-            else if (name === 'lage') setLage(value);
+    const handleChange = (event, { name, value }) => {
+        if (name === "alter") {
+            if (value === "+" || value === "-") {
+                const currentValue = alter;
+                const newValue =
+                    value === "+"
+                        ? currentValue + 1
+                        : currentValue > 0
+                            ? currentValue - 1
+                            : 0;
+                setAlter(newValue);
+            } else {
+                const parsedValue = parseInt(value);
+                if (!isNaN(parsedValue)) {
+                    setAlter(parsedValue);
+                }
+            }
+        } else if (name === "branche") {
+            setBranche(value);
+        } else if (name === "lage") {
+            setLage(value);
         }
     };
 
