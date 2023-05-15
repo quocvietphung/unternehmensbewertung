@@ -73,10 +73,6 @@
       width: 100%;
       background-color: #f0f0f0;
 
-      .input-group {
-        margin: 10px 0;
-      }
-
       .button-container {
         text-align: right;
       }
@@ -88,6 +84,7 @@
         }
 
         .input-container .form-control {
+          text-align: center;
           margin-right: 2.5px;
         }
 
