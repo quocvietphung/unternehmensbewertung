@@ -36,11 +36,11 @@ const Kennzahlen = () => {
                     </Label>
                     <Segment>
                         <Form>
-                            <Form.Group widths={[3, 6, 3]} className="form-group-3-6-3">
+                            <Form.Group>
                                 <Form.Field width={3}>
                                     <label>Umsatz 2020</label>
                                 </Form.Field>
-                                <Form.Field width={6}>
+                                <Form.Field width={10}>
                                     <input
                                         type="range"
                                         min="100000"
@@ -55,11 +55,11 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths={[3, 6, 3]} className="form-group-3-6-3">
+                            <Form.Group>
                                 <Form.Field width={3}>
                                     <label>Umsatz 2021</label>
                                 </Form.Field>
-                                <Form.Field width={6}>
+                                <Form.Field width={10}>
                                     <input
                                         type="range"
                                         min="100000"
@@ -74,11 +74,11 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths={[3, 6, 3]} className="form-group-3-6-3">
+                            <Form.Group>
                                 <Form.Field width={3}>
                                     <label>Umsatz 2022</label>
                                 </Form.Field>
-                                <Form.Field width={6}>
+                                <Form.Field width={10}>
                                     <input
                                         type="range"
                                         min="100000"
@@ -93,11 +93,11 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths={[3, 6, 3]} className="form-group-3-6-3">
+                            <Form.Group>
                                 <Form.Field width={3}>
                                     <label>Prognose 2023</label>
                                 </Form.Field>
-                                <Form.Field width={6}>
+                                <Form.Field width={10}>
                                     <input
                                         type="range"
                                         disabled={!checked}
@@ -129,11 +129,11 @@ const Kennzahlen = () => {
                     </Label>
                     <Segment>
                         <Form>
-                            <Form.Group widths={[3, 6, 3]}>
+                            <Form.Group>
                                 <Form.Field width={3}>
                                     <label>EBIT 2020</label>
                                 </Form.Field>
-                                <Form.Field width={6}>
+                                <Form.Field width={10}>
                                     <input
                                         type="range"
                                         min="0"
@@ -148,11 +148,11 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths={[3, 6, 3]}>
+                            <Form.Group>
                                 <Form.Field width={3}>
                                     <label>EBIT 2021</label>
                                 </Form.Field>
-                                <Form.Field width={6}>
+                                <Form.Field width={10}>
                                     <input
                                         type="range"
                                         min="0"
@@ -167,11 +167,11 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths={[3, 6, 3]}>
+                            <Form.Group>
                                 <Form.Field width={3}>
                                     <label>EBIT 2022</label>
                                 </Form.Field>
-                                <Form.Field width={6}>
+                                <Form.Field width={10}>
                                     <input
                                         type="range"
                                         min="0"
@@ -186,11 +186,11 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group widths={[3, 6, 3]}>
+                            <Form.Group>
                                 <Form.Field width={3}>
                                     <label>Prognose 2023</label>
                                 </Form.Field>
-                                <Form.Field width={6}>
+                                <Form.Field width={10}>
                                     <input
                                         type="range"
                                         disabled={!checked}
