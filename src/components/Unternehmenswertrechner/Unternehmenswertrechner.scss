@@ -4,10 +4,8 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   min-height: 86vh;
+  min-width: 120vh;
   margin: 1rem 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
 
   .main-header {
     color: #008000 !important;

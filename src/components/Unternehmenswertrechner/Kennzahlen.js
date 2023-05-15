@@ -37,7 +37,7 @@ const Kennzahlen = () => {
                         berechnet werden kann.
                     </Label>
                     <Segment>
-                        <Form.Group widths="equal">
+                        <Form widths="equal">
                             <Form.Field>
                                 <label>Umsatz 2020</label>
                                 <input type="range" min="100000" max="50000000" step="50000"
@@ -62,11 +62,11 @@ const Kennzahlen = () => {
                             <Form.Field>
                                 <label>Prognose 2023</label>
                                 <input type="range" disabled={!checked} min="100000" max="50000000" step="50000"
-                                       value={umsatz2022}
+                                       value={prognose2023}
                                        onChange={(e) => setPrognose2023(e.target.value)}/>
                                 <input type="text" value={prognose2023} disabled={!checked} readOnly/>
                             </Form.Field>
-                        </Form.Group>
+                        </Form>
                     </Segment>
                     <Header as="h3">EBIT (Gewinn vor Zinsen und Steuern) der letzten Jahre*</Header>
                     <Label>
@@ -77,7 +77,7 @@ const Kennzahlen = () => {
                         berechnet werden kann.
                     </Label>
                     <Segment>
-                        <Form.Group widths="equal">
+                        <Form widths="equal">
                             <Form.Field>
                                 <label>EBIT 2020</label>
                                 <input type="range" min="0" max="10000000" step="1000"
@@ -106,7 +106,7 @@ const Kennzahlen = () => {
                                        onChange={(e) => setEbitPrognose2023(e.target.value)}/>
                                 <input type="text" value={ebitPrognose2023} disabled={!checked} readOnly/>
                             </Form.Field>
-                        </Form.Group>
+                        </Form>
                     </Segment>
                     <Form.Field>
                         <div className="button-container">
