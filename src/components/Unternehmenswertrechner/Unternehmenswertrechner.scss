@@ -71,11 +71,28 @@
       padding: 16px;
       margin: 16px;
       width: 100%;
+      background-color: #f0f0f0;
 
       &.basis-info {
+
+        .input-group {
+          margin: 10px 0; // Thay đổi margin cho input-group
+        }
+
+        .button-container {
+          text-align: right; // Căn lề phải cho button-container
+        }
       }
 
       &.kennzahlen {
+
+        .input-group {
+          margin: 15px 0; // Thay đổi margin cho input-group
+        }
+
+        .button-container {
+          text-align: right; // Căn giữa cho button-container
+        }
       }
     }
   }
