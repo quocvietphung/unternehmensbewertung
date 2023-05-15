@@ -82,7 +82,18 @@
       }
 
       &.basis-info {
+        .input-container {
+          display: flex;
+          align-items: center;
+        }
 
+        .input-container .form-control {
+          margin-right: 2.5px;
+        }
+
+        .input-container .form-control:last-child {
+          margin-right: 0;
+        }
       }
 
       &.kennzahlen {
