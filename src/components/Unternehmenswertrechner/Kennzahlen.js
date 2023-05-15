@@ -163,7 +163,7 @@ const Kennzahlen = () => {
                     <Form.Field>
                         <div className="button-container">
                             <Button primary type="submit">
-                                Submit
+                                Weiter
                             </Button>
                         </div>
                     </Form.Field>
