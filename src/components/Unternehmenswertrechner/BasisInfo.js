@@ -105,35 +105,34 @@ class BasisInfo extends Component {
                                         />
                                     </Form.Field>
                                 </Form.Group>
-                                <Form.Field>
-                                    <label>Alter der Firma in Jahren*</label>
-                                    <div className="input-group">
-                                        <Button
-                                            icon="minus"
-                                            data-type="minus"
-                                            data-field="alter"
-                                            onClick={(event) => this.handleChange(event, {name: "alter", value: "-"})}
-                                        />
-                                        <input
-                                            type="number"
-                                            name="alter"
-                                            className="form-control input-number-plusminus"
-                                            min="0"
-                                            value={alter}
-                                            onChange={(event) => this.handleChange(event, {
-                                                name: "alter",
-                                                value: event.target.value
-                                            })}
-                                            required
-                                        />
-                                        <Button
-                                            icon="plus"
-                                            data-type="plus"
-                                            data-field="alter"
-                                            onClick={(event) => this.handleChange(event, {name: "alter", value: "+"})}
-                                        />
-                                    </div>
-                                </Form.Field>
+                                <Form.Group className="input-group">
+                                    <Form.Field>
+                                        <label>Alter der Firma in Jahren*</label>
+                                    </Form.Field>
+                                </Form.Group>
+                                <Form.Group className="input-container">
+                                    <Button
+                                        icon="minus"
+                                        data-type="minus"
+                                        data-field="alter"
+                                        onClick={(event) => this.handleChange(event, { name: "alter", value: "-" })}
+                                    />
+                                    <input
+                                        type="number"
+                                        name="alter"
+                                        className="form-control input-number-plusminus"
+                                        min="0"
+                                        value={alter}
+                                        onChange={(event) => this.handleChange(event, { name: "alter", value: event.target.value })}
+                                        required
+                                    />
+                                    <Button
+                                        icon="plus"
+                                        data-type="plus"
+                                        data-field="alter"
+                                        onClick={(event) => this.handleChange(event, { name: "alter", value: "+" })}
+                                    />
+                                </Form.Group>
                             </Grid.Column>
                         </Grid>
                         <p>* Diese Eingaben sind Pflichtfelder</p>
