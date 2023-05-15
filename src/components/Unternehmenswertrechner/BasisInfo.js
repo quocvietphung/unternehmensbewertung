@@ -63,7 +63,7 @@ class BasisInfo extends Component {
         ];
 
         return (
-            <Grid padded className="basis-info">
+            <Grid padded className="shared-section basis-info">
                 <Grid.Column>
                     <Header as="h2">1. Basisinformationen zum Unternehmen</Header>
                     <Divider/>

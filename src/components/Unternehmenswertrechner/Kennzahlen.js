@@ -17,7 +17,7 @@ const Kennzahlen = () => {
     };
 
     return (
-        <Grid padded className="kennzahlen">
+        <Grid padded className="shared-section kennzahlen">
             <Grid.Column>
                 <Header as="h2">2. Finanzwirtschaftliche Kennzahlen</Header>
                 <Divider/>

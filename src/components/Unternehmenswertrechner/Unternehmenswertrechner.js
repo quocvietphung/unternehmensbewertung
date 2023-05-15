@@ -41,7 +41,7 @@ class Unternehmenswertrechner extends Component {
                 <Header as="h1" className="main-header">Willkommen beim Unternehmenswertrechner</Header>
                 <ProgressSection setActiveSection={this.setActiveSection} activeSection={activeSection} finishedSections={finishedSections}/>
                 <div className="unternehmenswertrechner-container">
-                    {activeSection === 'kennzahlen' ? <Kennzahlen /> : <BasisInfo sectionName="basis" onWeiterClick={this.handleWeiterClick} />}
+                    {activeSection === 'kennzahlen' ? <Kennzahlen className="shared-section" /> : <BasisInfo sectionName="basis" onWeiterClick={this.handleWeiterClick} className="shared-section" />}
                 </div>
             </div>
         );
