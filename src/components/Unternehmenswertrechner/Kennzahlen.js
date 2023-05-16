@@ -37,8 +37,8 @@ const Kennzahlen = () => {
                     <Segment>
                         <Form>
                             <Form.Group>
-                                <Form.Field width={3}>
-                                    <label>Umsatz 2020</label>
+                                <Form.Field width={3} style={{ display: 'flex', alignItems: 'center' }}>
+                                    <label style={{ margin: 0 }}>Umsatz 2020</label>
                                 </Form.Field>
                                 <Form.Field width={10}>
                                     <input
@@ -48,15 +48,20 @@ const Kennzahlen = () => {
                                         step="50000"
                                         value={umsatz2020}
                                         onChange={(e) => setUmsatz2020(e.target.value)}
+                                        style={{ blockSize: '30px', width: '100%', verticalAlign: 'middle' }}
                                     />
                                 </Form.Field>
-                                <Form.Field width={3}>
-                                    <input type="text" value={umsatz2020} readOnly />
+                                <Form.Field width={3} style={{ display: 'flex', alignItems: 'center' }}>
+                                    <input
+                                        type="text"
+                                        value={umsatz2020}
+                                        readOnly
+                                        style={{ margin: 0, justifyContent: 'center', textAlign: 'center' }} />
                                 </Form.Field>
                             </Form.Group>
 
                             <Form.Group>
-                                <Form.Field width={3}>
+                                <Form.Field width={3} style={{ display: 'flex', alignItems: 'center' }}>
                                     <label>Umsatz 2021</label>
                                 </Form.Field>
                                 <Form.Field width={10}>
@@ -67,15 +72,20 @@ const Kennzahlen = () => {
                                         step="50000"
                                         value={umsatz2021}
                                         onChange={(e) => setUmsatz2021(e.target.value)}
+                                        style={{ blockSize: '30px', width: '100%', verticalAlign: 'middle' }}
                                     />
                                 </Form.Field>
-                                <Form.Field width={3}>
-                                    <input type="text" value={umsatz2021} readOnly />
+                                <Form.Field width={3} style={{ display: 'flex', alignItems: 'center' }}>
+                                    <input
+                                        type="text"
+                                        value={umsatz2021}
+                                        readOnly
+                                        style={{ margin: 0, justifyContent: 'center', textAlign: 'center' }} />
                                 </Form.Field>
                             </Form.Group>
 
                             <Form.Group>
-                                <Form.Field width={3}>
+                                <Form.Field width={3} style={{ display: 'flex', alignItems: 'center' }}>
                                     <label>Umsatz 2022</label>
                                 </Form.Field>
                                 <Form.Field width={10}>
@@ -86,15 +96,20 @@ const Kennzahlen = () => {
                                         step="50000"
                                         value={umsatz2022}
                                         onChange={(e) => setUmsatz2022(e.target.value)}
+                                        style={{ blockSize: '30px', width: '100%', verticalAlign: 'middle' }}
                                     />
                                 </Form.Field>
-                                <Form.Field width={3}>
-                                    <input type="text" value={umsatz2022} readOnly />
+                                <Form.Field width={3} style={{ display: 'flex', alignItems: 'center' }}>
+                                    <input
+                                        type="text"
+                                        value={umsatz2022}
+                                        readOnly
+                                        style={{ margin: 0, justifyContent: 'center', textAlign: 'center' }} />
                                 </Form.Field>
                             </Form.Group>
 
                             <Form.Group>
-                                <Form.Field width={3}>
+                                <Form.Field width={3} style={{ display: 'flex', alignItems: 'center' }}>
                                     <label>Prognose 2023</label>
                                 </Form.Field>
                                 <Form.Field width={10}>
@@ -106,6 +121,7 @@ const Kennzahlen = () => {
                                         step="50000"
                                         value={prognose2023}
                                         onChange={(e) => setPrognose2023(e.target.value)}
+                                        style={{ blockSize: '30px', width: '100%', verticalAlign: 'middle' }}
                                     />
                                 </Form.Field>
                                 <Form.Field width={3}>
@@ -114,6 +130,7 @@ const Kennzahlen = () => {
                                         value={prognose2023}
                                         disabled={!checked}
                                         readOnly
+                                        style={{ margin: 0, justifyContent: 'center', textAlign: 'center' }}
                                     />
                                 </Form.Field>
                             </Form.Group>
