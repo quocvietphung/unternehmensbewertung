@@ -30,9 +30,23 @@ $margin-large: 2em;
   width: 100%;
 
   .Ausgabe {
-    flex: 0 0 300px; // độ rộng tối đa 300px
-    height: 84vh; // chiều cao tối đa 84vh
-    overflow: auto; // thêm thanh cuộn nếu nội dung vượt quá chiều cao tối đa
+    width: 80%; /* Giảm kích thước bằng cách thiết lập chiều rộng mong muốn */
+    margin: 0 auto; /* Căn giữa phần tử trên trang */
+    background-color: #f0f0f0; /* Thêm màu nền. Thay thế #f0f0f0 bằng màu của bạn */
+
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .content-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
   }
 
   .Eingabe {
@@ -43,7 +57,7 @@ $margin-large: 2em;
     border-radius: 60px;
     box-shadow: 0 0 10px $shadow-color;
     min-height: 86vh;
-    min-width: 120vh;
+    min-width: 80vh;
     overflow: auto;
 
     .main-header {

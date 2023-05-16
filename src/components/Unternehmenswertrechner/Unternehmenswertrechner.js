@@ -7,6 +7,7 @@ const Unternehmenswertrechner = () => {
     return (
         <div className="Unternehmenswertrechner">
             <div className="content-container">
+                <Ausgabe/>
                 <Eingabe/>
             </div>
         </div>

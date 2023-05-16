@@ -4,11 +4,15 @@ import { Header, Icon, Segment, Message, Image, Button } from 'semantic-ui-react
 const Ausgabe = () => {
     return (
         <div className="Ausgabe">
-            <Header as='h2'>vorläufiger Unternehmenswert</Header>
-            <Icon name='caret down' size='big' />
+            <div className="header-container">
+                <Header as='h2'>vorläufiger Unternehmenswert</Header>
+                <Icon name='caret down' size='big' />
+            </div>
             <Segment>
-                <p>33.7 Mio EUR</p>
-                <Image src="https://everto-consulting.de/wp-content/plugins/everto-unternehmenswertrechner/assets/img/info-blue.svg" size='tiny' />
+                <div className="content-container">
+                    <p>33.7 Mio EUR</p>
+                    <Image src="https://everto-consulting.de/wp-content/plugins/everto-unternehmenswertrechner/assets/img/info-blue.svg" size='tiny' />
+                </div>
                 <Message warning>
                     <p>Das ist ein vorläufig berechneter Wert. Füllen Sie weitere Felder aus, um einen genaueren zu Wert zu erhalten.</p>
                 </Message>
