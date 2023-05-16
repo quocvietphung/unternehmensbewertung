@@ -31,19 +31,20 @@ $margin-large: 2em;
   width: 100%;
 
   .Ausgabe {
-      width: 60%;
+      min-width: 40vh;
       background-color: #f0f0f0;
+      margin-left: 20px;
     }
 
   .Eingabe {
     flex: 1;
-    margin: 10px 60px;
+    margin: 10px 20px;
     background-color: $color-background;
     padding: $padding-large;
     border-radius: 60px;
     box-shadow: 0 0 10px $shadow-color;
     min-height: 86vh;
-    min-width: 80vh;
+    min-width: 60vh;
     overflow: auto;
 
     .main-header {
