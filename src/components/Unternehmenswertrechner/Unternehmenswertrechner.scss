@@ -96,8 +96,27 @@
         }
       }
 
-      .kennzahlen {
+      &.kennzahlen {
+        .form-label {
+          display: flex;
+          align-items: center;
+          margin: 0;
+        }
 
+        .form-input {
+          display: flex;
+          align-items: center;
+          margin: 0;
+          justify-content: center;
+
+          input[type="range"],
+          input[type="text"] {
+            block-size: 30px;
+            width: 100%;
+            vertical-align: middle;
+            text-align: center;
+          }
+        }
       }
     }
   }
