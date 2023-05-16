@@ -26,178 +26,173 @@ $margin-large: 2em;
 
 .Unternehmenswertrechner {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
   width: 100%;
 
-  .Ausgabe {
-    width: 60%; /* Giảm kích thước bằng cách thiết lập chiều rộng mong muốn */
-    margin: 0 auto; /* Căn giữa phần tử trên trang */
-    background-color: #f0f0f0; /* Thêm màu nền. Thay thế #f0f0f0 bằng màu của bạn */
+  .content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Điều chỉnh kích thước tối đa của content-container */
 
-    .header-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    .Ausgabe {
+      width: 60%;
+      margin-right: 10px; /* Khoảng cách 10px với thành phần bên phải */
+      background-color: #f0f0f0;
     }
 
-    .content-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-  }
-
-  .Eingabe {
-    flex: 1; // Chiếm phần còn lại của không gian
-    margin: $margin-small 16px $margin-small 0;
-    background-color: $color-background;
-    padding: $padding-large;
-    border-radius: 60px;
-    box-shadow: 0 0 10px $shadow-color;
-    min-height: 86vh;
-    min-width: 80vh;
-    overflow: auto;
-
-    .main-header {
-      color: $color-primary;
-      font-size: 2rem;
-      text-align: center;
-    }
-
-    .nav-wrapper {
+    .Eingabe {
+      flex: 1;
+      margin-left: 10px; /* Khoảng cách 10px với thành phần bên trái */
       background-color: $color-background;
-      padding: $padding-small $padding-medium * 2;
+      padding: $padding-large;
+      border-radius: 60px;
+      box-shadow: 0 0 10px $shadow-color;
+      min-height: 86vh;
+      min-width: 80vh;
+      overflow: auto;
 
-      .nav-item {
+      .main-header {
+        color: $color-primary;
+        font-size: 2rem;
         text-align: center;
-        padding: $padding-small;
-        cursor: pointer;
-
-        .nav-border {
-          height: 4px;
-          width: 100%;
-          background-color: $color-black; /* inactive color */
-          margin-bottom: $padding-small;
-        }
-
-        &.finished {
-          .nav-border {
-            background-color: $color-primary;
-          }
-        }
-
-        &.active {
-          .nav-border {
-            background-color: $color-primary-dark; /* active color */
-          }
-        }
-
-        &.inactive {
-          opacity: 0.5;
-          cursor: not-allowed; /* This will show the "not allowed" cursor */
-        }
-
-        &.error {
-          .nav-border {
-            background-color: $color-red;
-          }
-        }
       }
 
-      .heading {
-        font-size: 16px;
-        font-weight: bold;
-        color: $color-text;
-      }
-    }
-
-    .unternehmenswertrechner-container {
-      @include flex-center;
-      flex-direction: column;
-      border-radius: 10px;
-
-      .shared-section {
-        padding: $padding-medium;
-        margin: $margin-medium;
-        width: 100%;
+      .nav-wrapper {
         background-color: $color-background;
-        border-radius: 20px;
+        padding: $padding-small $padding-medium * 2;
 
-        .button-container {
-          @include flex-center;
-          justify-content: flex-end;
-          margin-top: $margin-large;
+        .nav-item {
+          text-align: center;
+          padding: $padding-small;
+          cursor: pointer;
 
-          .button {
-            background-color: $color-primary;
-            color: $color-white;
-            border-radius: 5px;
-            padding: 8px 16px;
-            font-size: 16px;
-            transition: background-color 0.3s;
+          .nav-border {
+            height: 4px;
+            width: 100%;
+            background-color: $color-black; /* inactive color */
+            margin-bottom: $padding-small;
+          }
 
-            &:hover {
-              background-color: $color-primary-dark;
+          &.finished {
+            .nav-border {
+              background-color: $color-primary;
+            }
+          }
+
+          &.active {
+            .nav-border {
+              background-color: $color-primary-dark; /* active color */
+            }
+          }
+
+          &.inactive {
+            opacity: 0.5;
+            cursor: not-allowed; /* This will show the "not allowed" cursor */
+          }
+
+          &.error {
+            .nav-border {
+              background-color: $color-red;
             }
           }
         }
 
-        .segment {
-          background-color: $color-white;
-          border-radius: 10px;
+        .heading {
+          font-size: 16px;
+          font-weight: bold;
+          color: $color-text;
+        }
+      }
+
+      .unternehmenswertrechner-container {
+        @include flex-center;
+        flex-direction: column;
+        border-radius: 10px;
+
+        .shared-section {
           padding: $padding-medium;
-          margin-top: $margin-medium;
-          box-shadow: 0 2px 4px $shadow-color;
-        }
+          margin: $margin-medium;
+          width: 100%;
+          background-color: $color-background;
+          border-radius: 20px;
 
-        &.basis-info {
-          .input-container {
+          .button-container {
             @include flex-center;
-          }
+            justify-content: flex-end;
+            margin-top: $margin-large;
 
-          .input-container .form-control {
-            text-align: center;
-            margin-right: 2.5px;
-          }
-
-          .input-container .form-control:last-child {
-            margin-right: 0;
-          }
-        }
-
-        &.kennzahlen {
-          .form-label,
-          .form-input {
-            @include flex-center;
-            margin: 0;
-
-            label {
-              font-weight: bold;
-            }
-
-            input[type="range"],
-            input[type="text"] {
-              block-size: 30px;
-              width: 100%;
-              vertical-align: middle;
-              text-align: center;
-              border: none;
-              outline: none;
-            }
-
-            input[type="text"] {
-              background-color: $color-input-bg;
+            .button {
+              background-color: $color-primary;
+              color: $color-white;
               border-radius: 5px;
-              padding: 4px 8px;
+              padding: 8px 16px;
+              font-size: 16px;
+              transition: background-color 0.3s;
+
+              &:hover {
+                background-color: $color-primary-dark;
+              }
             }
           }
 
-          .label {
-            font-size: 14px;
-            color: $color-text;
-            margin-bottom: 8px;
+          .segment {
+            background-color: $color-white;
+            border-radius: 10px;
+            padding: $padding-medium;
+            margin-top: $margin-medium;
+            box-shadow: 0 2px 4px $shadow-color;
+          }
+
+          &.basis-info {
+            .input-container {
+              @include flex-center;
+            }
+
+            .input-container .form-control {
+              text-align: center;
+              margin-right: 2.5px;
+            }
+
+            .input-container .form-control:last-child {
+              margin-right: 0;
+            }
+          }
+
+          &.kennzahlen {
+            .form-label,
+            .form-input {
+              @include flex-center;
+              margin: 0;
+
+              label {
+                font-weight: bold;
+              }
+
+              input[type="range"],
+              input[type="text"] {
+                block-size: 30px;
+                width: 100%;
+                vertical-align: middle;
+                text-align: center;
+                border: none;
+                outline: none;
+              }
+
+              input[type="text"] {
+                background-color: $color-input-bg;
+                border-radius: 5px;
+                padding: 4px 8px;
+              }
+            }
+
+            .label {
+              font-size: 14px;
+              color: $color-text;
+              margin-bottom: 8px;
+            }
           }
         }
       }
