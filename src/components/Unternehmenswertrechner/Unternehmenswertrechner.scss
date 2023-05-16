@@ -26,173 +26,166 @@ $margin-large: 2em;
 
 .Unternehmenswertrechner {
   display: flex;
-  justify-content: center; /* Căn giữa theo chiều ngang */
-  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-
-  .content-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 800px; /* Điều chỉnh kích thước tối đa của content-container */
+  max-width: 800px; /* Điều chỉnh kích thước tối đa của content-container */
 
     .Ausgabe {
       width: 60%;
-      margin-right: 10px; /* Khoảng cách 10px với thành phần bên phải */
+      margin-right: 80px; /* Khoảng cách 10px với thành phần bên phải */
       background-color: #f0f0f0;
     }
 
-    .Eingabe {
-      flex: 1;
-      margin-left: 10px; /* Khoảng cách 10px với thành phần bên trái */
+  .Eingabe {
+    flex: 1;
+    margin: 10px 10px;
+    background-color: $color-background;
+    padding: $padding-large;
+    border-radius: 60px;
+    box-shadow: 0 0 10px $shadow-color;
+    min-height: 86vh;
+    min-width: 80vh;
+    overflow: auto;
+
+    .main-header {
+      color: $color-primary;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .nav-wrapper {
       background-color: $color-background;
-      padding: $padding-large;
-      border-radius: 60px;
-      box-shadow: 0 0 10px $shadow-color;
-      min-height: 86vh;
-      min-width: 80vh;
-      overflow: auto;
+      padding: $padding-small $padding-medium * 2;
 
-      .main-header {
-        color: $color-primary;
-        font-size: 2rem;
+      .nav-item {
         text-align: center;
-      }
+        padding: $padding-small;
+        cursor: pointer;
 
-      .nav-wrapper {
-        background-color: $color-background;
-        padding: $padding-small $padding-medium * 2;
-
-        .nav-item {
-          text-align: center;
-          padding: $padding-small;
-          cursor: pointer;
-
-          .nav-border {
-            height: 4px;
-            width: 100%;
-            background-color: $color-black; /* inactive color */
-            margin-bottom: $padding-small;
-          }
-
-          &.finished {
-            .nav-border {
-              background-color: $color-primary;
-            }
-          }
-
-          &.active {
-            .nav-border {
-              background-color: $color-primary-dark; /* active color */
-            }
-          }
-
-          &.inactive {
-            opacity: 0.5;
-            cursor: not-allowed; /* This will show the "not allowed" cursor */
-          }
-
-          &.error {
-            .nav-border {
-              background-color: $color-red;
-            }
-          }
-        }
-
-        .heading {
-          font-size: 16px;
-          font-weight: bold;
-          color: $color-text;
-        }
-      }
-
-      .unternehmenswertrechner-container {
-        @include flex-center;
-        flex-direction: column;
-        border-radius: 10px;
-
-        .shared-section {
-          padding: $padding-medium;
-          margin: $margin-medium;
+        .nav-border {
+          height: 4px;
           width: 100%;
-          background-color: $color-background;
-          border-radius: 20px;
+          background-color: $color-black; /* inactive color */
+          margin-bottom: $padding-small;
+        }
 
-          .button-container {
+        &.finished {
+          .nav-border {
+            background-color: $color-primary;
+          }
+        }
+
+        &.active {
+          .nav-border {
+            background-color: $color-primary-dark; /* active color */
+          }
+        }
+
+        &.inactive {
+          opacity: 0.5;
+          cursor: not-allowed; /* This will show the "not allowed" cursor */
+        }
+
+        &.error {
+          .nav-border {
+            background-color: $color-red;
+          }
+        }
+      }
+
+      .heading {
+        font-size: 16px;
+        font-weight: bold;
+        color: $color-text;
+      }
+    }
+
+    .unternehmenswertrechner-container {
+      @include flex-center;
+      flex-direction: column;
+      border-radius: 10px;
+
+      .shared-section {
+        padding: $padding-medium;
+        margin: $margin-medium;
+        width: 100%;
+        background-color: $color-background;
+        border-radius: 20px;
+
+        .button-container {
+          @include flex-center;
+          justify-content: flex-end;
+          margin-top: $margin-large;
+
+          .button {
+            background-color: $color-primary;
+            color: $color-white;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: $color-primary-dark;
+            }
+          }
+        }
+
+        .segment {
+          background-color: $color-white;
+          border-radius: 10px;
+          padding: $padding-medium;
+          margin-top: $margin-medium;
+          box-shadow: 0 2px 4px $shadow-color;
+        }
+
+        &.basis-info {
+          .input-container {
             @include flex-center;
-            justify-content: flex-end;
-            margin-top: $margin-large;
-
-            .button {
-              background-color: $color-primary;
-              color: $color-white;
-              border-radius: 5px;
-              padding: 8px 16px;
-              font-size: 16px;
-              transition: background-color 0.3s;
-
-              &:hover {
-                background-color: $color-primary-dark;
-              }
-            }
           }
 
-          .segment {
-            background-color: $color-white;
-            border-radius: 10px;
-            padding: $padding-medium;
-            margin-top: $margin-medium;
-            box-shadow: 0 2px 4px $shadow-color;
+          .input-container .form-control {
+            text-align: center;
+            margin-right: 2.5px;
           }
 
-          &.basis-info {
-            .input-container {
-              @include flex-center;
+          .input-container .form-control:last-child {
+            margin-right: 0;
+          }
+        }
+
+        &.kennzahlen {
+          .form-label,
+          .form-input {
+            @include flex-center;
+            margin: 0;
+
+            label {
+              font-weight: bold;
             }
 
-            .input-container .form-control {
+            input[type="range"],
+            input[type="text"] {
+              block-size: 30px;
+              width: 100%;
+              vertical-align: middle;
               text-align: center;
-              margin-right: 2.5px;
+              border: none;
+              outline: none;
             }
 
-            .input-container .form-control:last-child {
-              margin-right: 0;
+            input[type="text"] {
+              background-color: $color-input-bg;
+              border-radius: 5px;
+              padding: 4px 8px;
             }
           }
 
-          &.kennzahlen {
-            .form-label,
-            .form-input {
-              @include flex-center;
-              margin: 0;
-
-              label {
-                font-weight: bold;
-              }
-
-              input[type="range"],
-              input[type="text"] {
-                block-size: 30px;
-                width: 100%;
-                vertical-align: middle;
-                text-align: center;
-                border: none;
-                outline: none;
-              }
-
-              input[type="text"] {
-                background-color: $color-input-bg;
-                border-radius: 5px;
-                padding: 4px 8px;
-              }
-            }
-
-            .label {
-              font-size: 14px;
-              color: $color-text;
-              margin-bottom: 8px;
-            }
+          .label {
+            font-size: 14px;
+            color: $color-text;
+            margin-bottom: 8px;
           }
         }
       }
