@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import Kennzahlen from "../Unternehmenswertrechner/Kennzahlen";
 import './App.scss';
+import Eingabe from "../Unternehmenswertrechner/Eingabe";
 
 const App = () => {
     return (
