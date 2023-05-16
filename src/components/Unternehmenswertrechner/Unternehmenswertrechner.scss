@@ -31,20 +31,74 @@ $margin-large: 2em;
   width: 100%;
 
   .Ausgabe {
-      min-width: 40vh;
-      background-color: #f0f0f0;
-      margin-left: 20px;
+    overflow: auto;
+    margin: 0 20px !important;
+    width: 30%;
+    background-color: #f9f9f9; // Màu nền của khối .Ausgabe
+    padding: 10px; // Padding trái/phải
+    color: #333; // Màu chữ mặc định
+
+    .intro {
+      padding: 20px;
+      text-align: center;
+      color: #007BFF; // Màu chữ cho .intro
     }
+
+    .result-inner-wrapper {
+      padding: 20px;
+      background-color: #FFF; // Màu nền cho .result-inner-wrapper
+      border-radius: 5px; // Bo góc
+
+      .title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #6C757D; // Màu chữ cho .title
+      }
+
+      .icon {
+        margin-bottom: 10px;
+        color: #17A2B8; // Màu chữ cho .icon
+      }
+
+      .result {
+        display: flex;
+        justify-content: space-between;
+
+        .default,
+        .input-error {
+          flex: 1;
+          margin-right: 10px;
+          word-wrap: break-word;
+          color: #DC3545; // Màu chữ cho .default và .input-error
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .error-message {
+        margin-top: 20px;
+        word-wrap: break-word;
+        background-color: #FFC107; // Màu nền cho .error-message
+        color: #FFF; // Màu chữ cho .error-message
+
+        p {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
 
   .Eingabe {
     flex: 1;
-    margin: 10px 20px;
+    margin: 10px 20px 10px 0;
     background-color: $color-background;
     padding: $padding-large;
     border-radius: 60px;
     box-shadow: 0 0 10px $shadow-color;
     min-height: 86vh;
-    min-width: 60vh;
+    min-width: 70%;
     overflow: auto;
 
     .main-header {

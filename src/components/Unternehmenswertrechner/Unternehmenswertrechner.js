@@ -1,7 +1,7 @@
 import React from 'react';
 import Eingabe from './Eingabe';
-import './Unternehmenswertrechner.scss';
 import Ausgabe from "./Ausgabe";
+import './Unternehmenswertrechner.scss';
 
 const Unternehmenswertrechner = () => {
     return (
