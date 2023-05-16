@@ -37,14 +37,13 @@ $margin-large: 2em;
 
   .Eingabe {
     flex: 1; // Chiếm phần còn lại của không gian
-    margin-left: 16px; // Thêm một khoảng cách giữa Ausgabe và Eingabe
+    margin: $margin-small 16px $margin-small 0;
     background-color: $color-background;
     padding: $padding-large;
     border-radius: 60px;
     box-shadow: 0 0 10px $shadow-color;
     min-height: 86vh;
     min-width: 120vh;
-    margin: $margin-small 0;
     overflow: auto;
 
     .main-header {

@@ -6,9 +6,10 @@ import Ausgabe from "./Ausgabe";
 const Unternehmenswertrechner = () => {
     return (
         <div className="Unternehmenswertrechner">
-            <Eingabe/>
+            <div className="content-container">
+                <Eingabe/>
+            </div>
         </div>
     );
 };
-
 export default Unternehmenswertrechner;
