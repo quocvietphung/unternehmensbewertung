@@ -9,6 +9,13 @@ const BasisInfo = (props) => {
 
     const handleChange = (event, { name, value }) => {
         if (name === "alter") {
+            if (value === '+') {
+                setAlter(prevAlter => prevAlter + 1);
+            } else if (value === '-' && alter > 0) {
+                setAlter(prevAlter => prevAlter - 1);
+            } else if (!isNaN(value)) {
+                setAlter(parseInt(value));
+            }
         } else if (name === "branche") {
             setBranche(value);
         } else if (name === "lage") {
@@ -31,7 +38,7 @@ const BasisInfo = (props) => {
     const handleWeiterClick = () => {
         if (!branche || branche === "auswählen") {
             setIsValid(false);
-            return; // Dừng việc xử lý nếu không hợp lệ
+            return;
         }
 
         props.onWeiterClick(props.sectionName);
