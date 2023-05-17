@@ -30,35 +30,36 @@ $margin-large: 2em;
   width: 100%;
 
   .Ausgabe {
-    margin: 0 20px !important;
+    margin: 20px 20px !important;
     width: 30%;
     background-color: #f9f9f9;
     padding: 10px;
     color: #333;
-    border-radius: 20px;
-
-    .intro {
-      text-align: center;
-      color: #007BFF;
-    }
+    border-radius: 60px;
 
     .result-inner-wrapper {
+      margin: 40px 40px !important;
       text-align: center;
       padding: 20px;
       background-color: #FFF;
-      border-radius: 5px;
+      border-radius: 20px;
       box-sizing: border-box;
       overflow: auto;
+
+      .intro {
+        text-align: center;
+        color: #007bff;
+      }
 
       .title {
         font-size: 1.5em;
         margin-bottom: 10px;
-        color: #6C757D;
+        color: #6c757d;
       }
 
       .icon {
         margin-bottom: 10px;
-        color: #17A2B8;
+        color: #17a2b8;
       }
 
       .result {
@@ -70,7 +71,7 @@ $margin-large: 2em;
           flex: 1;
           margin-right: 10px;
           word-wrap: break-word;
-          color: #DC3545;
+          color: #dc3545;
 
           &:last-child {
             margin-right: 0;
@@ -78,14 +79,28 @@ $margin-large: 2em;
         }
       }
 
+      .warning {
+        &.innacurate-calculation {
+          // Đặt quy tắc cho lớp innacurate-calculation ở đây
+        }
+      }
+
       .error-message {
         margin-top: 20px;
         word-wrap: break-word;
-        background-color: #FFC107;
-        color: #FFF;
+        background-color: #ffc107;
+        color: #fff;
 
         p {
           margin-bottom: 10px;
+        }
+
+        &.negative-entry {
+          // Đặt quy tắc cho lớp negative-entry ở đây
+        }
+
+        &.small-entry {
+          display: none; // Áp dụng display: none cho lớp small-entry
         }
       }
     }
