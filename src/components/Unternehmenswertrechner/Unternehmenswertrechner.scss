@@ -42,7 +42,7 @@ $margin-large: 2em;
       margin: 40px 40px !important;
       text-align: center;
       padding: 20px;
-      background-color: #FFF;
+      background-color: #fff;
       border-radius: 30px;
       box-sizing: border-box;
       overflow: auto;
@@ -79,11 +79,16 @@ $margin-large: 2em;
             margin-right: 0;
           }
         }
+
+        .ertragswert {
+          font-size: 3em;
+          color: #28a745;
+        }
       }
 
       .warning {
         &.innacurate-calculation {
-          // Đặt quy tắc cho lớp innacurate-calculation ở đây
+          font-size: 1.5rem;
         }
       }
 
