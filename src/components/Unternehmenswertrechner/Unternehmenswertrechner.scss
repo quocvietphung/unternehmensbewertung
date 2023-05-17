@@ -35,55 +35,57 @@ $margin-large: 2em;
     background-color: #f9f9f9;
     padding: 10px;
     color: #333;
+    border-radius: 20px;
 
-    .result-outter-wrapper {
-      padding: 20px; // move padding from .intro and .result-inner-wrapper to here
-      background-color: #FFF; // move background-color from .result-inner-wrapper to here
-      border-radius: 5px; // move border-radius from .result-inner-wrapper to here
+    .intro {
+      text-align: center;
+      color: #007BFF;
+    }
 
-      .intro {
-        text-align: center;
-        color: #007BFF;
+    .result-inner-wrapper {
+      text-align: center;
+      padding: 20px;
+      background-color: #FFF;
+      border-radius: 5px;
+      box-sizing: border-box;
+      overflow: auto;
+
+      .title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #6C757D;
       }
 
-      .result-inner-wrapper {
-        .title {
-          font-size: 1.5em;
-          margin-bottom: 10px;
-          color: #6C757D;
-        }
+      .icon {
+        margin-bottom: 10px;
+        color: #17A2B8;
+      }
 
-        .icon {
-          margin-bottom: 10px;
-          color: #17A2B8;
-        }
+      .result {
+        display: flex;
+        justify-content: space-between;
 
-        .result {
-          display: flex;
-          justify-content: space-between;
-
-          .default,
-          .input-error {
-            flex: 1;
-            margin-right: 10px;
-            word-wrap: break-word;
-            color: #DC3545;
-
-            &:last-child {
-              margin-right: 0;
-            }
-          }
-        }
-
-        .error-message {
-          margin-top: 20px;
+        .default,
+        .input-error {
+          flex: 1;
+          margin-right: 10px;
           word-wrap: break-word;
-          background-color: #FFC107;
-          color: #FFF;
+          color: #DC3545;
 
-          p {
-            margin-bottom: 10px;
+          &:last-child {
+            margin-right: 0;
           }
+        }
+      }
+
+      .error-message {
+        margin-top: 20px;
+        word-wrap: break-word;
+        background-color: #FFC107;
+        color: #FFF;
+
+        p {
+          margin-bottom: 10px;
         }
       }
     }
