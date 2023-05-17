@@ -52,15 +52,15 @@
   .Footer {
     background-color: #1b1c1d;
     padding: 20px 0;
-    color: #fff; /* Set default text color for footer */
+    color: #fff;
 
     .text-white {
-      color: #000; /* More readable color name */
+      color: #000;
     }
 
     .text-orange {
-      color: #f2711c; // Định nghĩa màu sắc
-      font-weight: bold; // Định nghĩa độ đậm của chữ
+      color: #f2711c;
+      font-weight: bold;
     }
   }
 }
