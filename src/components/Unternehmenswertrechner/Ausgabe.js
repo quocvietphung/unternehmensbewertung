@@ -5,9 +5,7 @@ const Ausgabe = () => (
     <Grid className="Ausgabe">
         <Grid.Row className="result-inner-wrapper text-center warning-active">
             <Grid.Column textAlign="center">
-                <Grid.Row className="intro">
-                    <Header as="h2">Individuelle Einschätzung Ihres Unternehmens</Header>
-                </Grid.Row>
+                <Header as="h2" className="intro">Individuelle Einschätzung Ihres Unternehmens</Header>
                 <Header as="h3" className="title">
                     vorläufiger Unternehmenswert
                 </Header>
