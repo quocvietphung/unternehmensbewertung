@@ -27,13 +27,9 @@ $margin-large: 2em;
 .Unternehmenswertrechner {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
 
   .Ausgabe {
-    position: sticky;
-    top: 20px;
-    z-index: 10;
     margin: 0 20px !important;
     width: 30%;
     background-color: #f9f9f9;
@@ -41,17 +37,16 @@ $margin-large: 2em;
     color: #333;
 
     .result-outter-wrapper {
+      padding: 20px; // move padding from .intro and .result-inner-wrapper to here
+      background-color: #FFF; // move background-color from .result-inner-wrapper to here
+      border-radius: 5px; // move border-radius from .result-inner-wrapper to here
+
       .intro {
-        padding: 20px;
         text-align: center;
         color: #007BFF;
       }
 
       .result-inner-wrapper {
-        padding: 20px;
-        background-color: #FFF;
-        border-radius: 5px;
-
         .title {
           font-size: 1.5em;
           margin-bottom: 10px;
