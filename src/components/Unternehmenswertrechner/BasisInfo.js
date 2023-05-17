@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Header, Form, Grid, Select, Radio, Button, Divider} from "semantic-ui-react";
+import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-react";
 
 const BasisInfo = (props) => {
     const [branche, setBranche] = useState("");
@@ -9,21 +9,6 @@ const BasisInfo = (props) => {
 
     const handleChange = (event, { name, value }) => {
         if (name === "alter") {
-            if (value === "+" || value === "-") {
-                const currentValue = alter;
-                const newValue =
-                    value === "+"
-                        ? currentValue + 1
-                        : currentValue > 0
-                            ? currentValue - 1
-                            : 0;
-                setAlter(newValue);
-            } else {
-                const parsedValue = parseInt(value);
-                if (!isNaN(parsedValue)) {
-                    setAlter(parsedValue);
-                }
-            }
         } else if (name === "branche") {
             setBranche(value);
         } else if (name === "lage") {
@@ -44,7 +29,12 @@ const BasisInfo = (props) => {
     };
 
     const handleWeiterClick = () => {
-        props.onWeiterClick(props.sectionName);  // Gọi hàm xử lý khi người dùng nhấp vào nút "Weiter"
+        if (!branche || branche === "auswählen") {
+            setIsValid(false);
+            return; // Dừng việc xử lý nếu không hợp lệ
+        }
+
+        props.onWeiterClick(props.sectionName);
     };
 
     const branchOptions = [
@@ -71,7 +61,7 @@ const BasisInfo = (props) => {
         <Grid padded className="shared-section basis-info">
             <Grid.Column>
                 <Header as="h2">1. Basisinformationen zum Unternehmen</Header>
-                <Divider/>
+                <Divider />
                 <Form>
                     <Grid columns={2} stackable>
                         <Grid.Column>
@@ -87,6 +77,7 @@ const BasisInfo = (props) => {
                                     required
                                 />
                             </Form.Field>
+                            {!isValid && !branche && <p style={{ color: "red" }}>Bitte wählen Sie eine Branche aus.</p>}
                             <Form.Group inline>
                                 <label>Lage*</label>
                                 <Form.Field>
