@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-react";
+import { useDispatch } from "react-redux";
+import { setValidity } from '../../redux/actions';
 
 const BasisInfo = (props) => {
     const [branche, setBranche] = useState("");
     const [lage, setLage] = useState("");
     const [alter, setAlter] = useState(0);
     const [isValid, setIsValid] = useState(false);
+    const dispatch = useDispatch();
 
     const handleChange = (event, { name, value }) => {
         if (name === "alter") {
@@ -24,14 +27,17 @@ const BasisInfo = (props) => {
     };
 
     useEffect(() => {
+        console.log("Checking validity...");
         checkValidity();
     }, [branche, lage, alter]);
 
     const checkValidity = () => {
-        if (branche && lage && alter >= 0) {
+        if (branche && branche !== "auswählen") {
             setIsValid(true);
+            dispatch(setValidity(true));
         } else {
             setIsValid(false);
+            dispatch(setValidity(false));
         }
     };
 
