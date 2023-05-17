@@ -1,136 +1,264 @@
-.Unternehmenswertrechner {
-  margin-top: 1rem;
-  flex-direction: column;
+// Define color variables
+$color-primary: #008000;
+$color-primary-dark: #006400;
+$color-background: #f0f0f0;
+$color-text: #888;
+$color-white: #fff;
+$color-input-bg: #f0f0f0;
+$color-black: black;
+$color-red: #ff0000;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+// Define padding and margin variables
+$padding-small: 10px;
+$padding-medium: 16px;
+$padding-large: 30px;
+$margin-small: 1rem;
+$margin-medium: 16px;
+$margin-large: 2em;
+
+// Define a mixin for flex centering
+@mixin flex-center {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  min-height: 88vh;
+}
 
-  .main-header {
-    color: #008000 !important;
-    font-size: 2rem !important;
-    text-align: center !important;
-  }
+.Unternehmenswertrechner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 
-  .nav-wrapper {
-    background-color: #f5f5f5;
-    padding: 10px 20px;
+  .Ausgabe {
+    margin: 10px 20px !important;
+    width: 30%;
+    background-color: #f9f9f9;
+    padding: 10px;
+    color: #333;
+    border-radius: 60px;
+    max-height: 65vh;
 
-    .nav-item {
+    .result-inner-wrapper {
+      margin: 40px 40px !important;
       text-align: center;
-      padding: 10px;
-      cursor: pointer;
+      padding: 20px;
+      background-color: #FFF;
+      border-radius: 30px;
+      box-sizing: border-box;
+      overflow: auto;
 
-      .nav-border {
-        height: 4px;
-        width: 100%;
-        background-color: #ddd; // inactive color
+      .intro {
+        margin-top: 10px;
+        text-align: center;
+        color: #007bff;
+      }
+
+      .title {
+        font-size: 1.5em;
         margin-bottom: 10px;
+        color: #6c757d;
       }
 
-      &.finished {
-        .nav-border {
-          background-color: #008000;
+      .icon {
+        margin-bottom: 10px;
+        color: #17a2b8;
+      }
+
+      .result {
+        display: flex;
+        justify-content: space-between;
+
+        .default,
+        .input-error {
+          flex: 1;
+          margin-right: 10px;
+          word-wrap: break-word;
+          color: #dc3545;
+
+          &:last-child {
+            margin-right: 0;
+          }
         }
       }
 
-      &.active {
-        .nav-border {
-          background-color: #e0aa3e; // active color
+      .warning {
+        &.innacurate-calculation {
+          // Đặt quy tắc cho lớp innacurate-calculation ở đây
         }
       }
 
-      &.inactive {
-        opacity: 0.5;
-        cursor: not-allowed; // This will show the "not allowed" cursor
-      }
+      .error-message {
+        margin-top: 20px;
+        word-wrap: break-word;
+        background-color: #ffc107;
+        color: #fff;
 
-      &.error {
-        .nav-border {
-          background-color: #ff0000;
+        p {
+          margin-bottom: 10px;
+        }
+
+        &.negative-entry {
+          // Đặt quy tắc cho lớp negative-entry ở đây
+        }
+
+        &.small-entry {
+          display: none; // Áp dụng display: none cho lớp small-entry
         }
       }
-    }
-
-    .heading {
-      font-size: 16px;
-      font-weight: bold;
-      color: #333;
     }
   }
 
-  .unternehmenswertrechner-container {
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  .Eingabe {
+    flex: 1;
+    margin: 10px 20px 10px 0;
+    background-color: $color-background;
+    padding: $padding-large;
+    border-radius: 60px;
+    box-shadow: 0 0 10px $shadow-color;
+    min-height: 86vh;
+    min-width: 70%;
+    overflow: auto;
 
-    .basis-info,
-    .kennzahlen {
-      padding: 16px;
-      margin: 16px;
-      width: 100%;
+    .main-header {
+      color: $color-primary;
+      font-size: 2rem;
+      text-align: center;
+    }
 
-      .header {
-        font-size: 24px;
-        margin-bottom: 16px;
+    .nav-wrapper {
+      background-color: $color-background;
+      padding: $padding-small $padding-medium * 2;
+
+      .nav-item {
+        text-align: center;
+        padding: $padding-small;
+        cursor: pointer;
+
+        .nav-border {
+          height: 4px;
+          width: 100%;
+          background-color: $color-black; /* inactive color */
+          margin-bottom: $padding-small;
+        }
+
+        &.finished {
+          .nav-border {
+            background-color: $color-primary;
+          }
+        }
+
+        &.active {
+          .nav-border {
+            background-color: $color-primary-dark; /* active color */
+          }
+        }
+
+        &.inactive {
+          opacity: 0.5;
+          cursor: not-allowed; /* This will show the "not allowed" cursor */
+        }
+
+        &.error {
+          .nav-border {
+            background-color: $color-red;
+          }
+        }
       }
 
-      .form {
-        .field {
-          margin-bottom: 16px;
+      .heading {
+        font-size: 16px;
+        font-weight: bold;
+        color: $color-text;
+      }
+    }
 
-          label {
-            font-weight: bold;
-            margin-bottom: 8px;
+    .unternehmenswertrechner-container {
+      @include flex-center;
+      flex-direction: column;
+      border-radius: 10px;
+
+      .shared-section {
+        padding: $padding-medium;
+        margin: $margin-medium;
+        width: 100%;
+        background-color: $color-background;
+        border-radius: 20px;
+
+        .button-container {
+          @include flex-center;
+          justify-content: flex-end;
+          margin-top: $margin-large;
+
+          .button {
+            background-color: $color-primary;
+            color: $color-white;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: $color-primary-dark;
+            }
+          }
+        }
+
+        .segment {
+          background-color: $color-white;
+          border-radius: 10px;
+          padding: $padding-medium;
+          margin-top: $margin-medium;
+          box-shadow: 0 2px 4px $shadow-color;
+        }
+
+        &.basis-info {
+          .input-container {
+            @include flex-center;
           }
 
-          > .input-group {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+          .input-container .form-control {
+            text-align: center;
+            margin-right: 2.5px;
+          }
+
+          .input-container .form-control:last-child {
+            margin-right: 0;
+          }
+        }
+
+        &.kennzahlen {
+          .form-label,
+          .form-input {
+            @include flex-center;
+            margin: 0;
 
             label {
               font-weight: bold;
-              margin-bottom: 8px;
             }
 
-            input {
-              text-align: center; /* Căn giữa số trong input */
+            input[type="range"],
+            input[type="text"] {
+              block-size: 30px;
+              width: 100%;
+              vertical-align: middle;
+              text-align: center;
+              border: none;
+              outline: none;
             }
 
-            button {
-              margin: 0 8px;
+            input[type="text"] {
+              background-color: $color-input-bg;
+              border-radius: 5px;
+              padding: 4px 8px;
             }
           }
 
-          .wideSelect {
-            width: 560px !important;
+          .label {
+            font-size: 14px;
+            color: $color-text;
+            margin-bottom: 8px;
           }
         }
-
-        .group {
-          display: flex;
-          align-items: center;
-
-          label {
-            margin-right: 16px;
-          }
-        }
-      }
-
-      p {
-        margin-top: 16px;
-        font-style: italic;
-      }
-
-      .button-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 32px;
       }
     }
   }

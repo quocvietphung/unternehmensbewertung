@@ -1,11 +1,9 @@
 .App {
-  background-image: url('../../images/cover.png');
+  background-image: url('../../images/cover.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-
+  background-attachment: fixed;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   color: #333; /* Set default text color */
 
   .Navbar {
@@ -13,7 +11,7 @@
     height: 60px;
 
     .logo-item {
-      background-color: #fff; /* More readable color name */
+      background-color: #fff;
       padding: 15px 20px;
       margin-right: 1rem;
 
@@ -25,10 +23,10 @@
     }
 
     a {
-      color: #000 !important; /* More readable color name */
+      color: #000 !important;
 
       &:hover {
-        color: #2185d0 !important; /* Change color on hover */
+        color: #2185d0 !important;
       }
     }
 
@@ -37,7 +35,7 @@
     }
 
     .icon {
-      margin-right: 0.25rem; /* Reduced for better visual balance */
+      margin-right: 0.25rem;
     }
 
     .contact-item {
@@ -54,14 +52,15 @@
   .Footer {
     background-color: #1b1c1d;
     padding: 20px 0;
-    color: #fff; /* Set default text color for footer */
+    color: #fff;
 
     .text-white {
-      color: #000; /* More readable color name */
+      color: #000;
     }
 
     .text-orange {
-      color: #d35400; /* Darker orange color */
+      color: #f2711c;
+      font-weight: bold;
     }
   }
 }
