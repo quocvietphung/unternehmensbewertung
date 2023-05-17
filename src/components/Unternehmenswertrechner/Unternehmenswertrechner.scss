@@ -42,11 +42,12 @@ $margin-large: 2em;
       text-align: center;
       padding: 20px;
       background-color: #FFF;
-      border-radius: 20px;
+      border-radius: 30px;
       box-sizing: border-box;
       overflow: auto;
 
       .intro {
+        margin-top: 10px;
         text-align: center;
         color: #007bff;
       }
