@@ -219,15 +219,21 @@ $margin-large: 2em;
         &.basis-info {
           .input-container {
             @include flex-center;
+
+            .form-control {
+              text-align: center;
+              margin-right: 2.5px;
+
+              &:last-child {
+                margin-right: 0;
+              }
+            }
           }
 
-          .input-container .form-control {
-            text-align: center;
-            margin-right: 2.5px;
-          }
-
-          .input-container .form-control:last-child {
-            margin-right: 0;
+          .radio-selected {
+            border: 8px solid orange;
+            background-color: orange;
+            border-radius: 30px;
           }
         }
 

@@ -5,7 +5,7 @@ import { setValidity } from '../../redux/actions';
 
 const BasisInfo = (props) => {
     const [branche, setBranche] = useState("");
-    const [lage, setLage] = useState("");
+    const [lage, setLage] = useState("städtisch");
     const [alter, setAlter] = useState(0);
     const [isValid, setIsValid] = useState(false);
     const dispatch = useDispatch();
@@ -95,6 +95,7 @@ const BasisInfo = (props) => {
                                 <label>Lage*</label>
                                 <Form.Field>
                                     <Radio
+                                        className={lage === "städtisch" ? "radio-selected" : ""}
                                         name="lage"
                                         value="städtisch"
                                         label="städtisch"
@@ -105,6 +106,7 @@ const BasisInfo = (props) => {
                                 </Form.Field>
                                 <Form.Field>
                                     <Radio
+                                        className={lage === "ländlich" ? "radio-selected" : ""}
                                         name="lage"
                                         value="ländlich"
                                         label="ländlich"
