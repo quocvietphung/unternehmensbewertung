@@ -8,7 +8,7 @@ const Ausgabe = () => {
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
-            <p className="ertragswert">33.4 Mio EUR</p>
+            <p className="ertragswert">0 Mio EUR</p>
             <Message warning className="warning innacurate-calculation">
                 <p className="my-0">
                     Das ist ein vorläufig berechneter Wert. Füllen Sie weitere Felder aus, um einen genaueren zu Wert zu erhalten.

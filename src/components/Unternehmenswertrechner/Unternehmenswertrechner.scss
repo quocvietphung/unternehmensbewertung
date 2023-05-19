@@ -70,6 +70,7 @@ $margin-large: 2em;
 
         .default,
         .input-error {
+          font-size: 1.5rem;
           flex: 1;
           margin-right: 10px;
           word-wrap: break-word;
@@ -81,7 +82,7 @@ $margin-large: 2em;
         }
 
         .ertragswert {
-          font-size: 3em;
+          font-size: 3rem;
           color: #28a745;
         }
       }
