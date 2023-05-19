@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
-import { setValidity, setError } from '../../redux/reducers';
+import { setBranche, setLage, setAlter, setValidity, setError } from '../../redux/reducers';
 
 const BasisInfo = (props) => {
     const [branche, setBranche] = useState("");
@@ -13,16 +13,16 @@ const BasisInfo = (props) => {
     const handleChange = (event, { name, value }) => {
         if (name === "alter") {
             if (value === '+') {
-                setAlter(prevAlter => prevAlter + 1);
+                dispatch(setAlter(alter + 1));
             } else if (value === '-' && alter > 0) {
-                setAlter(prevAlter => prevAlter - 1);
+                dispatch(setAlter(alter - 1));
             } else if (!isNaN(value)) {
-                setAlter(parseInt(value));
+                dispatch(setAlter(parseInt(value)));
             }
         } else if (name === "branche") {
-            setBranche(value);
+            dispatch(setBranche(value));
         } else if (name === "lage") {
-            setLage(value);
+            dispatch(setLage(value));
         }
     };
 

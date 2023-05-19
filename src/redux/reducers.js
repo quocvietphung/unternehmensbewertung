@@ -21,4 +21,31 @@ const validationSlice = createSlice({
 
 export const { setValidity, setError } = validationSlice.actions
 
-export default validationSlice.reducer
+export const validationReducer = validationSlice.reducer // here
+
+
+const basisInfoInitialState = {
+    branche: "",
+    lage: "städtisch",
+    alter: 1,
+};
+
+const basisInfoSlice = createSlice({
+    name: 'basisInfo',
+    initialState: basisInfoInitialState,
+    reducers: {
+        setBranche: (state, action) => {
+            state.branche = action.payload;
+        },
+        setLage: (state, action) => {
+            state.lage = action.payload;
+        },
+        setAlter: (state, action) => {
+            state.alter = action.payload;
+        },
+    }
+})
+
+export const { setBranche, setLage, setAlter } = basisInfoSlice.actions
+
+export const basisInfoReducer = basisInfoSlice.reducer
