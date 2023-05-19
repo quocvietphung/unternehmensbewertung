@@ -37,7 +37,7 @@ const Kennzahlen = () => {
                     </Label>
                     <Segment>
                         <Form>
-                            <Form.Group>
+                            <Form.Group className="form-group">
                                 <Form.Field width={3} className="form-label">
                                     <label>Umsatz 2020</label>
                                 </Form.Field>
@@ -60,7 +60,7 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group>
+                            <Form.Group className="form-group">
                                 <Form.Field width={3} className="form-label">
                                     <label>Umsatz 2021</label>
                                 </Form.Field>
@@ -82,7 +82,7 @@ const Kennzahlen = () => {
                                     />
                                 </Form.Field>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group className="form-group">
                                 <Form.Field width={3} className="form-label">
                                     <label>Umsatz 2022</label>
                                 </Form.Field>
@@ -106,7 +106,7 @@ const Kennzahlen = () => {
                             </Form.Group>
 
                             {checked && (
-                                <Form.Group>
+                                <Form.Group className="form-group">
                                     <Form.Field width={3} className="form-label">
                                         <label>Prognose 2023</label>
                                     </Form.Field>
@@ -139,7 +139,7 @@ const Kennzahlen = () => {
                     </Label>
                     <Segment>
                         <Form>
-                            <Form.Group>
+                            <Form.Group className="form-group">
                                 <Form.Field width={3} className="form-label">
                                     <label>EBIT 2020</label>
                                 </Form.Field>
@@ -162,7 +162,7 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group>
+                            <Form.Group className="form-group">
                                 <Form.Field width={3} className="form-label">
                                     <label>EBIT 2021</label>
                                 </Form.Field>
@@ -184,7 +184,7 @@ const Kennzahlen = () => {
                                     />
                                 </Form.Field>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group className="form-group">
                                 <Form.Field width={3} className="form-label">
                                     <label>EBIT 2022</label>
                                 </Form.Field>
@@ -208,7 +208,7 @@ const Kennzahlen = () => {
                             </Form.Group>
 
                             {checked && (
-                                <Form.Group>
+                                <Form.Group className="form-group">
                                     <Form.Field width={3} className="form-label">
                                         <label>Prognose 2023</label>
                                     </Form.Field>

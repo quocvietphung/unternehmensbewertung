@@ -238,29 +238,38 @@ $margin-large: 2em;
             margin-top: $margin-medium;
             box-shadow: 0 2px 4px $shadow-color;
 
-            .form-label,
-            .form-input {
+            .form-group {
+              margin-top: 15px;
               display: flex;
               align-items: center;
-              margin: 0;
+              justify-content: space-between;
 
-              label {
-                font-weight: bold;
-              }
+              .form-label,
+              .form-input {
+                display: flex;
+                align-items: center;
+                margin: 0;
 
-              input[type="range"],
-              input[type="text"] {
-                height: 30px;
-                width: 100%;
-                text-align: center;
-                border: none;
-                outline: none;
-              }
+                label {
+                  font-weight: bold;
+                  display: flex;
+                  align-items: center;
+                }
 
-              input[type="text"] {
-                background-color: $color-input-bg;
-                border-radius: 5px;
-                padding: 4px 8px;
+                input[type="range"],
+                input[type="text"] {
+                  height: 30px;
+                  width: 100%;
+                  text-align: center;
+                  border: none;
+                  outline: none;
+                }
+
+                input[type="text"] {
+                  background-color: $color-input-bg;
+                  border-radius: 5px;
+                  padding: 4px 8px;
+                }
               }
             }
           }
