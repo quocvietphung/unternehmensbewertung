@@ -32,18 +32,20 @@ const BasisInfo = (props) => {
     }, [branche, lage, alter]);
 
     const checkValidity = () => {
-        let error = '';
+        let errors = [];
         if (!branche || branche === "auswählen") {
-            error = "Bitte wählen Sie eine Branche aus.";
-        } else if (lage !== "städtisch" && lage !== "ländlich") {
-            error = "Bitte wählen Sie eine Lage aus.";
-        } else if (alter <= 0) {
-            error = "Der Minimalwert für dieses Eingabefeld wurde erreicht.";
+            errors.push("Bitte wählen Sie eine Branche aus.");
+        }
+        if (lage !== "städtisch" && lage !== "ländlich") {
+            errors.push("Bitte wählen Sie eine Lage aus.");
+        }
+        if (alter <= 0) {
+            errors.push("Der Minimalwert für dieses Eingabefeld wurde erreicht.");
         }
 
-        dispatch(setError(error));
+        dispatch(setError(errors));
 
-        const valid = error === '';
+        const valid = errors.length === 0;
         setIsValid(valid);
         dispatch(setValidity(valid));
     };
@@ -104,7 +106,7 @@ const BasisInfo = (props) => {
                                     required
                                 />
                             </Form.Field>
-                            {!isValid && !branche && <p style={{ color: "red" }}>Bitte wählen Sie eine Branche aus.</p>}
+                            {/*{!isValid && !branche && <p style={{ color: "red" }}>Bitte wählen Sie eine Branche aus.</p>}*/}
                             <Form.Group inline>
                                 <label>Lage*</label>
                                 <Form.Field>
