@@ -264,6 +264,7 @@ const Kennzahlen = () => {
                             </Segment.Group>
                         ))}
                     </Segment>
+                    <p>* Diese Eingaben sind Pflichtfelder</p>
                     <Form.Field>
                         <div className="button-container">
                             <Button primary type="submit">
