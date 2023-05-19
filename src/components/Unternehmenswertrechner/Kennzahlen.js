@@ -234,10 +234,11 @@ const Kennzahlen = () => {
                         </Form>
                     </Segment>
                     <Header as="h3">
-                        Schätzen Sie ein, wie typisch die Gewinne für die Unternehmenszukunft sind.<span className="required-mark">*</span>
+                        Schätzen Sie ein, wie typisch die Gewinne für die Unternehmenszukunft sind.
+                        <span className="required-mark">*</span>
                     </Header>
                     <Segment>
-                        <Segment.Group horizontal>
+                        <Segment.Group horizontal className="segment-group">
                             <Segment></Segment>
                             <Segment textAlign="center">ganz untypisch</Segment>
                             <Segment textAlign="center">eher untypisch</Segment>
@@ -246,15 +247,15 @@ const Kennzahlen = () => {
                             <Segment textAlign="center">typisch</Segment>
                         </Segment.Group>
                         {["Gewinn 2020", "Gewinn 2021", "Gewinn 2022", "Prognose 2023"].map((label, index) => (
-                            <Segment.Group horizontal key={label}>
+                            <Segment.Group horizontal className="segment-group" key={label}>
                                 <Segment>{label}</Segment>
-                                {Array.from({length: 5}, (_, i) => (
+                                {Array.from({ length: 5 }, (_, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
                                                 className="form-check-input"
                                                 name={`gewinnTypisch[${index}]`}
-                                                value={i+1}
+                                                value={i + 1}
                                                 required
                                             />
                                         </Form.Field>

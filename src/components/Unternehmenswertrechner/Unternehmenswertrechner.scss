@@ -209,14 +209,6 @@ $margin-large: 2em;
           }
         }
 
-        .segment {
-          background-color: $color-white;
-          border-radius: 10px;
-          padding: $padding-medium;
-          margin-top: $margin-medium;
-          box-shadow: 0 2px 4px $shadow-color;
-        }
-
         &.basis-info {
           .input-container {
             @include flex-center;
@@ -239,29 +231,37 @@ $margin-large: 2em;
         }
 
         &.kennzahlen {
-          .form-label,
-          .form-input {
-            @include flex-center;
-            margin: 0;
+          .segment {
+            background-color: $color-white;
+            border-radius: 10px;
+            padding: $padding-medium;
+            margin-top: $margin-medium;
+            box-shadow: 0 2px 4px $shadow-color;
 
-            label {
-              font-weight: bold;
-            }
+            .form-label,
+            .form-input {
+              display: flex;
+              align-items: center;
+              margin: 0;
 
-            input[type="range"],
-            input[type="text"] {
-              block-size: 30px;
-              width: 100%;
-              vertical-align: middle;
-              text-align: center;
-              border: none;
-              outline: none;
-            }
+              label {
+                font-weight: bold;
+              }
 
-            input[type="text"] {
-              background-color: $color-input-bg;
-              border-radius: 5px;
-              padding: 4px 8px;
+              input[type="range"],
+              input[type="text"] {
+                height: 30px;
+                width: 100%;
+                text-align: center;
+                border: none;
+                outline: none;
+              }
+
+              input[type="text"] {
+                background-color: $color-input-bg;
+                border-radius: 5px;
+                padding: 4px 8px;
+              }
             }
           }
 
@@ -269,6 +269,18 @@ $margin-large: 2em;
             font-size: 14px;
             color: $color-text;
             margin-bottom: 8px;
+          }
+
+          .segment-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .segment {
+              flex-basis: 0;
+              flex-grow: 1;
+              text-align: center;
+            }
           }
         }
       }
