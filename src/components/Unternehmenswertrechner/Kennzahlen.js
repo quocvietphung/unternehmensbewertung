@@ -105,30 +105,30 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group>
-                                <Form.Field width={3} className="form-label">
-                                    <label>Prognose 2023</label>
-                                </Form.Field>
-                                <Form.Field width={10} className="form-input">
-                                    <input
-                                        type="range"
-                                        disabled={!checked}
-                                        min="100000"
-                                        max="50000000"
-                                        step="50000"
-                                        value={prognose2023}
-                                        onChange={(e) => setPrognose2023(e.target.value)}
-                                    />
-                                </Form.Field>
-                                <Form.Field width={3} className="form-input">
-                                    <input
-                                        type="text"
-                                        value={prognose2023}
-                                        disabled={!checked}
-                                        readOnly
-                                    />
-                                </Form.Field>
-                            </Form.Group>
+                            {checked && (
+                                <Form.Group>
+                                    <Form.Field width={3} className="form-label">
+                                        <label>Prognose 2023</label>
+                                    </Form.Field>
+                                    <Form.Field width={10} className="form-input">
+                                        <input
+                                            type="range"
+                                            min="100000"
+                                            max="50000000"
+                                            step="50000"
+                                            value={prognose2023}
+                                            onChange={(e) => setPrognose2023(e.target.value)}
+                                        />
+                                    </Form.Field>
+                                    <Form.Field width={3} className="form-input">
+                                        <input
+                                            type="text"
+                                            value={prognose2023}
+                                            readOnly
+                                        />
+                                    </Form.Field>
+                                </Form.Group>
+                            )}
                         </Form>
                     </Segment>
                     <Header as="h3">EBIT (Gewinn vor Zinsen und Steuern) der letzten Jahre*</Header>
@@ -207,30 +207,30 @@ const Kennzahlen = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Form.Group>
-                                <Form.Field width={3} className="form-label">
-                                    <label>Prognose 2023</label>
-                                </Form.Field>
-                                <Form.Field width={10} className="form-input">
-                                    <input
-                                        type="range"
-                                        disabled={!checked}
-                                        min="0"
-                                        max="10000000"
-                                        step="1000"
-                                        value={ebitPrognose2023}
-                                        onChange={(e) => setEbitPrognose2023(e.target.value)}
-                                    />
-                                </Form.Field>
-                                <Form.Field width={3} className="form-input">
-                                    <input
-                                        type="text"
-                                        value={ebitPrognose2023}
-                                        disabled={!checked}
-                                        readOnly
-                                    />
-                                </Form.Field>
-                            </Form.Group>
+                            {checked && (
+                                <Form.Group>
+                                    <Form.Field width={3} className="form-label">
+                                        <label>Prognose 2023</label>
+                                    </Form.Field>
+                                    <Form.Field width={10} className="form-input">
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="10000000"
+                                            step="1000"
+                                            value={ebitPrognose2023}
+                                            onChange={(e) => setEbitPrognose2023(e.target.value)}
+                                        />
+                                    </Form.Field>
+                                    <Form.Field width={3} className="form-input">
+                                        <input
+                                            type="text"
+                                            value={ebitPrognose2023}
+                                            readOnly
+                                        />
+                                    </Form.Field>
+                                </Form.Group>
+                            )}
                         </Form>
                     </Segment>
                     <Form.Field>
