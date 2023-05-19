@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
-import { setValidity, setError } from '../../redux/actions'; // Add setError here
+import { setValidity, setError } from '../../redux/reducers';
 
 const BasisInfo = (props) => {
     const [branche, setBranche] = useState("");
-    const [lage, setLage] = useState("städtisch");
-    const [alter, setAlter] = useState(1);
+    const [lage, setLage] = useState("");
+    const [alter, setAlter] = useState(0);
     const [isValid, setIsValid] = useState(false);
     const dispatch = useDispatch();
 

@@ -1,20 +1,24 @@
 // reducers.js
-import { SET_VALIDITY, SET_ERROR } from './actions';
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     isValid: true,
-    error: '',
+    error: [],
 };
 
-const validationReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SET_VALIDITY:
-            return { ...state, isValid: action.payload };
-        case SET_ERROR:
-            return { ...state, error: action.payload };
-        default:
-            return state;
+const validationSlice = createSlice({
+    name: 'validation',
+    initialState,
+    reducers: {
+        setValidity: (state, action) => {
+            state.isValid = action.payload;
+        },
+        setError: (state, action) => {
+            state.error = action.payload;
+        }
     }
-};
+})
 
-export default validationReducer;
+export const { setValidity, setError } = validationSlice.actions
+
+export default validationSlice.reducer

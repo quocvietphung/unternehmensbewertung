@@ -3,8 +3,8 @@ import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
 import { useSelector } from "react-redux";
 
 const Ausgabe = () => {
-    const isValid = useSelector((state) => state.isValid);
-    const errors = useSelector((state) => state.error);
+    const isValid = useSelector((state) => state.validation.isValid);
+    const errors = useSelector((state) => state.validation.error);
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
