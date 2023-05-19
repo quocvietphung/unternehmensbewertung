@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const Ausgabe = () => {
     const isValid = useSelector((state) => state.isValid);
+    const error = useSelector((state) => state.error);
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
@@ -19,7 +20,7 @@ const Ausgabe = () => {
             <p>
                 <strong>Wert ungültig</strong>
             </p>
-            <p>Ertragswert kann nicht berechnet werden</p>
+            <p>{error || "Ertragswert kann nicht berechnet werden"}</p>
         </Grid.Column>
     );
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
-import { setValidity } from '../../redux/actions';
+import { setValidity, setError } from '../../redux/actions'; // Add setError here
 
 const BasisInfo = (props) => {
     const [branche, setBranche] = useState("");
@@ -32,13 +32,20 @@ const BasisInfo = (props) => {
     }, [branche, lage, alter]);
 
     const checkValidity = () => {
-        if (branche && branche !== "auswählen" && alter > 0 && (lage === "städtisch" || lage === "ländlich")) {
-            setIsValid(true);
-            dispatch(setValidity(true));
-        } else {
-            setIsValid(false);
-            dispatch(setValidity(false));
+        let error = '';
+        if (!branche || branche === "auswählen") {
+            error = "Bitte wählen Sie eine Branche aus.";
+        } else if (lage !== "städtisch" && lage !== "ländlich") {
+            error = "Bitte wählen Sie eine Lage aus.";
+        } else if (alter <= 0) {
+            error = "Der Minimalwert für dieses Eingabefeld wurde erreicht.";
         }
+
+        dispatch(setError(error));
+
+        const valid = error === '';
+        setIsValid(valid);
+        dispatch(setValidity(valid));
     };
 
     const handleMinusClick = () => {
