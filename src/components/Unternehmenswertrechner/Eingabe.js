@@ -11,6 +11,9 @@ const Eingabe = () => {
         finishedSections: []
     });
 
+    // Add a new state to hold BasisInfo
+    const [basisInfo, setBasisInfo] = useState({});
+
     const updateActiveSection = (section) => {
         if (!sections.finishedSections.includes(sections.activeSection)) {
             setSections({
@@ -26,12 +29,15 @@ const Eingabe = () => {
         }
     };
 
-    const handleWeiterClick = () => {
-        setSections({
-            ...sections,
-            finishedSections: [...sections.finishedSections, sections.activeSection],
+    const handleWeiterClick = (info) => {
+        // Save basis info when Weiter is clicked
+        setBasisInfo(info);
+
+        setSections(prevSections => ({
+            ...prevSections,
+            finishedSections: [...prevSections.finishedSections, prevSections.activeSection],
             activeSection: 'kennzahlen'
-        });
+        }));
     };
 
     return (
@@ -49,7 +55,11 @@ const Eingabe = () => {
 
             <ProgressSection setActiveSection={updateActiveSection} activeSection={sections.activeSection} finishedSections={sections.finishedSections}/>
             <div className="unternehmenswertrechner-container">
-                {sections.activeSection === 'kennzahlen' ? <Kennzahlen className="shared-section" /> : <BasisInfo sectionName="basis" onWeiterClick={handleWeiterClick} className="shared-section" />}
+                {sections.activeSection === 'basis' ?
+                    <BasisInfo sectionName="basis" onWeiterClick={handleWeiterClick} className="shared-section" basisInfo={basisInfo} />
+                    :
+                    <Kennzahlen sectionName="kennzahlen" className="shared-section" />
+                }
             </div>
         </div>
     );

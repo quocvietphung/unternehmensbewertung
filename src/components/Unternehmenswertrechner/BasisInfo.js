@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { setValidity, setError } from '../../redux/reducers';
 
 const BasisInfo = (props) => {
-    const [branche, setBranche] = useState("");
-    const [lage, setLage] = useState("städtisch");
-    const [alter, setAlter] = useState(1);
+    const [branche, setBranche] = useState(props.basisInfo.branche || "");
+    const [lage, setLage] = useState(props.basisInfo.lage || "städtisch");
+    const [alter, setAlter] = useState(props.basisInfo.alter || 1);
     const [isValid, setIsValid] = useState(false);
     const dispatch = useDispatch();
 
@@ -63,7 +63,15 @@ const BasisInfo = (props) => {
             return;
         }
 
-        props.onWeiterClick(props.sectionName);
+        // Create an object with all the info you need
+        const info = {
+            branche,
+            lage,
+            alter
+        }
+
+        // Pass this info back to the parent when Weiter is clicked
+        props.onWeiterClick(info);
     };
 
     const branchOptions = [
