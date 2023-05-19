@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button } from "semantic-ui-react";
+import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 
 const Kennzahlen = () => {
     const [checked, setChecked] = useState(false);
@@ -232,6 +232,36 @@ const Kennzahlen = () => {
                                 </Form.Group>
                             )}
                         </Form>
+                    </Segment>
+                    <Header as="h3">
+                        Schätzen Sie ein, wie typisch die Gewinne für die Unternehmenszukunft sind.<span className="required-mark">*</span>
+                    </Header>
+                    <Segment>
+                        <Segment.Group horizontal>
+                            <Segment></Segment>
+                            <Segment textAlign="center">ganz untypisch</Segment>
+                            <Segment textAlign="center">eher untypisch</Segment>
+                            <Segment textAlign="center">nur teilweise typisch</Segment>
+                            <Segment textAlign="center">eher typisch</Segment>
+                            <Segment textAlign="center">typisch</Segment>
+                        </Segment.Group>
+                        {["Gewinn 2020", "Gewinn 2021", "Gewinn 2022", "Prognose 2023"].map((label, index) => (
+                            <Segment.Group horizontal key={label}>
+                                <Segment>{label}</Segment>
+                                {Array.from({length: 5}, (_, i) => (
+                                    <Segment textAlign="center" key={i}>
+                                        <Form.Field>
+                                            <Radio
+                                                className="form-check-input"
+                                                name={`gewinnTypisch[${index}]`}
+                                                value={i+1}
+                                                required
+                                            />
+                                        </Form.Field>
+                                    </Segment>
+                                ))}
+                            </Segment.Group>
+                        ))}
                     </Segment>
                     <Form.Field>
                         <div className="button-container">
