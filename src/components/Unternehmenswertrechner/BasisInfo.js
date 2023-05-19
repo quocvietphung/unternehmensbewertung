@@ -6,7 +6,7 @@ import { setValidity } from '../../redux/actions';
 const BasisInfo = (props) => {
     const [branche, setBranche] = useState("");
     const [lage, setLage] = useState("städtisch");
-    const [alter, setAlter] = useState(0);
+    const [alter, setAlter] = useState(1);
     const [isValid, setIsValid] = useState(false);
     const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ const BasisInfo = (props) => {
     }, [branche, lage, alter]);
 
     const checkValidity = () => {
-        if (branche && branche !== "auswählen") {
+        if (branche && branche !== "auswählen" && alter > 0 && (lage === "städtisch" || lage === "ländlich")) {
             setIsValid(true);
             dispatch(setValidity(true));
         } else {
@@ -41,9 +41,16 @@ const BasisInfo = (props) => {
         }
     };
 
+    const handleMinusClick = () => {
+        if (alter > 1) {
+            setAlter(prevAlter => prevAlter - 1);
+        } else {
+            window.alert("Der Minimalwert für dieses Eingabefeld wurde erreicht."); // Show alert when trying to decrement from 1
+        }
+    };
+
     const handleWeiterClick = () => {
-        if (!branche || branche === "auswählen") {
-            setIsValid(false);
+        if (!isValid) {
             return;
         }
 
@@ -121,18 +128,19 @@ const BasisInfo = (props) => {
                                     <label>Alter der Firma in Jahren*</label>
                                 </Form.Field>
                             </Form.Group>
+
                             <Form.Group className="input-container">
                                 <Button
                                     icon="minus"
                                     data-type="minus"
                                     data-field="alter"
-                                    onClick={(event) => handleChange(event, { name: "alter", value: "-" })}
+                                    onClick={handleMinusClick}
                                 />
                                 <input
                                     type="number"
                                     name="alter"
                                     className="form-control input-number-plusminus"
-                                    min="0"
+                                    min="1"
                                     value={alter}
                                     onChange={(event) => handleChange(event, { name: "alter", value: event.target.value })}
                                     required
