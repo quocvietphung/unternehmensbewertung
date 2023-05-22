@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Grid, Header, Form, Input, Popup, Divider} from 'semantic-ui-react';
+import { Grid, Header, Form, Input, Popup, Divider } from 'semantic-ui-react';
 import './Test.scss';
 
 const Test = () => {
@@ -37,8 +37,8 @@ const Test = () => {
                                 position="top center"
                                 trigger={
                                     <span className="question-mark-icon" onClick={handlePopupOpen1}>
-            ?
-          </span>
+                    ?
+                  </span>
                                 }
                                 open={showPopover1}
                                 onOpen={handlePopupOpen1}
@@ -48,7 +48,7 @@ const Test = () => {
                         <label htmlFor="gfGehalt[0]" className="form-label">
                             2020
                         </label>
-                        <Form.Input
+                        <Input
                             type="text"
                             className="form-text input-number ebit-clean-calc"
                             name="gfGehalt[0]"
@@ -65,7 +65,7 @@ const Test = () => {
                         <label htmlFor="gfGehalt[1]" className="form-label">
                             2021
                         </label>
-                        <Form.Input
+                        <Input
                             type="text"
                             className="form-text input-number ebit-clean-calc"
                             name="gfGehalt[1]"
@@ -82,7 +82,7 @@ const Test = () => {
                         <label htmlFor="gfGehalt[2]" className="form-label">
                             2022
                         </label>
-                        <Form.Input
+                        <Input
                             type="text"
                             className="form-text input-number ebit-clean-calc"
                             name="gfGehalt[2]"
@@ -99,7 +99,7 @@ const Test = () => {
                         <label htmlFor="gfGehalt[3]" className="form-label">
                             2023 (Prognose)
                         </label>
-                        <Form.Input
+                        <Input
                             type="text"
                             className="form-text input-number ebit-clean-calc"
                             name="gfGehalt[3]"
@@ -122,8 +122,8 @@ const Test = () => {
                                 position="top center"
                                 trigger={
                                     <span className="question-mark-icon" onClick={handlePopupOpen2}>
-            ?
-          </span>
+                    ?
+                  </span>
                                 }
                                 open={showPopover2}
                                 onOpen={handlePopupOpen2}
@@ -133,7 +133,7 @@ const Test = () => {
                         <label htmlFor="typischGfGehalt" className="form-label">
                             Branchenübliche Vergütung
                         </label>
-                        <Form.Input
+                        <Input
                             type="text"
                             className="form-text input-number ebit-clean-calc"
                             name="typischGfGehalt"
