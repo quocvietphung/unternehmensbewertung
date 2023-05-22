@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Header, Form, Input, Popup, Divider } from 'semantic-ui-react';
+import { Grid, Header, Form, Input, Popup, Divider, Icon } from 'semantic-ui-react';
 import './Test.scss';
 
 const Test = () => {
@@ -19,6 +19,12 @@ const Test = () => {
     const handleInputChange = (e) => {
         // Xử lý logic khi input thay đổi ở đây
     };
+
+    const renderPopupTrigger = (popover) => (
+        <span className="question-mark-icon" onClick={() => handlePopupOpen(popover)}>
+      <Icon name="question circle" />
+    </span>
+    );
 
     const renderFormFields = () => {
         const years = ['2020', '2021', '2022', '2023 (Prognose)'];
@@ -74,14 +80,7 @@ const Test = () => {
                             <Popup
                                 content="Als Bruttolohn inklusive allen Arbeitgeberkosten"
                                 position="top center"
-                                trigger={
-                                    <span
-                                        className="question-mark-icon"
-                                        onClick={() => handlePopupOpen('showPopover1')}
-                                    >
-                    ?
-                  </span>
-                                }
+                                trigger={renderPopupTrigger('showPopover1')}
                                 open={popoverData.showPopover1}
                                 onOpen={() => handlePopupOpen('showPopover1')}
                                 onClose={() => handlePopupClose('showPopover1')}
@@ -97,14 +96,7 @@ const Test = () => {
                             <Popup
                                 content="Falls man einen (neuen) externen Geschäftsführer zu Marktbedingungen einstellen müsste, wie hoch wären dafür die gesamten Personalkosten pro Jahr etwa (Bruttolohn inklusive allen Arbeitgeberkosten)?"
                                 position="top center"
-                                trigger={
-                                    <span
-                                        className="question-mark-icon"
-                                        onClick={() => handlePopupOpen('showPopover2')}
-                                    >
-                    ?
-                  </span>
-                                }
+                                trigger={renderPopupTrigger('showPopover2')}
                                 open={popoverData.showPopover2}
                                 onOpen={() => handlePopupOpen('showPopover2')}
                                 onClose={() => handlePopupClose('showPopover2')}
