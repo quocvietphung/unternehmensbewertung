@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Header, Form, Input, Popup } from 'semantic-ui-react';
+import {Grid, Header, Form, Input, Popup, Divider} from 'semantic-ui-react';
 import './Test.scss';
 
 const Test = () => {
@@ -26,6 +26,7 @@ const Test = () => {
         <Grid padded className="Test">
             <Grid.Column>
                 <Header as="h2">3. Bereinigung des EBITs</Header>
+                <Divider />
                 <Grid.Row>
                     <Grid.Column>
                         <h3>
