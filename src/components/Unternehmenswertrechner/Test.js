@@ -18,25 +18,23 @@ const Test = () => {
 
                 {/* Form */}
                 <Grid>
+                    <h3>
+                        Ausgezahlte Vergütung der Geschäftsführung in EUR
+                        <span className="required-mark">*</span>
+                        <Popup
+                            content="Als Bruttolohn inklusive allen Arbeitgeberkosten"
+                            position="top center"
+                            trigger={
+                                <span className="question-mark-icon" onClick={handleClick}>
+                  ?
+                </span>
+                            }
+                            open={showPopover}
+                            onOpen={handleClick}
+                            onClose={handleClick}
+                        />
+                    </h3>
                     <Grid.Row columns={4} className="mb-5">
-                        <Grid.Column>
-                            <h3>
-                                Ausgezahlte Vergütung der Geschäftsführung in EUR
-                                <span className="required-mark">*</span>
-                                <Popup
-                                    content="Als Bruttolohn inklusive allen Arbeitgeberkosten"
-                                    position="top center"
-                                    trigger={
-                                        <span className="question-mark-icon" onClick={handleClick}>
-                      ?
-                    </span>
-                                    }
-                                    open={showPopover}
-                                    onOpen={handleClick}
-                                    onClose={handleClick}
-                                />
-                            </h3>
-                        </Grid.Column>
                         <Grid.Column>
                             <label htmlFor="gfGehalt[0]" className="form-label">
                                 2020
@@ -173,13 +171,11 @@ const Test = () => {
                         </Grid.Column>
                     </Grid.Row>
 
+                    <h3>
+                        Bitte geben Sie hier sonstige außerplanmäßige Einnahmen oder Ausgaben ("-") in EUR an, um den EBIT zu
+                        bereinigen.
+                    </h3>
                     <Grid.Row columns={4} className="mb-1">
-                        <Grid.Column>
-                            <p>
-                                Bitte geben Sie hier sonstige außerplanmäßige Einnahmen oder Ausgaben ("-") in EUR an, um den EBIT zu
-                                bereinigen.
-                            </p>
-                        </Grid.Column>
                         <Grid.Column>
                             <label htmlFor="anpassungEbit[0]" className="form-label">
                                 Anpassung 2020
