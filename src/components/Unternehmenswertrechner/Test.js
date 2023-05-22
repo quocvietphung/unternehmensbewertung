@@ -28,43 +28,55 @@ const Test = () => {
 
     const renderFormFields = () => {
         const years = ['2020', '2021', '2022', '2023 (Prognose)'];
-        return years.map((year, index) => (
-            <Form.Field key={index}>
-                <label htmlFor={`gehalt[${index}]`} className="form-label">
-                    {year}
-                </label>
-                <Input
-                    type="text"
-                    className="form-text input-number ebit-clean-calc"
-                    name={`gehalt[${index}]`}
-                    required
-                    pattern="\d*"
-                    data-gtm-form-interact-field-id={index + 12}
-                    onChange={handleInputChange}
-                />
-                <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                    Keine negativen Eingaben erlaubt.
-                </div>
-                <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
-            </Form.Field>
-        ));
+        return (
+            <Grid>
+                {years.map((year, index) => (
+                    <Grid.Column key={index} width={4}>
+                        <Form.Field>
+                            <label htmlFor={`gehalt[${index}]`} className="form-label">
+                                {year}
+                            </label>
+                            <Input
+                                type="text"
+                                className="form-text input-number ebit-clean-calc"
+                                name={`gehalt[${index}]`}
+                                required
+                                pattern="\d*"
+                                data-gtm-form-interact-field-id={index + 12}
+                                onChange={handleInputChange}
+                            />
+                            <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
+                                Keine negativen Eingaben erlaubt.
+                            </div>
+                            <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
+                        </Form.Field>
+                    </Grid.Column>
+                ))}
+            </Grid>
+        );
     };
 
     const renderAdditionalAdjustments = () => {
         const years = ['2020', '2021', '2022', '2023 (Prognose)'];
-        return years.map((year, index) => (
-            <Form.Field key={index}>
-                <label htmlFor={`anpassungEbit[${index}]`} className="form-label">
-                    Anpassung {year}
-                </label>
-                <Input
-                    type="text"
-                    className="form-text input-number not-required negative ebit-clean-calc"
-                    name={`anpassungEbit[${index}]`}
-                    onChange={handleInputChange}
-                />
-            </Form.Field>
-        ));
+        return (
+            <Grid>
+                {years.map((year, index) => (
+                    <Grid.Column key={index} width={4}>
+                        <Form.Field>
+                            <label htmlFor={`anpassungEbit[${index}]`} className="form-label">
+                                Anpassung {year}
+                            </label>
+                            <Input
+                                type="text"
+                                className="form-text input-number not-required negative ebit-clean-calc"
+                                name={`anpassungEbit[${index}]`}
+                                onChange={handleInputChange}
+                            />
+                        </Form.Field>
+                    </Grid.Column>
+                ))}
+            </Grid>
+        );
     };
 
     return (
@@ -157,12 +169,12 @@ const Test = () => {
                         </ul>
                     </Form.Field>
 
-                    <Form.Group>
-                        <h3>
+                    <Form.Field>
+                        <label className="form-label" htmlFor="sonstigeEinnahmenAusgaben">
                             Bitte geben Sie hier sonstige außerplanmäßige Einnahmen oder Ausgaben ("-") in EUR an, um den EBIT zu bereinigen.
-                        </h3>
+                        </label>
                         {renderAdditionalAdjustments()}
-                    </Form.Group>
+                    </Form.Field>
 
                     <Form.Field>
                         <label className="form-label" htmlFor="erklaerungAnpassungEbit">
