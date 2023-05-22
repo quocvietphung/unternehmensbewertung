@@ -18,22 +18,26 @@ const Test = () => {
 
                 {/* Form */}
                 <Grid>
-                    <h3>
-                        Ausgezahlte Vergütung der Geschäftsführung in EUR
-                        <span className="required-mark">*</span>
-                        <Popup
-                            content="Als Bruttolohn inklusive allen Arbeitgeberkosten"
-                            position="top center"
-                            trigger={
-                                <span className="question-mark-icon" onClick={handleClick}>
-                  ?
-                </span>
-                            }
-                            open={showPopover}
-                            onOpen={handleClick}
-                            onClose={handleClick}
-                        />
-                    </h3>
+                    <Grid.Row className="mb-5">
+                        <Grid.Column>
+                            <h3>
+                                Ausgezahlte Vergütung der Geschäftsführung in EUR
+                                <span className="required-mark">*</span>
+                                <Popup
+                                    content="Als Bruttolohn inklusive allen Arbeitgeberkosten"
+                                    position="top center"
+                                    trigger={
+                                        <span className="question-mark-icon" onClick={handleClick}>
+                            ?
+                        </span>
+                                    }
+                                    open={showPopover}
+                                    onOpen={handleClick}
+                                    onClose={handleClick}
+                                />
+                            </h3>
+                        </Grid.Column>
+                    </Grid.Row>
                     <Grid.Row columns={4} className="mb-5">
                         <Grid.Column>
                             <label htmlFor="gfGehalt[0]" className="form-label">
