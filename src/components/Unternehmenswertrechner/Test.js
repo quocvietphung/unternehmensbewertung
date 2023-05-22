@@ -183,6 +183,7 @@ const Test = () => {
                         <Input className="form-text" type="text" name="erklaerungAnpassungEbit" />
                     </Form.Field>
                 </Form>
+                <p>* Diese Eingaben sind Pflichtfelder</p>
             </Grid.Column>
         </Grid>
     );
