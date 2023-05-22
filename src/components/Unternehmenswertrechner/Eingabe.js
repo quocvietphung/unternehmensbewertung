@@ -29,6 +29,19 @@ const Eingabe = () => {
         }
     };
 
+    const handleZuruckClick = () => {
+        const currentIndex = sections.finishedSections.findIndex((section) => section === sections.activeSection);
+        const previousIndex = currentIndex - 1;
+
+        if (previousIndex >= 0) {
+            const previousSection = sections.finishedSections[previousIndex];
+            setSections({
+                ...sections,
+                activeSection: previousSection,
+            });
+        }
+    };
+
     const handleWeiterClick = (info) => {
         // Save basis info when Weiter is clicked
         setBasisInfo(info);
@@ -56,9 +69,18 @@ const Eingabe = () => {
             <ProgressSection setActiveSection={updateActiveSection} activeSection={sections.activeSection} finishedSections={sections.finishedSections}/>
             <div className="unternehmenswertrechner-container">
                 {sections.activeSection === 'basis' ?
-                    <BasisInfo sectionName="basis" onWeiterClick={handleWeiterClick} className="shared-section" basisInfo={basisInfo} />
+                    <BasisInfo
+                        sectionName="basis"
+                        onWeiterClick={handleWeiterClick}
+                        className="shared-section"
+                        basisInfo={basisInfo}
+                    />
                     :
-                    <Kennzahlen sectionName="kennzahlen" className="shared-section" />
+                    <Kennzahlen
+                        sectionName="kennzahlen"
+                        onZuruckClick={handleZuruckClick}
+                        className="shared-section"
+                    />
                 }
             </div>
         </div>

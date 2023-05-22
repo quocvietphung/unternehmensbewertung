@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 
-const Kennzahlen = () => {
+const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(false);
     const [umsatz2020, setUmsatz2020] = useState(25000000); // 25M as default value
     const [umsatz2021, setUmsatz2021] = useState(25000000);
@@ -267,6 +267,7 @@ const Kennzahlen = () => {
                     <p>* Diese Eingaben sind Pflichtfelder</p>
                     <Form.Field>
                         <div className="button-container">
+                            <Button onClick={props.onZuruckClick}>Zurück</Button>
                             <Button primary type="submit">
                                 Weiter
                             </Button>
