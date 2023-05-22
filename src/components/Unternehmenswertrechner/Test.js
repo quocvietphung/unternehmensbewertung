@@ -9,28 +9,28 @@ const Test = () => {
     });
 
     const handlePopupOpen = (popover) => {
-        setPopoverData({ ...popoverData, [popover]: true });
+        setPopoverData((prevState) => ({ ...prevState, [popover]: true }));
     };
 
     const handlePopupClose = (popover) => {
-        setPopoverData({ ...popoverData, [popover]: false });
+        setPopoverData((prevState) => ({ ...prevState, [popover]: false }));
     };
 
     const handleInputChange = (e) => {
-// handle input change logic here
+        // Xử lý logic khi input thay đổi ở đây
     };
 
     const renderFormFields = () => {
         const years = ['2020', '2021', '2022', '2023 (Prognose)'];
         return years.map((year, index) => (
             <Form.Field key={index}>
-                <label htmlFor={`gfGehalt[${index}]`} className="form-label">
+                <label htmlFor={`gehalt[${index}]`} className="form-label">
                     {year}
                 </label>
                 <Input
                     type="text"
                     className="form-text input-number ebit-clean-calc"
-                    name={`gfGehalt[${index}]`}
+                    name={`gehalt[${index}]`}
                     required
                     pattern="\d*"
                     data-gtm-form-interact-field-id={index + 12}
@@ -79,8 +79,8 @@ const Test = () => {
                                         className="question-mark-icon"
                                         onClick={() => handlePopupOpen('showPopover1')}
                                     >
-?
-</span>
+                    ?
+                  </span>
                                 }
                                 open={popoverData.showPopover1}
                                 onOpen={() => handlePopupOpen('showPopover1')}
@@ -89,6 +89,7 @@ const Test = () => {
                         </h3>
                         {renderFormFields()}
                     </Form.Field>
+
                     <Form.Field>
                         <h3>
                             Branchenübliche Vergütung einer angestellten Geschäftsführung in EUR
@@ -101,21 +102,21 @@ const Test = () => {
                                         className="question-mark-icon"
                                         onClick={() => handlePopupOpen('showPopover2')}
                                     >
-                ?
-              </span>
+                    ?
+                  </span>
                                 }
                                 open={popoverData.showPopover2}
                                 onOpen={() => handlePopupOpen('showPopover2')}
                                 onClose={() => handlePopupClose('showPopover2')}
                             />
                         </h3>
-                        <label htmlFor="typischGfGehalt" className="form-label">
+                        <label htmlFor="typischGehalt" className="form-label">
                             Branchenübliche Vergütung
                         </label>
                         <Input
                             type="text"
                             className="form-text input-number ebit-clean-calc"
-                            name="typischGfGehalt"
+                            name="typischGehalt"
                             required
                             pattern="\d*"
                             data-gtm-form-interact-field-id={16}
@@ -184,4 +185,3 @@ const Test = () => {
 };
 
 export default Test;
-
