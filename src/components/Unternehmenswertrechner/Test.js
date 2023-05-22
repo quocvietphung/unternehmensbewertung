@@ -18,7 +18,7 @@ const Test = () => {
 
                 {/* Form */}
                 <Grid>
-                    <Grid.Row className="mb-5">
+                    <Grid.Row>
                         <Grid.Column>
                             <h3>
                                 Ausgezahlte Vergütung der Geschäftsführung in EUR
@@ -38,7 +38,7 @@ const Test = () => {
                             </h3>
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row columns={4} className="mb-5">
+                    <Grid.Row columns={4}>
                         <Grid.Column>
                             <label htmlFor="gfGehalt[0]" className="form-label">
                                 2020
@@ -109,7 +109,7 @@ const Test = () => {
                         </Grid.Column>
                     </Grid.Row>
 
-                    <Grid.Row columns={1} className="mb-5">
+                    <Grid.Row columns={1}>
                         <Grid.Column>
                             <h3>
                                 Branchenübliche Vergütung einer angestellten Geschäftsführung in EUR
@@ -145,7 +145,7 @@ const Test = () => {
                         </Grid.Column>
                     </Grid.Row>
 
-                    <Grid.Row columns={1} className="mb-5">
+                    <Grid.Row columns={1}>
                         <Grid.Column>
                             <h3>
                                 Sonstige Bereinigungen des EBITs<span className="required-mark">*</span>
@@ -179,7 +179,7 @@ const Test = () => {
                         Bitte geben Sie hier sonstige außerplanmäßige Einnahmen oder Ausgaben ("-") in EUR an, um den EBIT zu
                         bereinigen.
                     </h3>
-                    <Grid.Row columns={4} className="mb-1">
+                    <Grid.Row columns={4}>
                         <Grid.Column>
                             <label htmlFor="anpassungEbit[0]" className="form-label">
                                 Anpassung 2020
@@ -206,7 +206,7 @@ const Test = () => {
                         </Grid.Column>
                     </Grid.Row>
 
-                    <Grid.Row columns={1} className="mb-1">
+                    <Grid.Row columns={1}>
                         <Grid.Column>
                             <label className="form-label" htmlFor="erklaerungAnpassungEbit">
                                 Fassen Sie die oben gemachten Anpassungen kurz in eigenen Worten zusammen. Dies erscheint als Notiz auf dem Firmenwert-Report.
