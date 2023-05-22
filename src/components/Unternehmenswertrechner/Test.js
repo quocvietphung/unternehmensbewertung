@@ -3,23 +3,62 @@ import { Grid, Header, Form, Input, Popup, Divider } from 'semantic-ui-react';
 import './Test.scss';
 
 const Test = () => {
-    const [showPopover1, setShowPopover1] = useState(false);
-    const [showPopover2, setShowPopover2] = useState(false);
+    const [popoverData, setPopoverData] = useState({
+        showPopover1: false,
+        showPopover2: false,
+    });
 
-    const handlePopupOpen1 = () => {
-        setShowPopover1(true);
+    const handlePopupOpen = (popover) => {
+        setPopoverData({ ...popoverData, [popover]: true });
     };
 
-    const handlePopupClose1 = () => {
-        setShowPopover1(false);
+    const handlePopupClose = (popover) => {
+        setPopoverData({ ...popoverData, [popover]: false });
     };
 
-    const handlePopupOpen2 = () => {
-        setShowPopover2(true);
+    const handleInputChange = (e) => {
+// handle input change logic here
     };
 
-    const handlePopupClose2 = () => {
-        setShowPopover2(false);
+    const renderFormFields = () => {
+        const years = ['2020', '2021', '2022', '2023 (Prognose)'];
+        return years.map((year, index) => (
+            <Form.Field key={index}>
+                <label htmlFor={`gfGehalt[${index}]`} className="form-label">
+                    {year}
+                </label>
+                <Input
+                    type="text"
+                    className="form-text input-number ebit-clean-calc"
+                    name={`gfGehalt[${index}]`}
+                    required
+                    pattern="\d*"
+                    data-gtm-form-interact-field-id={index + 12}
+                    onChange={handleInputChange}
+                />
+                <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
+                    Keine negativen Eingaben erlaubt.
+                </div>
+                <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
+            </Form.Field>
+        ));
+    };
+
+    const renderAdditionalAdjustments = () => {
+        const years = ['2020', '2021', '2022', '2023 (Prognose)'];
+        return years.map((year, index) => (
+            <Form.Field key={index}>
+                <label htmlFor={`anpassungEbit[${index}]`} className="form-label">
+                    Anpassung {year}
+                </label>
+                <Input
+                    type="text"
+                    className="form-text input-number not-required negative ebit-clean-calc"
+                    name={`anpassungEbit[${index}]`}
+                    onChange={handleInputChange}
+                />
+            </Form.Field>
+        ));
     };
 
     return (
@@ -36,83 +75,20 @@ const Test = () => {
                                 content="Als Bruttolohn inklusive allen Arbeitgeberkosten"
                                 position="top center"
                                 trigger={
-                                    <span className="question-mark-icon" onClick={handlePopupOpen1}>
-                    ?
-                  </span>
+                                    <span
+                                        className="question-mark-icon"
+                                        onClick={() => handlePopupOpen('showPopover1')}
+                                    >
+?
+</span>
                                 }
-                                open={showPopover1}
-                                onOpen={handlePopupOpen1}
-                                onClose={handlePopupClose1}
+                                open={popoverData.showPopover1}
+                                onOpen={() => handlePopupOpen('showPopover1')}
+                                onClose={() => handlePopupClose('showPopover1')}
                             />
                         </h3>
-                        <label htmlFor="gfGehalt[0]" className="form-label">
-                            2020
-                        </label>
-                        <Input
-                            type="text"
-                            className="form-text input-number ebit-clean-calc"
-                            name="gfGehalt[0]"
-                            required
-                            pattern="\d*"
-                            data-gtm-form-interact-field-id="12"
-                        />
-                        <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                            Keine negativen Eingaben erlaubt.
-                        </div>
-                        <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
+                        {renderFormFields()}
                     </Form.Field>
-                    <Form.Field>
-                        <label htmlFor="gfGehalt[1]" className="form-label">
-                            2021
-                        </label>
-                        <Input
-                            type="text"
-                            className="form-text input-number ebit-clean-calc"
-                            name="gfGehalt[1]"
-                            required
-                            pattern="\d*"
-                            data-gtm-form-interact-field-id="13"
-                        />
-                        <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                            Keine negativen Eingaben erlaubt.
-                        </div>
-                        <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
-                    </Form.Field>
-                    <Form.Field>
-                        <label htmlFor="gfGehalt[2]" className="form-label">
-                            2022
-                        </label>
-                        <Input
-                            type="text"
-                            className="form-text input-number ebit-clean-calc"
-                            name="gfGehalt[2]"
-                            required
-                            pattern="\d*"
-                            data-gtm-form-interact-field-id="14"
-                        />
-                        <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                            Keine negativen Eingaben erlaubt.
-                        </div>
-                        <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
-                    </Form.Field>
-                    <Form.Field>
-                        <label htmlFor="gfGehalt[3]" className="form-label">
-                            2023 (Prognose)
-                        </label>
-                        <Input
-                            type="text"
-                            className="form-text input-number ebit-clean-calc"
-                            name="gfGehalt[3]"
-                            pattern="\d*"
-                            required
-                            data-gtm-form-interact-field-id="15"
-                        />
-                        <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                            Keine negativen Eingaben erlaubt.
-                        </div>
-                        <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
-                    </Form.Field>
-
                     <Form.Field>
                         <h3>
                             Branchenübliche Vergütung einer angestellten Geschäftsführung in EUR
@@ -121,13 +97,16 @@ const Test = () => {
                                 content="Falls man einen (neuen) externen Geschäftsführer zu Marktbedingungen einstellen müsste, wie hoch wären dafür die gesamten Personalkosten pro Jahr etwa (Bruttolohn inklusive allen Arbeitgeberkosten)?"
                                 position="top center"
                                 trigger={
-                                    <span className="question-mark-icon" onClick={handlePopupOpen2}>
-                    ?
-                  </span>
+                                    <span
+                                        className="question-mark-icon"
+                                        onClick={() => handlePopupOpen('showPopover2')}
+                                    >
+                ?
+              </span>
                                 }
-                                open={showPopover2}
-                                onOpen={handlePopupOpen2}
-                                onClose={handlePopupClose2}
+                                open={popoverData.showPopover2}
+                                onOpen={() => handlePopupOpen('showPopover2')}
+                                onClose={() => handlePopupClose('showPopover2')}
                             />
                         </h3>
                         <label htmlFor="typischGfGehalt" className="form-label">
@@ -139,7 +118,8 @@ const Test = () => {
                             name="typischGfGehalt"
                             required
                             pattern="\d*"
-                            data-gtm-form-interact-field-id="16"
+                            data-gtm-form-interact-field-id={16}
+                            onChange={handleInputChange}
                         />
                         <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
                             Keine negativen Eingaben erlaubt.
@@ -188,46 +168,7 @@ const Test = () => {
                         <h3>
                             Bitte geben Sie hier sonstige außerplanmäßige Einnahmen oder Ausgaben ("-") in EUR an, um den EBIT zu bereinigen.
                         </h3>
-                        <Form.Field>
-                            <label htmlFor="anpassungEbit[0]" className="form-label">
-                                Anpassung 2020
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-text input-number not-required negative ebit-clean-calc"
-                                name="anpassungEbit[0]"
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <label htmlFor="anpassungEbit[1]" className="form-label">
-                                Anpassung 2021
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-text input-number not-required negative ebit-clean-calc"
-                                name="anpassungEbit[1]"
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <label htmlFor="anpassungEbit[2]" className="form-label">
-                                Anpassung 2022
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-text input-number not-required negative ebit-clean-calc"
-                                name="anpassungEbit[2]"
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <label htmlFor="anpassungEbit[3]" className="form-label">
-                                Anpassung 2023 (Prognose)
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-text input-number not-required negative ebit-clean-calc"
-                                name="anpassungEbit[3]"
-                            />
-                        </Form.Field>
+                        {renderAdditionalAdjustments()}
                     </Form.Group>
 
                     <Form.Field>
@@ -243,3 +184,4 @@ const Test = () => {
 };
 
 export default Test;
+
