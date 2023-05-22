@@ -192,7 +192,7 @@ const Test = () => {
                             <label htmlFor="anpassungEbit[0]" className="form-label">
                                 Anpassung 2020
                             </label>
-                            <Form.Input
+                            <Input
                                 type="text"
                                 className="form-text input-number not-required negative ebit-clean-calc"
                                 name="anpassungEbit[0]"
@@ -202,7 +202,7 @@ const Test = () => {
                             <label htmlFor="anpassungEbit[1]" className="form-label">
                                 Anpassung 2021
                             </label>
-                            <Form.Input
+                            <Input
                                 type="text"
                                 className="form-text input-number not-required negative ebit-clean-calc"
                                 name="anpassungEbit[1]"
@@ -212,7 +212,7 @@ const Test = () => {
                             <label htmlFor="anpassungEbit[2]" className="form-label">
                                 Anpassung 2022
                             </label>
-                            <Form.Input
+                            <Input
                                 type="text"
                                 className="form-text input-number not-required negative ebit-clean-calc"
                                 name="anpassungEbit[2]"
@@ -222,7 +222,7 @@ const Test = () => {
                             <label htmlFor="anpassungEbit[3]" className="form-label">
                                 Anpassung 2023 (Prognose)
                             </label>
-                            <Form.Input
+                            <Input
                                 type="text"
                                 className="form-text input-number not-required negative ebit-clean-calc"
                                 name="anpassungEbit[3]"
@@ -234,7 +234,7 @@ const Test = () => {
                         <label className="form-label" htmlFor="erklaerungAnpassungEbit">
                             Fassen Sie die oben gemachten Anpassungen kurz in eigenen Worten zusammen. Dies erscheint als Notiz auf dem Firmenwert-Report.
                         </label>
-                        <Form.Input className="form-text" type="text" name="erklaerungAnpassungEbit" />
+                        <Input className="form-text" type="text" name="erklaerungAnpassungEbit" />
                     </Form.Field>
                 </Form>
             </Grid.Column>
