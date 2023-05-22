@@ -9,7 +9,8 @@ const Eingabe = () => {
     const [sections, setSections] = useState({
         activeSection: 'basis',
         finishedSections: [],
-        sectionOrder: ['basis', 'kennzahlen']
+        sectionOrder: ['basis', 'kennzahlen'],
+        weiterClicked: false  // Thêm state mới để theo dõi đã nhấn Weiter hay chưa
     });
 
     // Add a new state to hold BasisInfo
@@ -22,7 +23,6 @@ const Eingabe = () => {
         if (currentIndex >= 0 && targetIndex >= 0 && currentIndex < targetIndex) {
             setSections({
                 ...sections,
-                finishedSections: [...sections.finishedSections, sections.activeSection],
                 activeSection: section
             });
         } else {
@@ -56,11 +56,18 @@ const Eingabe = () => {
         // Save basis info when Weiter is clicked
         setBasisInfo(info);
 
-        setSections(prevSections => ({
-            ...prevSections,
-            finishedSections: [...prevSections.finishedSections, prevSections.activeSection],
-            activeSection: 'kennzahlen'
-        }));
+        if (!sections.finishedSections.includes(sections.activeSection)) {
+            setSections(activeSections => ({
+                ...activeSections,
+                finishedSections: [...activeSections.finishedSections, activeSections.activeSection],
+                activeSection: 'kennzahlen'
+            }));
+        } else {
+            setSections(activeSections => ({
+                ...activeSections,
+                activeSection: 'kennzahlen'
+            }));
+        }
     };
 
     return (
