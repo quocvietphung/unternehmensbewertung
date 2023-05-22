@@ -8,14 +8,18 @@ import { Header } from 'semantic-ui-react';
 const Eingabe = () => {
     const [sections, setSections] = useState({
         activeSection: 'basis',
-        finishedSections: []
+        finishedSections: [],
+        sectionOrder: ['basis', 'kennzahlen']
     });
 
     // Add a new state to hold BasisInfo
     const [basisInfo, setBasisInfo] = useState({});
 
     const updateActiveSection = (section) => {
-        if (!sections.finishedSections.includes(sections.activeSection)) {
+        const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
+        const targetIndex = sections.sectionOrder.findIndex((s) => s === section);
+
+        if (currentIndex >= 0 && targetIndex >= 0 && currentIndex < targetIndex) {
             setSections({
                 ...sections,
                 finishedSections: [...sections.finishedSections, sections.activeSection],
@@ -27,19 +31,25 @@ const Eingabe = () => {
                 activeSection: section
             });
         }
+
+        console.log('Active Section:', section);
+        console.log('Finished Sections:', sections.finishedSections);
     };
 
     const handleZuruckClick = () => {
-        const currentIndex = sections.finishedSections.findIndex((section) => section === sections.activeSection);
+        const currentIndex = sections.sectionOrder.findIndex((section) => section === sections.activeSection);
         const previousIndex = currentIndex - 1;
 
         if (previousIndex >= 0) {
-            const previousSection = sections.finishedSections[previousIndex];
+            const previousSection = sections.sectionOrder[previousIndex];
+            console.log('Previous Section:', previousSection);
+
             setSections({
                 ...sections,
                 activeSection: previousSection,
             });
         }
+        console.log('Finished Sections:', sections.finishedSections);
     };
 
     const handleWeiterClick = (info) => {
