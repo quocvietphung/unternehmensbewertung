@@ -246,7 +246,7 @@ const Kennzahlen = () => {
                             <Segment textAlign="center">eher typisch</Segment>
                             <Segment textAlign="center">typisch</Segment>
                         </Segment.Group>
-                        {["Gewinn 2020", "Gewinn 2021", "Gewinn 2022", "Prognose 2023"].map((label, index) => (
+                        {["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []).map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
                                 <Segment>{label}</Segment>
                                 {Array.from({ length: 5 }, (_, i) => (
