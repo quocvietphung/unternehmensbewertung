@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Grid, Header, Form, Input, Popup, Divider, Icon, Segment, Label } from 'semantic-ui-react';
+import {Grid, Header, Form, Input, Popup, Divider, Icon, Segment, Label, Button} from 'semantic-ui-react';
 
-const Bereinigung = () => {
+const Bereinigung = (props) => {
     const [popoverData, setPopoverData] = useState({
         showPopover1: false,
         showPopover2: false,
@@ -24,6 +24,10 @@ const Bereinigung = () => {
             <Icon name="question circle" />
         </span>
     );
+
+    const handleWeiterClick = () => {
+        return;
+    };
 
     const renderFormFields = () => {
         const years = ['2020', '2021', '2022', '2023 (Prognose)'];
@@ -196,6 +200,14 @@ const Bereinigung = () => {
                             </Form.Field>
                         </Segment>
                         <p>* Diese Eingaben sind Pflichtfelder</p>
+                        <Form.Field>
+                            <div className="button-container">
+                                <Button onClick={props.onZuruckClick}>Zurück</Button>
+                                <Button primary type="submit" onClick={handleWeiterClick}>
+                                    Weiter
+                                </Button>
+                            </div>
+                        </Form.Field>
                     </Form>
             </Grid.Column>
         </Grid>
