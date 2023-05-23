@@ -13,7 +13,7 @@ const Kennzahlen = (props) => {
     const [ebitPrognose2023, setEbitPrognose2023] = useState(props.kennzahlenInfo?.ebitPrognose2023 || 5000000);
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnTypisch = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
-    const [values, setValues] = useState(Array(gewinnTypisch.length).fill(1));
+    const [values, setValues] = useState(Array(gewinnTypisch.length).fill(''));
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
