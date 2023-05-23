@@ -12,8 +12,11 @@ const Kennzahlen = (props) => {
     const [ebit2022, setEbit2022] = useState(props.kennzahlenInfo?.ebit2022 || 5000000);
     const [ebitPrognose2023, setEbitPrognose2023] = useState(props.kennzahlenInfo?.ebitPrognose2023 || 5000000);
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
-    const gewinnTypisch = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
-    const [values, setValues] = useState(Array(gewinnTypisch.length).fill(''));
+    const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
+    const [gewinn2020, setGewinn2020] = useState(props.kennzahlenInfo?.gewinn2020 || '');
+    const [gewinn2021, setGewinn2021] = useState(props.kennzahlenInfo?.gewinn2021 || '');
+    const [gewinn2022, setGewinn2022] = useState(props.kennzahlenInfo?.gewinn2022 || '');
+    const [gewinnPrognose2023, setGewinnPrognose2023] = useState(checked ? (props.kennzahlenInfo?.gewinnPrognose2023 || '') : '');
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
@@ -30,16 +33,9 @@ const Kennzahlen = (props) => {
             ebit2021,
             ebit2022,
             ebitPrognose2023,
-            gewinnTypisch
         };
 
         props.onWeiterClick(kennzahlenInfo);
-    };
-
-    const handleRadioChange = (index, value) => {
-        const newValues = [...values];
-        newValues[index] = value;
-        setValues(newValues);
     };
 
     return (
@@ -270,18 +266,16 @@ const Kennzahlen = (props) => {
                                 <Segment key={index} textAlign="center">{option}</Segment>
                             ))}
                         </Segment.Group>
-                        {gewinnTypisch.map((label, index) => (
+                        {gewinnYears.map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
                                 <Segment>{label}</Segment>
-                                {Array.from({ length: 5 }, (_, i) => (
+                                {Array(5).fill().map((_, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
                                                 className="form-check-input"
-                                                name={`gewinnTypisch[${index}]`}
-                                                value={i + 1}
-                                                checked={values[index] === i + 1}
-                                                onChange={() => handleRadioChange(index, i + 1)}
+                                                name={`gewinnYears[${index}]`}
+                                                value
                                                 required
                                             />
                                         </Form.Field>
