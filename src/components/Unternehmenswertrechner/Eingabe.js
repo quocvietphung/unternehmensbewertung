@@ -54,11 +54,14 @@ const Eingabe = () => {
     };
 
     const handleWeiterClick = (info) => {
+        console.log('Received info:', info);
         // Save basis info when Weiter is clicked
         if (sections.activeSection === 'basis') {
             setBasisInfo(info);
+            console.log('BasisInfo updated:', info);
         } else if (sections.activeSection === 'kennzahlen') {
             setKennzahlenInfo(info);
+            console.log('KennzahlenInfo updated:', info);
         }
 
         const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
