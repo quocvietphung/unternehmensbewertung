@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import BasisInfo from './BasisInfo';
 import ProgressSection from './ProgressSection';
-import './Unternehmenswertrechner.scss';
+import BasisInfo from './BasisInfo';
 import Kennzahlen from './Kennzahlen';
+import Bereinigung from './Bereinigung';
 import { Header } from 'semantic-ui-react';
+import './Unternehmenswertrechner.scss';
 
 const Eingabe = () => {
     const [sections, setSections] = useState({
@@ -56,16 +57,16 @@ const Eingabe = () => {
         // Save basis info when Weiter is clicked
         setBasisInfo(info);
 
-        if (!sections.finishedSections.includes(sections.activeSection)) {
+        const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
+        const nextIndex = currentIndex + 1;
+
+        if (nextIndex < sections.sectionOrder.length) {
+            const nextSection = sections.sectionOrder[nextIndex];
+
             setSections(activeSections => ({
                 ...activeSections,
                 finishedSections: [...activeSections.finishedSections, activeSections.activeSection],
-                activeSection: 'kennzahlen'
-            }));
-        } else {
-            setSections(activeSections => ({
-                ...activeSections,
-                activeSection: 'kennzahlen'
+                activeSection: nextSection
             }));
         }
     };
@@ -93,11 +94,17 @@ const Eingabe = () => {
                         basisInfo={basisInfo}
                     />
                     :
-                    <Kennzahlen
-                        sectionName="kennzahlen"
-                        onZuruckClick={handleZuruckClick}
-                        className="shared-section"
-                    />
+                    sections.activeSection === 'kennzahlen' ?
+                        <Kennzahlen
+                            sectionName="kennzahlen"
+                            onZuruckClick={handleZuruckClick}
+                            onWeiterClick={handleWeiterClick}
+                            className="shared-section"
+                        />
+                        :
+                        <Bereinigung
+                            sectionName="bereinigung"
+                        />
                 }
             </div>
         </div>
