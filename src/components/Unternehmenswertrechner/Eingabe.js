@@ -10,8 +10,7 @@ const Eingabe = () => {
     const [sections, setSections] = useState({
         activeSection: 'basis',
         finishedSections: [],
-        sectionOrder: ['basis', 'kennzahlen'],
-        weiterClicked: false  // Thêm state mới để theo dõi đã nhấn Weiter hay chưa
+        sectionOrder: ['basis', 'kennzahlen', 'bereinigung'],
     });
 
     // Add a new state to hold BasisInfo
