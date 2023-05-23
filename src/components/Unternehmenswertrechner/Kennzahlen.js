@@ -13,14 +13,19 @@ const Kennzahlen = (props) => {
     const [ebitPrognose2023, setEbitPrognose2023] = useState(props.kennzahlenInfo?.ebitPrognose2023 || 5000000);
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
-    const [gewinn2020, setGewinn2020] = useState(props.kennzahlenInfo?.gewinn2020 || '');
-    const [gewinn2021, setGewinn2021] = useState(props.kennzahlenInfo?.gewinn2021 || '');
-    const [gewinn2022, setGewinn2022] = useState(props.kennzahlenInfo?.gewinn2022 || '');
-    const [gewinnPrognose2023, setGewinnPrognose2023] = useState(checked ? (props.kennzahlenInfo?.gewinnPrognose2023 || '') : '');
+    const [selectedOptions, setSelectedOptions] = useState(() => props.kennzahlenInfo?.selectedOptions || Array(gewinnYears.length).fill(''));
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
     };
+
+    const handleOptionChange = (index, value) => {
+        setSelectedOptions(prevOptions => {
+            const newOptions = [...prevOptions];
+            newOptions[index] = value;
+            return newOptions;
+        });
+    }
 
     const handleWeiterClick = () => {
         const kennzahlenInfo = {
@@ -33,6 +38,7 @@ const Kennzahlen = (props) => {
             ebit2021,
             ebit2022,
             ebitPrognose2023,
+            selectedOptions,  // add selectedOptions here
         };
 
         props.onWeiterClick(kennzahlenInfo);
@@ -269,13 +275,15 @@ const Kennzahlen = (props) => {
                         {gewinnYears.map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
                                 <Segment>{label}</Segment>
-                                {Array(5).fill().map((_, i) => (
+                                {options.map((option, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
-                                                value
+                                                value={option}
+                                                checked={selectedOptions[index] === option}
+                                                onChange={() => handleOptionChange(index, option)}
                                                 required
                                             />
                                         </Form.Field>
