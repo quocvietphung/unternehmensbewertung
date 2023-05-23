@@ -11,6 +11,9 @@ const Kennzahlen = (props) => {
     const [ebit2021, setEbit2021] = useState(props.kennzahlenInfo?.ebit2021 || 5000000);
     const [ebit2022, setEbit2022] = useState(props.kennzahlenInfo?.ebit2022 || 5000000);
     const [ebitPrognose2023, setEbitPrognose2023] = useState(props.kennzahlenInfo?.ebitPrognose2023 || 5000000);
+    const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
+    const gewinnTypisch = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
+    const [values, setValues] = useState(Array(gewinnTypisch.length).fill(1));
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
@@ -27,9 +30,16 @@ const Kennzahlen = (props) => {
             ebit2021,
             ebit2022,
             ebitPrognose2023,
+            gewinnTypisch
         };
 
         props.onWeiterClick(kennzahlenInfo);
+    };
+
+    const handleRadioChange = (index, value) => {
+        const newValues = [...values];
+        newValues[index] = value;
+        setValues(newValues);
     };
 
     return (
@@ -256,22 +266,23 @@ const Kennzahlen = (props) => {
                     <Segment>
                         <Segment.Group horizontal className="segment-group">
                             <Segment></Segment>
-                            <Segment textAlign="center">ganz untypisch</Segment>
-                            <Segment textAlign="center">eher untypisch</Segment>
-                            <Segment textAlign="center">nur teilweise typisch</Segment>
-                            <Segment textAlign="center">eher typisch</Segment>
-                            <Segment textAlign="center">typisch</Segment>
+                            {options.map((option, index) => (
+                                <Segment key={index} textAlign="center">{option}</Segment>
+                            ))}
                         </Segment.Group>
-                        {["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []).map((label, index) => (
+                        {gewinnTypisch.map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
                                 <Segment>{label}</Segment>
-                                {Array.from({ length: 5 }, (_, i) => (
+                                <Segment textAlign="center"></Segment>
+                                {options.map((option, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
                                                 className="form-check-input"
                                                 name={`gewinnTypisch[${index}]`}
                                                 value={i + 1}
+                                                checked={values[index] === i + 1}
+                                                onChange={() => handleRadioChange(index, i + 1)}
                                                 required
                                             />
                                         </Form.Field>
