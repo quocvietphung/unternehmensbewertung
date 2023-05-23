@@ -98,32 +98,31 @@ const Eingabe = () => {
 
             <ProgressSection setActiveSection={updateActiveSection} activeSection={sections.activeSection} finishedSections={sections.finishedSections}/>
             <div className="unternehmenswertrechner-container">
-                {sections.activeSection === 'basis' ?
+                {sections.activeSection === 'basis' ? (
                     <BasisInfo
                         sectionName="basis"
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
                         basisInfo={basisInfo}
                     />
-                    :
-                    sections.activeSection === 'kennzahlen' ?
-                        <Kennzahlen
-                            sectionName="kennzahlen"
-                            onZuruckClick={handleZuruckClick}
-                            onWeiterClick={handleWeiterClick}
-                            className="shared-section"
-                            basisInfo={basisInfo}
-                            kennzahlenInfo={kennzahlenInfo}
-                        />
-                        :
-                        <Bereinigung
-                            sectionName="bereinigung"
-                            onZuruckClick={handleZuruckClick}
-                            className="shared-section"
-                            basisInfo={basisInfo}
-                            kennzahlenInfo={kennzahlenInfo}
-                        />
-                }
+                ) : sections.activeSection === 'kennzahlen' ? (
+                    <Kennzahlen
+                        sectionName="kennzahlen"
+                        onZuruckClick={handleZuruckClick}
+                        onWeiterClick={handleWeiterClick}
+                        className="shared-section"
+                        basisInfo={basisInfo}
+                        kennzahlenInfo={kennzahlenInfo}
+                    />
+                ) : sections.activeSection === 'bereinigung' ? (
+                    <Bereinigung
+                        sectionName="bereinigung"
+                        onZuruckClick={handleZuruckClick}
+                        className="shared-section"
+                        basisInfo={basisInfo}
+                        kennzahlenInfo={kennzahlenInfo}
+                    />
+                ) : null}
             </div>
         </div>
     );
