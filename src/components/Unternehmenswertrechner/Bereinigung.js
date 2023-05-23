@@ -195,9 +195,7 @@ const Bereinigung = () => {
                                 {renderAdditionalAdjustments()}
                             </Form.Field>
                         </Segment>
-                        <Form.Field>
-                            <p>* Diese Eingaben sind Pflichtfelder</p>
-                        </Form.Field>
+                        <p>* Diese Eingaben sind Pflichtfelder</p>
                     </Form>
             </Grid.Column>
         </Grid>
