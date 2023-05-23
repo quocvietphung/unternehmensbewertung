@@ -62,11 +62,16 @@ const Eingabe = () => {
         if (nextIndex < sections.sectionOrder.length) {
             const nextSection = sections.sectionOrder[nextIndex];
 
-            setSections(activeSections => ({
-                ...activeSections,
-                finishedSections: [...activeSections.finishedSections, activeSections.activeSection],
-                activeSection: nextSection
-            }));
+            setSections(activeSections => {
+                const finishedSections = activeSections.finishedSections.includes(activeSections.activeSection)
+                    ? activeSections.finishedSections
+                    : [...activeSections.finishedSections, activeSections.activeSection];
+                return {
+                    ...activeSections,
+                    finishedSections: finishedSections,
+                    activeSection: nextSection
+                }
+            });
         }
     };
 
