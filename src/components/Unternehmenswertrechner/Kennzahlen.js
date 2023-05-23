@@ -273,8 +273,7 @@ const Kennzahlen = (props) => {
                         {gewinnTypisch.map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
                                 <Segment>{label}</Segment>
-                                <Segment textAlign="center"></Segment>
-                                {options.map((option, i) => (
+                                {Array.from({ length: 5 }, (_, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
