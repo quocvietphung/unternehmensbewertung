@@ -1,13 +1,11 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import {Container} from 'semantic-ui-react';
 import Home from '../Home/Home';
 import Unternehmenswertrechner from '../Unternehmenswertrechner/Unternehmenswertrechner';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import Kennzahlen from "../Unternehmenswertrechner/Kennzahlen";
+import Test from "../../test/Test";
 import './App.scss';
-import Eingabe from "../Unternehmenswertrechner/Eingabe";
 
 const App = () => {
     return (
@@ -17,7 +15,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/unternehmenswert-berechnen" element={<Unternehmenswertrechner/>}/>
-                    <Route path="/test" element={<Kennzahlen/>}/>
+                    <Route path="/test" element={<Test/>}/>
                 </Routes>
                 <Footer/>
             </div>

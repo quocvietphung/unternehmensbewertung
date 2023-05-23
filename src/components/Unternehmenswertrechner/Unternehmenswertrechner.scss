@@ -42,7 +42,7 @@ $margin-large: 2em;
       margin: 40px 40px !important;
       text-align: center;
       padding: 20px;
-      background-color: #FFF;
+      background-color: #fff;
       border-radius: 30px;
       box-sizing: border-box;
       overflow: auto;
@@ -70,6 +70,7 @@ $margin-large: 2em;
 
         .default,
         .input-error {
+          font-size: 1.5rem;
           flex: 1;
           margin-right: 10px;
           word-wrap: break-word;
@@ -79,11 +80,16 @@ $margin-large: 2em;
             margin-right: 0;
           }
         }
+
+        .ertragswert {
+          font-size: 3rem;
+          color: #28a745;
+        }
       }
 
       .warning {
         &.innacurate-calculation {
-          // Đặt quy tắc cho lớp innacurate-calculation ở đây
+          font-size: 1.2rem;
         }
       }
 
@@ -203,53 +209,68 @@ $margin-large: 2em;
           }
         }
 
-        .segment {
-          background-color: $color-white;
-          border-radius: 10px;
-          padding: $padding-medium;
-          margin-top: $margin-medium;
-          box-shadow: 0 2px 4px $shadow-color;
-        }
-
         &.basis-info {
           .input-container {
             @include flex-center;
+
+            .form-control {
+              text-align: center;
+              margin-right: 2.5px;
+
+              &:last-child {
+                margin-right: 0;
+              }
+            }
           }
 
-          .input-container .form-control {
-            text-align: center;
-            margin-right: 2.5px;
-          }
-
-          .input-container .form-control:last-child {
-            margin-right: 0;
+          .radio-selected {
+            border: 10px solid orange;
+            background-color: orange;
+            border-radius: 30px;
           }
         }
 
         &.kennzahlen {
-          .form-label,
-          .form-input {
-            @include flex-center;
-            margin: 0;
+          .segment {
+            background-color: $color-white;
+            border-radius: 30px;
+            padding: $padding-medium;
+            margin-top: $margin-medium;
+            box-shadow: 0 2px 4px $shadow-color;
 
-            label {
-              font-weight: bold;
-            }
+            .form-group {
+              margin-top: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
 
-            input[type="range"],
-            input[type="text"] {
-              block-size: 30px;
-              width: 100%;
-              vertical-align: middle;
-              text-align: center;
-              border: none;
-              outline: none;
-            }
+              .form-label,
+              .form-input {
+                display: flex;
+                align-items: center;
+                margin: 0;
 
-            input[type="text"] {
-              background-color: $color-input-bg;
-              border-radius: 5px;
-              padding: 4px 8px;
+                label {
+                  font-weight: bold;
+                  display: flex;
+                  align-items: center;
+                }
+
+                input[type="range"],
+                input[type="text"] {
+                  height: 30px;
+                  width: 100%;
+                  text-align: center;
+                  border: none;
+                  outline: none;
+                }
+
+                input[type="text"] {
+                  background-color: $color-input-bg;
+                  border-radius: 5px;
+                  padding: 4px 8px;
+                }
+              }
             }
           }
 
@@ -257,6 +278,73 @@ $margin-large: 2em;
             font-size: 14px;
             color: $color-text;
             margin-bottom: 8px;
+          }
+
+          .segment-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .segment {
+              flex-basis: 0;
+              flex-grow: 1;
+              text-align: center;
+            }
+          }
+        }
+
+        &.bereinigung {
+          .form-label {
+            margin-bottom: 0.75rem;
+            color: #555;
+            font-size: 0.9rem;
+          }
+
+          .required-mark {
+            color: #f00;
+            font-weight: bold;
+            margin-left: 8px;
+          }
+
+          .question-mark-icon {
+            color: #888;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: color 0.3s;
+            &:hover {
+              color: #666;
+            }
+          }
+
+          .invalid-feedback {
+            color: #f00;
+            display: none;
+            font-size: 0.8rem;
+          }
+
+          .form-text {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+            &:focus {
+              border-color: #999;
+            }
+          }
+
+          .erklaerungAnpassungEbit {
+            margin-bottom: 20px;
+          }
+
+          ul {
+            margin-bottom: 15px;
+            padding-left: 25px;
+          }
+
+          li {
+            margin-bottom: 8px;
+            color: #666;
           }
         }
       }
