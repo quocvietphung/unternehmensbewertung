@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Grid, Header, Form, Input, Popup, Divider, Icon, Segment } from 'semantic-ui-react';
-import './Test.scss';
+import { Grid, Header, Form, Input, Popup, Divider, Icon, Segment, Label } from 'semantic-ui-react';
 
-const Test = () => {
+const Bereinigung = () => {
     const [popoverData, setPopoverData] = useState({
         showPopover1: false,
         showPopover2: false,
@@ -17,13 +16,13 @@ const Test = () => {
     };
 
     const handleInputChange = (e) => {
-        // Xử lý logic khi input thay đổi ở đây
+        // Handle logic when the input changes here
     };
 
     const renderPopupTrigger = (popover) => (
         <span className="question-mark-icon" onClick={() => handlePopupOpen(popover)}>
-      <Icon name="question circle" />
-    </span>
+            <Icon name="question circle" />
+        </span>
     );
 
     const renderFormFields = () => {
@@ -73,14 +72,32 @@ const Test = () => {
                                 onChange={handleInputChange}
                             />
                         </Form.Field>
+                        <Form.Field>
+                            <label className="form-label">Bereinigtes EBIT</label>
+                            <Input
+                                type="text"
+                                className="form-text input-number not-required disabled-all"
+                                name={`bereinigungEbit[${index}]`}
+                                onChange={handleInputChange}
+                            />
+                            <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
+                                Keine negativen Eingaben erlaubt.
+                            </div>
+                        </Form.Field>
                     </Grid.Column>
                 ))}
+                <Form.Field>
+                    <label className="form-label" htmlFor="erklaerungAnpassungEbit">
+                        Fassen Sie die oben gemachten Anpassungen kurz in eigenen Worten zusammen. Dies erscheint als Notiz auf dem Firmenwert-Report.
+                    </label>
+                    <Input className="form-text erklaerungAnpassungEbit" type="text" name="erklaerungAnpassungEbit" />
+                </Form.Field>
             </Grid>
         );
     };
 
     return (
-        <Grid padded className="Test">
+        <Grid padded className="shared-section bereinigung">
             <Grid.Column>
                 <Header as="h2">3. Bereinigung des EBITs</Header>
                 <Divider />
@@ -173,25 +190,18 @@ const Test = () => {
                                 </li>
                             </ul>
 
-                            <p className="form-label" htmlFor="sonstigeEinnahmenAusgaben">
-                                Bitte geben Sie hier sonstige außerplanmäßige Einnahmen oder Ausgaben ("-") in EUR an, um den EBIT zu bereinigen.
-                            </p>
+                            <p> Bitte geben Sie hier sonstige außerplanmäßige Einnahmen oder Ausgaben ("-") in EUR an, um den EBIT zu bereinigen.</p>
 
-                            <Segment>
-                                {renderAdditionalAdjustments()}
-
-                                <label className="form-label" htmlFor="erklaerungAnpassungEbit">
-                                    Fassen Sie die oben gemachten Anpassungen kurz in eigenen Worten zusammen. Dies erscheint als Notiz auf dem Firmenwert-Report.
-                                </label>
-                                <Input className="form-text" type="text" name="erklaerungAnpassungEbit" />
-                            </Segment>
+                            {renderAdditionalAdjustments()}
+                        </Form.Field>
+                        <Form.Field>
+                            <p>* Diese Eingaben sind Pflichtfelder</p>
                         </Form.Field>
                     </Form>
                 </Segment>
-                <p>* Diese Eingaben sind Pflichtfelder</p>
             </Grid.Column>
         </Grid>
     );
 };
 
-export default Test;
+export default Bereinigung;
