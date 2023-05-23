@@ -1,11 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import {Container} from 'semantic-ui-react';
 import Home from '../Home/Home';
 import Unternehmenswertrechner from '../Unternehmenswertrechner/Unternehmenswertrechner';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import Test from "../Unternehmenswertrechner/Test";
+import Test from "../../test/Test";
 import './App.scss';
 
 const App = () => {
