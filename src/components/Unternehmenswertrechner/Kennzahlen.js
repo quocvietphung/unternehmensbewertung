@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 
 const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(false);
-    const [umsatz2020, setUmsatz2020] = useState(25000000); // 25M as default value
-    const [umsatz2021, setUmsatz2021] = useState(25000000);
-    const [umsatz2022, setUmsatz2022] = useState(25000000);
-    const [prognose2023, setPrognose2023] = useState(25000000);
-    const [ebit2020, setEbit2020] = useState(5000000);
-    const [ebit2021, setEbit2021] = useState(5000000);
-    const [ebit2022, setEbit2022] = useState(5000000);
-    const [ebitPrognose2023, setEbitPrognose2023] = useState(5000000);
+    const [umsatz2020, setUmsatz2020] = useState(props.kennzahlenInfo?.umsatz2020 || 25000000);
+    const [umsatz2021, setUmsatz2021] = useState(props.kennzahlenInfo?.umsatz2021 || 25000000);
+    const [umsatz2022, setUmsatz2022] = useState(props.kennzahlenInfo?.umsatz2022 || 25000000);
+    const [prognose2023, setPrognose2023] = useState(props.kennzahlenInfo?.prognose2023 || 25000000);
+    const [ebit2020, setEbit2020] = useState(props.kennzahlenInfo?.ebit2020 || 5000000);
+    const [ebit2021, setEbit2021] = useState(props.kennzahlenInfo?.ebit2021 || 5000000);
+    const [ebit2022, setEbit2022] = useState(props.kennzahlenInfo?.ebit2022 || 5000000);
+    const [ebitPrognose2023, setEbitPrognose2023] = useState(props.kennzahlenInfo?.ebitPrognose2023 || 5000000);
 
     const handleCheckboxChange = () => {
         setChecked(!checked);

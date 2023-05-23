@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { setValidity, setError } from '../../redux/reducers';
 
 const BasisInfo = (props) => {
-    const [branche, setBranche] = useState(props.basisInfo.branche || "");
-    const [lage, setLage] = useState(props.basisInfo.lage || "städtisch");
-    const [alter, setAlter] = useState(props.basisInfo.alter || 1);
+    const [branche, setBranche] = useState(props.basisInfo?.branche || "");
+    const [lage, setLage] = useState(props.basisInfo?.lage || "städtisch");
+    const [alter, setAlter] = useState(props.basisInfo?.alter || 1);
     const [isValid, setIsValid] = useState(false);
     const dispatch = useDispatch();
 
