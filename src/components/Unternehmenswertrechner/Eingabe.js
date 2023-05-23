@@ -15,6 +15,7 @@ const Eingabe = () => {
 
     // Add a new state to hold BasisInfo
     const [basisInfo, setBasisInfo] = useState({});
+    const [kennzahlenInfo, setKennzahlenInfo] = useState({});
 
     const updateActiveSection = (section) => {
         const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
@@ -54,7 +55,11 @@ const Eingabe = () => {
 
     const handleWeiterClick = (info) => {
         // Save basis info when Weiter is clicked
-        setBasisInfo(info);
+        if (sections.activeSection === 'basis') {
+            setBasisInfo(info);
+        } else if (sections.activeSection === 'kennzahlen') {
+            setKennzahlenInfo(info);
+        }
 
         const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
         const nextIndex = currentIndex + 1;
@@ -104,10 +109,16 @@ const Eingabe = () => {
                             onZuruckClick={handleZuruckClick}
                             onWeiterClick={handleWeiterClick}
                             className="shared-section"
+                            basisInfo={basisInfo}
+                            kennzahlenInfo={kennzahlenInfo}
                         />
                         :
                         <Bereinigung
                             sectionName="bereinigung"
+                            onZuruckClick={handleZuruckClick}
+                            className="shared-section"
+                            basisInfo={basisInfo}
+                            kennzahlenInfo={kennzahlenInfo}
                         />
                 }
             </div>

@@ -16,6 +16,22 @@ const Kennzahlen = (props) => {
         setChecked(!checked);
     };
 
+    const handleWeiterClick = () => {
+        const kennzahlenInfo = {
+            checked,
+            umsatz2020,
+            umsatz2021,
+            umsatz2022,
+            prognose2023,
+            ebit2020,
+            ebit2021,
+            ebit2022,
+            ebitPrognose2023,
+        };
+
+        props.onWeiterClick(kennzahlenInfo);
+    };
+
     return (
         <Grid padded className="shared-section kennzahlen">
             <Grid.Column>
@@ -268,7 +284,7 @@ const Kennzahlen = (props) => {
                     <Form.Field>
                         <div className="button-container">
                             <Button onClick={props.onZuruckClick}>Zurück</Button>
-                            <Button primary type="submit" onClick={() => props.onWeiterClick()}>
+                            <Button primary type="submit" onClick={handleWeiterClick}>
                                 Weiter
                             </Button>
                         </div>
