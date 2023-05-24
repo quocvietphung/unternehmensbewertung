@@ -292,9 +292,7 @@ const Kennzahlen = (props) => {
                             </Segment.Group>
                         ))}
                     </Segment>
-                    <p className="required-fields-hint">
-                        <span className="required">*</span>Diese Eingaben sind Pflichtfelder
-                    </p>
+
                     <Form.Field>
                         <div className="button-container">
                             <Button onClick={props.onZuruckClick}>Zurück</Button>
@@ -303,6 +301,7 @@ const Kennzahlen = (props) => {
                             </Button>
                         </div>
                     </Form.Field>
+
                 </Form>
             </Grid.Column>
         </Grid>

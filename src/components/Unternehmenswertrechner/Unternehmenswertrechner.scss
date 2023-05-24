@@ -117,12 +117,12 @@ $margin-large: 2em;
 
   .Eingabe {
     flex: 1;
-    margin: 10px 20px 10px 0;
+    margin: 10px 20px 30px 0;
     background-color: $color-background;
     padding: $padding-large;
     border-radius: 60px;
     box-shadow: 0 0 10px $shadow-color;
-    min-height: 86vh;
+    min-height: 84vh;
     min-width: 70%;
     overflow: auto;
 
@@ -179,6 +179,12 @@ $margin-large: 2em;
       }
     }
 
+    .required-fields-hint {
+      font-style: italic;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
     .unternehmenswertrechner-container {
       @include flex-center;
       flex-direction: column;
@@ -190,12 +196,6 @@ $margin-large: 2em;
         width: 100%;
         background-color: $color-background;
         border-radius: 20px;
-
-        .required-fields-hint {
-          font-style: italic;
-          margin-top: 1rem;
-          text-align: center;
-        }
 
         .segment {
           background-color: $color-white;
