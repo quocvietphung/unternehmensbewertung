@@ -191,6 +191,12 @@ $margin-large: 2em;
         background-color: $color-background;
         border-radius: 20px;
 
+        .required-fields-hint {
+          font-style: italic;
+          margin-top: 1rem;
+          text-align: center;
+        }
+
         .segment {
           background-color: $color-white;
           border-radius: 30px;

@@ -55,7 +55,9 @@ const EquityBridge = (props) => {
                         {finanzSchulden < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
                         {finanzSchulden === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
                     </Form.Field>
-                    <p>* Diese Eingaben sind Pflichtfelder</p>
+                    <p className="required-fields-hint">
+                        <span className="required">*</span>Diese Eingaben sind Pflichtfelder
+                    </p>
                     <Form.Field>
                         <div className="button-container">
                             <Button onClick={props.onZuruckClick}>Zurück</Button>

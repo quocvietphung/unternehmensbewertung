@@ -171,7 +171,9 @@ const BasisInfo = (props) => {
                             </Form.Group>
                         </Grid.Column>
                     </Grid>
-                    <p>* Diese Eingaben sind Pflichtfelder</p>
+                    <p className="required-fields-hint">
+                        <span className="required">*</span>Diese Eingaben sind Pflichtfelder
+                    </p>
                     <div className="button-container">
                         <Button type="submit" primary onClick={handleWeiterClick}>
                             Weiter

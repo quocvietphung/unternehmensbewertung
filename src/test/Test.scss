@@ -3,42 +3,41 @@
   min-height: 85vh;
   padding: 2rem;
 
-  .test-column {
-    padding: 1rem;
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
   }
 
-  .equity-bridge-header {
-    color: #333;
-    font-size: 1.5em;
+  .form-select {
+    width: 100%;
+    margin-bottom: 1rem;
   }
 
-  .liquide-mittel-header {
-    color: #333;
-    font-size: 1.2em;
-  }
-
-  .required-label {
+  .required-mark {
     color: red;
   }
 
-  .form-field {
-    margin-bottom: 1rem;
+  .required-fields-hint {
+    font-style: italic;
+    margin-top: 1rem;
+  }
+
+  .step-buttons {
+    margin-top: 2rem;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+  }
 
-    .form-label {
-      font-weight: bold;
-      margin-bottom: 0.8rem; // Reduce margin-bottom for a smaller gap
-    }
+  .step-button {
+    padding: 10px 20px;
+  }
 
-    .form-input {
-      width: 30%; // Set width to 30%
-    }
+  .prev {
+    background-color: #ccc;
+  }
 
-    .error-message {
-      color: red;
-      font-size: 0.9em;
-      margin-top: 0.5rem; // Add margin-top for a gap between input and error message
-    }
+  .next {
+    background-color: #007bff;
+    color: white;
   }
 }

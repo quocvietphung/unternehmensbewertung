@@ -18,7 +18,6 @@ const Test = () => {
                             <Form.Select
                                 className="form-select"
                                 name="kundenabhaengigkeit"
-                                required
                                 placeholder="Bitte auswählen"
                                 options={[
                                     {
@@ -36,7 +35,6 @@ const Test = () => {
                                     },
                                 ]}
                             />
-                            <Label className="invalid-feedback">Das ist ein Pflichtfeld</Label>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group>
@@ -47,7 +45,6 @@ const Test = () => {
                             <Form.Select
                                 className="form-select"
                                 name="mitarbeiterabhaengigkeit"
-                                required
                                 placeholder="Bitte auswählen"
                                 options={[
                                     {
@@ -64,7 +61,6 @@ const Test = () => {
                                     },
                                 ]}
                             />
-                            <Label className="invalid-feedback">Das ist ein Pflichtfeld</Label>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group>
@@ -75,7 +71,6 @@ const Test = () => {
                             <Form.Select
                                 className="form-select"
                                 name="lieferantenabhaengigkeit"
-                                required
                                 placeholder="Bitte auswählen"
                                 options={[
                                     {
@@ -92,7 +87,6 @@ const Test = () => {
                                     },
                                 ]}
                             />
-                            <Label className="invalid-feedback">Das ist ein Pflichtfeld</Label>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group>
@@ -103,13 +97,11 @@ const Test = () => {
                             <Form.Select
                                 className="form-select"
                                 name="produktdiversifikation"
-                                required
                                 placeholder="Bitte auswählen"
                                 options={[
                                     {
                                         value: '1.1',
-                                        text:
-                                            'Das Unternehmen ist gut diversifiziert und bietet Produkte in mehreren Kategorien / Branchen an.',
+                                        text: 'Das Unternehmen ist gut diversifiziert und bietet Produkte in mehreren Kategorien / Branchen an.',
                                     },
                                     {
                                         value: '0.7',
@@ -117,7 +109,6 @@ const Test = () => {
                                     },
                                 ]}
                             />
-                            <Label className="invalid-feedback">Das ist ein Pflichtfeld</Label>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group>
@@ -129,7 +120,6 @@ const Test = () => {
                             <Form.Select
                                 className="form-select"
                                 name="tagesgeschaeft"
-                                required
                                 placeholder="Bitte auswählen"
                                 options={[
                                     {
@@ -142,12 +132,10 @@ const Test = () => {
                                     },
                                     {
                                         value: '0.7',
-                                        text:
-                                            'Der Unternehmer hat kaum Zeit für strategische Fragen, da das Tagesgeschäft einen Großteil seiner Zeit fordert.',
+                                        text: 'Der Unternehmer hat kaum Zeit für strategische Fragen, da das Tagesgeschäft einen Großteil seiner Zeit fordert.',
                                     },
                                 ]}
                             />
-                            <Label className="invalid-feedback">Das ist ein Pflichtfeld</Label>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group>
@@ -158,7 +146,6 @@ const Test = () => {
                             <Form.Select
                                 className="form-select"
                                 name="fernbleiben"
-                                required
                                 placeholder="Bitte auswählen"
                                 options={[
                                     { value: '0.65', text: '3 Tage' },
@@ -167,7 +154,6 @@ const Test = () => {
                                     { value: '1.5', text: '3 Jahre' },
                                 ]}
                             />
-                            <Label className="invalid-feedback">Das ist ein Pflichtfeld</Label>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group>
@@ -178,18 +164,15 @@ const Test = () => {
                             <Form.Select
                                 className="form-select"
                                 name="absenz"
-                                required
                                 placeholder="Bitte auswählen"
                                 options={[
                                     {
                                         value: '1.3',
-                                        text:
-                                            'Eine unerwartete Absenz des Unternehmers von mehreren Monaten hätte keinen großen Einfluss auf das Unternehmen.',
+                                        text: 'Eine unerwartete Absenz des Unternehmers von mehreren Monaten hätte keinen großen Einfluss auf das Unternehmen.',
                                     },
                                     {
                                         value: '1',
-                                        text:
-                                            'Eine unerwartete Absenz des Unternehmers von mehreren Monaten würde zu Problemen bei unerwarteten Geschäftsvorfällen führen.',
+                                        text: 'Eine unerwartete Absenz des Unternehmers von mehreren Monaten würde zu Problemen bei unerwarteten Geschäftsvorfällen führen.',
                                     },
                                     {
                                         value: '0.7',
@@ -197,7 +180,6 @@ const Test = () => {
                                     },
                                 ]}
                             />
-                            <Label className="invalid-feedback">Das ist ein Pflichtfeld</Label>
                         </Form.Field>
                     </Form.Group>
                     <Form.Group>
@@ -208,18 +190,15 @@ const Test = () => {
                             <Form.Select
                                 className="form-select"
                                 name="kundenbeziehung"
-                                required
                                 placeholder="Bitte auswählen"
                                 options={[
                                     {
                                         value: '0.7',
-                                        text:
-                                            'Der Unternehmer kennt den Großteil der Kunden persönlich und diese erwarten, dass dieser sich persönlich um sie kümmert.',
+                                        text: 'Der Unternehmer kennt den Großteil der Kunden persönlich und diese erwarten, dass dieser sich persönlich um sie kümmert.',
                                     },
                                     {
                                         value: '1',
-                                        text:
-                                            'Der Unternehmer kennt zwar einen großen Teil der Kunden persönlich, diese erwarten aber nicht, dass dieser sich persönlich um sie kümmert.',
+                                        text: 'Der Unternehmer kennt zwar einen großen Teil der Kunden persönlich, diese erwarten aber nicht, dass dieser sich persönlich um sie kümmert.',
                                     },
                                     {
                                         value: '1.2',
@@ -227,7 +206,6 @@ const Test = () => {
                                     },
                                 ]}
                             />
-                            <Label className="invalid-feedback">Das ist ein Pflichtfeld</Label>
                         </Form.Field>
                     </Form.Group>
                     <p className="required-fields-hint">

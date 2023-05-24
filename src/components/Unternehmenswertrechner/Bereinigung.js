@@ -201,7 +201,9 @@ const Bereinigung = (props) => {
                                 {renderAdditionalAdjustments()}
                             </Form.Field>
                         </Segment>
-                        <p>* Diese Eingaben sind Pflichtfelder</p>
+                        <p className="required-fields-hint">
+                            <span className="required">*</span>Diese Eingaben sind Pflichtfelder
+                        </p>
                         <Form.Field>
                             <div className="button-container">
                                 <Button onClick={props.onZuruckClick}>Zurück</Button>
