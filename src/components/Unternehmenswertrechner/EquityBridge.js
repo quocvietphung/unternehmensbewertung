@@ -1,7 +1,18 @@
-import React from 'react';
-import { Grid, Header, Divider, Form, Input, Label, Message } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Grid, Header, Divider, Form, Input, Label } from 'semantic-ui-react';
 
 const EquityBridge = () => {
+    const [bargeldBestand, setBargeldBestand] = useState('');
+    const [finanzSchulden, setFinanzSchulden] = useState('');
+
+    const handleBargeldBestandChange = (e) => {
+        setBargeldBestand(e.target.value);
+    };
+
+    const handleFinanzSchuldenChange = (e) => {
+        setFinanzSchulden(e.target.value);
+    };
+
     return (
         <Grid padded className="shared-section equity">
             <Grid.Column>
@@ -18,14 +29,12 @@ const EquityBridge = () => {
                     <Input
                         type="number"
                         name="bargeldBestand"
+                        value={bargeldBestand}
+                        onChange={handleBargeldBestandChange}
                         required
                     />
-                    <Message negative>
-                        <Message.Header>Keine negativen Eingaben erlaubt.</Message.Header>
-                    </Message>
-                    <Message negative>
-                        <Message.Header>Das ist ein Pflichtfeld</Message.Header>
-                    </Message>
+                    {bargeldBestand < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
+                    {bargeldBestand === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
                 </Form.Field>
 
                 <Form.Field>
@@ -33,16 +42,13 @@ const EquityBridge = () => {
                     <Input
                         type="number"
                         name="finanzSchulden"
+                        value={finanzSchulden}
+                        onChange={handleFinanzSchuldenChange}
                         required
                     />
-                    <Message negative>
-                        <Message.Header>Keine negativen Eingaben erlaubt.</Message.Header>
-                    </Message>
-                    <Message negative>
-                        <Message.Header>Das ist ein Pflichtfeld</Message.Header>
-                    </Message>
+                    {finanzSchulden < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
+                    {finanzSchulden === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
                 </Form.Field>
-
             </Grid.Column>
         </Grid>
     );
