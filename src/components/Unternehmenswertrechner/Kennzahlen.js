@@ -22,7 +22,7 @@ const Kennzahlen = (props) => {
     const handleOptionChange = (index, value) => {
         setSelectedOptions(prevOptions => {
             const newOptions = [...prevOptions];
-            newOptions[index] = value;
+            newOptions[index] = { year: gewinnYears[index], value: value };
             return newOptions;
         });
     }
@@ -282,7 +282,7 @@ const Kennzahlen = (props) => {
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
                                                 value={option}
-                                                checked={selectedOptions[index] === option}
+                                                checked={selectedOptions[index]?.value === option}
                                                 onChange={() => handleOptionChange(index, option)}
                                                 required
                                             />
