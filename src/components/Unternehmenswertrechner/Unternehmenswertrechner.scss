@@ -7,6 +7,7 @@ $color-white: #fff;
 $color-input-bg: #f0f0f0;
 $color-black: black;
 $color-red: #ff0000;
+$color-gold: gold;
 $shadow-color: rgba(0, 0, 0, 0.1);
 
 // Define padding and margin variables
@@ -155,7 +156,7 @@ $margin-large: 2em;
 
         &.active {
           .nav-border {
-            background-color: $color-primary-dark; /* active color */
+            background-color: $color-gold; /* active color */
           }
         }
 
