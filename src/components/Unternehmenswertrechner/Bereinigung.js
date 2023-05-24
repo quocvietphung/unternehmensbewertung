@@ -35,24 +35,26 @@ const Bereinigung = (props) => {
             <Grid>
                 {years.map((year, index) => (
                     <Grid.Column key={index} width={4}>
-                        <Form.Field>
-                            <label htmlFor={`gehalt[${index}]`} className="form-label">
-                                {year}
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-text input-number ebit-clean-calc"
-                                name={`gehalt[${index}]`}
-                                required
-                                pattern="\d*"
-                                data-gtm-form-interact-field-id={index + 12}
-                                onChange={handleInputChange}
-                            />
-                            <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                                Keine negativen Eingaben erlaubt.
-                            </div>
-                            <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
-                        </Form.Field>
+                        <Form>
+                            <Form.Field>
+                                <label htmlFor={`gehalt[${index}]`} className="form-label">
+                                    {year}
+                                </label>
+                                <Input
+                                    type="text"
+                                    className="form-text input-number ebit-clean-calc"
+                                    name={`gehalt[${index}]`}
+                                    required
+                                    pattern="\d*"
+                                    data-gtm-form-interact-field-id={index + 12}
+                                    onChange={handleInputChange}
+                                />
+                                <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
+                                    Keine negativen Eingaben erlaubt.
+                                </div>
+                                <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
+                            </Form.Field>
+                        </Form>
                     </Grid.Column>
                 ))}
             </Grid>
