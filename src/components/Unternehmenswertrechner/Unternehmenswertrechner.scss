@@ -348,6 +348,33 @@ $margin-large: 2em;
             color: #666;
           }
         }
+
+        &.equity {
+          .required-label {
+            color: red;
+          }
+
+          .form-field {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+
+            .form-label {
+              font-weight: bold;
+              margin-bottom: 0.8rem; // Reduce margin-bottom for a smaller gap
+            }
+
+            .form-input {
+              width: 30%; // Set width to 30%
+            }
+
+            .error-message {
+              color: red;
+              font-size: 0.9em;
+              margin-top: 0.5rem; // Add margin-top for a gap between input and error message
+            }
+          }
+        }
       }
     }
   }

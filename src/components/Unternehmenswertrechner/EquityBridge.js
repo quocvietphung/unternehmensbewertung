@@ -17,34 +17,36 @@ const EquityBridge = () => {
         <Grid padded className="shared-section equity">
             <Grid.Column>
                 <Header as="h2">4. Equity Bridge</Header>
-                <Divider />
+                <Divider/>
 
                 <Header as="h3">
                     Liquide Mittel &amp; Verbindlichkeiten
-                    <Label color="red" horizontal>*</Label>
+                    <Label color="red" horizontal className="required-label">*</Label>
                 </Header>
 
-                <Form.Field>
-                    <label>Aktueller Bargeldbestand (Bankkonten und andere bargeldähnliche Guthaben)</label>
+                <Form.Field className="form-field">
+                    <label className="form-label">Aktueller Bargeldbestand (Bankkonten und andere bargeldähnliche Guthaben)</label>
                     <Input
                         type="number"
                         name="bargeldBestand"
                         value={bargeldBestand}
                         onChange={handleBargeldBestandChange}
                         required
+                        className="form-input"
                     />
                     {bargeldBestand < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
                     {bargeldBestand === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
                 </Form.Field>
 
-                <Form.Field>
-                    <label>Aktuelle Finanzschulden (ohne Hypotheken)</label>
+                <Form.Field className="form-field">
+                    <label className="form-label">Aktuelle Finanzschulden (ohne Hypotheken)</label>
                     <Input
                         type="number"
                         name="finanzSchulden"
                         value={finanzSchulden}
                         onChange={handleFinanzSchuldenChange}
                         required
+                        className="form-input"
                     />
                     {finanzSchulden < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
                     {finanzSchulden === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
