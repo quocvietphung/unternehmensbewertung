@@ -28,11 +28,11 @@
 
     .form-label {
       font-weight: bold;
-      margin-bottom: 0.5rem; // Reduce margin-bottom for a smaller gap
+      margin-bottom: 0.8rem; // Reduce margin-bottom for a smaller gap
     }
 
     .form-input {
-      border: 2px solid #ddd;
+      width: 30%; // Set width to 30%
     }
 
     .error-message {
