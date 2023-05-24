@@ -3,7 +3,7 @@ import { Grid, Header, Divider, Form, Input, Label, Message } from 'semantic-ui-
 
 const EquityBridge = () => {
     return (
-        <Grid padded className="shared-section kennzahlen">
+        <Grid padded className="shared-section equity">
             <Grid.Column>
                 <Header as="h2">4. Equity Bridge</Header>
                 <Divider />

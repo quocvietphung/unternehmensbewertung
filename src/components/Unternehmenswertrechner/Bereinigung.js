@@ -26,7 +26,7 @@ const Bereinigung = (props) => {
     );
 
     const handleWeiterClick = () => {
-        return;
+        props.onWeiterClick();
     };
 
     const renderFormFields = () => {
