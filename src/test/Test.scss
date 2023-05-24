@@ -24,11 +24,11 @@
   .form-field {
     margin-bottom: 1rem;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 
     .form-label {
       font-weight: bold;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem; // Reduce margin-bottom for a smaller gap
     }
 
     .form-input {
@@ -38,6 +38,7 @@
     .error-message {
       color: red;
       font-size: 0.9em;
+      margin-top: 0.5rem; // Add margin-top for a gap between input and error message
     }
   }
 }
