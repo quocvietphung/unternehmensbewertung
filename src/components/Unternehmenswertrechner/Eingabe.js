@@ -111,7 +111,6 @@ const Eingabe = () => {
                         onZuruckClick={handleZuruckClick}
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
-                        basisInfo={basisInfo}
                         kennzahlenInfo={kennzahlenInfo}
                     />
                 ) : sections.activeSection === 'bereinigung' ? (
@@ -119,8 +118,6 @@ const Eingabe = () => {
                         sectionName="bereinigung"
                         onZuruckClick={handleZuruckClick}
                         className="shared-section"
-                        basisInfo={basisInfo}
-                        kennzahlenInfo={kennzahlenInfo}
                     />
                 ) : null}
             </div>
