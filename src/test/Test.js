@@ -208,17 +208,6 @@ const Test = () => {
                             />
                         </Form.Field>
                     </Form.Group>
-                    <p className="required-fields-hint">
-                        <span className="required">*</span>Diese Eingaben sind Pflichtfelder
-                    </p>
-                    <div className="step-buttons">
-                        <Button className="btn btn-secondary step-button prev" data-target="anlass">
-                            Zurück
-                        </Button>
-                        <Button className="btn btn-secondary step-button next" data-target="equity">
-                            Weiter
-                        </Button>
-                    </div>
                 </Form>
             </Grid.Column>
         </Grid>

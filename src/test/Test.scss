@@ -5,39 +5,15 @@
 
   .form-label {
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem !important;
   }
 
   .form-select {
-    width: 100%;
+    min-width: 100vh;
     margin-bottom: 1rem;
   }
 
   .required-mark {
     color: red;
-  }
-
-  .required-fields-hint {
-    font-style: italic;
-    margin-top: 1rem;
-  }
-
-  .step-buttons {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .step-button {
-    padding: 10px 20px;
-  }
-
-  .prev {
-    background-color: #ccc;
-  }
-
-  .next {
-    background-color: #007bff;
-    color: white;
   }
 }
