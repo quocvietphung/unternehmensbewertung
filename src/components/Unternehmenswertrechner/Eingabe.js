@@ -138,9 +138,6 @@ const Eingabe = () => {
                     />
                 ) : null}
             </div>
-            <p className="required-fields-hint">
-                <span className="required">*</span>Diese Eingaben sind Pflichtfelder
-            </p>
         </div>
     );
 }

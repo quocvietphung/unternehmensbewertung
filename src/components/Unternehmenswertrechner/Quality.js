@@ -1,7 +1,11 @@
 import React from 'react';
 import { Grid, Header, Divider, Form, Select, Label, Button } from 'semantic-ui-react';
 
-const Quality = () => {
+const Quality = (props) => {
+    const handleWeiterClick = () => {
+        props.onWeiterClick();
+    };
+
     return (
         <Grid padded className="shared-section quality">
             <Grid.Column>
@@ -210,6 +214,22 @@ const Quality = () => {
                             />
                         </Form.Field>
                     </Form.Group>
+
+                    <Form.Field>
+                        <p className="required-fields-hint">
+                            <span className="required">*</span>Diese Eingaben sind Pflichtfelder
+                        </p>
+                    </Form.Field>
+
+                    <Form.Field>
+                        <div className="button-container">
+                            <Button onClick={props.onZuruckClick}>Zurück</Button>
+                            <Button primary type="submit" onClick={handleWeiterClick}>
+                                Weiter
+                            </Button>
+                        </div>
+                    </Form.Field>
+
                 </Form>
             </Grid.Column>
         </Grid>

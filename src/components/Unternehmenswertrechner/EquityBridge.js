@@ -57,6 +57,12 @@ const EquityBridge = (props) => {
                     </Form.Field>
 
                     <Form.Field>
+                        <p className="required-fields-hint">
+                            <span className="required">*</span>Diese Eingaben sind Pflichtfelder
+                        </p>
+                    </Form.Field>
+
+                    <Form.Field>
                         <div className="button-container">
                             <Button onClick={props.onZuruckClick}>Zurück</Button>
                             <Button primary type="submit" onClick={handleWeiterClick}>

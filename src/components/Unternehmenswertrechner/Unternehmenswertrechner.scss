@@ -179,12 +179,6 @@ $margin-large: 2em;
       }
     }
 
-    .required-fields-hint {
-      font-style: italic;
-      margin-top: 1rem;
-      text-align: center;
-    }
-
     .unternehmenswertrechner-container {
       @include flex-center;
       flex-direction: column;
@@ -196,6 +190,12 @@ $margin-large: 2em;
         width: 100%;
         background-color: $color-background;
         border-radius: 20px;
+
+        .required-fields-hint {
+          font-style: italic;
+          margin-top: 3rem;
+          text-align: center;
+        }
 
         .segment {
           background-color: $color-white;
@@ -384,10 +384,6 @@ $margin-large: 2em;
         }
 
         &.quality {
-          background-color: #f8f8f8;
-          min-height: 85vh;
-          padding: 2rem;
-
           .form-label {
             font-weight: bold;
             margin-bottom: 0.5rem !important;
