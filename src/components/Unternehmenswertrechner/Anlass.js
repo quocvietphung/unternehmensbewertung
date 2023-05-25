@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, Header, Divider, Form, Radio } from 'semantic-ui-react';
+import {Grid, Header, Divider, Form, Radio, Button} from 'semantic-ui-react';
 
-const Anlass = () => {
+const Anlass = (props) => {
     const radioOptions = [
         "Unternehmensverkauf",
         "Unternehmenskauf",
@@ -48,6 +48,16 @@ const Anlass = () => {
                             key={name}
                         />
                     ))}
+
+                    <Form.Field>
+                        <div className="button-container">
+                            <Button onClick={props.onZuruckClick}>Zurück</Button>
+                            <Button primary type="submit">
+                                Bewertung abschließen
+                            </Button>
+                        </div>
+                    </Form.Field>
+
                 </Form>
             </Grid.Column>
         </Grid>
