@@ -382,6 +382,26 @@ $margin-large: 2em;
             }
           }
         }
+
+        &.quality {
+          background-color: #f8f8f8;
+          min-height: 85vh;
+          padding: 2rem;
+
+          .form-label {
+            font-weight: bold;
+            margin-bottom: 0.5rem !important;
+          }
+
+          .form-select {
+            min-width: 86vh;
+            margin-bottom: 1rem;
+          }
+
+          .required-mark {
+            color: red;
+          }
+        }
       }
     }
   }

@@ -6,7 +6,7 @@ const sections = [
     { key: 'kennzahlen', name: 'Kennzahlen' },
     { key: 'bereinigung', name: 'Bereinigung' },
     { key: 'equity', name: 'Equity Bridge' },
-    { key: 'qualitaet', name: 'Qualität' },
+    { key: 'quality', name: 'Qualität' },
     { key: 'anlass', name: 'Anlass' },
 ];
 
