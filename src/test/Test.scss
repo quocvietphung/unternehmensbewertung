@@ -1,19 +1,19 @@
 .Test {
   background-color: #f8f8f8;
   min-height: 85vh;
-  padding: 2rem;
 
-  .form-label {
-    font-weight: bold;
-    margin-bottom: 0.5rem !important;
-  }
+  .anlass-wrapper {
+    margin-top: 16px;
 
-  .form-select {
-    min-width: 100vh;
-    margin-bottom: 1rem;
+    .invalid-feedback {
+      color: red;
+      margin-top: 4px;
+      font-size: 12px;
+    }
   }
 
   .required-mark {
     color: red;
+    margin-left: 4px;
   }
 }
