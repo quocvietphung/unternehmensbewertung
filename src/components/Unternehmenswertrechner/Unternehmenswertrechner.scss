@@ -398,6 +398,17 @@ $margin-large: 2em;
             color: red;
           }
         }
+
+        &.anlass {
+          .anlass-wrapper {
+            margin-top: 16px;
+          }
+
+          .required-mark {
+            color: red;
+            margin-left: 4px;
+          }
+        }
       }
     }
   }

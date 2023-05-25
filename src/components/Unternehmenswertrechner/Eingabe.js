@@ -5,6 +5,7 @@ import Kennzahlen from './Kennzahlen';
 import Bereinigung from './Bereinigung';
 import EquityBridge from './EquityBridge';
 import Quality from "./Quality";
+import Anlass from "./Anlass";
 import { Header } from 'semantic-ui-react';
 import './Unternehmenswertrechner.scss';
 
@@ -12,7 +13,7 @@ const Eingabe = () => {
     const [sections, setSections] = useState({
         activeSection: 'basis',
         finishedSections: [],
-        sectionOrder: ['basis', 'kennzahlen', 'bereinigung', 'equity', 'quality'],
+        sectionOrder: ['basis', 'kennzahlen', 'bereinigung', 'equity', 'quality', 'anlass'],
     });
 
     // Add a new state to hold BasisInfo
@@ -132,6 +133,13 @@ const Eingabe = () => {
                 ) : sections.activeSection === 'quality' ? (
                     <Quality
                         sectionName="quality"
+                        onZuruckClick={handleZuruckClick}
+                        onWeiterClick={handleWeiterClick}
+                        className="shared-section"
+                    />
+                ) : sections.activeSection === 'anlass' ? (
+                    <Anlass
+                        sectionName="anlass"
                         onZuruckClick={handleZuruckClick}
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
