@@ -40,6 +40,26 @@ const BasisInfo = (props) => {
         }
     };
 
+    const branchOptions = [
+        { key: "auswählen", value: "", text: "Branche auswählen" },
+        { key: "bau", value: { städtisch: 10000, ländlich: 8000 }, text: "Bau und Handwerk" },
+        { key: "beratung", value: { städtisch: 5000, ländlich: 8500 }, text: "Beratende Dienstleistung" },
+        { key: "chemie", value: { städtisch: 5900, ländlich: 11000 }, text: "Chemie, Kunststoffe, Papier" },
+        { key: "elektrotechnik", value: { städtisch: 5400, ländlich: 8400 }, text: "Elektrotechnik" },
+        { key: "fahrzeugbau", value: { städtisch: 5150, ländlich: 7200 }, text: "Fahrzeugbau und -zubehör" },
+        { key: "handel", value: { städtisch: 5550, ländlich: 7300 }, text: "Handel und E-Commerce" },
+        { key: "maschinenbau", value: { städtisch: 5600, ländlich: 8500 }, text: "Maschinen- und Anlagenbau" },
+        { key: "medien", value: { städtisch: 5300, ländlich: 11600 }, text: "Medien" },
+        { key: "nahrungs", value: { städtisch: 5450, ländlich: 11100 }, text: "Nahrungs- und Genussmittel" },
+        { key: "pharma", value: { städtisch: 6500, ländlich: 16400 }, text: "Pharma, Bio- und Medizintechnik" },
+        { key: "software", value: { städtisch: 5650, ländlich: 15600 }, text: "Software" },
+        { key: "telekommunikation", value: { städtisch: 5650, ländlich: 10500 }, text: "Telekommunikation" },
+        { key: "textilien", value: { städtisch: 4500, ländlich: 8100 }, text: "Textilien und Bekleidung" },
+        { key: "transport", value: { städtisch: 4850, ländlich: 6400 }, text: "Transport, Logistik und Touristik" },
+        { key: "umwelttechnik", value: { städtisch: 5600, ländlich: 8500 }, text: "Umwelttechnik" },
+        { key: "versorgungswirtschaft", value: { städtisch: 5600, ländlich: 8500 }, text: "Versorgungswirtschaft" },
+    ];
+
     const calculateUnternehmensbewertung = (branche, lage, alter) => {
         let unternehmensbewertung = 0;
 
@@ -47,17 +67,12 @@ const BasisInfo = (props) => {
         console.log("lage:", lage);
         console.log("alter:", alter);
 
-        if (branche === "bau") {
-            if (lage === "städtisch") {
-                unternehmensbewertung = alter * 10000; // Ví dụ đơn giản: alter * 10,000
-            } else if (lage === "ländlich") {
-                unternehmensbewertung = alter * 8000; // Ví dụ đơn giản: alter * 8,000
-            }
-        } else if (branche === "beratung") {
-            if (lage === "städtisch") {
-                unternehmensbewertung = alter * 15000;
-            } else if (lage === "ländlich") {
-                unternehmensbewertung = alter * 12000;
+        const option = branchOptions.find((option) => option.key === branche);
+
+        if (option) {
+            const value = option.value;
+            if (value.hasOwnProperty(lage)) {
+                unternehmensbewertung = alter * value[lage];
             }
         }
 
@@ -107,26 +122,6 @@ const BasisInfo = (props) => {
         // Pass this info back to the parent when Weiter is clicked
         props.onWeiterClick(info);
     };
-
-    const branchOptions = [
-        { key: "auswählen", value: "", text: "Branche auswählen" },
-        { key: "bau", value: "4.8, 0.63", text: "Bau und Handwerk" },
-        { key: "beratung", value: "5.0, 0.85", text: "Beratende Dienstleistung" },
-        { key: "chemie", value: "5.9, 1.1", text: "Chemie, Kunststoffe, Papier" },
-        { key: "elektrotechnik", value: "5.4, 0.84", text: "Elektrotechnik" },
-        { key: "fahrzeugbau", value: "5.15, 0.72", text: "Fahrzeugbau und -zubehör" },
-        { key: "handel", value: "5.55, 0.73", text: "Handel und E-Commerce" },
-        { key: "maschinenbau", value: "5.6, 0.85", text: "Maschinen- und Anlagenbau" },
-        { key: "medien", value: "5.3, 1.16", text: "Medien" },
-        { key: "nahrungs", value: "5.45, 1.11", text: "Nahrungs- und Genussmittel" },
-        { key: "pharma", value: "6.5, 1.64", text: "Pharma, Bio- und Medizintechnik" },
-        { key: "software", value: "5.65, 1.56", text: "Software" },
-        { key: "telekommunikation", value: "5.65, 1.05", text: "Telekommunikation" },
-        { key: "textilien", value: "4.5, 0.81", text: "Textilien und Bekleidung" },
-        { key: "transport", value: "4.85, 0.64", text: "Transport, Logistik und Touristik" },
-        { key: "umwelttechnik", value: "5.60, 0.85", text: "Umwelttechnik" },
-        { key: "versorgungswirtschaft", value: "5.60, 0.85", text: "Versorgungswirtschaft" },
-    ];
 
     return (
         <Grid padded className="shared-section basis-info">
