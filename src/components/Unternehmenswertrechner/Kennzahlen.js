@@ -3,22 +3,24 @@ import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } 
 
 const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(props.kennzahlenInfo?.checked || false);
-    const [umsatz, setUmsatz] = useState(() => ({
-        umsatz2020: props.kennzahlenInfo?.umsatz2020 || 25000000,
-        umsatz2021: props.kennzahlenInfo?.umsatz2021 || 25000000,
-        umsatz2022: props.kennzahlenInfo?.umsatz2022 || 25000000
+    const [kennzahlen, setKennzahlen] = useState(() => ({
+        umsatz: {
+            umsatz2020: props.kennzahlenInfo?.umsatz2020 || 25000000,
+            umsatz2021: props.kennzahlenInfo?.umsatz2021 || 25000000,
+            umsatz2022: props.kennzahlenInfo?.umsatz2022 || 25000000
+        },
+        ebit: {
+            ebit2020: props.kennzahlenInfo?.ebit2020 || 5000000,
+            ebit2021: props.kennzahlenInfo?.ebit2021 || 5000000,
+            ebit2022: props.kennzahlenInfo?.ebit2022 || 5000000
+        },
+        prognose: {
+            umsatzPrognose2023: props.kennzahlenInfo?.umsatzPrognose2023 || 25000000,
+            ebitPrognose2023: props.kennzahlenInfo?.ebitPrognose2023 || 5000000
+        }
     }));
 
-    const [ebit, setEbit] = useState(() => ({
-        ebit2020: props.kennzahlenInfo?.ebit2020 || 5000000,
-        ebit2021: props.kennzahlenInfo?.ebit2021 || 5000000,
-        ebit2022: props.kennzahlenInfo?.ebit2022 || 5000000
-    }));
-
-    const [prognose, setPrognose] = useState(() => ({
-        umsatzPrognose2023: props.kennzahlenInfo?.umsatzPrognose2023 || 25000000,
-        ebitPrognose2023: props.kennzahlenInfo?.ebitPrognose2023 || 5000000
-    }));
+    const [prognoseChecked, setPrognoseChecked] = useState(props.kennzahlenInfo?.checked || false);
 
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
@@ -39,9 +41,7 @@ const Kennzahlen = (props) => {
     const handleWeiterClick = () => {
         const kennzahlenInfo = {
             checked,
-            umsatz: { ...umsatz },
-            ebit: { ...ebit },
-            prognose: { ...prognose },
+            ...kennzahlen,
             selectedOptions: [...selectedOptions]
         };
 
@@ -49,16 +49,22 @@ const Kennzahlen = (props) => {
     };
 
     const handleUmsatzChange = (field, value) => {
-        setUmsatz(prevUmsatz => ({
-            ...prevUmsatz,
-            [field]: value
+        setKennzahlen(prevKennzahlen => ({
+            ...prevKennzahlen,
+            umsatz: {
+                ...prevKennzahlen.umsatz,
+                [field]: value
+            }
         }));
     };
 
     const handleEbitChange = (field, value) => {
-        setEbit(prevEbit => ({
-            ...prevEbit,
-            [field]: value
+        setKennzahlen(prevKennzahlen => ({
+            ...prevKennzahlen,
+            ebit: {
+                ...prevKennzahlen.ebit,
+                [field]: value
+            }
         }));
     };
 
@@ -95,14 +101,14 @@ const Kennzahlen = (props) => {
                                             min="100000"
                                             max="50000000"
                                             step="50000"
-                                            value={umsatz[`umsatz${index + 2020}`]}
+                                            value={kennzahlen.umsatz[`umsatz${index + 2020}`]}
                                             onChange={(e) => handleUmsatzChange(`umsatz${index + 2020}`, e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={umsatz[`umsatz${index + 2020}`]}
+                                            value={kennzahlen.umsatz[`umsatz${index + 2020}`]}
                                             readOnly
                                         />
                                     </Form.Field>
@@ -129,14 +135,14 @@ const Kennzahlen = (props) => {
                                             min="0"
                                             max="10000000"
                                             step="1000"
-                                            value={ebit[`ebit${index + 2020}`]}
+                                            value={kennzahlen.ebit[`ebit${index + 2020}`]}
                                             onChange={(e) => handleEbitChange(`ebit${index + 2020}`, e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={ebit[`ebit${index + 2020}`]}
+                                            value={kennzahlen.ebit[`ebit${index + 2020}`]}
                                             readOnly
                                         />
                                     </Form.Field>
