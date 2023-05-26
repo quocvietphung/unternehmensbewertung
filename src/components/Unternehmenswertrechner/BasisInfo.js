@@ -48,14 +48,12 @@ const BasisInfo = (props) => {
         console.log("alter:", alter);
 
         if (branche === "bau") {
-            // Tính toán cho ngành bau
             if (lage === "städtisch") {
                 unternehmensbewertung = alter * 10000; // Ví dụ đơn giản: alter * 10,000
             } else if (lage === "ländlich") {
                 unternehmensbewertung = alter * 8000; // Ví dụ đơn giản: alter * 8,000
             }
         } else if (branche === "beratung") {
-            // Tính toán cho ngành beratung
             if (lage === "städtisch") {
                 unternehmensbewertung = alter * 15000;
             } else if (lage === "ländlich") {
