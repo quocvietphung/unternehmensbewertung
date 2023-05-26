@@ -180,7 +180,7 @@ const BasisInfo = (props) => {
 
                     <Form.Field>
                         <div className="button-container">
-                            <Button primary type="submit" onClick={handleWeiterClick}>
+                            <Button className="click-continue" primary type="submit" onClick={handleWeiterClick}>
                                 Weiter
                             </Button>
                         </div>

@@ -210,7 +210,21 @@ $margin-large: 2em;
           justify-content: flex-end;
           margin-top: $margin-large;
 
-          .button {
+          .click-back {
+            background-color: $color-white;
+            color: $color-black;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: $color-text;
+              color: $color-white;
+            }
+          }
+
+          .click-continue {
             background-color: $color-primary;
             color: $color-white;
             border-radius: 5px;

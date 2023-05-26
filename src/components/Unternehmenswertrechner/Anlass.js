@@ -57,7 +57,7 @@ const Anlass = (props) => {
 
                     <Form.Field>
                         <div className="button-container">
-                            <Button onClick={props.onZuruckClick}>Zurück</Button>
+                            <Button className="click-back" onClick={props.onZuruckClick}>Zurück</Button>
                             <Button primary type="submit">
                                 Bewertung abschließen
                             </Button>

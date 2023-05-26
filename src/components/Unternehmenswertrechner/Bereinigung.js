@@ -210,8 +210,8 @@ const Bereinigung = (props) => {
 
                         <Form.Field>
                             <div className="button-container">
-                                <Button onClick={props.onZuruckClick}>Zurück</Button>
-                                <Button primary type="submit" onClick={handleWeiterClick}>
+                                <Button className="click-back" onClick={props.onZuruckClick}>Zurück</Button>
+                                <Button className="click-continue" primary type="submit" onClick={handleWeiterClick}>
                                     Weiter
                                 </Button>
                             </div>
