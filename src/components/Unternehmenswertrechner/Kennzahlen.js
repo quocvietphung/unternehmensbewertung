@@ -40,10 +40,18 @@ const Kennzahlen = (props) => {
         props.onWeiterClick(kennzahlenInfo);
     };
 
-    const handleUmsatzChange = (field, value) => {
+    const handleUmsatzChange = (index, value) => {
         setKennzahlen(prevKennzahlen => {
             const newKennzahlen = [...prevKennzahlen];
-            newKennzahlen[field] = value;
+            newKennzahlen[index] = { ...newKennzahlen[index], umsatz: value };
+            return newKennzahlen;
+        });
+    };
+
+    const handleEbitChange = (index, value) => {
+        setKennzahlen(prevKennzahlen => {
+            const newKennzahlen = [...prevKennzahlen];
+            newKennzahlen[index] = { ...newKennzahlen[index], ebit: value };
             return newKennzahlen;
         });
     };
@@ -81,14 +89,14 @@ const Kennzahlen = (props) => {
                                             min="100000"
                                             max="50000000"
                                             step="50000"
-                                            value={kennzahlen[index].umsatz}
-                                            onChange={(e) => handleUmsatzChange(index, { ...kennzahlen[index], umsatz: e.target.value })}
+                                            value={kennzahlen[index]?.umsatz}
+                                            onChange={(e) => handleUmsatzChange(index, e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={kennzahlen[index].umsatz}
+                                            value={kennzahlen[index]?.umsatz}
                                             readOnly
                                         />
                                     </Form.Field>
@@ -115,14 +123,14 @@ const Kennzahlen = (props) => {
                                             min="0"
                                             max="10000000"
                                             step="1000"
-                                            value={kennzahlen[index].ebit}
-                                            onChange={(e) => handleUmsatzChange(index, { ...kennzahlen[index], ebit: e.target.value })}
+                                            value={kennzahlen[index]?.ebit}
+                                            onChange={(e) => handleEbitChange(index, e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={kennzahlen[index].ebit}
+                                            value={kennzahlen[index]?.ebit}
                                             readOnly
                                         />
                                     </Form.Field>
