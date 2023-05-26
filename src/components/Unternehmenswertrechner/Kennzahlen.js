@@ -6,7 +6,7 @@ const Kennzahlen = (props) => {
     const [umsatz2020, setUmsatz2020] = useState(props.kennzahlenInfo?.umsatz2020 || 25000000);
     const [umsatz2021, setUmsatz2021] = useState(props.kennzahlenInfo?.umsatz2021 || 25000000);
     const [umsatz2022, setUmsatz2022] = useState(props.kennzahlenInfo?.umsatz2022 || 25000000);
-    const [prognose2023, setPrognose2023] = useState(props.kennzahlenInfo?.prognose2023 || 25000000);
+    const [umsatzPrognose2023, setUmsatzPrognose2023] = useState(props.kennzahlenInfo?.prognose2023 || 25000000);
     const [ebit2020, setEbit2020] = useState(props.kennzahlenInfo?.ebit2020 || 5000000);
     const [ebit2021, setEbit2021] = useState(props.kennzahlenInfo?.ebit2021 || 5000000);
     const [ebit2022, setEbit2022] = useState(props.kennzahlenInfo?.ebit2022 || 5000000);
@@ -33,7 +33,7 @@ const Kennzahlen = (props) => {
             umsatz2020,
             umsatz2021,
             umsatz2022,
-            prognose2023,
+            umsatzPrognose2023,
             ebit2020,
             ebit2021,
             ebit2022,
@@ -145,14 +145,14 @@ const Kennzahlen = (props) => {
                                             min="100000"
                                             max="50000000"
                                             step="50000"
-                                            value={prognose2023}
-                                            onChange={(e) => setPrognose2023(e.target.value)}
+                                            value={umsatzPrognose2023}
+                                            onChange={(e) => setUmsatzPrognose2023(e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={prognose2023}
+                                            value={umsatzPrognose2023}
                                             readOnly
                                         />
                                     </Form.Field>
