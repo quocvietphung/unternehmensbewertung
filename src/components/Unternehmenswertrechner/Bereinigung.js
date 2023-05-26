@@ -26,7 +26,7 @@ const Bereinigung = (props) => {
     );
 
     const handleWeiterClick = () => {
-        return;
+        props.onWeiterClick();
     };
 
     const renderFormFields = () => {
@@ -35,24 +35,26 @@ const Bereinigung = (props) => {
             <Grid>
                 {years.map((year, index) => (
                     <Grid.Column key={index} width={4}>
-                        <Form.Field>
-                            <label htmlFor={`gehalt[${index}]`} className="form-label">
-                                {year}
-                            </label>
-                            <Input
-                                type="text"
-                                className="form-text input-number ebit-clean-calc"
-                                name={`gehalt[${index}]`}
-                                required
-                                pattern="\d*"
-                                data-gtm-form-interact-field-id={index + 12}
-                                onChange={handleInputChange}
-                            />
-                            <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                                Keine negativen Eingaben erlaubt.
-                            </div>
-                            <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
-                        </Form.Field>
+                        <Form>
+                            <Form.Field>
+                                <label htmlFor={`gehalt[${index}]`} className="form-label">
+                                    {year}
+                                </label>
+                                <Input
+                                    type="text"
+                                    className="form-text input-number ebit-clean-calc"
+                                    name={`gehalt[${index}]`}
+                                    required
+                                    pattern="\d*"
+                                    data-gtm-form-interact-field-id={index + 12}
+                                    onChange={handleInputChange}
+                                />
+                                <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
+                                    Keine negativen Eingaben erlaubt.
+                                </div>
+                                <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
+                            </Form.Field>
+                        </Form>
                     </Grid.Column>
                 ))}
             </Grid>
@@ -199,15 +201,22 @@ const Bereinigung = (props) => {
                                 {renderAdditionalAdjustments()}
                             </Form.Field>
                         </Segment>
-                        <p>* Diese Eingaben sind Pflichtfelder</p>
+
+                        <Form.Field>
+                            <p className="required-fields-hint">
+                                <span className="required">*</span>Diese Eingaben sind Pflichtfelder
+                            </p>
+                        </Form.Field>
+
                         <Form.Field>
                             <div className="button-container">
-                                <Button onClick={props.onZuruckClick}>Zurück</Button>
-                                <Button primary type="submit" onClick={handleWeiterClick}>
+                                <Button className="click-back" onClick={props.onZuruckClick}>Zurück</Button>
+                                <Button className="click-continue" primary type="submit" onClick={handleWeiterClick}>
                                     Weiter
                                 </Button>
                             </div>
                         </Form.Field>
+
                     </Form>
             </Grid.Column>
         </Grid>

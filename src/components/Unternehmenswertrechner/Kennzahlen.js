@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 
 const Kennzahlen = (props) => {
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(props.kennzahlenInfo?.checked || false);
     const [umsatz2020, setUmsatz2020] = useState(props.kennzahlenInfo?.umsatz2020 || 25000000);
     const [umsatz2021, setUmsatz2021] = useState(props.kennzahlenInfo?.umsatz2021 || 25000000);
     const [umsatz2022, setUmsatz2022] = useState(props.kennzahlenInfo?.umsatz2022 || 25000000);
@@ -22,7 +22,7 @@ const Kennzahlen = (props) => {
     const handleOptionChange = (index, value) => {
         setSelectedOptions(prevOptions => {
             const newOptions = [...prevOptions];
-            newOptions[index] = value;
+            newOptions[index] = { year: gewinnYears[index], value: value };
             return newOptions;
         });
     }
@@ -54,6 +54,7 @@ const Kennzahlen = (props) => {
                         <Checkbox
                             label="Möchten Sie eine Prognose für das aktuelle Kalenderjahr angeben?"
                             toggle
+                            checked={checked}
                             onChange={handleCheckboxChange}
                         />
                     </Form.Field>
@@ -282,7 +283,7 @@ const Kennzahlen = (props) => {
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
                                                 value={option}
-                                                checked={selectedOptions[index] === option}
+                                                checked={selectedOptions[index]?.value === option}
                                                 onChange={() => handleOptionChange(index, option)}
                                                 required
                                             />
@@ -292,15 +293,22 @@ const Kennzahlen = (props) => {
                             </Segment.Group>
                         ))}
                     </Segment>
-                    <p>* Diese Eingaben sind Pflichtfelder</p>
+
+                    <Form.Field>
+                        <p className="required-fields-hint">
+                            <span className="required">*</span>Diese Eingaben sind Pflichtfelder
+                        </p>
+                    </Form.Field>
+
                     <Form.Field>
                         <div className="button-container">
-                            <Button onClick={props.onZuruckClick}>Zurück</Button>
-                            <Button primary type="submit" onClick={handleWeiterClick}>
+                            <Button className="click-back" onClick={props.onZuruckClick}>Zurück</Button>
+                            <Button className="click-continue" primary type="submit" onClick={handleWeiterClick}>
                                 Weiter
                             </Button>
                         </div>
                     </Form.Field>
+
                 </Form>
             </Grid.Column>
         </Grid>

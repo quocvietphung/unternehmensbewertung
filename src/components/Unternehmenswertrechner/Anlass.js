@@ -1,8 +1,7 @@
 import React from 'react';
-import { Grid, Header, Divider, Form, Radio } from 'semantic-ui-react';
-import './Test.scss';
+import {Grid, Header, Divider, Form, Radio, Button} from 'semantic-ui-react';
 
-const Test = () => {
+const Anlass = (props) => {
     const radioOptions = [
         "Unternehmensverkauf",
         "Unternehmenskauf",
@@ -19,7 +18,7 @@ const Test = () => {
     };
 
     return (
-        <Grid padded className="Test">
+        <Grid padded className="shared-section anlass">
             <Grid.Column>
                 <Header as="h2">6. Anlass für den Unternehmenswertrechner</Header>
                 <Divider />
@@ -49,10 +48,26 @@ const Test = () => {
                             key={name}
                         />
                     ))}
+
+                    <Form.Field>
+                        <p className="required-fields-hint">
+                            <span className="required">*</span>Diese Eingaben sind Pflichtfelder
+                        </p>
+                    </Form.Field>
+
+                    <Form.Field>
+                        <div className="button-container">
+                            <Button className="click-back" onClick={props.onZuruckClick}>Zurück</Button>
+                            <Button primary type="submit">
+                                Bewertung abschließen
+                            </Button>
+                        </div>
+                    </Form.Field>
+
                 </Form>
             </Grid.Column>
         </Grid>
     );
 };
 
-export default Test;
+export default Anlass;

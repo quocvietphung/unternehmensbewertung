@@ -3,6 +3,9 @@ import ProgressSection from './ProgressSection';
 import BasisInfo from './BasisInfo';
 import Kennzahlen from './Kennzahlen';
 import Bereinigung from './Bereinigung';
+import EquityBridge from './EquityBridge';
+import Quality from "./Quality";
+import Anlass from "./Anlass";
 import { Header } from 'semantic-ui-react';
 import './Unternehmenswertrechner.scss';
 
@@ -10,7 +13,7 @@ const Eingabe = () => {
     const [sections, setSections] = useState({
         activeSection: 'basis',
         finishedSections: [],
-        sectionOrder: ['basis', 'kennzahlen', 'bereinigung'],
+        sectionOrder: ['basis', 'kennzahlen', 'bereinigung', 'equity', 'quality', 'anlass'],
     });
 
     // Add a new state to hold BasisInfo
@@ -111,16 +114,35 @@ const Eingabe = () => {
                         onZuruckClick={handleZuruckClick}
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
-                        basisInfo={basisInfo}
                         kennzahlenInfo={kennzahlenInfo}
                     />
                 ) : sections.activeSection === 'bereinigung' ? (
                     <Bereinigung
                         sectionName="bereinigung"
                         onZuruckClick={handleZuruckClick}
+                        onWeiterClick={handleWeiterClick}
                         className="shared-section"
-                        basisInfo={basisInfo}
-                        kennzahlenInfo={kennzahlenInfo}
+                    />
+                ) : sections.activeSection === 'equity' ? (
+                    <EquityBridge
+                        sectionName="equity"
+                        onZuruckClick={handleZuruckClick}
+                        onWeiterClick={handleWeiterClick}
+                        className="shared-section"
+                    />
+                ) : sections.activeSection === 'quality' ? (
+                    <Quality
+                        sectionName="quality"
+                        onZuruckClick={handleZuruckClick}
+                        onWeiterClick={handleWeiterClick}
+                        className="shared-section"
+                    />
+                ) : sections.activeSection === 'anlass' ? (
+                    <Anlass
+                        sectionName="anlass"
+                        onZuruckClick={handleZuruckClick}
+                        onWeiterClick={handleWeiterClick}
+                        className="shared-section"
                     />
                 ) : null}
             </div>

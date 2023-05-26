@@ -9,7 +9,7 @@ const Home = () => {
                 <SemanticHeader as="h1" className="home-header">
                     Willkommen auf unserer Webseite
                 </SemanticHeader>
-                <p>
+                <p className="home-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dignissim lectus id mattis dignissim.
                     Donec commodo mi vitae nisi fermentum fringilla. Quisque sem mauris, mollis sit amet felis eu, suscipit
                     consequat turpis. Proin elementum nibh at semper malesuada.

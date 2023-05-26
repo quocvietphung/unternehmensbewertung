@@ -7,6 +7,7 @@ $color-white: #fff;
 $color-input-bg: #f0f0f0;
 $color-black: black;
 $color-red: #ff0000;
+$color-gold: gold;
 $shadow-color: rgba(0, 0, 0, 0.1);
 
 // Define padding and margin variables
@@ -116,12 +117,12 @@ $margin-large: 2em;
 
   .Eingabe {
     flex: 1;
-    margin: 10px 20px 10px 0;
+    margin: 10px 20px 30px 0;
     background-color: $color-background;
     padding: $padding-large;
     border-radius: 60px;
     box-shadow: 0 0 10px $shadow-color;
-    min-height: 86vh;
+    min-height: 65vh;
     min-width: 70%;
     overflow: auto;
 
@@ -155,7 +156,7 @@ $margin-large: 2em;
 
         &.active {
           .nav-border {
-            background-color: $color-primary-dark; /* active color */
+            background-color: $color-gold; /* active color */
           }
         }
 
@@ -190,12 +191,40 @@ $margin-large: 2em;
         background-color: $color-background;
         border-radius: 20px;
 
+        .required-fields-hint {
+          font-style: italic;
+          margin-top: 3rem;
+          text-align: center;
+        }
+
+        .segment {
+          background-color: $color-white;
+          border-radius: 30px;
+          padding: $padding-medium;
+          margin-top: $margin-medium;
+          box-shadow: 0 2px 4px $shadow-color;
+        }
+
         .button-container {
           @include flex-center;
           justify-content: flex-end;
           margin-top: $margin-large;
 
-          .button {
+          .click-back {
+            background-color: $color-white;
+            color: $color-black;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: $color-text;
+              color: $color-white;
+            }
+          }
+
+          .click-continue {
             background-color: $color-primary;
             color: $color-white;
             border-radius: 5px;
@@ -231,45 +260,38 @@ $margin-large: 2em;
         }
 
         &.kennzahlen {
-          .segment {
-            background-color: $color-white;
-            border-radius: 30px;
-            padding: $padding-medium;
-            margin-top: $margin-medium;
-            box-shadow: 0 2px 4px $shadow-color;
+          .form-group {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-            .form-group {
-              margin-top: 15px;
+            .form-label,
+            .form-input {
               display: flex;
               align-items: center;
-              justify-content: space-between;
+              justify-content: center;
+              margin: 0;
 
-              .form-label,
-              .form-input {
+              label {
+                font-weight: bold;
                 display: flex;
                 align-items: center;
-                margin: 0;
+              }
 
-                label {
-                  font-weight: bold;
-                  display: flex;
-                  align-items: center;
-                }
+              input[type="range"],
+              input[type="text"] {
+                height: 30px;
+                width: 100%;
+                text-align: center;
+                border: none;
+                outline: none;
+              }
 
-                input[type="range"],
-                input[type="text"] {
-                  height: 30px;
-                  width: 100%;
-                  text-align: center;
-                  border: none;
-                  outline: none;
-                }
-
-                input[type="text"] {
-                  background-color: $color-input-bg;
-                  border-radius: 5px;
-                  padding: 4px 8px;
-                }
+              input[type="text"] {
+                background-color: $color-input-bg;
+                border-radius: 5px;
+                padding: 4px 8px;
               }
             }
           }
@@ -345,6 +367,60 @@ $margin-large: 2em;
           li {
             margin-bottom: 8px;
             color: #666;
+          }
+        }
+
+        &.equity {
+          .required-label {
+            color: red;
+          }
+
+          .form-field {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+
+            .form-label {
+              font-weight: bold;
+              margin-bottom: 0.8rem; // Reduce margin-bottom for a smaller gap
+            }
+
+            .form-input {
+              width: 30%; // Set width to 30%
+            }
+
+            .error-message {
+              color: red;
+              font-size: 0.9em;
+              margin-top: 0.5rem; // Add margin-top for a gap between input and error message
+            }
+          }
+        }
+
+        &.quality {
+          .form-label {
+            font-weight: bold;
+            margin-bottom: 0.5rem !important;
+          }
+
+          .form-select {
+            min-width: 86vh;
+            margin-bottom: 1rem;
+          }
+
+          .required-mark {
+            color: red;
+          }
+        }
+
+        &.anlass {
+          .anlass-wrapper {
+            margin-top: 16px;
+          }
+
+          .required-mark {
+            color: red;
+            margin-left: 4px;
           }
         }
       }
