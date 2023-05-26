@@ -57,9 +57,9 @@ const BasisInfo = (props) => {
         } else if (branche === "beratung") {
             // Tính toán cho ngành beratung
             if (lage === "städtisch") {
-                unternehmensbewertung = alter * 15000; // Ví dụ đơn giản: alter * 15,000
+                unternehmensbewertung = alter * 15000;
             } else if (lage === "ländlich") {
-                unternehmensbewertung = alter * 12000; // Ví dụ đơn giản: alter * 12,000
+                unternehmensbewertung = alter * 12000;
             }
         }
 
