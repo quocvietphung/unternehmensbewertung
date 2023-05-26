@@ -11,7 +11,6 @@ const BasisInfo = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // Tính toán Unternehmensbewertung
         const bewertung = calculateUnternehmensbewertung(branche, lage, alter);
         console.log("Unternehmensbewertung:", bewertung);
         dispatch(setUnternehmensbewertung(bewertung));
