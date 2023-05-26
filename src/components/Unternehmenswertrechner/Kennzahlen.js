@@ -6,10 +6,10 @@ const Kennzahlen = (props) => {
     const [umsatz2020, setUmsatz2020] = useState(props.kennzahlenInfo?.umsatz2020 || 25000000);
     const [umsatz2021, setUmsatz2021] = useState(props.kennzahlenInfo?.umsatz2021 || 25000000);
     const [umsatz2022, setUmsatz2022] = useState(props.kennzahlenInfo?.umsatz2022 || 25000000);
-    const [umsatzPrognose2023, setUmsatzPrognose2023] = useState(props.kennzahlenInfo?.prognose2023 || 25000000);
     const [ebit2020, setEbit2020] = useState(props.kennzahlenInfo?.ebit2020 || 5000000);
     const [ebit2021, setEbit2021] = useState(props.kennzahlenInfo?.ebit2021 || 5000000);
     const [ebit2022, setEbit2022] = useState(props.kennzahlenInfo?.ebit2022 || 5000000);
+    const [umsatzPrognose2023, setUmsatzPrognose2023] = useState(props.kennzahlenInfo?.umsatzPrognose2023 || 25000000);
     const [ebitPrognose2023, setEbitPrognose2023] = useState(props.kennzahlenInfo?.ebitPrognose2023 || 5000000);
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
