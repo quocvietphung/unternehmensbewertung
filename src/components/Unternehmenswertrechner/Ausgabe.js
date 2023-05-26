@@ -5,10 +5,11 @@ import { useSelector } from "react-redux";
 const Ausgabe = () => {
     const isValid = useSelector((state) => state.validation.isValid);
     const errors = useSelector((state) => state.validation.error);
+    const unternehmensbewertung = useSelector((state) => state.unternehmensbewertung);
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
-            <p className="ertragswert">0 Mio EUR</p>
+            <p className="ertragswert">{unternehmensbewertung} Mio EUR</p>
             <Message warning className="warning innacurate-calculation">
                 <p className="my-0">
                     Das ist ein vorläufig berechneter Wert. Füllen Sie weitere Felder aus, um einen genaueren zu Wert zu erhalten.

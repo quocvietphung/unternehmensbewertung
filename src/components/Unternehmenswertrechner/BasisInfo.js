@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
-import { setValidity, setError } from '../../redux/reducers';
+import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
 
 const BasisInfo = (props) => {
     const [branche, setBranche] = useState(props.basisInfo?.branche || "");
@@ -12,10 +12,10 @@ const BasisInfo = (props) => {
 
     const handleChange = (event, { name, value }) => {
         if (name === "alter") {
-            if (value === '+') {
-                setAlter(prevAlter => prevAlter + 1);
-            } else if (value === '-' && alter > 0) {
-                setAlter(prevAlter => prevAlter - 1);
+            if (value === "+") {
+                setAlter((prevAlter) => prevAlter + 1);
+            } else if (value === "-" && alter > 0) {
+                setAlter((prevAlter) => prevAlter - 1);
             } else if (!isNaN(value)) {
                 setAlter(parseInt(value));
             }
@@ -24,6 +24,32 @@ const BasisInfo = (props) => {
         } else if (name === "lage") {
             setLage(value);
         }
+
+        // Tính toán Unternehmensbewertung
+        const bewertung = calculateUnternehmensbewertung(branche, lage, alter);
+        dispatch(setUnternehmensbewertung(bewertung));
+    };
+
+    const calculateUnternehmensbewertung = (branche, lage, alter) => {
+        let unternehmensbewertung = 0;
+
+        if (branche === "bau") {
+            // Tính toán cho ngành bau
+            if (lage === "städtisch") {
+                unternehmensbewertung = alter * 10000; // Ví dụ đơn giản: alter * 10,000
+            } else if (lage === "ländlich") {
+                unternehmensbewertung = alter * 8000; // Ví dụ đơn giản: alter * 8,000
+            }
+        } else if (branche === "beratung") {
+            // Tính toán cho ngành beratung
+            if (lage === "städtisch") {
+                unternehmensbewertung = alter * 15000; // Ví dụ đơn giản: alter * 15,000
+            } else if (lage === "ländlich") {
+                unternehmensbewertung = alter * 12000; // Ví dụ đơn giản: alter * 12,000
+            }
+        }
+
+        return `${unternehmensbewertung} Mio EUR`; // Trả về giá trị unternehmensbewertung kèm theo đơn vị (Mio EUR)
     };
 
     useEffect(() => {
