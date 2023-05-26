@@ -10,7 +10,18 @@ const BasisInfo = (props) => {
     const [isValid, setIsValid] = useState(false);
     const dispatch = useDispatch();
 
-    const handleChange = (event, { name, value }) => {
+    useEffect(() => {
+        // Tính toán Unternehmensbewertung
+        const bewertung = calculateUnternehmensbewertung(branche, lage, alter);
+        console.log("Unternehmensbewertung:", bewertung);
+        dispatch(setUnternehmensbewertung(bewertung));
+
+        // Check validity
+        console.log("Checking validity...");
+        checkValidity();
+    }, [branche, lage, alter]);
+
+    const handleChange = (event, { name, value, options }) => {
         if (name === "alter") {
             if (value === "+") {
                 setAlter((prevAlter) => prevAlter + 1);
@@ -20,18 +31,22 @@ const BasisInfo = (props) => {
                 setAlter(parseInt(value));
             }
         } else if (name === "branche") {
-            setBranche(value);
+            // Tìm option tương ứng với value và lấy key của nó
+            const selectedOption = options.find(option => option.value === value);
+            if (selectedOption) {
+                setBranche(selectedOption.key);
+            }
         } else if (name === "lage") {
             setLage(value);
         }
-
-        // Tính toán Unternehmensbewertung
-        const bewertung = calculateUnternehmensbewertung(branche, lage, alter);
-        dispatch(setUnternehmensbewertung(bewertung));
     };
 
     const calculateUnternehmensbewertung = (branche, lage, alter) => {
         let unternehmensbewertung = 0;
+
+        console.log("branche:", branche);
+        console.log("lage:", lage);
+        console.log("alter:", alter);
 
         if (branche === "bau") {
             // Tính toán cho ngành bau
@@ -49,13 +64,9 @@ const BasisInfo = (props) => {
             }
         }
 
+        console.log("Unternehmensbewertung:", unternehmensbewertung);
         return unternehmensbewertung;
     };
-
-    useEffect(() => {
-        console.log("Checking validity...");
-        checkValidity();
-    }, [branche, lage, alter]);
 
     const checkValidity = () => {
         let errors = [];
