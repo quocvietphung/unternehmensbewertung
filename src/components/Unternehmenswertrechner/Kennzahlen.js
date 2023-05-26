@@ -3,24 +3,14 @@ import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } 
 
 const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(props.kennzahlenInfo?.checked || false);
-    const [kennzahlen, setKennzahlen] = useState(() => ({
-        umsatz: {
-            umsatz2020: props.kennzahlenInfo?.umsatz2020 || 25000000,
-            umsatz2021: props.kennzahlenInfo?.umsatz2021 || 25000000,
-            umsatz2022: props.kennzahlenInfo?.umsatz2022 || 25000000
-        },
-        ebit: {
-            ebit2020: props.kennzahlenInfo?.ebit2020 || 5000000,
-            ebit2021: props.kennzahlenInfo?.ebit2021 || 5000000,
-            ebit2022: props.kennzahlenInfo?.ebit2022 || 5000000
-        },
-        prognose: {
-            umsatzPrognose2023: props.kennzahlenInfo?.umsatzPrognose2023 || 25000000,
-            ebitPrognose2023: props.kennzahlenInfo?.ebitPrognose2023 || 5000000
-        }
-    }));
 
-    const [prognoseChecked, setPrognoseChecked] = useState(props.kennzahlenInfo?.checked || false);
+    const umsatzYears = ['Umsatz2020', 'Umsatz2021', 'Umsatz2022'].concat(checked ? ["Prognose 2023"] : []);
+    const ebitYears = ['Ebit2020', 'Ebit2021', 'Ebit2022'].concat(checked ? ["Prognose 2023"] : []);
+
+    const [kennzahlen, setKennzahlen] = useState(() => props.kennzahlenInfo?.kennzahlen || Array(umsatzYears.length).fill({
+        umsatz: 25000000,
+        ebit: 5000000,
+    }));
 
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
@@ -41,31 +31,21 @@ const Kennzahlen = (props) => {
     const handleWeiterClick = () => {
         const kennzahlenInfo = {
             checked,
-            ...kennzahlen,
+            kennzahlen: [...kennzahlen],
             selectedOptions: [...selectedOptions]
         };
+
+        console.log("kennzahlenInfo:", kennzahlenInfo); // Kiểm tra giá trị kennzahlenInfo
 
         props.onWeiterClick(kennzahlenInfo);
     };
 
     const handleUmsatzChange = (field, value) => {
-        setKennzahlen(prevKennzahlen => ({
-            ...prevKennzahlen,
-            umsatz: {
-                ...prevKennzahlen.umsatz,
-                [field]: value
-            }
-        }));
-    };
-
-    const handleEbitChange = (field, value) => {
-        setKennzahlen(prevKennzahlen => ({
-            ...prevKennzahlen,
-            ebit: {
-                ...prevKennzahlen.ebit,
-                [field]: value
-            }
-        }));
+        setKennzahlen(prevKennzahlen => {
+            const newKennzahlen = [...prevKennzahlen];
+            newKennzahlen[field] = value;
+            return newKennzahlen;
+        });
     };
 
     return (
@@ -90,7 +70,7 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {gewinnYears.map((year, index) => (
+                            {umsatzYears.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
                                         <label>{year}</label>
@@ -101,14 +81,14 @@ const Kennzahlen = (props) => {
                                             min="100000"
                                             max="50000000"
                                             step="50000"
-                                            value={kennzahlen.umsatz[`umsatz${index + 2020}`]}
-                                            onChange={(e) => handleUmsatzChange(`umsatz${index + 2020}`, e.target.value)}
+                                            value={kennzahlen[index].umsatz}
+                                            onChange={(e) => handleUmsatzChange(index, { ...kennzahlen[index], umsatz: e.target.value })}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={kennzahlen.umsatz[`umsatz${index + 2020}`]}
+                                            value={kennzahlen[index].umsatz}
                                             readOnly
                                         />
                                     </Form.Field>
@@ -124,7 +104,7 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {gewinnYears.map((year, index) => (
+                            {ebitYears.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
                                         <label>{year}</label>
@@ -135,14 +115,14 @@ const Kennzahlen = (props) => {
                                             min="0"
                                             max="10000000"
                                             step="1000"
-                                            value={kennzahlen.ebit[`ebit${index + 2020}`]}
-                                            onChange={(e) => handleEbitChange(`ebit${index + 2020}`, e.target.value)}
+                                            value={kennzahlen[index].ebit}
+                                            onChange={(e) => handleUmsatzChange(index, { ...kennzahlen[index], ebit: e.target.value })}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={kennzahlen.ebit[`ebit${index + 2020}`]}
+                                            value={kennzahlen[index].ebit}
                                             readOnly
                                         />
                                     </Form.Field>
