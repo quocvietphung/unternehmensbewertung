@@ -49,7 +49,7 @@ const BasisInfo = (props) => {
             }
         }
 
-        return `${unternehmensbewertung} Mio EUR`; // Trả về giá trị unternehmensbewertung kèm theo đơn vị (Mio EUR)
+        return unternehmensbewertung;
     };
 
     useEffect(() => {

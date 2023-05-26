@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Ausgabe = () => {
     const isValid = useSelector((state) => state.validation.isValid);
     const errors = useSelector((state) => state.validation.error);
-    const unternehmensbewertung = useSelector((state) => state.unternehmensbewertung);
+    const unternehmensbewertung = useSelector((state) => state.validation.unternehmensbewertung);
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
