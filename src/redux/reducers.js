@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     isValid: true,
     error: [],
-    unternehmensbewertung: 0, // Thêm trường unternehmensbewertung vào initialState
+    unternehmensbewertung: 0,
 };
 
 const validationSlice = createSlice({
