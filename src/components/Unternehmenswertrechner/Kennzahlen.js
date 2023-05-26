@@ -3,14 +3,23 @@ import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } 
 
 const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(props.kennzahlenInfo?.checked || false);
-    const [umsatz2020, setUmsatz2020] = useState(props.kennzahlenInfo?.umsatz2020 || 25000000);
-    const [umsatz2021, setUmsatz2021] = useState(props.kennzahlenInfo?.umsatz2021 || 25000000);
-    const [umsatz2022, setUmsatz2022] = useState(props.kennzahlenInfo?.umsatz2022 || 25000000);
-    const [ebit2020, setEbit2020] = useState(props.kennzahlenInfo?.ebit2020 || 5000000);
-    const [ebit2021, setEbit2021] = useState(props.kennzahlenInfo?.ebit2021 || 5000000);
-    const [ebit2022, setEbit2022] = useState(props.kennzahlenInfo?.ebit2022 || 5000000);
-    const [umsatzPrognose2023, setUmsatzPrognose2023] = useState(props.kennzahlenInfo?.umsatzPrognose2023 || 25000000);
-    const [ebitPrognose2023, setEbitPrognose2023] = useState(props.kennzahlenInfo?.ebitPrognose2023 || 5000000);
+    const [umsatz, setUmsatz] = useState(() => ({
+        umsatz2020: props.kennzahlenInfo?.umsatz2020 || 25000000,
+        umsatz2021: props.kennzahlenInfo?.umsatz2021 || 25000000,
+        umsatz2022: props.kennzahlenInfo?.umsatz2022 || 25000000
+    }));
+
+    const [ebit, setEbit] = useState(() => ({
+        ebit2020: props.kennzahlenInfo?.ebit2020 || 5000000,
+        ebit2021: props.kennzahlenInfo?.ebit2021 || 5000000,
+        ebit2022: props.kennzahlenInfo?.ebit2022 || 5000000
+    }));
+
+    const [prognose, setPrognose] = useState(() => ({
+        umsatzPrognose2023: props.kennzahlenInfo?.umsatzPrognose2023 || 25000000,
+        ebitPrognose2023: props.kennzahlenInfo?.ebitPrognose2023 || 5000000
+    }));
+
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
     const [selectedOptions, setSelectedOptions] = useState(() => props.kennzahlenInfo?.selectedOptions || Array(gewinnYears.length).fill(''));
@@ -25,23 +34,32 @@ const Kennzahlen = (props) => {
             newOptions[index] = { year: gewinnYears[index], value: value };
             return newOptions;
         });
-    }
+    };
 
     const handleWeiterClick = () => {
         const kennzahlenInfo = {
             checked,
-            umsatz2020,
-            umsatz2021,
-            umsatz2022,
-            umsatzPrognose2023,
-            ebit2020,
-            ebit2021,
-            ebit2022,
-            ebitPrognose2023,
-            selectedOptions,  // add selectedOptions here
+            umsatz: { ...umsatz },
+            ebit: { ...ebit },
+            prognose: { ...prognose },
+            selectedOptions: [...selectedOptions]
         };
 
         props.onWeiterClick(kennzahlenInfo);
+    };
+
+    const handleUmsatzChange = (field, value) => {
+        setUmsatz(prevUmsatz => ({
+            ...prevUmsatz,
+            [field]: value
+        }));
+    };
+
+    const handleEbitChange = (field, value) => {
+        setEbit(prevEbit => ({
+            ...prevEbit,
+            [field]: value
+        }));
     };
 
     return (
@@ -66,78 +84,10 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            <Form.Group className="form-group">
-                                <Form.Field width={3} className="form-label">
-                                    <label>Umsatz 2020</label>
-                                </Form.Field>
-                                <Form.Field width={10} className="form-input">
-                                    <input
-                                        type="range"
-                                        min="100000"
-                                        max="50000000"
-                                        step="50000"
-                                        value={umsatz2020}
-                                        onChange={(e) => setUmsatz2020(e.target.value)}
-                                    />
-                                </Form.Field>
-                                <Form.Field width={3} className="form-input">
-                                    <input
-                                        type="text"
-                                        value={umsatz2020}
-                                        readOnly
-                                    />
-                                </Form.Field>
-                            </Form.Group>
-
-                            <Form.Group className="form-group">
-                                <Form.Field width={3} className="form-label">
-                                    <label>Umsatz 2021</label>
-                                </Form.Field>
-                                <Form.Field width={10} className="form-input">
-                                    <input
-                                        type="range"
-                                        min="100000"
-                                        max="50000000"
-                                        step="50000"
-                                        value={umsatz2021}
-                                        onChange={(e) => setUmsatz2021(e.target.value)}
-                                    />
-                                </Form.Field>
-                                <Form.Field width={3} className="form-input">
-                                    <input
-                                        type="text"
-                                        value={umsatz2021}
-                                        readOnly
-                                    />
-                                </Form.Field>
-                            </Form.Group>
-                            <Form.Group className="form-group">
-                                <Form.Field width={3} className="form-label">
-                                    <label>Umsatz 2022</label>
-                                </Form.Field>
-                                <Form.Field width={10} className="form-input">
-                                    <input
-                                        type="range"
-                                        min="100000"
-                                        max="50000000"
-                                        step="50000"
-                                        value={umsatz2022}
-                                        onChange={(e) => setUmsatz2022(e.target.value)}
-                                    />
-                                </Form.Field>
-                                <Form.Field width={3} className="form-input">
-                                    <input
-                                        type="text"
-                                        value={umsatz2022}
-                                        readOnly
-                                    />
-                                </Form.Field>
-                            </Form.Group>
-
-                            {checked && (
-                                <Form.Group className="form-group">
+                            {gewinnYears.map((year, index) => (
+                                <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
-                                        <label>Prognose 2023</label>
+                                        <label>{year}</label>
                                     </Form.Field>
                                     <Form.Field width={10} className="form-input">
                                         <input
@@ -145,19 +95,19 @@ const Kennzahlen = (props) => {
                                             min="100000"
                                             max="50000000"
                                             step="50000"
-                                            value={umsatzPrognose2023}
-                                            onChange={(e) => setUmsatzPrognose2023(e.target.value)}
+                                            value={umsatz[`umsatz${index + 2020}`]}
+                                            onChange={(e) => handleUmsatzChange(`umsatz${index + 2020}`, e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={umsatzPrognose2023}
+                                            value={umsatz[`umsatz${index + 2020}`]}
                                             readOnly
                                         />
                                     </Form.Field>
                                 </Form.Group>
-                            )}
+                            ))}
                         </Form>
                     </Segment>
                     <Header as="h3">EBIT (Gewinn vor Zinsen und Steuern) der letzten Jahre*</Header>
@@ -168,78 +118,10 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            <Form.Group className="form-group">
-                                <Form.Field width={3} className="form-label">
-                                    <label>EBIT 2020</label>
-                                </Form.Field>
-                                <Form.Field width={10} className="form-input">
-                                    <input
-                                        type="range"
-                                        min="0"
-                                        max="10000000"
-                                        step="1000"
-                                        value={ebit2020}
-                                        onChange={(e) => setEbit2020(e.target.value)}
-                                    />
-                                </Form.Field>
-                                <Form.Field width={3} className="form-input">
-                                    <input
-                                        type="text"
-                                        value={ebit2020}
-                                        readOnly
-                                    />
-                                </Form.Field>
-                            </Form.Group>
-
-                            <Form.Group className="form-group">
-                                <Form.Field width={3} className="form-label">
-                                    <label>EBIT 2021</label>
-                                </Form.Field>
-                                <Form.Field width={10} className="form-input">
-                                    <input
-                                        type="range"
-                                        min="0"
-                                        max="10000000"
-                                        step="1000"
-                                        value={ebit2021}
-                                        onChange={(e) => setEbit2021(e.target.value)}
-                                    />
-                                </Form.Field>
-                                <Form.Field width={3} className="form-input">
-                                    <input
-                                        type="text"
-                                        value={ebit2021}
-                                        readOnly
-                                    />
-                                </Form.Field>
-                            </Form.Group>
-                            <Form.Group className="form-group">
-                                <Form.Field width={3} className="form-label">
-                                    <label>EBIT 2022</label>
-                                </Form.Field>
-                                <Form.Field width={10} className="form-input">
-                                    <input
-                                        type="range"
-                                        min="0"
-                                        max="10000000"
-                                        step="1000"
-                                        value={ebit2022}
-                                        onChange={(e) => setEbit2022(e.target.value)}
-                                    />
-                                </Form.Field>
-                                <Form.Field width={3} className="form-input">
-                                    <input
-                                        type="text"
-                                        value={ebit2022}
-                                        readOnly
-                                    />
-                                </Form.Field>
-                            </Form.Group>
-
-                            {checked && (
-                                <Form.Group className="form-group">
+                            {gewinnYears.map((year, index) => (
+                                <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
-                                        <label>Prognose 2023</label>
+                                        <label>{year}</label>
                                     </Form.Field>
                                     <Form.Field width={10} className="form-input">
                                         <input
@@ -247,19 +129,19 @@ const Kennzahlen = (props) => {
                                             min="0"
                                             max="10000000"
                                             step="1000"
-                                            value={ebitPrognose2023}
-                                            onChange={(e) => setEbitPrognose2023(e.target.value)}
+                                            value={ebit[`ebit${index + 2020}`]}
+                                            onChange={(e) => handleEbitChange(`ebit${index + 2020}`, e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={ebitPrognose2023}
+                                            value={ebit[`ebit${index + 2020}`]}
                                             readOnly
                                         />
                                     </Form.Field>
                                 </Form.Group>
-                            )}
+                            ))}
                         </Form>
                     </Segment>
                     <Header as="h3">
@@ -316,4 +198,3 @@ const Kennzahlen = (props) => {
 };
 
 export default Kennzahlen;
-
