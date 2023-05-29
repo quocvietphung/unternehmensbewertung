@@ -30,33 +30,30 @@ const BasisInfo = (props) => {
                 setAlter(parseInt(value));
             }
         } else if (name === "branche") {
-            const selectedOption = branchOptions.find((option) => option.value === value);
-            if (selectedOption) {
-                setBranche(selectedOption.key);
-            }
+            setBranche(value);
         } else if (name === "lage") {
             setLage(value);
         }
     };
 
     const branchOptions = [
-        { key: "auswählen", value: "", text: "Branche auswählen" },
-        { key: "bau", value: { städtisch: 10000, ländlich: 8000 }, text: "Bau und Handwerk" },
-        { key: "beratung", value: { städtisch: 5000, ländlich: 8500 }, text: "Beratende Dienstleistung" },
-        { key: "chemie", value: { städtisch: 5900, ländlich: 11000 }, text: "Chemie, Kunststoffe, Papier" },
-        { key: "elektrotechnik", value: { städtisch: 5400, ländlich: 8400 }, text: "Elektrotechnik" },
-        { key: "fahrzeugbau", value: { städtisch: 5150, ländlich: 7200 }, text: "Fahrzeugbau und -zubehör" },
-        { key: "handel", value: { städtisch: 5550, ländlich: 7300 }, text: "Handel und E-Commerce" },
-        { key: "maschinenbau", value: { städtisch: 5600, ländlich: 8500 }, text: "Maschinen- und Anlagenbau" },
-        { key: "medien", value: { städtisch: 5300, ländlich: 11600 }, text: "Medien" },
-        { key: "nahrungs", value: { städtisch: 5450, ländlich: 11100 }, text: "Nahrungs- und Genussmittel" },
-        { key: "pharma", value: { städtisch: 6500, ländlich: 16400 }, text: "Pharma, Bio- und Medizintechnik" },
-        { key: "software", value: { städtisch: 5650, ländlich: 15600 }, text: "Software" },
-        { key: "telekommunikation", value: { städtisch: 5650, ländlich: 10500 }, text: "Telekommunikation" },
-        { key: "textilien", value: { städtisch: 4500, ländlich: 8100 }, text: "Textilien und Bekleidung" },
-        { key: "transport", value: { städtisch: 4850, ländlich: 6400 }, text: "Transport, Logistik und Touristik" },
-        { key: "umwelttechnik", value: { städtisch: 5600, ländlich: 8500 }, text: "Umwelttechnik" },
-        { key: "versorgungswirtschaft", value: { städtisch: 5600, ländlich: 8500 }, text: "Versorgungswirtschaft" },
+        { key: 0, value: "", calculate: "", text: "Branche auswählen" },
+        { key: 1, value: "bau", calculateToLage: { städtisch: 10000, ländlich: 8000 }, text: "Bau und Handwerk" },
+        { key: 2, value: "beratung", calculateToLage: { städtisch: 5000, ländlich: 8500 }, text: "Beratende Dienstleistung" },
+        { key: 3, value: "chemie", calculateToLage: { städtisch: 5900, ländlich: 11000 }, text: "Chemie, Kunststoffe, Papier" },
+        { key: 4, value: "elektrotechnik", calculateToLage: { städtisch: 5400, ländlich: 8400 }, text: "Elektrotechnik" },
+        { key: 5, value: "fahrzeugbau", calculateToLage: { städtisch: 5150, ländlich: 7200 }, text: "Fahrzeugbau und -zubehör" },
+        { key: 6, value: "handel", calculateToLage: { städtisch: 5550, ländlich: 7300 }, text: "Handel und E-Commerce" },
+        { key: 7, value: "maschinenbau", calculateToLage: { städtisch: 5600, ländlich: 8500 }, text: "Maschinen- und Anlagenbau" },
+        { key: 8, value: "medien", calculateToLage: { städtisch: 5300, ländlich: 11600 }, text: "Medien" },
+        { key: 9, value: "nahrungs", calculateToLage: { städtisch: 5450, ländlich: 11100 }, text: "Nahrungs- und Genussmittel" },
+        { key: 10, value: "pharma", calculateToLage: { städtisch: 6500, ländlich: 16400 }, text: "Pharma, Bio- und Medizintechnik" },
+        { key: 11, value: "software", calculateToLage: { städtisch: 5650, ländlich: 15600 }, text: "Software" },
+        { key: 12, value: "telekommunikation", calculateToLage: { städtisch: 5650, ländlich: 10500 }, text: "Telekommunikation" },
+        { key: 13, value: "textilien", calculateToLage: { städtisch: 4500, ländlich: 8100 }, text: "Textilien und Bekleidung" },
+        { key: 14, value: "transport", calculateToLage: { städtisch: 4850, ländlich: 6400 }, text: "Transport, Logistik und Touristik" },
+        { key: 15, value: "umwelttechnik", calculateToLage: { städtisch: 5600, ländlich: 8500 }, text: "Umwelttechnik" },
+        { key: 16, value: "versorgungswirtschaft", calculateToLage: { städtisch: 5600, ländlich: 8500 }, text: "Versorgungswirtschaft" },
     ];
 
     const calculateUnternehmensbewertung = (branche, lage, alter) => {
@@ -66,12 +63,12 @@ const BasisInfo = (props) => {
         console.log("lage:", lage);
         console.log("alter:", alter);
 
-        const option = branchOptions.find((option) => option.key === branche);
+        const option = branchOptions.find((option) => option.value === branche);
 
         if (option) {
-            const value = option.value;
-            if (value.hasOwnProperty(lage)) {
-                unternehmensbewertung = alter * value[lage];
+            const calculateToLage = option.calculateToLage;
+            if (calculateToLage && calculateToLage.hasOwnProperty(lage)) {
+                unternehmensbewertung = alter * calculateToLage[lage];
             }
         }
 
