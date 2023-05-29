@@ -20,7 +20,7 @@ const BasisInfo = (props) => {
         checkValidity();
     }, [branche, lage, alter]);
 
-    const handleChange = (event, { name, value, options }) => {
+    const handleChange = (event, { name, value }) => {
         if (name === "alter") {
             if (value === "+") {
                 setAlter((prevAlter) => prevAlter + 1);
@@ -30,8 +30,7 @@ const BasisInfo = (props) => {
                 setAlter(parseInt(value));
             }
         } else if (name === "branche") {
-            // Tìm option tương ứng với value và lấy key của nó
-            const selectedOption = options.find(option => option.value === value);
+            const selectedOption = branchOptions.find((option) => option.value === value);
             if (selectedOption) {
                 setBranche(selectedOption.key);
             }
