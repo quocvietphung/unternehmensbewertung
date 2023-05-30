@@ -37,23 +37,125 @@ const BasisInfo = (props) => {
     };
 
     const branchOptions = [
-        { key: 0, value: "", branchValue: "", lageValue: "", text: "Branche auswählen" },
-        { key: 1, value: "bau", branchValue: "4.8, 0.63", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Bau und Handwerk" },
-        { key: 2, value: "beratung", branchValue: "5.0, 0.85", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Beratende Dienstleistung" },
-        { key: 3, value: "chemie", branchValue: "5.9, 1.1", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Chemie, Kunststoffe, Papier" },
-        { key: 4, value: "elektrotechnik", branchValue: "5.4, 0.84", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Elektrotechnik" },
-        { key: 5, value: "fahrzeugbau", branchValue: "5.15, 0.72", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Fahrzeugbau und -zubehör" },
-        { key: 6, value: "handel", branchValue: "5.55, 0.73", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Handel und E-Commerce" },
-        { key: 7, value: "maschinenbau", branchValue: "5.6, 0.85", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Maschinen- und Anlagenbau" },
-        { key: 8, value: "medien", branchValue: "5.3, 1.16", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Medien" },
-        { key: 9, value: "nahrungs", branchValue: "5.45, 1.11", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Nahrungs- und Genussmittel" },
-        { key: 10, value: "pharma", branchValue: "6.5, 1.64", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Pharma, Bio- und Medizintechnik" },
-        { key: 11, value: "software", branchValue: "5.65, 1.56", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Software" },
-        { key: 12, value: "telekommunikation", branchValue: "5.65, 1.05", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Telekommunikation" },
-        { key: 13, value: "textilien", branchValue: "4.5, 0.81", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Textilien und Bekleidung" },
-        { key: 14, value: "transport", branchValue: "4.85, 0.64", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Transport, Logistik und Touristik" },
-        { key: 15, value: "umwelttechnik", branchValue: "5.60, 0.85", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Umwelttechnik" },
-        { key: 16, value: "versorgungswirtschaft", branchValue: "5.60, 0.85", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Versorgungswirtschaft" }
+        {
+            key: 0,
+            value: "",
+            branchValue: { ebit: 0, unsatzt: 0 },
+            lageValue: "",
+            text: "Branche auswählen"
+        },
+        {
+            key: 1,
+            value: "bau",
+            branchValue: { ebit: 4.8, unsatzt: 0.63 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Bau und Handwerk"
+        },
+        {
+            key: 2,
+            value: "beratung",
+            branchValue: { ebit: 5.0, unsatzt: 0.85 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Beratende Dienstleistung"
+        },
+        {
+            key: 3,
+            value: "chemie",
+            branchValue: { ebit: 5.9, unsatzt: 1.1 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Chemie, Kunststoffe, Papier"
+        },
+        {
+            key: 4,
+            value: "elektrotechnik",
+            branchValue: { ebit: 5.4, unsatzt: 0.84 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Elektrotechnik"
+        },
+        {
+            key: 5,
+            value: "fahrzeugbau",
+            branchValue: { ebit: 5.15, unsatzt: 0.72 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Fahrzeugbau und -zubehör"
+        },
+        {
+            key: 6,
+            value: "handel",
+            branchValue: { ebit: 5.55, unsatzt: 0.73 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Handel und E-Commerce"
+        },
+        {
+            key: 7,
+            value: "maschinenbau",
+            branchValue: { ebit: 5.6, unsatzt: 0.85 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Maschinen- und Anlagenbau"
+        },
+        {
+            key: 8,
+            value: "medien",
+            branchValue: { ebit: 5.3, unsatzt: 1.16 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Medien"
+        },
+        {
+            key: 9,
+            value: "nahrungs",
+            branchValue: { ebit: 5.45, unsatzt: 1.11 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Nahrungs- und Genussmittel"
+        },
+        {
+            key: 10,
+            value: "pharma",
+            branchValue: { ebit: 6.5, unsatzt: 1.64 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Pharma, Bio- und Medizintechnik"
+        },
+        {
+            key: 11,
+            value: "software",
+            branchValue: { ebit: 5.65, unsatzt: 1.56 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Software"
+        },
+        {
+            key: 12,
+            value: "telekommunikation",
+            branchValue: { ebit: 5.65, unsatzt: 1.05 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Telekommunikation"
+        },
+        {
+            key: 13,
+            value: "textilien",
+            branchValue: { ebit: 4.5, unsatzt: 0.81 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Textilien und Bekleidung"
+        },
+        {
+            key: 14,
+            value: "transport",
+            branchValue: { ebit: 4.85, unsatzt: 0.64 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Transport, Logistik und Touristik"
+        },
+        {
+            key: 15,
+            value: "umwelttechnik",
+            branchValue: { ebit: 5.6, unsatzt: 0.85 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Umwelttechnik"
+        },
+        {
+            key: 16,
+            value: "versorgungswirtschaft",
+            branchValue: { ebit: 5.6, unsatzt: 0.85 },
+            lageValue: { städtisch: 1, ländlich: 0.8 },
+            text: "Versorgungswirtschaft"
+        }
     ];
 
     const calculateUnternehmensbewertung = (branche, lage, alter) => {
