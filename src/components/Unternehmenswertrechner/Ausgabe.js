@@ -10,9 +10,14 @@ const Ausgabe = () => {
     const unternehmensbewertung = useSelector((state) => state.validation.unternehmensbewertung);
 
     const formatUmsatValue = (value) => {
-        const valueInMillion = value / 1e6; // Chuyển đổi từ đơn vị "một" sang đơn vị "triệu"
-        const roundedValue = Math.round(valueInMillion * 10) / 10; // Làm tròn số thập phân đến 1 chữ số
-        const formattedValue = roundedValue.toFixed(1); // Thay dấu chấm bằng dấu phẩy
+        const valueInMillion = value / 1e6;
+        const roundedValue = Math.round(valueInMillion * 10) / 10;
+        let formattedValue = roundedValue.toFixed(1);
+
+        if (formattedValue.endsWith(".0")) {
+            formattedValue = parseInt(formattedValue).toString();
+        }
+
         return formattedValue + " Mio EUR";
     };
 
