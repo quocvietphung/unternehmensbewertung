@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useDispatch } from "react-redux";
 import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
+import { setBranchOptions, setLageOptions } from '../../redux/basisInfoSlice';
+import { useSelector } from "react-redux";
 
 const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(props.kennzahlenInfo?.checked || false);
@@ -20,6 +22,9 @@ const Kennzahlen = (props) => {
     const [averageUmsat, setAverageUmsat] = useState(0);
     const [isValid, setIsValid] = useState(true);
     const dispatch = useDispatch();
+
+    const branchOptions = useSelector(state => state.basisInfo.branchOptions);
+    const lageOptions = useSelector(state => state.basisInfo.lageOptions);
 
     const checkValidity = () => {
         let errors = [];

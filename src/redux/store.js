@@ -1,9 +1,11 @@
 // store.js
 import { configureStore } from '@reduxjs/toolkit'
-import validationReducer from "./reducers";
+import validationReducer from './reducers';
+import basisInfoReducer from './basisInfoSlice';
 
-export const store = configureStore({
+export default configureStore({
     reducer: {
-        validation: validationReducer
+        validation: validationReducer,
+        basisInfo: basisInfoReducer,
     }
 });

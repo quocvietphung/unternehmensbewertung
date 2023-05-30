@@ -4,7 +4,7 @@ import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
 import { Provider } from 'react-redux';
-import { store } from './redux/store'; // Đảm bảo đường dẫn đến file store.js của bạn là đúng
+import store from './redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
