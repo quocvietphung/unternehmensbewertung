@@ -37,22 +37,23 @@ const BasisInfo = (props) => {
     };
 
     const branchOptions = [
-        { key: 0, value: "", lageValue: "", text: "Branche auswählen" },
-        { key: 1, value: "bau", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Bau und Handwerk" },
-        { key: 2, value: "beratung", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Beratende Dienstleistung" },
-        { key: 3, value: "chemie", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Chemie, Kunststoffe, Papier" },
-        { key: 4, value: "elektrotechnik", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Elektrotechnik" },
-        { key: 5, value: "fahrzeugbau", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Fahrzeugbau und -zubehör" },
-        { key: 6, value: "handel", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Handel und E-Commerce" },
-        { key: 7, value: "maschinenbau", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Maschinen- und Anlagenbau" },
-        { key: 8, value: "medien", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Medien" },
-        { key: 9, value: "nahrungs", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Nahrungs- und Genussmittel" },
-        { key: 10, value: "pharma", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Pharma, Bio- und Medizintechnik" },
-        { key: 11, value: "software", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Software" },
-        { key: 12, value: "telekommunikation", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Telekommunikation" },
-        { key: 13, value: "textilien", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Textilien und Bekleidung" },
-        { key: 14, value: "transport", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Transport, Logistik und Touristik" },
-        { key: 15, value: "umwelttechnik", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Umwelttechnik" },
+        { key: 0, value: "", branchValue: "", lageValue: "", text: "Branche auswählen" },
+        { key: 1, value: "bau", branchValue: "4.8, 0.63", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Bau und Handwerk" },
+        { key: 2, value: "beratung", branchValue: "5.0, 0.85", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Beratende Dienstleistung" },
+        { key: 3, value: "chemie", branchValue: "5.9, 1.1", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Chemie, Kunststoffe, Papier" },
+        { key: 4, value: "elektrotechnik", branchValue: "5.4, 0.84", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Elektrotechnik" },
+        { key: 5, value: "fahrzeugbau", branchValue: "5.15, 0.72", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Fahrzeugbau und -zubehör" },
+        { key: 6, value: "handel", branchValue: "5.55, 0.73", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Handel und E-Commerce" },
+        { key: 7, value: "maschinenbau", branchValue: "5.6, 0.85", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Maschinen- und Anlagenbau" },
+        { key: 8, value: "medien", branchValue: "5.3, 1.16", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Medien" },
+        { key: 9, value: "nahrungs", branchValue: "5.45, 1.11", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Nahrungs- und Genussmittel" },
+        { key: 10, value: "pharma", branchValue: "6.5, 1.64", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Pharma, Bio- und Medizintechnik" },
+        { key: 11, value: "software", branchValue: "5.65, 1.56", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Software" },
+        { key: 12, value: "telekommunikation", branchValue: "5.65, 1.05", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Telekommunikation" },
+        { key: 13, value: "textilien", branchValue: "4.5, 0.81", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Textilien und Bekleidung" },
+        { key: 14, value: "transport", branchValue: "4.85, 0.64", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Transport, Logistik und Touristik" },
+        { key: 15, value: "umwelttechnik", branchValue: "5.60, 0.85", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Umwelttechnik" },
+        { key: 16, value: "versorgungswirtschaft", branchValue: "5.60, 0.85", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Versorgungswirtschaft" }
     ];
 
     const calculateUnternehmensbewertung = (branche, lage, alter) => {
