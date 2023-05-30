@@ -24,7 +24,7 @@ const Kennzahlen = (props) => {
     };
 
     const handleChange = (index, field, value) => {
-        if (field === 'selectedOptions') {
+        if (field === 'selectedGewinnTypischOptions') {
             setSelectedOptions(prevOptions => {
                 const newOptions = [...prevOptions];
                 newOptions[index] = { year: gewinnYears[index], value: value };
@@ -166,7 +166,7 @@ const Kennzahlen = (props) => {
                                                 name={`gewinnYears[${index}]`}
                                                 value={option}
                                                 checked={selectedOptions[index]?.value === option}
-                                                onChange={() => handleChange(index, 'selectedOptions', option)}
+                                                onChange={() => handleChange(index, 'selectedGewinnTypischOptions', option)}
                                                 required
                                             />
                                         </Form.Field>
