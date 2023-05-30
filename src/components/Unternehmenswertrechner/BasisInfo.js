@@ -165,15 +165,6 @@ const BasisInfo = (props) => {
         console.log("lage:", lage);
         console.log("alter:", alter);
 
-        const option = branchOptions.find((option) => option.value === branche);
-
-        if (option) {
-            const lageValue = option.lageValue;
-            if (lageValue && lageValue.hasOwnProperty(lage)) {
-                unternehmensbewertung = alter * lageValue[lage];
-            }
-        }
-
         console.log("Unternehmensbewertung:", unternehmensbewertung);
         return unternehmensbewertung;
     };
