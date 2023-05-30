@@ -41,6 +41,16 @@ const Kennzahlen = (props) => {
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
+        // Update selectedGewinnTypischOptions
+        setSelectedGewinnTypischOptions(prevOptions => {
+            const newOptions = [...prevOptions];
+            if (!checked) { // if adding Prognose 2023
+                newOptions.push(''); // add default or empty value
+            } else { // if removing Prognose 2023
+                newOptions.pop();
+            }
+            return newOptions;
+        });
     };
 
     const handleChange = (index, field, value) => {
