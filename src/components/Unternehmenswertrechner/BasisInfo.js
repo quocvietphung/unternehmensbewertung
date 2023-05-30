@@ -12,6 +12,10 @@ const BasisInfo = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        // Dispatch actions to save the corresponding values to Redux
+        dispatch(setBranchOptions(branchOptions.find(option => option.value === branche)?.branchValue));
+        dispatch(setLageOptions(lageOptions.find(option => option.value === lage)?.lageValue));
+
         const bewertung = calculateUnternehmensbewertung(branche, lage, alter);
         console.log("Unternehmensbewertung:", bewertung);
         dispatch(setUnternehmensbewertung(bewertung));
@@ -201,10 +205,6 @@ const BasisInfo = (props) => {
         if (!isValid) {
             return;
         }
-
-        // Dispatch actions to save the corresponding values to Redux
-        dispatch(setBranchOptions(branchOptions.find(option => option.value === branche)?.branchValue));
-        dispatch(setLageOptions(lageOptions.find(option => option.value === lage)?.lageValue));
 
         // Create an object with all the info you need
         const info = {

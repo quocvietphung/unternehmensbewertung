@@ -132,10 +132,8 @@ const Kennzahlen = (props) => {
         setAverageUmsat(avgUmsat);
 
         const unternehmensbewertung = calculateUnternehmensbewertung();
+        dispatch(setUnternehmensbewertung(unternehmensbewertung));
 
-        if (unternehmensbewertung > 0) {
-            dispatch(setUnternehmensbewertung(unternehmensbewertung));
-        }
     }, [kennzahlen, branchOptions, lageOptions, dispatch]);
 
     useEffect(() => {

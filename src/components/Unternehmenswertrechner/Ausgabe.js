@@ -8,6 +8,7 @@ const Ausgabe = () => {
     const isValid = useSelector((state) => state.validation.isValid);
     const errors = useSelector((state) => state.validation.error);
     const unternehmensbewertung = useSelector((state) => state.validation.unternehmensbewertung);
+    const dispatch = useDispatch();
 
     const formatUmsatValue = (value) => {
         const valueInMillion = value / 1e6;
