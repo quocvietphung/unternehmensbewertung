@@ -7,9 +7,16 @@ const Ausgabe = () => {
     const errors = useSelector((state) => state.validation.error);
     const unternehmensbewertung = useSelector((state) => state.validation.unternehmensbewertung);
 
+    const formatUmsatValue = (value) => {
+        const valueInMillion = value / 1e6; // Chuyển đổi từ đơn vị "một" sang đơn vị "triệu"
+        const roundedValue = Math.round(valueInMillion * 10) / 10; // Làm tròn số thập phân đến 1 chữ số
+        const formattedValue = roundedValue.toFixed(1); // Thay dấu chấm bằng dấu phẩy
+        return formattedValue + " Mio EUR";
+    };
+
     const resultContent = isValid ? (
         <Grid.Column className="default">
-            <p className="ertragswert">{unternehmensbewertung} Mio EUR</p>
+            <p className="ertragswert">{formatUmsatValue(unternehmensbewertung)}</p>
             <Message warning className="warning innacurate-calculation">
                 <p className="my-0">
                     Das ist ein vorläufig berechneter Wert. Füllen Sie weitere Felder aus, um einen genaueren zu Wert zu erhalten.
