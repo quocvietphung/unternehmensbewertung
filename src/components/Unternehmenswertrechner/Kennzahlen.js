@@ -17,7 +17,27 @@ const Kennzahlen = (props) => {
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
     const [selectedGewinnTypischOptions, setSelectedGewinnTypischOptions] = useState(() => props.kennzahlenInfo?.selectedGewinnTypischOptions || Array(gewinnYears.length).fill(''));
+    const [isValid, setIsValid] = useState(true);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        checkValidity();
+    }, [selectedGewinnTypischOptions]);
+
+    const checkValidity = () => {
+        let errors = [];
+        selectedGewinnTypischOptions.forEach((option, index) => {
+            if (!option || option === '') {
+                errors.push(`Bitte wählen Sie eine Option für ${gewinnYears[index]}.`);
+            }
+        });
+
+        dispatch(setError(errors));
+
+        const valid = errors.length === 0;
+        setIsValid(valid);
+        dispatch(setValidity(valid));
+    };
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
@@ -46,6 +66,13 @@ const Kennzahlen = (props) => {
     };
 
     const handleWeiterClick = () => {
+        checkValidity();
+
+        if (!isValid) {
+            console.log("Form is not valid. Please correct the errors.");
+            return;
+        }
+
         const kennzahlenInfo = {
             checked,
             kennzahlen: [...kennzahlen],
@@ -55,12 +82,11 @@ const Kennzahlen = (props) => {
         console.log("kennzahlenInfo:", kennzahlenInfo); // Kiểm tra giá trị kennzahlenInfo
 
         // Dispatch các action Redux
-        dispatch(setValidity(true));
-        dispatch(setError([]));
         dispatch(setUnternehmensbewertung(0));
 
         props.onWeiterClick(kennzahlenInfo);
     };
+
 
     return (
         <Grid padded className="shared-section kennzahlen">
