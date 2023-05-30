@@ -42,7 +42,15 @@ const Kennzahlen = (props) => {
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
-        // Update selectedGewinnTypischOptions
+        setKennzahlen(prevKennzahlen => {
+            const newKennzahlen = [...prevKennzahlen];
+            if (!checked) { // if adding Prognose 2023
+                newKennzahlen.push({ umsatz: 25000000, ebit: 5000000 }); // add default values
+            } else { // if removing Prognose 2023
+                newKennzahlen.pop();
+            }
+            return newKennzahlen;
+        });
         setSelectedGewinnTypischOptions(prevOptions => {
             const newOptions = [...prevOptions];
             if (!checked) { // if adding Prognose 2023
