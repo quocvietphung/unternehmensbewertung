@@ -98,9 +98,6 @@ const Kennzahlen = (props) => {
 
         console.log("kennzahlenInfo:", kennzahlenInfo); // Kiểm tra giá trị kennzahlenInfo
 
-        // Dispatch các action Redux
-        dispatch(setUnternehmensbewertung(0));
-
         props.onWeiterClick(kennzahlenInfo);
     };
 
@@ -114,13 +111,6 @@ const Kennzahlen = (props) => {
         });
 
         return count > 0 ? sum / count : 0;
-    };
-
-    const formatUmsatValue = (value) => {
-        const valueInMillion = value / 1e6; // Chuyển đổi từ đơn vị "một" sang đơn vị "triệu"
-        const roundedValue = Math.round(valueInMillion * 10) / 10; // Làm tròn số thập phân đến 1 chữ số
-        const formattedValue = roundedValue.toFixed(1); // Thay dấu chấm bằng dấu phẩy
-        return formattedValue + " Mio EUR";
     };
 
     const calculateUnternehmensbewertung = () => {

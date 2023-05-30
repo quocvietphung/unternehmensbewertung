@@ -10,6 +10,12 @@ const Ausgabe = () => {
     const unternehmensbewertung = useSelector((state) => state.validation.unternehmensbewertung);
     const dispatch = useDispatch();
 
+
+    useEffect(() => {
+        // In ra giá trị unternehmenwert mỗi khi nó thay đổi
+        console.log("unternehmenwert:", unternehmensbewertung);
+    }, [unternehmensbewertung]);
+
     const formatUmsatValue = (value) => {
         const valueInMillion = value / 1e6;
         const roundedValue = Math.round(valueInMillion * 10) / 10;
