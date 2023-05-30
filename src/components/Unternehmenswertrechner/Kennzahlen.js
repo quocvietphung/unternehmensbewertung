@@ -16,7 +16,7 @@ const Kennzahlen = (props) => {
 
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
-    const [selectedOptions, setSelectedOptions] = useState(() => props.kennzahlenInfo?.selectedOptions || Array(gewinnYears.length).fill(''));
+    const [selectedGewinnTypischOptions, setSelectedGewinnTypischOptions] = useState(() => props.kennzahlenInfo?.selectedGewinnTypischOptions || Array(gewinnYears.length).fill(''));
     const dispatch = useDispatch();
 
     const handleCheckboxChange = () => {
@@ -25,7 +25,7 @@ const Kennzahlen = (props) => {
 
     const handleChange = (index, field, value) => {
         if (field === 'selectedGewinnTypischOptions') {
-            setSelectedOptions(prevOptions => {
+            setSelectedGewinnTypischOptions(prevOptions => {
                 const newOptions = [...prevOptions];
                 newOptions[index] = { year: gewinnYears[index], value: value };
                 return newOptions;
@@ -49,7 +49,7 @@ const Kennzahlen = (props) => {
         const kennzahlenInfo = {
             checked,
             kennzahlen: [...kennzahlen],
-            selectedOptions: [...selectedOptions]
+            selectedGewinnTypischOptions: [...selectedGewinnTypischOptions]
         };
 
         console.log("kennzahlenInfo:", kennzahlenInfo); // Kiểm tra giá trị kennzahlenInfo
@@ -165,7 +165,7 @@ const Kennzahlen = (props) => {
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
                                                 value={option}
-                                                checked={selectedOptions[index]?.value === option}
+                                                checked={selectedGewinnTypischOptions[index]?.value === option}
                                                 onChange={() => handleChange(index, 'selectedGewinnTypischOptions', option)}
                                                 required
                                             />
