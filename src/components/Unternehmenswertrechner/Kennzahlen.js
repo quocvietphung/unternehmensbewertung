@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useDispatch } from "react-redux";
 import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
@@ -117,6 +117,21 @@ const Kennzahlen = (props) => {
         return formattedValue + " Mio EUR";
     };
 
+    const calculateUnternehmensbewertung = () => {
+        return averageUmsat * branchOptions.umsatzt * lageOptions;
+    };
+
+    const calculatedValue = useMemo(() => calculateUnternehmensbewertung(), [
+        averageUmsat,
+        branchOptions,
+        lageOptions,
+    ]);
+
+    useEffect(() => {
+        console.log("branchOptions:", branchOptions);
+        console.log("lageOptions:", lageOptions);
+    }, []);
+
     useEffect(() => {
         const avgUmsat = calculateAverageUmsat(kennzahlen);
         setAverageUmsat(avgUmsat);
@@ -137,7 +152,7 @@ const Kennzahlen = (props) => {
                         />
                     </Form.Field>
                     <Header as="h3">Umsatz der letzten Jahre*</Header>
-                    <Header as="h3">Giá trị trung bình Umsat: {formatUmsatValue(averageUmsat)}</Header>
+                    <Header as="h3">Giá trị trung bình Umsat: {formatUmsatValue(calculatedValue)}</Header>
                     <Label>
                         Sie können Ihre Kennzahlen über den Schieberegler anpassen oder direkt über die Zahleneingabe eintragen.
                         <br />
