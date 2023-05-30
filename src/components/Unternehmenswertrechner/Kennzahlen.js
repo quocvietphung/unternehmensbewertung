@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useDispatch } from "react-redux";
 import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
-import { setBranchOptions, setLageOptions } from '../../redux/basisInfoSlice';
 import { useSelector } from "react-redux";
 
 const Kennzahlen = (props) => {
@@ -117,6 +116,12 @@ const Kennzahlen = (props) => {
         const formattedValue = roundedValue.toFixed(1); // Thay dấu chấm bằng dấu phẩy
         return formattedValue + " Mio EUR";
     };
+
+    useEffect(() => {
+        console.log("branchOptions:", branchOptions);
+        console.log("lageOptions:", lageOptions);
+    }, [branchOptions, lageOptions]);
+
 
     useEffect(() => {
         const avgUmsat = calculateAverageUmsat(kennzahlen);
