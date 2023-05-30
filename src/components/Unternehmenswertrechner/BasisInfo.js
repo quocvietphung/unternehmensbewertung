@@ -37,23 +37,22 @@ const BasisInfo = (props) => {
     };
 
     const branchOptions = [
-        { key: 0, value: "", calculate: "", text: "Branche auswählen" },
-        { key: 1, value: "bau", calculateToLage: { städtisch: 10000, ländlich: 8000 }, text: "Bau und Handwerk" },
-        { key: 2, value: "beratung", calculateToLage: { städtisch: 5000, ländlich: 8500 }, text: "Beratende Dienstleistung" },
-        { key: 3, value: "chemie", calculateToLage: { städtisch: 5900, ländlich: 11000 }, text: "Chemie, Kunststoffe, Papier" },
-        { key: 4, value: "elektrotechnik", calculateToLage: { städtisch: 5400, ländlich: 8400 }, text: "Elektrotechnik" },
-        { key: 5, value: "fahrzeugbau", calculateToLage: { städtisch: 5150, ländlich: 7200 }, text: "Fahrzeugbau und -zubehör" },
-        { key: 6, value: "handel", calculateToLage: { städtisch: 5550, ländlich: 7300 }, text: "Handel und E-Commerce" },
-        { key: 7, value: "maschinenbau", calculateToLage: { städtisch: 5600, ländlich: 8500 }, text: "Maschinen- und Anlagenbau" },
-        { key: 8, value: "medien", calculateToLage: { städtisch: 5300, ländlich: 11600 }, text: "Medien" },
-        { key: 9, value: "nahrungs", calculateToLage: { städtisch: 5450, ländlich: 11100 }, text: "Nahrungs- und Genussmittel" },
-        { key: 10, value: "pharma", calculateToLage: { städtisch: 6500, ländlich: 16400 }, text: "Pharma, Bio- und Medizintechnik" },
-        { key: 11, value: "software", calculateToLage: { städtisch: 5650, ländlich: 15600 }, text: "Software" },
-        { key: 12, value: "telekommunikation", calculateToLage: { städtisch: 5650, ländlich: 10500 }, text: "Telekommunikation" },
-        { key: 13, value: "textilien", calculateToLage: { städtisch: 4500, ländlich: 8100 }, text: "Textilien und Bekleidung" },
-        { key: 14, value: "transport", calculateToLage: { städtisch: 4850, ländlich: 6400 }, text: "Transport, Logistik und Touristik" },
-        { key: 15, value: "umwelttechnik", calculateToLage: { städtisch: 5600, ländlich: 8500 }, text: "Umwelttechnik" },
-        { key: 16, value: "versorgungswirtschaft", calculateToLage: { städtisch: 5600, ländlich: 8500 }, text: "Versorgungswirtschaft" },
+        { key: 0, value: "", lageValue: "", text: "Branche auswählen" },
+        { key: 1, value: "bau", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Bau und Handwerk" },
+        { key: 2, value: "beratung", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Beratende Dienstleistung" },
+        { key: 3, value: "chemie", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Chemie, Kunststoffe, Papier" },
+        { key: 4, value: "elektrotechnik", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Elektrotechnik" },
+        { key: 5, value: "fahrzeugbau", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Fahrzeugbau und -zubehör" },
+        { key: 6, value: "handel", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Handel und E-Commerce" },
+        { key: 7, value: "maschinenbau", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Maschinen- und Anlagenbau" },
+        { key: 8, value: "medien", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Medien" },
+        { key: 9, value: "nahrungs", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Nahrungs- und Genussmittel" },
+        { key: 10, value: "pharma", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Pharma, Bio- und Medizintechnik" },
+        { key: 11, value: "software", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Software" },
+        { key: 12, value: "telekommunikation", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Telekommunikation" },
+        { key: 13, value: "textilien", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Textilien und Bekleidung" },
+        { key: 14, value: "transport", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Transport, Logistik und Touristik" },
+        { key: 15, value: "umwelttechnik", lageValue: { städtisch: 1, ländlich: 0.8 }, text: "Umwelttechnik" },
     ];
 
     const calculateUnternehmensbewertung = (branche, lage, alter) => {
@@ -66,9 +65,9 @@ const BasisInfo = (props) => {
         const option = branchOptions.find((option) => option.value === branche);
 
         if (option) {
-            const calculateToLage = option.calculateToLage;
-            if (calculateToLage && calculateToLage.hasOwnProperty(lage)) {
-                unternehmensbewertung = alter * calculateToLage[lage];
+            const lageValue = option.lageValue;
+            if (lageValue && lageValue.hasOwnProperty(lage)) {
+                unternehmensbewertung = alter * lageValue[lage];
             }
         }
 
