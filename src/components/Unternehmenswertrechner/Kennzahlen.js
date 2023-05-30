@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
+import { useDispatch } from "react-redux";
+import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
 
 const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(props.kennzahlenInfo?.checked || false);
@@ -15,17 +17,32 @@ const Kennzahlen = (props) => {
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
     const [selectedOptions, setSelectedOptions] = useState(() => props.kennzahlenInfo?.selectedOptions || Array(gewinnYears.length).fill(''));
+    const dispatch = useDispatch();
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
     };
 
-    const handleOptionChange = (index, value) => {
-        setSelectedOptions(prevOptions => {
-            const newOptions = [...prevOptions];
-            newOptions[index] = { year: gewinnYears[index], value: value };
-            return newOptions;
-        });
+    const handleChange = (index, field, value) => {
+        if (field === 'selectedOptions') {
+            setSelectedOptions(prevOptions => {
+                const newOptions = [...prevOptions];
+                newOptions[index] = { year: gewinnYears[index], value: value };
+                return newOptions;
+            });
+        } else if (field === 'umsatz') {
+            setKennzahlen(prevKennzahlen => {
+                const newKennzahlen = [...prevKennzahlen];
+                newKennzahlen[index] = { ...newKennzahlen[index], umsatz: value };
+                return newKennzahlen;
+            });
+        } else if (field === 'ebit') {
+            setKennzahlen(prevKennzahlen => {
+                const newKennzahlen = [...prevKennzahlen];
+                newKennzahlen[index] = { ...newKennzahlen[index], ebit: value };
+                return newKennzahlen;
+            });
+        }
     };
 
     const handleWeiterClick = () => {
@@ -37,23 +54,12 @@ const Kennzahlen = (props) => {
 
         console.log("kennzahlenInfo:", kennzahlenInfo); // Kiểm tra giá trị kennzahlenInfo
 
+        // Dispatch các action Redux
+        dispatch(setValidity(true));
+        dispatch(setError([]));
+        dispatch(setUnternehmensbewertung(0));
+
         props.onWeiterClick(kennzahlenInfo);
-    };
-
-    const handleUmsatzChange = (index, value) => {
-        setKennzahlen(prevKennzahlen => {
-            const newKennzahlen = [...prevKennzahlen];
-            newKennzahlen[index] = { ...newKennzahlen[index], umsatz: value };
-            return newKennzahlen;
-        });
-    };
-
-    const handleEbitChange = (index, value) => {
-        setKennzahlen(prevKennzahlen => {
-            const newKennzahlen = [...prevKennzahlen];
-            newKennzahlen[index] = { ...newKennzahlen[index], ebit: value };
-            return newKennzahlen;
-        });
     };
 
     return (
@@ -90,7 +96,7 @@ const Kennzahlen = (props) => {
                                             max="50000000"
                                             step="50000"
                                             value={kennzahlen[index]?.umsatz}
-                                            onChange={(e) => handleUmsatzChange(index, e.target.value)}
+                                            onChange={(e) => handleChange(index, 'umsatz', e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
@@ -124,7 +130,7 @@ const Kennzahlen = (props) => {
                                             max="10000000"
                                             step="1000"
                                             value={kennzahlen[index]?.ebit}
-                                            onChange={(e) => handleEbitChange(index, e.target.value)}
+                                            onChange={(e) => handleChange(index, 'ebit', e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
@@ -160,7 +166,7 @@ const Kennzahlen = (props) => {
                                                 name={`gewinnYears[${index}]`}
                                                 value={option}
                                                 checked={selectedOptions[index]?.value === option}
-                                                onChange={() => handleOptionChange(index, option)}
+                                                onChange={() => handleChange(index, 'selectedOptions', option)}
                                                 required
                                             />
                                         </Form.Field>
