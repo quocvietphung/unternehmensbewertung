@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
 import { useSelector } from "react-redux";
+import { setUnternehmensbewertung } from '../../redux/reducers'; // Import action setUnternehmensbewertung
+import { useDispatch } from "react-redux";
 
 const Ausgabe = () => {
     const isValid = useSelector((state) => state.validation.isValid);

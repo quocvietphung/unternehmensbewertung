@@ -132,8 +132,11 @@ const Kennzahlen = (props) => {
         setAverageUmsat(avgUmsat);
 
         const unternehmensbewertung = calculateUnternehmensbewertung();
-        dispatch(setUnternehmensbewertung(calculatedValue));
-    }, [kennzahlen]);
+
+        if (unternehmensbewertung > 0) {
+            dispatch(setUnternehmensbewertung(unternehmensbewertung));
+        }
+    }, [kennzahlen, branchOptions, lageOptions, dispatch]);
 
     return (
         <Grid padded className="shared-section kennzahlen">
