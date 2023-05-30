@@ -85,8 +85,6 @@ const Kennzahlen = (props) => {
     };
 
     const handleWeiterClick = () => {
-        checkValidity();
-
         if (!isValid) {
             console.log("Form is not valid. Please correct the errors.");
             return;
@@ -139,6 +137,11 @@ const Kennzahlen = (props) => {
             dispatch(setUnternehmensbewertung(unternehmensbewertung));
         }
     }, [kennzahlen, branchOptions, lageOptions, dispatch]);
+
+    useEffect(() => {
+        checkValidity();
+    }, [selectedGewinnTypischOptions]);
+
 
     return (
         <Grid padded className="shared-section kennzahlen">
