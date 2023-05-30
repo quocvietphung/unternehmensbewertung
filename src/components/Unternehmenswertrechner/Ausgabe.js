@@ -21,7 +21,7 @@ const Ausgabe = () => {
             <p>
                 <strong>Wert ungültig</strong>
             </p>
-            {errors && errors.map((error, index) => <p key={index}>{error || "Ertragswert kann nicht berechnet werden"}</p>)}
+            {errors && errors.map((error, index) => <p className="error-ertragswert" key={index}>{error || "Ertragswert kann nicht berechnet werden"}</p>)}
         </Grid.Column>
     );
 
