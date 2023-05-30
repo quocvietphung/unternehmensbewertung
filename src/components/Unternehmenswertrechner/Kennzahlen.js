@@ -97,7 +97,6 @@ const Kennzahlen = (props) => {
         props.onWeiterClick(kennzahlenInfo);
     };
 
-
     return (
         <Grid padded className="shared-section kennzahlen">
             <Grid.Column>
