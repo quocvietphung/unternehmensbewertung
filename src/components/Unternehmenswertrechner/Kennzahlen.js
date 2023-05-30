@@ -118,12 +118,6 @@ const Kennzahlen = (props) => {
     };
 
     useEffect(() => {
-        console.log("branchOptions:", branchOptions);
-        console.log("lageOptions:", lageOptions);
-    }, [branchOptions, lageOptions]);
-
-
-    useEffect(() => {
         const avgUmsat = calculateAverageUmsat(kennzahlen);
         setAverageUmsat(avgUmsat);
     }, [kennzahlen]);
