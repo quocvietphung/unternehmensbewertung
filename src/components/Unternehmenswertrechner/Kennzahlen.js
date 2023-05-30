@@ -130,6 +130,9 @@ const Kennzahlen = (props) => {
     useEffect(() => {
         const avgUmsat = calculateAverageUmsat(kennzahlen);
         setAverageUmsat(avgUmsat);
+
+        const unternehmensbewertung = calculateUnternehmensbewertung();
+        dispatch(setUnternehmensbewertung(calculatedValue));
     }, [kennzahlen]);
 
     return (
