@@ -17,12 +17,9 @@ const Kennzahlen = (props) => {
     const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
     const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
     const [selectedGewinnTypischOptions, setSelectedGewinnTypischOptions] = useState(() => props.kennzahlenInfo?.selectedGewinnTypischOptions || Array(gewinnYears.length).fill(''));
+    const [averageUmsat, setAverageUmsat] = useState(0);
     const [isValid, setIsValid] = useState(true);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        checkValidity();
-    }, [selectedGewinnTypischOptions]);
 
     const checkValidity = () => {
         let errors = [];
@@ -97,6 +94,30 @@ const Kennzahlen = (props) => {
         props.onWeiterClick(kennzahlenInfo);
     };
 
+    const calculateAverageUmsat = (kennzahlen) => {
+        let sum = 0;
+        let count = 0;
+
+        kennzahlen.forEach((kennzahl) => {
+            sum += parseInt(kennzahl.umsatz);
+            count++;
+        });
+
+        return count > 0 ? sum / count : 0;
+    };
+
+    const formatUmsatValue = (value) => {
+        const valueInMillion = value / 1e6; // Chuyển đổi từ đơn vị "một" sang đơn vị "triệu"
+        const roundedValue = Math.round(valueInMillion * 10) / 10; // Làm tròn số thập phân đến 1 chữ số
+        const formattedValue = roundedValue.toFixed(1); // Thay dấu chấm bằng dấu phẩy
+        return formattedValue + " Mio EUR";
+    };
+
+    useEffect(() => {
+        const avgUmsat = calculateAverageUmsat(kennzahlen);
+        setAverageUmsat(avgUmsat);
+    }, [kennzahlen]);
+
     return (
         <Grid padded className="shared-section kennzahlen">
             <Grid.Column>
@@ -112,6 +133,7 @@ const Kennzahlen = (props) => {
                         />
                     </Form.Field>
                     <Header as="h3">Umsatz der letzten Jahre*</Header>
+                    <Header as="h3">Giá trị trung bình Umsat: {formatUmsatValue(averageUmsat)}</Header>
                     <Label>
                         Sie können Ihre Kennzahlen über den Schieberegler anpassen oder direkt über die Zahleneingabe eintragen.
                         <br />

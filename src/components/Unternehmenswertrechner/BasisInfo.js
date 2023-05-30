@@ -158,6 +158,21 @@ const BasisInfo = (props) => {
         }
     ];
 
+    const lageOptions = [
+        {
+            key: 0,
+            value: 'städtisch',
+            lageValue: 1,
+            text: 'städtisch'
+        },
+        {
+            key: 1,
+            value: 'ländlich',
+            lageValue: 0.8,
+            text: 'ländlich'
+        }
+    ];
+
     const calculateUnternehmensbewertung = (branche, lage, alter) => {
         let unternehmensbewertung = 0;
 
@@ -232,31 +247,21 @@ const BasisInfo = (props) => {
                                     required
                                 />
                             </Form.Field>
-                            {/*{!isValid && !branche && <p style={{ color: "red" }}>Bitte wählen Sie eine Branche aus.</p>}*/}
                             <Form.Group inline>
                                 <label>Lage*</label>
-                                <Form.Field>
-                                    <Radio
-                                        className={lage === "städtisch" ? "radio-selected" : ""}
-                                        name="lage"
-                                        value="städtisch"
-                                        label="städtisch"
-                                        checked={lage === "städtisch"}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </Form.Field>
-                                <Form.Field>
-                                    <Radio
-                                        className={lage === "ländlich" ? "radio-selected" : ""}
-                                        name="lage"
-                                        value="ländlich"
-                                        label="ländlich"
-                                        checked={lage === "ländlich"}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </Form.Field>
+                                {lageOptions.map(option => (
+                                    <Form.Field key={option.key}>
+                                        <Radio
+                                            className={lage === option.value ? "radio-selected" : ""}
+                                            name="lage"
+                                            value={option.value}
+                                            label={option.text}
+                                            checked={lage === option.value}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </Form.Field>
+                                ))}
                             </Form.Group>
                             <Form.Group className="input-group">
                                 <Form.Field>
