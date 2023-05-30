@@ -121,12 +121,6 @@ const Kennzahlen = (props) => {
         return averageUmsat * branchOptions.umsatzt * lageOptions;
     };
 
-    const calculatedValue = useMemo(() => calculateUnternehmensbewertung(), [
-        averageUmsat,
-        branchOptions,
-        lageOptions,
-    ]);
-
     useEffect(() => {
         const avgUmsat = calculateAverageUmsat(kennzahlen);
         setAverageUmsat(avgUmsat);
@@ -153,7 +147,6 @@ const Kennzahlen = (props) => {
                         />
                     </Form.Field>
                     <Header as="h3">Umsatz der letzten Jahre*</Header>
-                    <Header as="h3">Giá trị trung bình Umsat: {formatUmsatValue(calculatedValue)}</Header>
                     <Label>
                         Sie können Ihre Kennzahlen über den Schieberegler anpassen oder direkt über die Zahleneingabe eintragen.
                         <br />
