@@ -133,9 +133,13 @@ const BasisInfo = (props) => {
         // Check validity
         console.log("Checking validity...");
         checkValidity();
+        console.log("Brache", branche);
+        console.log("Lage", lage);
     }, [branche, lage, alter]);
 
     const handleChange = (event, { name, value }) => {
+        console.log(`Handle change for ${name} with value: ${value}`); // Log the name and value
+
         if (name === "alter") {
             if (value === "+") {
                 dispatch(setAlter(alter + 1));
@@ -145,9 +149,14 @@ const BasisInfo = (props) => {
                 dispatch(setAlter(parseInt(value)));
             }
         } else if (name === "branche") {
+            console.log("Value for branche:", value); // Log the value for branche
             const selectedBranch = branchOptions.find(option => option.key === value);
             console.log("Selected Branch:", selectedBranch); // Log selected branch
-            dispatch(setBranche(selectedBranch));
+            if (selectedBranch) { // Ensure selectedBranch is not undefined
+                dispatch(setBranche(selectedBranch));
+            } else {
+                dispatch(setBranche({})); // Set branche to empty object if no branch is selected
+            }
         } else if (name === "lage") {
             const selectedLage = lageOptions.find(option => option.key === value);
             console.log("Selected Lage:", selectedLage); // Log selected lage
@@ -217,23 +226,24 @@ const BasisInfo = (props) => {
                                     className="wideSelect"
                                     options={branchOptions}
                                     name="branche"
-                                    value={branche.key}
-                                    onChange={handleChange}
+                                    value={branche} // Sử dụng optional chaining ở đây
+                                    onChange={(event, { name, value }) => handleChange(event, { name, value })}
                                     placeholder="Branche auswählen"
                                     required
                                 />
                             </Form.Field>
+
                             <Form.Group inline>
                                 <label>Lage*</label>
                                 {lageOptions.map(option => (
                                     <Form.Field key={option.key}>
                                         <Radio
-                                            className={lage === option.value ? "radio-selected" : ""}
+                                            className={lage?.value === option.value ? "radio-selected" : ""}
                                             name="lage"
-                                            value={option.value}
+                                            value={option.key}
                                             label={option.text}
-                                            checked={lage === option.value}
-                                            onChange={handleChange}
+                                            checked={lage?.value === option.value}
+                                            onChange={(event, { name, value }) => handleChange(event, { name, value })}
                                             required
                                         />
                                     </Form.Field>
