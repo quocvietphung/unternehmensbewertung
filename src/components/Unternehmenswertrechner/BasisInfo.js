@@ -12,14 +12,6 @@ const BasisInfo = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // Dispatch actions to save the corresponding values to Redux
-        dispatch(setBranchOptions(branchOptions.find(option => option.value === branche)?.branchValue));
-        dispatch(setLageOptions(lageOptions.find(option => option.value === lage)?.lageValue));
-
-        const bewertung = calculateUnternehmensbewertung(branche, lage, alter);
-        console.log("Unternehmensbewertung:", bewertung);
-        dispatch(setUnternehmensbewertung(bewertung));
-
         // Check validity
         console.log("Checking validity...");
         checkValidity();
@@ -36,9 +28,18 @@ const BasisInfo = (props) => {
             }
         } else if (name === "branche") {
             setBranche(value);
+            const branchValue = branchOptions.find(option => option.value === value)?.branchValue;
+            dispatch(setBranchOptions(branchValue));
         } else if (name === "lage") {
             setLage(value);
+            const lageValue = lageOptions.find(option => option.value === value)?.lageValue;
+            dispatch(setLageOptions(lageValue));
         }
+
+        // Recalculate bewertung
+        const bewertung = 0;
+        console.log("Unternehmensbewertung:", bewertung);
+        dispatch(setUnternehmensbewertung(bewertung));
     };
 
     const branchOptions = [
@@ -162,17 +163,6 @@ const BasisInfo = (props) => {
             text: 'ländlich'
         }
     ];
-
-    const calculateUnternehmensbewertung = (branche, lage, alter) => {
-        let unternehmensbewertung = 0;
-
-        console.log("branche:", branche);
-        console.log("lage:", lage);
-        console.log("alter:", alter);
-
-        console.log("Unternehmensbewertung:", unternehmensbewertung);
-        return unternehmensbewertung;
-    };
 
     const checkValidity = () => {
         let errors = [];
