@@ -63,6 +63,8 @@ const Kennzahlen = (props) => {
     };
 
     const handleChange = (index, field, value) => {
+        console.log(`handleChange called with index: ${index}, field: ${field}, value: ${value}`);
+
         if (field === 'selectedGewinnTypischOptions') {
             setSelectedGewinnTypischOptions(prevOptions => {
                 const newOptions = [...prevOptions];
@@ -77,8 +79,12 @@ const Kennzahlen = (props) => {
                 // Update averageUmsat and unternehmensbewertung here
                 const avgUmsat = calculateAverageUmsat(newKennzahlen);
                 setAverageUmsat(avgUmsat);
-                const unternehmensbewertung = calculateUnternehmensbewertung();
+                const unternehmensbewertung = calculateUnternehmensbewertung(avgUmsat);
                 dispatch(setUnternehmensbewertung(unternehmensbewertung));
+
+                console.log(`After updating umsatz: newKennzahlen[${index}]:`, newKennzahlen[index]);
+                console.log('averageUmsat:', avgUmsat);
+                console.log('unternehmensbewertung:', unternehmensbewertung);
 
                 return newKennzahlen;
             });
@@ -120,7 +126,7 @@ const Kennzahlen = (props) => {
         return count > 0 ? sum / count : 0;
     };
 
-    const calculateUnternehmensbewertung = () => {
+    const calculateUnternehmensbewertung = (averageUmsat) => {
         return averageUmsat * branchOptions.umsatzt * lageOptions;
     };
 
