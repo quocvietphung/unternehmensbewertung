@@ -73,6 +73,13 @@ const Kennzahlen = (props) => {
             setKennzahlen(prevKennzahlen => {
                 const newKennzahlen = [...prevKennzahlen];
                 newKennzahlen[index] = { ...newKennzahlen[index], umsatz: value };
+
+                // Update averageUmsat and unternehmensbewertung here
+                const avgUmsat = calculateAverageUmsat(newKennzahlen);
+                setAverageUmsat(avgUmsat);
+                const unternehmensbewertung = calculateUnternehmensbewertung();
+                dispatch(setUnternehmensbewertung(unternehmensbewertung));
+
                 return newKennzahlen;
             });
         } else if (field === 'ebit') {
@@ -117,18 +124,9 @@ const Kennzahlen = (props) => {
         return averageUmsat * branchOptions.umsatzt * lageOptions;
     };
 
-    useEffect(() => {
-        const avgUmsat = calculateAverageUmsat(kennzahlen);
-        setAverageUmsat(avgUmsat);
-
-        const unternehmensbewertung = calculateUnternehmensbewertung();
-        dispatch(setUnternehmensbewertung(unternehmensbewertung));
-
-    }, [kennzahlen, branchOptions, lageOptions, dispatch]);
-
-    useEffect(() => {
-        checkValidity();
-    }, [selectedGewinnTypischOptions]);
+    // useEffect(() => {
+    //     checkValidity();
+    // }, [selectedGewinnTypischOptions]);
 
 
     return (
