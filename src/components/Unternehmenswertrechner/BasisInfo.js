@@ -224,9 +224,8 @@ const BasisInfo = (props) => {
                                 <label>Branche*</label>
                                 <Select
                                     className="wideSelect"
-                                    options={branchOptions}
+                                    options={branchOptions.map(option => ({ value: option.key, text: option.text }))}
                                     name="branche"
-                                    value={branche} // Sử dụng optional chaining ở đây
                                     onChange={(event, { name, value }) => handleChange(event, { name, value })}
                                     placeholder="Branche auswählen"
                                     required
