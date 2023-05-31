@@ -13,107 +13,105 @@ const BasisInfo = (props) => {
 
     const branchOptions = [
         {
-            key: 0,
-            value: "",
-            branchValue: { ebit: 0, umsatzt: 0 },
-            lageValue: "",
+            key: "",
+            ebitValue: 0,
+            umsatzValue: 0,
             text: "Branche auswählen"
         },
         {
-            key: 1,
-            value: "bau",
-            branchValue: { ebit: 4.8, umsatzt: 0.63 },
+            key: "bau",
+            ebitValue: 4.8,
+            umsatzValue: 0.63,
             text: "Bau und Handwerk"
         },
         {
-            key: 2,
-            value: "beratung",
-            branchValue: { ebit: 5.0, umsatzt: 0.85 },
-            lageValue: { städtisch: 1, ländlich: 0.8 },
+            key: "beratung",
+            ebitValue: 5.0,
+            umsatzValue: 0.85,
             text: "Beratende Dienstleistung"
         },
         {
-            key: 3,
-            value: "chemie",
-            branchValue: { ebit: 5.9, umsatzt: 1.1 },
+            key: "chemie",
+            ebitValue: 5.9,
+            umsatzValue: 1.1,
             text: "Chemie, Kunststoffe, Papier"
         },
         {
-            key: 4,
-            value: "elektrotechnik",
-            branchValue: { ebit: 5.4, umsatzt: 0.84 },
+            key: "elektrotechnik",
+            ebitValue: 5.4,
+            umsatzValue: 0.84,
             text: "Elektrotechnik"
         },
         {
-            key: 5,
-            value: "fahrzeugbau",
-            branchValue: { ebit: 5.15, umsatzt: 0.72 },
+            key: "fahrzeugbau",
+            ebitValue: 5.15,
+            umsatzValue: 0.72,
             text: "Fahrzeugbau und -zubehör"
         },
         {
-            key: 6,
-            value: "handel",
-            branchValue: { ebit: 5.55, umsatzt: 0.73 },
+            key: "handel",
+            ebitValue: 5.55,
+            umsatzValue: 0.73,
             text: "Handel und E-Commerce"
         },
         {
-            key: 7,
-            value: "maschinenbau",
-            branchValue: { ebit: 5.6, umsatzt: 0.85 },
+            key: "maschinenbau",
+            ebitValue: 5.6,
+            umsatzValue: 0.85,
             text: "Maschinen- und Anlagenbau"
         },
         {
-            key: 8,
-            value: "medien",
-            branchValue: { ebit: 5.3, umsatzt: 1.16 },
+            key: "medien",
+            ebitValue: 5.3,
+            umsatzValue: 1.16,
             text: "Medien"
         },
         {
-            key: 9,
-            value: "nahrungs",
-            branchValue: { ebit: 5.45, umsatzt: 1.11 },
+            key: "nahrungs",
+            ebitValue: 5.45,
+            umsatzValue: 1.11,
             text: "Nahrungs- und Genussmittel"
         },
         {
-            key: 10,
-            value: "pharma",
-            branchValue: { ebit: 6.5, umsatzt: 1.64 },
+            key: "pharma",
+            ebitValue: 6.5,
+            umsatzValue: 1.64,
             text: "Pharma, Bio- und Medizintechnik"
         },
         {
-            key: 11,
-            value: "software",
-            branchValue: { ebit: 5.65, umsatzt: 1.56 },
+            key: "software",
+            ebitValue: 5.65,
+            umsatzValue: 1.56,
             text: "Software"
         },
         {
-            key: 12,
-            value: "telekommunikation",
-            branchValue: { ebit: 5.65, umsatzt: 1.05 },
+            key: "telekommunikation",
+            ebitValue: 5.65,
+            umsatzValue: 1.05,
             text: "Telekommunikation"
         },
         {
-            key: 13,
-            value: "textilien",
-            branchValue: { ebit: 4.5, umsatzt: 0.81 },
+            key: "textilien",
+            ebitValue: 4.5,
+            umsatzValue: 0.81,
             text: "Textilien und Bekleidung"
         },
         {
-            key: 14,
-            value: "transport",
-            branchValue: { ebit: 4.85, umsatzt: 0.64 },
+            key: "transport",
+            ebitValue: 4.85,
+            umsatzValue: 0.64,
             text: "Transport, Logistik und Touristik"
         },
         {
-            key: 15,
-            value: "umwelttechnik",
-            branchValue: { ebit: 5.6, umsatzt: 0.85 },
+            key: "umwelttechnik",
+            ebitValue: 5.6,
+            umsatzValue: 0.85,
             text: "Umwelttechnik"
         },
         {
-            key: 16,
-            value: "versorgungswirtschaft",
-            branchValue: { ebit: 5.6, umsatzt: 0.85 },
+            key: "versorgungswirtschaft",
+            ebitValue: 5.6,
+            umsatzValue: 0.85,
             text: "Versorgungswirtschaft"
         }
     ];
@@ -147,7 +145,7 @@ const BasisInfo = (props) => {
                 dispatch(setAlter(parseInt(value)));
             }
         } else if (name === "branche") {
-            const selectedBranch = branchOptions.find(option => option.value === value);
+            const selectedBranch = branchOptions.find(option => option.key === value);
             console.log("Selected Branch:", selectedBranch); // Log selected branch
             dispatch(setBranche(selectedBranch));
         } else if (name === "lage") {
