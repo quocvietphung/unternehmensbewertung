@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
-import { setBranchOptions, setLageOptions, setBranche, setLage, setAlter } from '../../redux/basisInfoSlice';
+import { setBranche, setLage, setAlter } from '../../redux/basisInfoSlice';
 import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
 
 const BasisInfo = (props) => {
@@ -29,11 +29,9 @@ const BasisInfo = (props) => {
         } else if (name === "branche") {
             dispatch(setBranche(value));
             const branchValue = branchOptions.find(option => option.value === value)?.branchValue;
-            dispatch(setBranchOptions(branchValue));
         } else if (name === "lage") {
             dispatch(setLage(value));
             const lageValue = lageOptions.find(option => option.value === value)?.lageValue;
-            dispatch(setLageOptions(lageValue));
         }
 
         // Recalculate bewertung
@@ -151,15 +149,13 @@ const BasisInfo = (props) => {
 
     const lageOptions = [
         {
-            key: 0,
-            value: 'städtisch',
-            lageValue: 1,
+            key: 'städtisch',
+            value: 1,
             text: 'städtisch'
         },
         {
-            key: 1,
-            value: 'ländlich',
-            lageValue: 0.8,
+            key: 'ländlich',
+            value: 0.8,
             text: 'ländlich'
         }
     ];

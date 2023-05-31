@@ -3,10 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     branche: {},
     lage: {
-        key: 0,
-        value: 'städtisch',
-        lageValue: 1,
-        text: 'städtisch'
+        key: 'städtisch',
+        value: 1,
     },
     alter: 1,
 };
