@@ -11,35 +11,6 @@ const BasisInfo = (props) => {
     const isValid = useSelector(state => state.basisInfo.isValid);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        // Check validity
-        console.log("Checking validity...");
-        checkValidity();
-    }, [branche, lage, alter]);
-
-    const handleChange = (event, { name, value }) => {
-        if (name === "alter") {
-            if (value === "+") {
-                dispatch(setAlter(alter + 1));
-            } else if (value === "-" && alter > 0) {
-                dispatch(setAlter(alter - 1));
-            } else if (!isNaN(value)) {
-                dispatch(setAlter(parseInt(value)));
-            }
-        } else if (name === "branche") {
-            dispatch(setBranche(value));
-            const branchValue = branchOptions.find(option => option.value === value)?.branchValue;
-        } else if (name === "lage") {
-            dispatch(setLage(value));
-            const lageValue = lageOptions.find(option => option.value === value)?.lageValue;
-        }
-
-        // Recalculate bewertung
-        const bewertung = 0;
-        console.log("Unternehmensbewertung:", bewertung);
-        dispatch(setUnternehmensbewertung(bewertung));
-    };
-
     const branchOptions = [
         {
             key: 0,
@@ -160,6 +131,37 @@ const BasisInfo = (props) => {
         }
     ];
 
+    useEffect(() => {
+        // Check validity
+        console.log("Checking validity...");
+        checkValidity();
+    }, [branche, lage, alter]);
+
+    const handleChange = (event, { name, value }) => {
+        if (name === "alter") {
+            if (value === "+") {
+                dispatch(setAlter(alter + 1));
+            } else if (value === "-" && alter > 0) {
+                dispatch(setAlter(alter - 1));
+            } else if (!isNaN(value)) {
+                dispatch(setAlter(parseInt(value)));
+            }
+        } else if (name === "branche") {
+            const selectedBranch = branchOptions.find(option => option.value === value);
+            console.log("Selected Branch:", selectedBranch); // Log selected branch
+            dispatch(setBranche(selectedBranch));
+        } else if (name === "lage") {
+            const selectedLage = lageOptions.find(option => option.key === value);
+            console.log("Selected Lage:", selectedLage); // Log selected lage
+            dispatch(setLage(selectedLage));
+
+            // Recalculate bewertung
+            const bewertung = 0;
+            console.log("Unternehmensbewertung:", bewertung);
+            dispatch(setUnternehmensbewertung(bewertung));
+        }
+    };
+
     const checkValidity = () => {
         let errors = [];
         if (!branche || branche === "auswählen") {
@@ -217,7 +219,7 @@ const BasisInfo = (props) => {
                                     className="wideSelect"
                                     options={branchOptions}
                                     name="branche"
-                                    value={branche}
+                                    value={branche.key}
                                     onChange={handleChange}
                                     placeholder="Branche auswählen"
                                     required
