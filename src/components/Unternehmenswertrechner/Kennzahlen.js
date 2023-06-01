@@ -159,7 +159,7 @@ const Kennzahlen = (props) => {
                         </Segment.Group>
                         {kennzahlen.year.map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
-                                <Segment>{label}</Segment>
+                                <Segment>Gewinn {label}</Segment>
                                 {kennzahlen.gewinnTypisch.map((option, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
