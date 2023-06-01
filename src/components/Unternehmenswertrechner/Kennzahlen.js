@@ -10,11 +10,22 @@ const Kennzahlen = (props) => {
     const ebit = useSelector((state) => state.kennzahlen.kennzahlenData.ebit);
     const gewinnTypisch = useSelector((state) => state.kennzahlen.kennzahlenData.gewinnTypisch);
 
-    const kennzahlen = {
-        umsatzYears: ["Umsatz 2020", "Umsatz 2021", "Umsatz 2022"].concat(checked ? ["Prognose 2023"] : []),
-        ebitYears: ["Ebit 2020", "Ebit 2021", "Ebit 2022"].concat(checked ? ["Prognose 2023"] : []),
-        gewinnYears: ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []),
-        options: ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch']
+    const prognose2023 = {
+        umsatz: {
+            title: "Prognose 2023",
+            year: 2023,
+            value: 25000000,
+        },
+        ebit: {
+            title: "Prognose 2023",
+            year: 2023,
+            value: 5000000,
+        },
+        gewinn: {
+            title: "Gewinn 2023",
+            year: 2023,
+            value: "",
+        },
     };
 
     useEffect(() => {
@@ -26,6 +37,21 @@ const Kennzahlen = (props) => {
 
     const handleCheckboxChange = () => {
         dispatch(setChecked(!checked));
+        if (!checked) {
+            const newUmsatz = [...umsatz, prognose2023.umsatz];
+            const newEbit = [...ebit, prognose2023.ebit];
+            const newGewinn = [...gewinnTypisch.gewinn, prognose2023.gewinn];
+            dispatch(setUmsatz(newUmsatz));
+            dispatch(setEbit(newEbit));
+            dispatch(setGewinnTypisch({ ...gewinnTypisch, gewinn: newGewinn }));
+        } else {
+            const newUmsatz = umsatz.filter((item) => item.year !== 2023);
+            const newEbit = ebit.filter((item) => item.year !== 2023);
+            const newGewinn = gewinnTypisch.gewinn.filter((item) => item.year !== 2023);
+            dispatch(setUmsatz(newUmsatz));
+            dispatch(setEbit(newEbit));
+            dispatch(setGewinnTypisch({ ...gewinnTypisch, gewinn: newGewinn }));
+        }
     };
 
     const handleChange = (index, type, value) => {
@@ -76,10 +102,10 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {kennzahlen.umsatzYears.map((year, index) => (
-                                <Form.Group className="form-group" key={year}>
+                            {umsatz.map((item, index) => (
+                                <Form.Group className="form-group" key={item.year}>
                                     <Form.Field width={3} className="form-label">
-                                        <label>{year}</label>
+                                        <label>{item.title}</label>
                                     </Form.Field>
                                     <Form.Field width={10} className="form-input">
                                         <input
@@ -110,10 +136,10 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {kennzahlen.ebitYears.map((year, index) => (
-                                <Form.Group className="form-group" key={year}>
+                            {ebit.map((item, index) => (
+                                <Form.Group className="form-group" key={item.year}>
                                     <Form.Field width={3} className="form-label">
-                                        <label>{year}</label>
+                                        <label>{item.title}</label>
                                     </Form.Field>
                                     <Form.Field width={10} className="form-input">
                                         <input
