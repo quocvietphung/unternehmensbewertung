@@ -8,8 +8,6 @@ import Quality from "./Quality";
 import Anlass from "./Anlass";
 import { Header } from 'semantic-ui-react';
 import './Unternehmenswertrechner.scss';
-import { setUnternehmensbewertung } from '../../redux/reducers';
-import { useDispatch, useSelector } from "react-redux";
 
 const Eingabe = () => {
     const [sections, setSections] = useState({
@@ -17,9 +15,6 @@ const Eingabe = () => {
         finishedSections: [],
         sectionOrder: ['basis', 'kennzahlen', 'bereinigung', 'equity', 'quality', 'anlass'],
     });
-
-    const unternehmensbewertung = useSelector(state => state.validation.unternehmensbewertung);
-    const dispatch = useDispatch();
 
     const updateActiveSection = (section) => {
         const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
@@ -76,22 +71,6 @@ const Eingabe = () => {
             });
         }
     };
-
-    const calculationUnternehmensbewertung = (section, finishedSections, unternehmensbewertung) => {
-        if (section === 'basis' && !finishedSections.includes('basis')) {
-            unternehmensbewertung = 0; // Tính toán giá trị mới cho section "BasisInfo"
-            dispatch(setUnternehmensbewertung(unternehmensbewertung));
-        } else {
-            // Thực hiện tính toán cho section "kennzahlen" với giá trị tùy chỉnh
-            unternehmensbewertung = 80;
-                dispatch(setUnternehmensbewertung(unternehmensbewertung));
-        }
-        // Thêm các điều kiện và tính toán cho các section khác tương tự
-    };
-
-    useEffect(() => {
-        calculationUnternehmensbewertung(sections.activeSection, sections.finishedSections, unternehmensbewertung);
-    }, [sections.activeSection, sections.finishedSections, unternehmensbewertung]);
 
     return (
         <div className="Eingabe">
