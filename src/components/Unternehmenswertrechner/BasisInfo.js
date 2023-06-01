@@ -11,123 +11,124 @@ const BasisInfo = (props) => {
     const isValid = useSelector(state => state.validation.isValid);
     const dispatch = useDispatch();
 
-    const branchOptions = [
-        {
-            key: "",
-            ebitValue: 0,
-            umsatzValue: 0,
-            text: "Branche auswählen"
-        },
-        {
-            key: "bau",
-            ebitValue: 4.8,
-            umsatzValue: 0.63,
-            text: "Bau und Handwerk"
-        },
-        {
-            key: "beratung",
-            ebitValue: 5.0,
-            umsatzValue: 0.85,
-            text: "Beratende Dienstleistung"
-        },
-        {
-            key: "chemie",
-            ebitValue: 5.9,
-            umsatzValue: 1.1,
-            text: "Chemie, Kunststoffe, Papier"
-        },
-        {
-            key: "elektrotechnik",
-            ebitValue: 5.4,
-            umsatzValue: 0.84,
-            text: "Elektrotechnik"
-        },
-        {
-            key: "fahrzeugbau",
-            ebitValue: 5.15,
-            umsatzValue: 0.72,
-            text: "Fahrzeugbau und -zubehör"
-        },
-        {
-            key: "handel",
-            ebitValue: 5.55,
-            umsatzValue: 0.73,
-            text: "Handel und E-Commerce"
-        },
-        {
-            key: "maschinenbau",
-            ebitValue: 5.6,
-            umsatzValue: 0.85,
-            text: "Maschinen- und Anlagenbau"
-        },
-        {
-            key: "medien",
-            ebitValue: 5.3,
-            umsatzValue: 1.16,
-            text: "Medien"
-        },
-        {
-            key: "nahrungs",
-            ebitValue: 5.45,
-            umsatzValue: 1.11,
-            text: "Nahrungs- und Genussmittel"
-        },
-        {
-            key: "pharma",
-            ebitValue: 6.5,
-            umsatzValue: 1.64,
-            text: "Pharma, Bio- und Medizintechnik"
-        },
-        {
-            key: "software",
-            ebitValue: 5.65,
-            umsatzValue: 1.56,
-            text: "Software"
-        },
-        {
-            key: "telekommunikation",
-            ebitValue: 5.65,
-            umsatzValue: 1.05,
-            text: "Telekommunikation"
-        },
-        {
-            key: "textilien",
-            ebitValue: 4.5,
-            umsatzValue: 0.81,
-            text: "Textilien und Bekleidung"
-        },
-        {
-            key: "transport",
-            ebitValue: 4.85,
-            umsatzValue: 0.64,
-            text: "Transport, Logistik und Touristik"
-        },
-        {
-            key: "umwelttechnik",
-            ebitValue: 5.6,
-            umsatzValue: 0.85,
-            text: "Umwelttechnik"
-        },
-        {
-            key: "versorgungswirtschaft",
-            ebitValue: 5.6,
-            umsatzValue: 0.85,
-            text: "Versorgungswirtschaft"
-        }
-    ];
-
-    const lageOptions = [
-        {
-            key: 'städtisch',
-            value: 1,
-            text: 'städtisch'
-        },
-        {
-            key: 'ländlich',
-            value: 0.8,
-            text: 'ländlich'
-        }
-    ];
+    const basisInfos = {
+        "branchOptions": [
+            {
+                "key": "",
+                "ebitValue": 0,
+                "umsatzValue": 0,
+                "text": "Branche auswählen"
+            },
+            {
+                "key": "bau",
+                "ebitValue": 4.8,
+                "umsatzValue": 0.63,
+                "text": "Bau und Handwerk"
+            },
+            {
+                "key": "beratung",
+                "ebitValue": 5.0,
+                "umsatzValue": 0.85,
+                "text": "Beratende Dienstleistung"
+            },
+            {
+                "key": "chemie",
+                "ebitValue": 5.9,
+                "umsatzValue": 1.1,
+                "text": "Chemie, Kunststoffe, Papier"
+            },
+            {
+                "key": "elektrotechnik",
+                "ebitValue": 5.4,
+                "umsatzValue": 0.84,
+                "text": "Elektrotechnik"
+            },
+            {
+                "key": "fahrzeugbau",
+                "ebitValue": 5.15,
+                "umsatzValue": 0.72,
+                "text": "Fahrzeugbau und -zubehör"
+            },
+            {
+                "key": "handel",
+                "ebitValue": 5.55,
+                "umsatzValue": 0.73,
+                "text": "Handel und E-Commerce"
+            },
+            {
+                "key": "maschinenbau",
+                "ebitValue": 5.6,
+                "umsatzValue": 0.85,
+                "text": "Maschinen- und Anlagenbau"
+            },
+            {
+                "key": "medien",
+                "ebitValue": 5.3,
+                "umsatzValue": 1.16,
+                "text": "Medien"
+            },
+            {
+                "key": "nahrungs",
+                "ebitValue": 5.45,
+                "umsatzValue": 1.11,
+                "text": "Nahrungs- und Genussmittel"
+            },
+            {
+                "key": "pharma",
+                "ebitValue": 6.5,
+                "umsatzValue": 1.64,
+                "text": "Pharma, Bio- und Medizintechnik"
+            },
+            {
+                "key": "software",
+                "ebitValue": 5.65,
+                "umsatzValue": 1.56,
+                "text": "Software"
+            },
+            {
+                "key": "telekommunikation",
+                "ebitValue": 5.65,
+                "umsatzValue": 1.05,
+                "text": "Telekommunikation"
+            },
+            {
+                "key": "textilien",
+                "ebitValue": 4.5,
+                "umsatzValue": 0.81,
+                "text": "Textilien und Bekleidung"
+            },
+            {
+                "key": "transport",
+                "ebitValue": 4.85,
+                "umsatzValue": 0.64,
+                "text": "Transport, Logistik und Touristik"
+            },
+            {
+                "key": "umwelttechnik",
+                "ebitValue": 5.6,
+                "umsatzValue": 0.85,
+                "text": "Umwelttechnik"
+            },
+            {
+                "key": "versorgungswirtschaft",
+                "ebitValue": 5.6,
+                "umsatzValue": 0.85,
+                "text": "Versorgungswirtschaft"
+            }
+        ],
+        "lageOptions": [
+            {
+                "key": "städtisch",
+                "value": 1,
+                "text": "städtisch"
+            },
+            {
+                "key": "ländlich",
+                "value": 0.8,
+                "text": "ländlich"
+            }
+        ]
+    };
 
     useEffect(() => {
         // Check validity
@@ -139,7 +140,7 @@ const BasisInfo = (props) => {
     }, [branche, lage, alter]);
 
     const handleChange = (event, { name, value }) => {
-        console.log(`Handle change for ${name} with value: ${value}`); // Log the name and value
+        console.log(`Handle change for ${name} with value: ${value}`);
 
         if (name === "alter") {
             if (value === "+") {
@@ -150,17 +151,17 @@ const BasisInfo = (props) => {
                 dispatch(setAlter(parseInt(value)));
             }
         } else if (name === "branche") {
-            console.log("Value for branche:", value); // Log the value for branche
-            const selectedBranch = branchOptions.find(option => option.key === value);
-            console.log("Selected Branch:", selectedBranch); // Log selected branch
-            if (selectedBranch) { // Ensure selectedBranch is not undefined
+            console.log("Value for branche:", value);
+            const selectedBranch = basisInfos.branchOptions.find(option => option.key === value);
+            console.log("Selected Branch:", selectedBranch);
+            if (selectedBranch) {
                 dispatch(setBranche(selectedBranch));
             } else {
-                dispatch(setBranche({})); // Set branche to empty object if no branch is selected
+                dispatch(setBranche({}));
             }
         } else if (name === "lage") {
-            const selectedLage = lageOptions.find(option => option.key === value);
-            console.log("Selected Lage:", selectedLage); // Log selected lage
+            const selectedLage = basisInfos.lageOptions.find(option => option.key === value);
+            console.log("Selected Lage:", selectedLage);
             dispatch(setLage(selectedLage));
 
             // Recalculate bewertung
@@ -218,7 +219,7 @@ const BasisInfo = (props) => {
                                 <label>Branche*</label>
                                 <Select
                                     className="wideSelect"
-                                    options={branchOptions.map(option => ({ value: option.key, text: option.text }))}
+                                    options={basisInfos.branchOptions.map(option => ({ value: option.key, text: option.text }))}
                                     name="branche"
                                     value={branche?.key || ""}
                                     onChange={(event, { name, value }) => handleChange(event, { name, value })}
@@ -229,7 +230,7 @@ const BasisInfo = (props) => {
 
                             <Form.Group inline>
                                 <label>Lage*</label>
-                                {lageOptions.map(option => (
+                                {basisInfos.lageOptions.map(option => (
                                     <Form.Field key={option.key}>
                                         <Radio
                                             className={lage?.value === option.value ? "radio-selected" : ""}
@@ -243,6 +244,7 @@ const BasisInfo = (props) => {
                                     </Form.Field>
                                 ))}
                             </Form.Group>
+
                             <Form.Group className="input-group">
                                 <Form.Field>
                                     <label>Alter der Firma in Jahren*</label>
