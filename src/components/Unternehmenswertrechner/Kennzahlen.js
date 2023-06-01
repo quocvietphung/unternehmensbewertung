@@ -1,42 +1,45 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUmsatz, setEbit, setGewinnTypisch, setChecked } from '../../redux/kennzahlenSlice';
 
 const Kennzahlen = (props) => {
-    const [checked, setChecked] = useState(false);
+    const dispatch = useDispatch();
+    const checked = useSelector((state) => state.kennzahlen.checked);
+    const umsatz = useSelector((state) => state.kennzahlen.umsatz);
+    const ebit = useSelector((state) => state.kennzahlen.ebit);
+    const gewinnTypisch = useSelector((state) => state.kennzahlen.gewinnTypisch);
+
     const kennzahlen = {
         umsatzYears: ["Umsatz 2020", "Umsatz 2021", "Umsatz 2022"].concat(checked ? ["Pronose 2023"] : []),
         ebitYears: ["Ebit 2020", "Ebit 2021", "Ebit 2022"].concat(checked ? ["Pronose 2023"] : []),
         gewinnYears: [" Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Pronose 2023"] : []),
         options: ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch']
     };
-    const [umsatz, setUmsatz] = useState(Array(kennzahlen.umsatzYears.length).fill(25000000));
-    const [ebit, setEbit] = useState(Array(kennzahlen.ebitYears.length).fill(5000000));
-    const [gewinnTypisch, setGewinnTypisch] = useState(Array(kennzahlen.gewinnYears.length).fill(''));
 
     // Update umsatz and ebit when 'checked' changes
     useEffect(() => {
-        setUmsatz(Array(kennzahlen.umsatzYears.length).fill(25000000));
-        setEbit(Array(kennzahlen.ebitYears.length).fill(5000000));
-    }, [checked]);
-
+        dispatch(setUmsatz(Array(kennzahlen.umsatzYears.length).fill(25000000)));
+        dispatch(setEbit(Array(kennzahlen.ebitYears.length).fill(5000000)));
+    }, [checked, dispatch]);
 
     const handleCheckboxChange = () => {
-        setChecked(!checked);
+        dispatch(setChecked(!checked));
     };
 
     const handleChange = (index, type, value) => {
         if (type === 'umsatz') {
             const newUmsatz = [...umsatz];
             newUmsatz[index] = value;
-            setUmsatz(newUmsatz);
+            dispatch(setUmsatz(newUmsatz));
         } else if (type === 'ebit') {
             const newEbit = [...ebit];
             newEbit[index] = value;
-            setEbit(newEbit);
+            dispatch(setEbit(newEbit));
         } else if (type === 'gewinnTypisch') {
             const newGewinnTypisch = [...gewinnTypisch];
             newGewinnTypisch[index] = value;
-            setGewinnTypisch(newGewinnTypisch);
+            dispatch(setGewinnTypisch(newGewinnTypisch));
         }
     };
 
