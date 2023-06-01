@@ -171,20 +171,19 @@ const BasisInfo = (props) => {
 
     const checkValidity = () => {
         let errors = [];
-        if (!branche || branche === "auswählen") {
+        if (!branche || branche.key === "") {
             errors.push("Bitte wählen Sie eine Branche aus.");
         }
-        if (lage !== "städtisch" && lage !== "ländlich") {
+        if (!lage || (lage.key !== "städtisch" && lage.key !== "ländlich")) {
             errors.push("Bitte wählen Sie eine Lage aus.");
         }
-        if (alter <= 0) {
+        if (!alter || alter <= 0) {
             errors.push("Der Minimalwert für dieses Eingabefeld wurde erreicht.");
         }
 
         dispatch(setError(errors));
 
         const valid = errors.length === 0;
-        setValidity(valid);
         dispatch(setValidity(valid));
     };
 
