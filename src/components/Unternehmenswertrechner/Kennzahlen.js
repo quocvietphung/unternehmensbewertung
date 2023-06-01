@@ -1,68 +1,16 @@
 import React, { useState } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
-import { useDispatch, useSelector } from "react-redux";
-import { setValidity, setError } from '../../redux/reducers';
 
 const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(false);
-    const [kennzahlen, setKennzahlen] = useState({
-        year: [2020, 2021, 2022],
-        umsatz: 25000000,
-        ebit: 5000000,
-        gewinnTypisch: [
-            "ganz untypisch",
-            "eher untypisch",
-            "nur teilweise typisch",
-            "eher typisch",
-            "typisch"
-        ]
-    });
-    const [selectedGewinnTypischOptions, setSelectedGewinnTypischOptions] = useState([]);
+    const kennzahlen = {
+        years: ["2020", "2021", "2022"].concat(checked ? ["2023"] : []),
+        options: ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch']
+    };
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
-        setKennzahlen(prevKennzahlen => {
-            const newKennzahlen = [...prevKennzahlen];
-            if (!checked) {
-                newKennzahlen.push({ umsatz: 25000000, ebit: 5000000 });
-            } else {
-                newKennzahlen.pop();
-            }
-            return newKennzahlen;
-        });
-        setSelectedGewinnTypischOptions(prevOptions => {
-            const newOptions = [...prevOptions];
-            if (!checked) {
-                newOptions.push("");
-            } else {
-                newOptions.pop();
-            }
-            return newOptions;
-        });
     };
-
-    const handleChange = (index, field, value) => {
-        if (field === "umsatz" || field === "ebit") {
-            setKennzahlen(prevKennzahlen => {
-                const newKennzahlen = [...prevKennzahlen];
-                newKennzahlen[index] = { ...newKennzahlen[index], [field]: value };
-                return newKennzahlen;
-            });
-        } else if (field === "selectedGewinnTypischOptions") {
-            setSelectedGewinnTypischOptions(prevOptions => {
-                const newOptions = [...prevOptions];
-                newOptions[index] = { year: kennzahlen.year[index], value: value };
-                return newOptions;
-            });
-        }
-    };
-
-    const handleWeiterClick = () => {
-        props.onWeiterClick();
-    };
-
-    const umsatzYears = kennzahlen.year;
-    const ebitYears = kennzahlen.year;
 
     return (
         <Grid padded className="shared-section kennzahlen">
@@ -86,7 +34,7 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {umsatzYears.map((year, index) => (
+                            {years.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
                                         <label>Umsatz {year}</label>
@@ -97,14 +45,14 @@ const Kennzahlen = (props) => {
                                             min="100000"
                                             max="50000000"
                                             step="50000"
-                                            value={kennzahlen[index]?.umsatz}
+                                            value={kennzahlen.umsatz[index]}
                                             onChange={(e) => handleChange(index, 'umsatz', e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={kennzahlen[index]?.umsatz}
+                                            value={kennzahlen.umsatz[index]}
                                             readOnly
                                         />
                                     </Form.Field>
@@ -120,7 +68,7 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {ebitYears.map((year, index) => (
+                            {years.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
                                         <label>Ebit {year}</label>
@@ -131,14 +79,14 @@ const Kennzahlen = (props) => {
                                             min="0"
                                             max="10000000"
                                             step="1000"
-                                            value={kennzahlen[index]?.ebit}
+                                            value={kennzahlen.ebit[index]}
                                             onChange={(e) => handleChange(index, 'ebit', e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={kennzahlen[index]?.ebit}
+                                            value={kennzahlen.ebit[index]}
                                             readOnly
                                         />
                                     </Form.Field>
