@@ -10,7 +10,6 @@ const Ausgabe = () => {
     const unternehmensbewertung = useSelector((state) => state.validation.unternehmensbewertung);
     const dispatch = useDispatch();
 
-
     useEffect(() => {
         // In ra giá trị unternehmenwert mỗi khi nó thay đổi
         console.log("unternehmenwert:", unternehmensbewertung);
