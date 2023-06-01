@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 
 const Kennzahlen = (props) => {
     const [checked, setChecked] = useState(false);
     const kennzahlen = {
-        years: ["2020", "2021", "2022"].concat(checked ? ["2023"] : []),
+        umsatzYears: ["Umsatz 2020", "Umsatz 2021", "Umsatz 2022"].concat(checked ? ["Pronose 2023"] : []),
+        ebitYears: ["Ebit 2020", "Ebit 2021", "Ebit 2022"].concat(checked ? ["Pronose 2023"] : []),
+        gewinnYears: [" Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Pronose 2023"] : []),
         options: ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch']
     };
-    const [umsatz, setUmsatz] = useState(Array(kennzahlen.years.length).fill(25000000));
-    const [ebit, setEbit] = useState(Array(kennzahlen.years.length).fill(5000000));
-    const [selectedGewinnOptions, setSelectedGewinnOptions] = useState(Array(kennzahlen.years.length).fill(''));
+    const [umsatz, setUmsatz] = useState(Array(kennzahlen.umsatzYears.length).fill(25000000));
+    const [ebit, setEbit] = useState(Array(kennzahlen.ebitYears.length).fill(5000000));
+    const [selectedGewinnOptions, setSelectedGewinnOptions] = useState(Array(kennzahlen.gewinnYears.length).fill(''));
+
+    // Update umsatz and ebit when 'checked' changes
+    useEffect(() => {
+        setUmsatz(Array(kennzahlen.umsatzYears.length).fill(25000000));
+        setEbit(Array(kennzahlen.ebitYears.length).fill(5000000));
+    }, [checked]);
+
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
@@ -57,7 +66,7 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {kennzahlen.years.map((year, index) => (
+                            {kennzahlen.umsatzYears.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
                                         <label>Umsatz {year}</label>
@@ -91,7 +100,7 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {kennzahlen.years.map((year, index) => (
+                            {kennzahlen.ebitYears.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
                                         <label>Ebit {year}</label>
@@ -128,7 +137,7 @@ const Kennzahlen = (props) => {
                                 <Segment key={index} textAlign="center">{option}</Segment>
                             ))}
                         </Segment.Group>
-                        {kennzahlen.years.map((label, index) => (
+                        {kennzahlen.gewinnYears.map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
                                 <Segment>Gewinn {label}</Segment>
                                 {kennzahlen.options.map((option, i) => (
