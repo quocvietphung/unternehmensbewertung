@@ -6,9 +6,9 @@ import { setUmsatz, setEbit, setGewinnTypisch, setChecked } from '../../redux/ke
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
     const checked = useSelector((state) => state.kennzahlen.checked);
-    const umsatz = useSelector((state) => state.kennzahlen.kennzahlen.umsatz);
-    const ebit = useSelector((state) => state.kennzahlen.kennzahlen.ebit);
-    const gewinnTypisch = useSelector((state) => state.kennzahlen.kennzahlen.gewinnTypisch);
+    const umsatz = useSelector((state) => state.kennzahlen.kennzahlenData.umsatz);
+    const ebit = useSelector((state) => state.kennzahlen.kennzahlenData.ebit);
+    const gewinnTypisch = useSelector((state) => state.kennzahlen.kennzahlenData.gewinnTypisch);
 
     const kennzahlen = {
         umsatzYears: ["Umsatz 2020", "Umsatz 2021", "Umsatz 2022"].concat(checked ? ["Prognose 2023"] : []),

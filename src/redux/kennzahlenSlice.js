@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     checked: false,
-    kennzahlen: {
+    kennzahlenData: {
         umsatz: [
             {
                 title: "Umsatz 2020",
@@ -74,13 +74,13 @@ const kennzahlenSlice = createSlice({
             state.checked = action.payload;
         },
         setUmsatz: (state, action) => {
-            state.kennzahlen.umsatz = action.payload;
+            state.kennzahlenData.umsatz = action.payload;
         },
         setEbit: (state, action) => {
-            state.kennzahlen.ebit = action.payload;
+            state.kennzahlenData.ebit = action.payload;
         },
         setGewinnTypisch: (state, action) => {
-            state.kennzahlen.gewinnTypisch = action.payload;
+            state.kennzahlenData.gewinnTypisch = action.payload;
         }
     }
 });
