@@ -8,7 +8,7 @@ const BasisInfo = (props) => {
     const branche = useSelector(state => state.basisInfo.branche);
     const lage = useSelector(state => state.basisInfo.lage);
     const alter = useSelector(state => state.basisInfo.alter);
-    const isValid = useSelector(state => state.basisInfo.isValid);
+    const isValid = useSelector(state => state.validation.isValid);
     const dispatch = useDispatch();
 
     const branchOptions = [
@@ -135,6 +135,7 @@ const BasisInfo = (props) => {
         checkValidity();
         console.log("Brache", branche);
         console.log("Lage", lage);
+        console.log("Valid", isValid)
     }, [branche, lage, alter]);
 
     const handleChange = (event, { name, value }) => {
@@ -196,6 +197,7 @@ const BasisInfo = (props) => {
     };
 
     const handleWeiterClick = () => {
+        console.log('isValid:', isValid); // Log the value of isValid
         if (!isValid) {
             return;
         }
