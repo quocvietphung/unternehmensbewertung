@@ -220,6 +220,7 @@ const BasisInfo = (props) => {
                                     className="wideSelect"
                                     options={branchOptions.map(option => ({ value: option.key, text: option.text }))}
                                     name="branche"
+                                    value={branche?.key || ""}
                                     onChange={(event, { name, value }) => handleChange(event, { name, value })}
                                     placeholder="Branche auswählen"
                                     required
