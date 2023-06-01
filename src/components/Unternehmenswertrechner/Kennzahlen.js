@@ -69,7 +69,7 @@ const Kennzahlen = (props) => {
                             {kennzahlen.umsatzYears.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
-                                        <label>Umsatz {year}</label>
+                                        <label>{year}</label>
                                     </Form.Field>
                                     <Form.Field width={10} className="form-input">
                                         <input
@@ -103,7 +103,7 @@ const Kennzahlen = (props) => {
                             {kennzahlen.ebitYears.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
-                                        <label>Ebit {year}</label>
+                                        <label>{year}</label>
                                     </Form.Field>
                                     <Form.Field width={10} className="form-input">
                                         <input
@@ -139,7 +139,7 @@ const Kennzahlen = (props) => {
                         </Segment.Group>
                         {kennzahlen.gewinnYears.map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
-                                <Segment>Gewinn {label}</Segment>
+                                <Segment>{label}</Segment>
                                 {kennzahlen.options.map((option, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
