@@ -17,12 +17,6 @@ const Kennzahlen = (props) => {
         options: ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch']
     };
 
-    // Update umsatz and ebit when 'checked' changes
-    useEffect(() => {
-        dispatch(setUmsatz(Array(kennzahlen.umsatzYears.length).fill(25000000)));
-        dispatch(setEbit(Array(kennzahlen.ebitYears.length).fill(5000000)));
-    }, [checked, dispatch]);
-
     const handleCheckboxChange = () => {
         dispatch(setChecked(!checked));
     };

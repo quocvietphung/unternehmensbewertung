@@ -11,7 +11,7 @@ const kennzahlenSlice = createSlice({
     name: "kennzahlen",
     initialState,
     reducers: {
-        setChecked: (state, action) => { // New reducer for checked
+        setChecked: (state, action) => {
             state.checked = action.payload;
         },
         setUmsatz: (state, action) => {
@@ -26,5 +26,5 @@ const kennzahlenSlice = createSlice({
     },
 });
 
-export const { setChecked, setUmsatz, setEbit, setGewinnTypisch } = kennzahlenSlice.actions; // Export setChecked here
+export const { setChecked, setUmsatz, setEbit, setGewinnTypisch } = kennzahlenSlice.actions;
 export default kennzahlenSlice.reducer;
