@@ -202,15 +202,8 @@ const BasisInfo = (props) => {
             return;
         }
 
-        // Create an object with all the info you need
-        const info = {
-            branche,
-            lage,
-            alter
-        }
-
         // Pass this info back to the parent when Weiter is clicked
-        props.onWeiterClick(info);
+        props.onWeiterClick();
     };
 
     return (
