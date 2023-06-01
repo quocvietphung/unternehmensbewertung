@@ -64,6 +64,8 @@ const initialState = {
             ],
         },
     },
+    averageUmsatz: 0,
+    averageEbit: 0,
 };
 
 const kennzahlenSlice = createSlice({
@@ -83,14 +85,10 @@ const kennzahlenSlice = createSlice({
             state.kennzahlenData.gewinnTypisch = action.payload;
         },
         setAverageUmsatz: (state, action) => {
-            const umsatz = action.payload;
-            const averageUmsatz = umsatz.length > 0 ? umsatz.reduce((total, item) => total + item.value, 0) / umsatz.length : 0;
-            state.averageUmsatz = averageUmsatz;
+            state.averageUmsatz = action.payload;
         },
         setAverageEbit: (state, action) => {
-            const ebit = action.payload;
-            const averageEbit = ebit.length > 0 ? ebit.reduce((total, item) => total + item.value, 0) / ebit.length : 0;
-            state.averageEbit = averageEbit;
+            state.averageEbit = action.payload;
         },
     },
 });

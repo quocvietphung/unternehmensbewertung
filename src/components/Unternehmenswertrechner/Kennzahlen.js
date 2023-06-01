@@ -9,6 +9,8 @@ const Kennzahlen = (props) => {
     const umsatz = useSelector((state) => state.kennzahlen.kennzahlenData.umsatz);
     const ebit = useSelector((state) => state.kennzahlen.kennzahlenData.ebit);
     const gewinnTypisch = useSelector((state) => state.kennzahlen.kennzahlenData.gewinnTypisch);
+    const averageUmsatz = useSelector((state) => state.kennzahlen.averageUmsatz);
+    const averageEbit = useSelector((state) => state.kennzahlen.averageEbit);
 
     const prognose2023 = {
         umsatz: {
@@ -33,7 +35,9 @@ const Kennzahlen = (props) => {
         console.log("umsatz:", umsatz);
         console.log("ebit:", ebit);
         console.log("gewinnTypisch:", gewinnTypisch);
-    }, [checked, umsatz, ebit, gewinnTypisch]);
+        console.log("averageUmsatz:", averageUmsatz);
+        console.log("averageEbit:", averageEbit);
+    }, [checked, umsatz, ebit, gewinnTypisch, averageUmsatz, averageEbit]);
 
     const handleCheckboxChange = () => {
         dispatch(setChecked(!checked));
