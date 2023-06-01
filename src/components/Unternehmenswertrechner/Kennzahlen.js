@@ -156,7 +156,7 @@ const Kennzahlen = (props) => {
                     <Form.Field>
                         <div className="button-container">
                             <Button className="click-back" onClick={props.onZuruckClick}>Zurück</Button>
-                            <Button className="click-continue" primary type="submit" onClick={props.handleWeiterClick}>
+                            <Button className="click-continue" primary type="submit" onClick={handleWeiterClick}>
                                 Weiter
                             </Button>
                         </div>
