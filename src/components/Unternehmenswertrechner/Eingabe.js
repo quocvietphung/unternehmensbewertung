@@ -52,9 +52,7 @@ const Eingabe = () => {
         console.log('Finished Sections:', sections.finishedSections);
     };
 
-    const handleWeiterClick = (info) => {
-        console.log('Received info:', info);
-
+    const handleWeiterClick = () => {
         const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
         const nextIndex = currentIndex + 1;
 
