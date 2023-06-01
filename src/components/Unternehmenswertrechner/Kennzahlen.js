@@ -61,23 +61,17 @@ const Kennzahlen = (props) => {
     const handleChange = (index, field, value) => {
         console.log(`handleChange called with index: ${index}, field: ${field}, value: ${value}`);
 
-        if (field === 'selectedGewinnTypischOptions') {
+        if (field === 'umsatz' || field === 'ebit') {
+            setKennzahlen(prevKennzahlen => {
+                const newKennzahlen = [...prevKennzahlen];
+                newKennzahlen[index] = { ...newKennzahlen[index], [field]: value };
+                return newKennzahlen;
+            });
+        } else if (field === 'selectedGewinnTypischOptions') {
             setSelectedGewinnTypischOptions(prevOptions => {
                 const newOptions = [...prevOptions];
                 newOptions[index] = { year: gewinnYears[index], value: value };
                 return newOptions;
-            });
-        } else if (field === 'umsatz') {
-            setKennzahlen(prevKennzahlen => {
-                const newKennzahlen = [...prevKennzahlen];
-                newKennzahlen[index] = { ...newKennzahlen[index], umsatz: value };
-                return newKennzahlen;
-            });
-        } else if (field === 'ebit') {
-            setKennzahlen(prevKennzahlen => {
-                const newKennzahlen = [...prevKennzahlen];
-                newKennzahlen[index] = { ...newKennzahlen[index], ebit: value };
-                return newKennzahlen;
             });
         }
     };
