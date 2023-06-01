@@ -11,7 +11,7 @@ const Kennzahlen = (props) => {
     };
     const [umsatz, setUmsatz] = useState(Array(kennzahlen.umsatzYears.length).fill(25000000));
     const [ebit, setEbit] = useState(Array(kennzahlen.ebitYears.length).fill(5000000));
-    const [selectedGewinnOptions, setSelectedGewinnOptions] = useState(Array(kennzahlen.gewinnYears.length).fill(''));
+    const [gewinnTypisch, setGewinnTypisch] = useState(Array(kennzahlen.gewinnYears.length).fill(''));
 
     // Update umsatz and ebit when 'checked' changes
     useEffect(() => {
@@ -33,10 +33,10 @@ const Kennzahlen = (props) => {
             const newEbit = [...ebit];
             newEbit[index] = value;
             setEbit(newEbit);
-        } else if (type === 'selectedGewinnTypischOptions') {
-            const newSelectedGewinnOptions = [...selectedGewinnOptions];
-            newSelectedGewinnOptions[index] = value;
-            setSelectedGewinnOptions(newSelectedGewinnOptions);
+        } else if (type === 'gewinnTypisch') {
+            const newGewinnTypisch = [...gewinnTypisch];
+            newGewinnTypisch[index] = value;
+            setGewinnTypisch(newGewinnTypisch);
         }
     };
 
@@ -147,8 +147,8 @@ const Kennzahlen = (props) => {
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
                                                 value={option}
-                                                checked={selectedGewinnOptions[index] === option}
-                                                onChange={() => handleChange(index, 'selectedGewinnTypischOptions', option)}
+                                                checked={gewinnTypisch[index] === option}
+                                                onChange={() => handleChange(index, 'gewinnTypisch', option)}
                                                 required
                                             />
                                         </Form.Field>
