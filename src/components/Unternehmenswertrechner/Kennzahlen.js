@@ -1,57 +1,40 @@
 import React, { useState } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
-import { useDispatch } from "react-redux";
-import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
+import { useDispatch, useSelector } from "react-redux";
+import { setValidity, setError } from '../../redux/reducers';
 
 const Kennzahlen = (props) => {
-    const [checked, setChecked] = useState(props.kennzahlenInfo?.checked || false);
-
-    const umsatzYears = ['Umsatz2020', 'Umsatz2021', 'Umsatz2022'].concat(checked ? ["Prognose 2023"] : []);
-    const ebitYears = ['Ebit2020', 'Ebit2021', 'Ebit2022'].concat(checked ? ["Prognose 2023"] : []);
-
-    const [kennzahlen, setKennzahlen] = useState(() => props.kennzahlenInfo?.kennzahlen || Array(umsatzYears.length).fill({
+    const [checked, setChecked] = useState(false);
+    const [kennzahlen, setKennzahlen] = useState({
+        year: [2020, 2021, 2022],
         umsatz: 25000000,
         ebit: 5000000,
-    }));
-
-    const options = ['ganz untypisch', 'eher untypisch', 'nur teilweise typisch', 'eher typisch', 'typisch'];
-    const gewinnYears = ["Gewinn 2020", "Gewinn 2021", "Gewinn 2022"].concat(checked ? ["Prognose 2023"] : []);
-    const [selectedGewinnTypischOptions, setSelectedGewinnTypischOptions] = useState(() => props.kennzahlenInfo?.selectedGewinnTypischOptions || Array(gewinnYears.length).fill(''));
-    const [averageUmsat, setAverageUmsat] = useState(0);
-    const [isValid, setIsValid] = useState(true);
-    const dispatch = useDispatch();
-
-    const checkValidity = () => {
-        let errors = [];
-        selectedGewinnTypischOptions.forEach((option, index) => {
-            if (!option || option === '') {
-                errors.push(`Bitte wählen Sie eine Option für ${gewinnYears[index]}.`);
-            }
-        });
-
-        dispatch(setError(errors));
-
-        const valid = errors.length === 0;
-        setIsValid(valid);
-        dispatch(setValidity(valid));
-    };
+        gewinnTypisch: [
+            "ganz untypisch",
+            "eher untypisch",
+            "nur teilweise typisch",
+            "eher typisch",
+            "typisch"
+        ]
+    });
+    const [selectedGewinnTypischOptions, setSelectedGewinnTypischOptions] = useState([]);
 
     const handleCheckboxChange = () => {
         setChecked(!checked);
         setKennzahlen(prevKennzahlen => {
             const newKennzahlen = [...prevKennzahlen];
-            if (!checked) { // if adding Prognose 2023
-                newKennzahlen.push({ umsatz: 25000000, ebit: 5000000 }); // add default values
-            } else { // if removing Prognose 2023
+            if (!checked) {
+                newKennzahlen.push({ umsatz: 25000000, ebit: 5000000 });
+            } else {
                 newKennzahlen.pop();
             }
             return newKennzahlen;
         });
         setSelectedGewinnTypischOptions(prevOptions => {
             const newOptions = [...prevOptions];
-            if (!checked) { // if adding Prognose 2023
-                newOptions.push(''); // add default or empty value
-            } else { // if removing Prognose 2023
+            if (!checked) {
+                newOptions.push("");
+            } else {
                 newOptions.pop();
             }
             return newOptions;
@@ -59,56 +42,27 @@ const Kennzahlen = (props) => {
     };
 
     const handleChange = (index, field, value) => {
-        console.log(`handleChange called with index: ${index}, field: ${field}, value: ${value}`);
-
-        if (field === 'umsatz' || field === 'ebit') {
+        if (field === "umsatz" || field === "ebit") {
             setKennzahlen(prevKennzahlen => {
                 const newKennzahlen = [...prevKennzahlen];
                 newKennzahlen[index] = { ...newKennzahlen[index], [field]: value };
                 return newKennzahlen;
             });
-        } else if (field === 'selectedGewinnTypischOptions') {
+        } else if (field === "selectedGewinnTypischOptions") {
             setSelectedGewinnTypischOptions(prevOptions => {
                 const newOptions = [...prevOptions];
-                newOptions[index] = { year: gewinnYears[index], value: value };
+                newOptions[index] = { year: kennzahlen.year[index], value: value };
                 return newOptions;
             });
         }
     };
 
     const handleWeiterClick = () => {
-        if (!isValid) {
-            console.log("Form is not valid. Please correct the errors.");
-            return;
-        }
-
-        const kennzahlenInfo = {
-            checked,
-            kennzahlen: [...kennzahlen],
-            selectedGewinnTypischOptions: [...selectedGewinnTypischOptions]
-        };
-
-        console.log("kennzahlenInfo:", kennzahlenInfo); // Kiểm tra giá trị kennzahlenInfo
-
-        props.onWeiterClick(kennzahlenInfo);
+        props.onWeiterClick();
     };
 
-    const calculateAverageUmsat = (kennzahlen) => {
-        let sum = 0;
-        let count = 0;
-
-        kennzahlen.forEach((kennzahl) => {
-            sum += parseInt(kennzahl.umsatz);
-            count++;
-        });
-
-        return count > 0 ? sum / count : 0;
-    };
-
-    // useEffect(() => {
-    //     checkValidity();
-    // }, [selectedGewinnTypischOptions]);
-
+    const umsatzYears = kennzahlen.year;
+    const ebitYears = kennzahlen.year;
 
     return (
         <Grid padded className="shared-section kennzahlen">
@@ -135,7 +89,7 @@ const Kennzahlen = (props) => {
                             {umsatzYears.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
-                                        <label>{year}</label>
+                                        <label>Umsatz {year}</label>
                                     </Form.Field>
                                     <Form.Field width={10} className="form-input">
                                         <input
@@ -169,7 +123,7 @@ const Kennzahlen = (props) => {
                             {ebitYears.map((year, index) => (
                                 <Form.Group className="form-group" key={year}>
                                     <Form.Field width={3} className="form-label">
-                                        <label>{year}</label>
+                                        <label>Ebit {year}</label>
                                     </Form.Field>
                                     <Form.Field width={10} className="form-input">
                                         <input
@@ -199,14 +153,14 @@ const Kennzahlen = (props) => {
                     <Segment>
                         <Segment.Group horizontal className="segment-group">
                             <Segment></Segment>
-                            {options.map((option, index) => (
+                            {kennzahlen.gewinnTypisch.map((option, index) => (
                                 <Segment key={index} textAlign="center">{option}</Segment>
                             ))}
                         </Segment.Group>
-                        {gewinnYears.map((label, index) => (
+                        {kennzahlen.year.map((label, index) => (
                             <Segment.Group horizontal className="segment-group" key={label}>
                                 <Segment>{label}</Segment>
-                                {options.map((option, i) => (
+                                {kennzahlen.gewinnTypisch.map((option, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
@@ -223,13 +177,11 @@ const Kennzahlen = (props) => {
                             </Segment.Group>
                         ))}
                     </Segment>
-
                     <Form.Field>
                         <p className="required-fields-hint">
                             <span className="required">*</span>Diese Eingaben sind Pflichtfelder
                         </p>
                     </Form.Field>
-
                     <Form.Field>
                         <div className="button-container">
                             <Button className="click-back" onClick={props.onZuruckClick}>Zurück</Button>
@@ -238,7 +190,6 @@ const Kennzahlen = (props) => {
                             </Button>
                         </div>
                     </Form.Field>
-
                 </Form>
             </Grid.Column>
         </Grid>
