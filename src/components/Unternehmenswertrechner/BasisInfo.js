@@ -136,6 +136,7 @@ const BasisInfo = (props) => {
         checkValidity();
         console.log("Brache", branche);
         console.log("Lage", lage);
+        console.log("Alter", alter);
         console.log("Valid", isValid)
     }, [branche, lage, alter]);
 
