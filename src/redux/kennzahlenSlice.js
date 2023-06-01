@@ -1,31 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    checked: false,
-    kennzahlen: [],
-    selectedGewinnTypischOptions: [],
+    umsatz: Array(3).fill(25000000),
+    ebit: Array(3).fill(5000000),
+    gewinnTypisch: Array(3).fill(""),
 };
 
 const kennzahlenSlice = createSlice({
-    name: 'kennzahlen',
+    name: "kennzahlen",
     initialState,
     reducers: {
-        setChecked: (state, action) => {
-            state.checked = action.payload;
+        setUmsatz: (state, action) => {
+            state.umsatz = action.payload;
         },
-        setKennzahlen: (state, action) => {
-            state.kennzahlen = action.payload;
+        setEbit: (state, action) => {
+            state.ebit = action.payload;
         },
-        setSelectedGewinnTypischOptions: (state, action) => {
-            state.selectedGewinnTypischOptions = action.payload;
+        setGewinnTypisch: (state, action) => {
+            state.gewinnTypisch = action.payload;
         },
     },
 });
 
-export const {
-    setChecked,
-    setKennzahlen,
-    setSelectedGewinnTypischOptions,
-} = kennzahlenSlice.actions;
-
+export const { setUmsatz, setEbit, setGewinnTypisch } = kennzahlenSlice.actions;
 export default kennzahlenSlice.reducer;
