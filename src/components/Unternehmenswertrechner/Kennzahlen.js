@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUmsatz, setEbit, setGewinnTypisch, setChecked } from '../../redux/kennzahlenSlice';
+import { setUmsatz, setEbit, setGewinnTypisch, setChecked, setAverageUmsatz, setAverageEbit } from '../../redux/kennzahlenSlice';
 
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
@@ -59,12 +59,20 @@ const Kennzahlen = (props) => {
             const newUmsatz = umsatz.map((item, i) =>
                 i === index ? { ...item, value } : item
             );
+            console.log("newUmsatz:", newUmsatz); // Console log để kiểm tra giá trị mới của umsatz
             dispatch(setUmsatz(newUmsatz));
+            const averageUmsatz = calculateAverageUmsatz(newUmsatz); // Tính giá trị trung bình cho umsatz
+            console.log("averageUmsatz:", averageUmsatz); // Console log giá trị trung bình của umsatz
+            dispatch(setAverageUmsatz(averageUmsatz)); // Cập nhật giá trị trung bình vào Redux
         } else if (type === 'ebit') {
             const newEbit = ebit.map((item, i) =>
                 i === index ? { ...item, value } : item
             );
+            console.log("newEbit:", newEbit); // Console log để kiểm tra giá trị mới của ebit
             dispatch(setEbit(newEbit));
+            const averageEbit = calculateAverageEbit(newEbit); // Tính giá trị trung bình cho ebit
+            console.log("averageEbit:", averageEbit); // Console log giá trị trung bình của ebit
+            dispatch(setAverageEbit(averageEbit)); // Cập nhật giá trị trung bình vào Redux
         } else if (type === 'gewinnTypisch') {
             const newGewinnTypisch = {
                 ...gewinnTypisch,
@@ -72,7 +80,28 @@ const Kennzahlen = (props) => {
                     i === index ? { ...item, value } : item
                 )
             };
+            console.log("newGewinnTypisch:", newGewinnTypisch); // Console log để kiểm tra giá trị mới của gewinnTypisch
             dispatch(setGewinnTypisch(newGewinnTypisch));
+        }
+    };
+
+    const calculateAverageUmsatz = (umsatz) => {
+        if (umsatz.length > 0) {
+            const sum = umsatz.reduce((total, item) => total + item.value, 0);
+            const average = sum / umsatz.length;
+            return average;
+        } else {
+            return 0;
+        }
+    };
+
+    const calculateAverageEbit = (ebit) => {
+        if (ebit.length > 0) {
+            const sum = ebit.reduce((total, item) => total + item.value, 0);
+            const average = sum / ebit.length;
+            return average;
+        } else {
+            return 0;
         }
     };
 
