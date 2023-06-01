@@ -30,12 +30,14 @@ const Kennzahlen = (props) => {
 
     const handleChange = (index, type, value) => {
         if (type === 'umsatz') {
-            const newUmsatz = [...(umsatz || [])];
-            newUmsatz[index] = value;
+            const newUmsatz = umsatz.map((item, i) =>
+                i === index ? { ...item, value } : item
+            );
             dispatch(setUmsatz(newUmsatz));
         } else if (type === 'ebit') {
-            const newEbit = [...(ebit || [])];
-            newEbit[index] = value;
+            const newEbit = ebit.map((item, i) =>
+                i === index ? { ...item, value } : item
+            );
             dispatch(setEbit(newEbit));
         } else if (type === 'gewinnTypisch') {
             const newGewinnTypisch = {
