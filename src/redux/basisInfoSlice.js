@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    branche: {},
-    lage: {
-        key: 'städtisch',
-        value: 1,
+    basisInfoData: {
+        branche: {},
+        lage: {
+            key: 'städtisch',
+            value: 1,
+        },
+        alter: 1,
     },
-    alter: 1,
 };
 
 const basisInfoSlice = createSlice({
@@ -14,13 +16,13 @@ const basisInfoSlice = createSlice({
     initialState,
     reducers: {
         setBranche: (state, action) => {
-            state.branche = action.payload;
+            state.basisInfoData.branche = action.payload;
         },
         setLage: (state, action) => {
-            state.lage = action.payload;
+            state.basisInfoData.lage = action.payload;
         },
         setAlter: (state, action) => {
-            state.alter = action.payload;
+            state.basisInfoData.alter = action.payload;
         },
     },
 });

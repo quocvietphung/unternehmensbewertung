@@ -5,9 +5,7 @@ import { setBranche, setLage, setAlter } from '../../redux/basisInfoSlice';
 import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
 
 const BasisInfo = (props) => {
-    const branche = useSelector(state => state.basisInfo.branche);
-    const lage = useSelector(state => state.basisInfo.lage);
-    const alter = useSelector(state => state.basisInfo.alter);
+    const basisInfoData = useSelector(state => state.basisInfo.basisInfoData);
     const isValid = useSelector(state => state.validation.isValid);
     const dispatch = useDispatch();
 
@@ -134,26 +132,28 @@ const BasisInfo = (props) => {
         // Check validity
         console.log("Checking validity...");
         checkValidity();
-        console.log("Brache", branche);
-        console.log("Lage", lage);
-        console.log("Alter", alter);
-        console.log("Valid", isValid)
-    }, [branche, lage, alter]);
+        console.log("Branche", basisInfoData.branche);
+        console.log("Lage", basisInfoData.lage);
+        console.log("Alter", basisInfoData.alter);
+        console.log("Valid", isValid);
+    }, [basisInfoData]);
 
     const handleChange = (event, { name, value }) => {
         console.log(`Handle change for ${name} with value: ${value}`);
 
         if (name === "alter") {
             if (value === "+") {
-                dispatch(setAlter(alter + 1));
-            } else if (value === "-" && alter > 0) {
-                dispatch(setAlter(alter - 1));
+                dispatch(setAlter(basisInfoData.alter + 1));
+            } else if (value === "-" && basisInfoData.alter > 0) {
+                dispatch(setAlter(basisInfoData.alter - 1));
             } else if (!isNaN(value)) {
                 dispatch(setAlter(parseInt(value)));
             }
         } else if (name === "branche") {
             console.log("Value for branche:", value);
-            const selectedBranch = basisInfos.branchOptions.find(option => option.key === value);
+            const selectedBranch = basisInfos.branchOptions.find(
+                (option) => option.key === value
+            );
             console.log("Selected Branch:", selectedBranch);
             if (selectedBranch) {
                 dispatch(setBranche(selectedBranch));
@@ -161,7 +161,9 @@ const BasisInfo = (props) => {
                 dispatch(setBranche({}));
             }
         } else if (name === "lage") {
-            const selectedLage = basisInfos.lageOptions.find(option => option.key === value);
+            const selectedLage = basisInfos.lageOptions.find(
+                (option) => option.key === value
+            );
             console.log("Selected Lage:", selectedLage);
             dispatch(setLage(selectedLage));
 
@@ -174,13 +176,17 @@ const BasisInfo = (props) => {
 
     const checkValidity = () => {
         let errors = [];
-        if (!branche || branche.key === "") {
+        if (!basisInfoData.branche || basisInfoData.branche.key === "") {
             errors.push("Bitte wählen Sie eine Branche aus.");
         }
-        if (!lage || (lage.key !== "städtisch" && lage.key !== "ländlich")) {
+        if (
+            !basisInfoData.lage ||
+            (basisInfoData.lage.key !== "städtisch" &&
+                basisInfoData.lage.key !== "ländlich")
+        ) {
             errors.push("Bitte wählen Sie eine Lage aus.");
         }
-        if (!alter || alter <= 0) {
+        if (!basisInfoData.alter || basisInfoData.alter <= 0) {
             errors.push("Der Minimalwert für dieses Eingabefeld wurde erreicht.");
         }
 
@@ -191,15 +197,15 @@ const BasisInfo = (props) => {
     };
 
     const handleMinusClick = () => {
-        if (alter > 1) {
-            setAlter(prevAlter => prevAlter - 1);
+        if (basisInfoData.alter > 1) {
+            setAlter((prevAlter) => prevAlter - 1);
         } else {
             window.alert("Der Minimalwert für dieses Eingabefeld wurde erreicht."); // Show alert when trying to decrement from 1
         }
     };
 
     const handleWeiterClick = () => {
-        console.log('isValid:', isValid); // Log the value of isValid
+        console.log("isValid:", isValid); // Log the value of isValid
         if (!isValid) {
             return;
         }
@@ -220,10 +226,15 @@ const BasisInfo = (props) => {
                                 <label>Branche*</label>
                                 <Select
                                     className="wideSelect"
-                                    options={basisInfos.branchOptions.map(option => ({ value: option.key, text: option.text }))}
+                                    options={basisInfos.branchOptions.map((option) => ({
+                                        value: option.key,
+                                        text: option.text,
+                                    }))}
                                     name="branche"
-                                    value={branche?.key || ""}
-                                    onChange={(event, { name, value }) => handleChange(event, { name, value })}
+                                    value={basisInfoData.branche?.key || ""}
+                                    onChange={(event, { name, value }) =>
+                                        handleChange(event, { name, value })
+                                    }
                                     placeholder="Branche auswählen"
                                     required
                                 />
@@ -231,15 +242,23 @@ const BasisInfo = (props) => {
 
                             <Form.Group inline>
                                 <label>Lage*</label>
-                                {basisInfos.lageOptions.map(option => (
+                                {basisInfos.lageOptions.map((option) => (
                                     <Form.Field key={option.key}>
                                         <Radio
-                                            className={lage?.value === option.value ? "radio-selected" : ""}
+                                            className={
+                                                basisInfoData.lage?.value === option.value
+                                                    ? "radio-selected"
+                                                    : ""
+                                            }
                                             name="lage"
                                             value={option.key}
                                             label={option.text}
-                                            checked={lage?.value === option.value}
-                                            onChange={(event, { name, value }) => handleChange(event, { name, value })}
+                                            checked={
+                                                basisInfoData.lage?.value === option.value
+                                            }
+                                            onChange={(event, { name, value }) =>
+                                                handleChange(event, { name, value })
+                                            }
                                             required
                                         />
                                     </Form.Field>
@@ -264,15 +283,22 @@ const BasisInfo = (props) => {
                                     name="alter"
                                     className="form-control input-number-plusminus"
                                     min="1"
-                                    value={alter}
-                                    onChange={(event) => handleChange(event, { name: "alter", value: event.target.value })}
+                                    value={basisInfoData.alter}
+                                    onChange={(event) =>
+                                        handleChange(event, {
+                                            name: "alter",
+                                            value: event.target.value,
+                                        })
+                                    }
                                     required
                                 />
                                 <Button
                                     icon="plus"
                                     data-type="plus"
                                     data-field="alter"
-                                    onClick={(event) => handleChange(event, { name: "alter", value: "+" })}
+                                    onClick={(event) =>
+                                        handleChange(event, { name: "alter", value: "+" })
+                                    }
                                 />
                             </Form.Group>
                         </Grid.Column>
@@ -286,12 +312,16 @@ const BasisInfo = (props) => {
 
                     <Form.Field>
                         <div className="button-container">
-                            <Button className="click-continue" primary type="submit" onClick={handleWeiterClick}>
+                            <Button
+                                className="click-continue"
+                                primary
+                                type="submit"
+                                onClick={handleWeiterClick}
+                            >
                                 Weiter
                             </Button>
                         </div>
                     </Form.Field>
-
                 </Form>
             </Grid.Column>
         </Grid>

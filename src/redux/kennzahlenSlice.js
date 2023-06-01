@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     checked: false,
     kennzahlenData: {
+        checked: false,
         umsatz: [
             {
                 title: "Umsatz 2020",
