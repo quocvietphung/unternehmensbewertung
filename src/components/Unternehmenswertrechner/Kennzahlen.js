@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
+import {setUnternehmenwert } from '../../redux/sectionsSlice';
+
 import {
     setPrognose,
     setUmsatz,
@@ -13,6 +15,7 @@ import {
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
     const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
+    const basisInfoData = useSelector((state) => state.basisInfo.basisInfoData);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
 
     const prognose2023 = {
@@ -102,20 +105,26 @@ const Kennzahlen = (props) => {
     };
 
     const setFormattedValue = (value) => {
-        const valueInMillion = value / 1e6;
-        const roundedValue = Math.round(valueInMillion * 10) / 10;
-        let formattedValue = roundedValue.toFixed(1);
-
-        if (formattedValue.endsWith(".0")) {
-            formattedValue = parseInt(formattedValue);
-        }
-
-        return Number(formattedValue);
+        return Math.round(value);
     };
 
     const handleWeiterClick = () => {
         props.onWeiterClick();
     };
+
+    useEffect(() => {
+        console.log("Dependencies updated:", kennzahlenData.averageValues.averageUmsatz, kennzahlenData.averageValues.averageEbit, basisInfoData.branche.umsatzValue, basisInfoData.branche.ebitValue);
+        const unternehmenwert =
+            (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue) +
+            (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue);
+        console.log("unternehmenwert:", unternehmenwert);
+        dispatch(setUnternehmenwert(unternehmenwert));
+    }, [
+        kennzahlenData.averageValues.averageUmsatz,
+        kennzahlenData.averageValues.averageEbit,
+        basisInfoData.branche.umsatzValue,
+        basisInfoData.branche.ebitValue
+    ]);
 
     return (
         <Grid padded className="shared-section kennzahlen">
