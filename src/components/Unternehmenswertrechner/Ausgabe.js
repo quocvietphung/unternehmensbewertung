@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
 import { useSelector } from "react-redux";
-import { setUnternehmensbewertung } from '../../redux/reducers'; // Import action setUnternehmensbewertung
 import { useDispatch } from "react-redux";
 
 const Ausgabe = () => {
@@ -11,7 +10,6 @@ const Ausgabe = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // In ra giá trị unternehmenwert mỗi khi nó thay đổi
         console.log("unternehmenwert:", unternehmensbewertung);
     }, [unternehmensbewertung]);
 
