@@ -6,7 +6,7 @@ import {
     setPrognose,
     setUmsatz,
     setEbit,
-    setGewinnTypisch,
+    setGewinn,
     setAverageUmsatz,
     setAverageEbit,
 } from '../../redux/kennzahlenSlice';
@@ -44,10 +44,10 @@ const Kennzahlen = (props) => {
         if (!prognose) {
             const newUmsatz = [...kennzahlenData.umsatz, prognose2023.umsatz];
             const newEbit = [...kennzahlenData.ebit, prognose2023.ebit];
-            const newGewinn = [...kennzahlenData.gewinnTypisch.gewinn, prognose2023.gewinn];
+            const newGewinnData = [...kennzahlenData.gewinn.data, prognose2023.gewinn];
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
-            dispatch(setGewinnTypisch({ ...kennzahlenData.gewinnTypisch, gewinn: newGewinn }));
+            dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             const averageEbit = calculateAverage(newEbit, 'ebit');
             dispatch(setAverageUmsatz(averageUmsatz));
@@ -55,10 +55,10 @@ const Kennzahlen = (props) => {
         } else {
             const newUmsatz = kennzahlenData.umsatz.filter((item) => item.year !== 2023);
             const newEbit = kennzahlenData.ebit.filter((item) => item.year !== 2023);
-            const newGewinn = kennzahlenData.gewinnTypisch.gewinn.filter((item) => item.year !== 2023);
+            const newGewinnData = kennzahlenData.gewinn.data.filter((item) => item.year !== 2023);
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
-            dispatch(setGewinnTypisch({ ...kennzahlenData.gewinnTypisch, gewinn: newGewinn }));
+            dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             const averageEbit = calculateAverage(newEbit, 'ebit');
             dispatch(setAverageUmsatz(averageUmsatz));
@@ -85,15 +85,12 @@ const Kennzahlen = (props) => {
             const averageEbit = calculateAverage(newEbit, 'ebit');
             console.log("averageEbit:", averageEbit);
             dispatch(setAverageEbit(averageEbit));
-        } else if (type === 'gewinnTypisch') {
-            const newGewinnTypisch = {
-                ...kennzahlenData.gewinnTypisch,
-                gewinn: kennzahlenData.gewinnTypisch.gewinn.map((item, i) =>
-                    i === index ? { ...item, value } : item
-                )
-            };
-            console.log("newGewinnTypisch:", newGewinnTypisch);
-            dispatch(setGewinnTypisch(newGewinnTypisch));
+        } else if (type === 'gewinn') {
+            const newGewinnData = kennzahlenData.gewinn.data.map((item, i) =>
+                i === index ? { ...item, type, value } : item
+            );
+            console.log("newGewinnData:", newGewinnData);
+            dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
         }
     };
 
@@ -207,22 +204,22 @@ const Kennzahlen = (props) => {
                     <Segment>
                         <Segment.Group horizontal className="segment-group">
                             <Segment></Segment>
-                            {kennzahlenData.gewinnTypisch.options.map((option, index) => (
+                            {kennzahlenData.gewinn.options.map((option, index) => (
                                 <Segment key={index} textAlign="center">{option}</Segment>
                             ))}
                         </Segment.Group>
-                        {kennzahlenData.gewinnTypisch.gewinn.map((item, index) => (
+                        {kennzahlenData.gewinn.data.map((item, index) => (
                             <Segment.Group horizontal className="segment-group" key={item.title}>
                                 <Segment>{item.title}</Segment>
-                                {kennzahlenData.gewinnTypisch.options.map((option, i) => (
+                                {kennzahlenData.gewinn.options.map((option, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
-                                                value={option}
-                                                checked={kennzahlenData.gewinnTypisch.gewinn[index]?.value === option}
-                                                onChange={() => handleChange(index, 'gewinnTypisch', option)}
+                                                value={option.value}
+                                                checked={item.value === option.value}
+                                                onChange={() => handleGewinnOptionChange(index, option.type, option.value)}
                                                 required
                                             />
                                         </Form.Field>

@@ -42,25 +42,43 @@ const initialState = {
                 {
                     title: "Gewinn 2020",
                     year: 2020,
+                    type: "",
                     value: "",
                 },
                 {
                     title: "Gewinn 2021",
                     year: 2021,
+                    type: "",
                     value: "",
                 },
                 {
                     title: "Gewinn 2022",
                     year: 2022,
+                    type: "",
                     value: "",
                 },
             ],
             options: [
-                "ganz untypisch",
-                "eher untypisch",
-                "nur teilweise typisch",
-                "eher typisch",
-                "typisch",
+                {
+                    type: "ganz untypisch",
+                    value: 0.8
+                },
+                {
+                    type: "eher untypisch",
+                    value: 0.85
+                },
+                {
+                    type: "nur teilweise typisch",
+                    value: 0.9
+                },
+                {
+                    type: "eher typisch",
+                    value: 0.95
+                },
+                {
+                    type: "typisch",
+                    value: 1
+                }
             ],
         },
         averageValues: {
