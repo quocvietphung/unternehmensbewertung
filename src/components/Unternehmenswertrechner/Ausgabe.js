@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import {setUnternehmenwert } from '../../redux/sectionsSlice';
+import { setUnternehmenwert } from '../../redux/sectionsSlice';
+
 const Ausgabe = () => {
     const dispatch = useDispatch();
     const isValid = useSelector((state) => state.validation.isValid);
     const errors = useSelector((state) => state.validation.error);
     const finishedSections = useSelector((state) => state.sections.sectionData.finishedSections);
+    const basisInfoData = useSelector((state) => state.basisInfo.basisInfoData);
+    const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
     const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
@@ -16,8 +19,19 @@ const Ausgabe = () => {
     }, [unternehmenwert]);
 
     useEffect(() => {
-        console.log("unternehmenwert:", unternehmenwert);
-    }, [unternehmenwert]);
+        if (finishedSections.includes('basis')) {
+            const calculateUnternehmenwert = () => {
+                const unternehmenwert =
+                    (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue) +
+                    (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue);
+                return unternehmenwert;
+            };
+
+            const unternehmenwert = calculateUnternehmenwert();
+            console.log("unternehmenwert:", unternehmenwert);
+            dispatch(setUnternehmenwert(unternehmenwert));
+        }
+    }, [finishedSections, basisInfoData, kennzahlenData]);
 
     const formatValue = (value) => {
         const valueInMillion = value / 1e6;

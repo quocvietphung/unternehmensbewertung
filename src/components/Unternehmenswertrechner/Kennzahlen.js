@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import {setUnternehmenwert } from '../../redux/sectionsSlice';
 
 import {
     setPrognose,
@@ -15,7 +14,6 @@ import {
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
     const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
-    const basisInfoData = useSelector((state) => state.basisInfo.basisInfoData);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
 
     const prognose2023 = {
@@ -111,20 +109,6 @@ const Kennzahlen = (props) => {
     const handleWeiterClick = () => {
         props.onWeiterClick();
     };
-
-    useEffect(() => {
-        console.log("Dependencies updated:", kennzahlenData.averageValues.averageUmsatz, kennzahlenData.averageValues.averageEbit, basisInfoData.branche.umsatzValue, basisInfoData.branche.ebitValue);
-        const unternehmenwert =
-            (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue) +
-            (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue);
-        console.log("unternehmenwert:", unternehmenwert);
-        dispatch(setUnternehmenwert(unternehmenwert));
-    }, [
-        kennzahlenData.averageValues.averageUmsatz,
-        kennzahlenData.averageValues.averageEbit,
-        basisInfoData.branche.umsatzValue,
-        basisInfoData.branche.ebitValue
-    ]);
 
     return (
         <Grid padded className="shared-section kennzahlen">
