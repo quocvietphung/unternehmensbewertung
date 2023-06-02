@@ -66,28 +66,28 @@ const Kennzahlen = (props) => {
         }
     };
 
-    const handleChange = (index, type, value) => {
-        if (type === 'umsatz') {
+    const handleChange = (index, category, option) => {
+        if (category === 'umsatz') {
             const newUmsatz = kennzahlenData.umsatz.map((item, i) =>
-                i === index ? { ...item, value } : item
+                i === index ? { ...item, value: option } : item
             );
             console.log("newUmsatz:", newUmsatz);
             dispatch(setUmsatz(newUmsatz));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             console.log("averageUmsatz:", averageUmsatz);
             dispatch(setAverageUmsatz(averageUmsatz));
-        } else if (type === 'ebit') {
+        } else if (category === 'ebit') {
             const newEbit = kennzahlenData.ebit.map((item, i) =>
-                i === index ? { ...item, value } : item
+                i === index ? { ...item, value: option } : item
             );
             console.log("newEbit:", newEbit);
             dispatch(setEbit(newEbit));
             const averageEbit = calculateAverage(newEbit, 'ebit');
             console.log("averageEbit:", averageEbit);
             dispatch(setAverageEbit(averageEbit));
-        } else if (type === 'gewinn') {
+        } else if (category === 'gewinn') {
             const newGewinnData = kennzahlenData.gewinn.data.map((item, i) =>
-                i === index ? { ...item, type, value } : item
+                i === index ? { ...item, type: option.type, value: option.value } : item
             );
             console.log("newGewinnData:", newGewinnData);
             dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
@@ -205,7 +205,8 @@ const Kennzahlen = (props) => {
                         <Segment.Group horizontal className="segment-group">
                             <Segment></Segment>
                             {kennzahlenData.gewinn.options.map((option, index) => (
-                                <Segment key={index} textAlign="center">{option}</Segment>
+                                <Segment key={index} textAlign="center">{option.type}</Segment>
+
                             ))}
                         </Segment.Group>
                         {kennzahlenData.gewinn.data.map((item, index) => (
@@ -219,7 +220,7 @@ const Kennzahlen = (props) => {
                                                 name={`gewinnYears[${index}]`}
                                                 value={option.value}
                                                 checked={item.value === option.value}
-                                                onChange={() => handleGewinnOptionChange(index, option.type, option.value)}
+                                                onChange={() => handleChange(index, 'gewinn', option)} // changed 'g' to 'gewinn' for clarity
                                                 required
                                             />
                                         </Form.Field>
