@@ -15,6 +15,9 @@ const sectionsSlice = createSlice({
     reducers: {
         setActiveSection: (state, action) => {
             state.sectionData.activeSection = action.payload;
+            if (action.payload === 'basis' && !state.sectionData.finishedSections.includes('basis')) {
+                state.sectionData.unternehmenswert = 0;
+            }
         },
         finishSection: (state, action) => {
             const section = action.payload;
