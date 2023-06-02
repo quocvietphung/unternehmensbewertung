@@ -5,6 +5,7 @@ const initialState = {
         activeSection: 'basis',
         finishedSections: [],
         sectionOrder: ['basis', 'kennzahlen', 'bereinigung', 'equity', 'quality', 'anlass'],
+        unternehmenswert: 0,
     },
 };
 
@@ -21,9 +22,12 @@ const sectionsSlice = createSlice({
                 state.sectionData.finishedSections.push(section);
             }
         },
+        setUnternehmenwert: (state, action) => {
+            state.sectionData.unternehmenswert = action.payload;
+        },
     },
 });
 
-export const { setActiveSection, finishSection } = sectionsSlice.actions;
+export const { setActiveSection, finishSection, setUnternehmenwert } = sectionsSlice.actions;
 
 export default sectionsSlice.reducer;

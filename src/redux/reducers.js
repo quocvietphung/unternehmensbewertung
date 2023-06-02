@@ -1,10 +1,8 @@
-// reducers.js
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isValid: true,
     error: [],
-    unternehmensbewertung: 0,
 };
 
 const validationSlice = createSlice({
@@ -17,12 +15,9 @@ const validationSlice = createSlice({
         setError: (state, action) => {
             state.error = action.payload;
         },
-        setUnternehmensbewertung: (state, action) => {
-            state.unternehmensbewertung = action.payload;
-        }, // Thêm action setUnternehmensbewertung
     },
 });
 
-export const { setValidity, setError, setUnternehmensbewertung } = validationSlice.actions;
+export const { setValidity, setError } = validationSlice.actions;
 
 export default validationSlice.reducer;

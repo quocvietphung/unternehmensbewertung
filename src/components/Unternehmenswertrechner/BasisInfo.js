@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setBranche, setLage, setAlter } from '../../redux/basisInfoSlice';
-import { setValidity, setError, setUnternehmensbewertung } from '../../redux/reducers';
+import { setValidity, setError } from '../../redux/reducers';
+import { setUnternehmenwert } from '../../redux/sectionsSlice';
 
 const BasisInfo = (props) => {
     const basisInfoData = useSelector(state => state.basisInfo.basisInfoData);
@@ -164,11 +165,6 @@ const BasisInfo = (props) => {
             );
             console.log("Selected Lage:", selectedLage);
             dispatch(setLage(selectedLage));
-
-            // Recalculate bewertung
-            const bewertung = 0;
-            console.log("Unternehmensbewertung:", bewertung);
-            dispatch(setUnternehmensbewertung(bewertung));
         }
     };
 

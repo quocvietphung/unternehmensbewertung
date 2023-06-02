@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 
 const Ausgabe = () => {
     const isValid = useSelector((state) => state.validation.isValid);
     const errors = useSelector((state) => state.validation.error);
-    const unternehmensbewertung = useSelector((state) => state.validation.unternehmensbewertung);
-    const dispatch = useDispatch();
+    const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
-        console.log("unternehmenwert:", unternehmensbewertung);
-    }, [unternehmensbewertung]);
+        console.log("unternehmenwert:", unternehmenwert);
+    }, [unternehmenwert]);
 
     const formatValue = (value) => {
         const valueInMillion = value / 1e6;
@@ -27,7 +25,7 @@ const Ausgabe = () => {
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
-            <p className="ertragswert">{formatValue(unternehmensbewertung)}</p>
+            <p className="ertragswert">{formatValue(unternehmenwert)}</p>
             <Message warning className="warning innacurate-calculation">
                 <p className="my-0">
                     Das ist ein vorläufig berechneter Wert. Füllen Sie weitere Felder aus, um einen genaueren zu Wert zu erhalten.
