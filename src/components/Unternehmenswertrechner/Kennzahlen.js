@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUmsatz, setEbit, setGewinnTypisch, setChecked, setAverageUmsatz, setAverageEbit } from '../../redux/kennzahlenSlice';
+import {
+    setPrognose, // Đổi tên hàm này từ "setChecked" thành "setPrognose"
+    setUmsatz,
+    setEbit,
+    setGewinnTypisch,
+    setAverageUmsatz,
+    setAverageEbit,
+} from '../../redux/kennzahlenSlice';
 
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
-    const checked = useSelector((state) => state.kennzahlen.checked);
-    const umsatz = useSelector((state) => state.kennzahlen.kennzahlenData.umsatz);
-    const ebit = useSelector((state) => state.kennzahlen.kennzahlenData.ebit);
-    const gewinnTypisch = useSelector((state) => state.kennzahlen.kennzahlenData.gewinnTypisch);
-    const averageUmsatz = useSelector((state) => state.kennzahlen.averageUmsatz);
-    const averageEbit = useSelector((state) => state.kennzahlen.averageEbit);
+    const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose); // Đổi tên thuộc tính này từ "checked" thành "prognose"
+    const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
 
     const prognose2023 = {
         umsatz: {
@@ -31,60 +34,56 @@ const Kennzahlen = (props) => {
     };
 
     useEffect(() => {
-        console.log("checked:", checked);
-        console.log("umsatz:", umsatz);
-        console.log("ebit:", ebit);
-        console.log("gewinnTypisch:", gewinnTypisch);
-        console.log("averageUmsatz:", averageUmsatz);
-        console.log("averageEbit:", averageEbit);
-    }, [checked, umsatz, ebit, gewinnTypisch, averageUmsatz, averageEbit]);
+        console.log("prognose:", prognose); // Đổi tên biến này từ "checked" thành "prognose"
+        console.log("kennzahlenData:", kennzahlenData);
+    }, [prognose, kennzahlenData]);
 
     const handleCheckboxChange = () => {
-        dispatch(setChecked(!checked));
-        if (!checked) {
-            const newUmsatz = [...umsatz, prognose2023.umsatz];
-            const newEbit = [...ebit, prognose2023.ebit];
-            const newGewinn = [...gewinnTypisch.gewinn, prognose2023.gewinn];
+        dispatch(setPrognose(!prognose)); // Đổi tên hàm này từ "setChecked" thành "setPrognose"
+        if (!prognose) { // Đổi tên biến này từ "checked" thành "prognose"
+            const newUmsatz = [...kennzahlenData.umsatz, prognose2023.umsatz];
+            const newEbit = [...kennzahlenData.ebit, prognose2023.ebit];
+            const newGewinn = [...kennzahlenData.gewinnTypisch.gewinn, prognose2023.gewinn];
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
-            dispatch(setGewinnTypisch({ ...gewinnTypisch, gewinn: newGewinn }));
+            dispatch(setGewinnTypisch({ ...kennzahlenData.gewinnTypisch, gewinn: newGewinn }));
         } else {
-            const newUmsatz = umsatz.filter((item) => item.year !== 2023);
-            const newEbit = ebit.filter((item) => item.year !== 2023);
-            const newGewinn = gewinnTypisch.gewinn.filter((item) => item.year !== 2023);
+            const newUmsatz = kennzahlenData.umsatz.filter((item) => item.year !== 2023);
+            const newEbit = kennzahlenData.ebit.filter((item) => item.year !== 2023);
+            const newGewinn = kennzahlenData.gewinnTypisch.gewinn.filter((item) => item.year !== 2023);
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
-            dispatch(setGewinnTypisch({ ...gewinnTypisch, gewinn: newGewinn }));
+            dispatch(setGewinnTypisch({ ...kennzahlenData.gewinnTypisch, gewinn: newGewinn }));
         }
     };
 
     const handleChange = (index, type, value) => {
         if (type === 'umsatz') {
-            const newUmsatz = umsatz.map((item, i) =>
+            const newUmsatz = kennzahlenData.umsatz.map((item, i) =>
                 i === index ? { ...item, value } : item
             );
-            console.log("newUmsatz:", newUmsatz); // Console log để kiểm tra giá trị mới của umsatz
+            console.log("newUmsatz:", newUmsatz);
             dispatch(setUmsatz(newUmsatz));
-            const averageUmsatz = calculateAverageUmsatz(newUmsatz); // Tính giá trị trung bình cho umsatz
-            console.log("averageUmsatz:", averageUmsatz); // Console log giá trị trung bình của umsatz
-            dispatch(setAverageUmsatz(averageUmsatz)); // Cập nhật giá trị trung bình vào Redux
+            const averageUmsatz = calculateAverageUmsatz(newUmsatz);
+            console.log("averageUmsatz:", averageUmsatz);
+            dispatch(setAverageUmsatz(averageUmsatz));
         } else if (type === 'ebit') {
-            const newEbit = ebit.map((item, i) =>
+            const newEbit = kennzahlenData.ebit.map((item, i) =>
                 i === index ? { ...item, value } : item
             );
-            console.log("newEbit:", newEbit); // Console log để kiểm tra giá trị mới của ebit
+            console.log("newEbit:", newEbit);
             dispatch(setEbit(newEbit));
-            const averageEbit = calculateAverageEbit(newEbit); // Tính giá trị trung bình cho ebit
-            console.log("averageEbit:", averageEbit); // Console log giá trị trung bình của ebit
-            dispatch(setAverageEbit(averageEbit)); // Cập nhật giá trị trung bình vào Redux
+            const averageEbit = calculateAverageEbit(newEbit);
+            console.log("averageEbit:", averageEbit);
+            dispatch(setAverageEbit(averageEbit));
         } else if (type === 'gewinnTypisch') {
             const newGewinnTypisch = {
-                ...gewinnTypisch,
-                gewinn: gewinnTypisch.gewinn.map((item, i) =>
+                ...kennzahlenData.gewinnTypisch,
+                gewinn: kennzahlenData.gewinnTypisch.gewinn.map((item, i) =>
                     i === index ? { ...item, value } : item
                 )
             };
-            console.log("newGewinnTypisch:", newGewinnTypisch); // Console log để kiểm tra giá trị mới của gewinnTypisch
+            console.log("newGewinnTypisch:", newGewinnTypisch);
             dispatch(setGewinnTypisch(newGewinnTypisch));
         }
     };
@@ -123,7 +122,7 @@ const Kennzahlen = (props) => {
                         <Checkbox
                             label="Möchten Sie eine Prognose für das aktuelle Kalenderjahr angeben?"
                             toggle
-                            checked={checked}
+                            checked={prognose} // Đổi tên biến này từ "checked" thành "prognose"
                             onChange={handleCheckboxChange}
                         />
                     </Form.Field>
@@ -135,7 +134,7 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {umsatz.map((item, index) => (
+                            {kennzahlenData.umsatz.map((item, index) => (
                                 <Form.Group className="form-group" key={item.year}>
                                     <Form.Field width={3} className="form-label">
                                         <label>{item.title}</label>
@@ -146,14 +145,14 @@ const Kennzahlen = (props) => {
                                             min="100000"
                                             max="50000000"
                                             step="50000"
-                                            value={(umsatz && umsatz[index]?.value) || ""}
+                                            value={(kennzahlenData.umsatz && kennzahlenData.umsatz[index]?.value) || ""}
                                             onChange={(e) => handleChange(index, 'umsatz', e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={(umsatz && umsatz[index]?.value) || ""}
+                                            value={(kennzahlenData.umsatz && kennzahlenData.umsatz[index]?.value) || ""}
                                             readOnly
                                         />
                                     </Form.Field>
@@ -169,7 +168,7 @@ const Kennzahlen = (props) => {
                     </Label>
                     <Segment>
                         <Form>
-                            {ebit.map((item, index) => (
+                            {kennzahlenData.ebit.map((item, index) => (
                                 <Form.Group className="form-group" key={item.year}>
                                     <Form.Field width={3} className="form-label">
                                         <label>{item.title}</label>
@@ -180,14 +179,14 @@ const Kennzahlen = (props) => {
                                             min="0"
                                             max="10000000"
                                             step="1000"
-                                            value={(ebit && ebit[index]?.value) || ""}
+                                            value={(kennzahlenData.ebit && kennzahlenData.ebit[index]?.value) || ""}
                                             onChange={(e) => handleChange(index, 'ebit', e.target.value)}
                                         />
                                     </Form.Field>
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={(ebit && ebit[index]?.value) || ""}
+                                            value={(kennzahlenData.ebit && kennzahlenData.ebit[index]?.value) || ""}
                                             readOnly
                                         />
                                     </Form.Field>
@@ -202,21 +201,21 @@ const Kennzahlen = (props) => {
                     <Segment>
                         <Segment.Group horizontal className="segment-group">
                             <Segment></Segment>
-                            {gewinnTypisch.options.map((option, index) => (
+                            {kennzahlenData.gewinnTypisch.options.map((option, index) => (
                                 <Segment key={index} textAlign="center">{option}</Segment>
                             ))}
                         </Segment.Group>
-                        {gewinnTypisch.gewinn.map((item, index) => (
+                        {kennzahlenData.gewinnTypisch.gewinn.map((item, index) => (
                             <Segment.Group horizontal className="segment-group" key={item.title}>
                                 <Segment>{item.title}</Segment>
-                                {gewinnTypisch.options.map((option, i) => (
+                                {kennzahlenData.gewinnTypisch.options.map((option, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
                                                 value={option}
-                                                checked={gewinnTypisch.gewinn[index]?.value === option}
+                                                checked={kennzahlenData.gewinnTypisch.gewinn[index]?.value === option}
                                                 onChange={() => handleChange(index, 'gewinnTypisch', option)}
                                                 required
                                             />

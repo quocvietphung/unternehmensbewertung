@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    checked: false,
     kennzahlenData: {
-        checked: false,
+        prognose: false,
         umsatz: [
             {
                 title: "Umsatz 2020",
@@ -64,17 +63,19 @@ const initialState = {
                 "typisch",
             ],
         },
+        averageValues: {
+            averageUmsatz: 0,
+            averageEbit: 0,
+        },
     },
-    averageUmsatz: 0,
-    averageEbit: 0,
 };
 
 const kennzahlenSlice = createSlice({
     name: "kennzahlen",
     initialState,
     reducers: {
-        setChecked: (state, action) => {
-            state.checked = action.payload;
+        setPrognose: (state, action) => {
+            state.kennzahlenData.prognose = action.payload; // Đổi tên hàm này từ "setChecked" thành "setPrognose"
         },
         setUmsatz: (state, action) => {
             state.kennzahlenData.umsatz = action.payload;
@@ -86,16 +87,16 @@ const kennzahlenSlice = createSlice({
             state.kennzahlenData.gewinnTypisch = action.payload;
         },
         setAverageUmsatz: (state, action) => {
-            state.averageUmsatz = action.payload;
+            state.kennzahlenData.averageValues.averageUmsatz = action.payload;
         },
         setAverageEbit: (state, action) => {
-            state.averageEbit = action.payload;
+            state.kennzahlenData.averageValues.averageEbit = action.payload;
         },
     },
 });
 
 export const {
-    setChecked,
+    setPrognose, // Đổi tên hàm này từ "setChecked" thành "setPrognose"
     setUmsatz,
     setEbit,
     setGewinnTypisch,
