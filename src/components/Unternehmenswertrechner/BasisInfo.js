@@ -142,8 +142,12 @@ const BasisInfo = (props) => {
         if (name === "alter") {
             if (value === "+") {
                 dispatch(setAlter(basisInfoData.alter + 1));
-            } else if (value === "-" && basisInfoData.alter > 0) {
-                dispatch(setAlter(basisInfoData.alter - 1));
+            } else if (value === "-") {
+                if (basisInfoData.alter > 1) {
+                    dispatch(setAlter(basisInfoData.alter - 1));
+                } else {
+                    window.alert("Der Minimalwert für dieses Eingabefeld wurde erreicht.");
+                }
             } else if (!isNaN(value)) {
                 dispatch(setAlter(parseInt(value)));
             }
@@ -269,7 +273,9 @@ const BasisInfo = (props) => {
                                     icon="minus"
                                     data-type="minus"
                                     data-field="alter"
-                                    onClick={handleMinusClick}
+                                    onClick={(event) =>
+                                        handleChange(event, { name: "alter", value: "-" })
+                                    }
                                 />
                                 <input
                                     type="number"
