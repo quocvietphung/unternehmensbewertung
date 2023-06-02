@@ -37,8 +37,8 @@ const initialState = {
                 value: 5000000,
             },
         ],
-        gewinnTypisch: {
-            gewinn: [
+        gewinn: {
+            data: [
                 {
                     title: "Gewinn 2020",
                     year: 2020,
@@ -75,7 +75,7 @@ const kennzahlenSlice = createSlice({
     initialState,
     reducers: {
         setPrognose: (state, action) => {
-            state.kennzahlenData.prognose = action.payload; // Đổi tên hàm này từ "setChecked" thành "setPrognose"
+            state.kennzahlenData.prognose = action.payload;
         },
         setUmsatz: (state, action) => {
             state.kennzahlenData.umsatz = action.payload;
@@ -83,8 +83,8 @@ const kennzahlenSlice = createSlice({
         setEbit: (state, action) => {
             state.kennzahlenData.ebit = action.payload;
         },
-        setGewinnTypisch: (state, action) => {
-            state.kennzahlenData.gewinnTypisch = action.payload;
+        setGewinn: (state, action) => {
+            state.kennzahlenData.gewinn = action.payload;
         },
         setAverageUmsatz: (state, action) => {
             state.kennzahlenData.averageValues.averageUmsatz = action.payload;
@@ -96,10 +96,10 @@ const kennzahlenSlice = createSlice({
 });
 
 export const {
-    setPrognose, // Đổi tên hàm này từ "setChecked" thành "setPrognose"
+    setPrognose,
     setUmsatz,
     setEbit,
-    setGewinnTypisch,
+    setGewinn,
     setAverageUmsatz,
     setAverageEbit,
 } = kennzahlenSlice.actions;
