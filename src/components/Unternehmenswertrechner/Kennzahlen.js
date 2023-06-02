@@ -64,7 +64,7 @@ const Kennzahlen = (props) => {
             );
             console.log("newUmsatz:", newUmsatz);
             dispatch(setUmsatz(newUmsatz));
-            const averageUmsatz = calculateAverageUmsatz(newUmsatz);
+            const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             console.log("averageUmsatz:", averageUmsatz);
             dispatch(setAverageUmsatz(averageUmsatz));
         } else if (type === 'ebit') {
@@ -73,7 +73,7 @@ const Kennzahlen = (props) => {
             );
             console.log("newEbit:", newEbit);
             dispatch(setEbit(newEbit));
-            const averageEbit = calculateAverageEbit(newEbit);
+            const averageEbit = calculateAverage(newEbit, 'ebit');
             console.log("averageEbit:", averageEbit);
             dispatch(setAverageEbit(averageEbit));
         } else if (type === 'gewinnTypisch') {
@@ -88,36 +88,29 @@ const Kennzahlen = (props) => {
         }
     };
 
-    const calculateAverageUmsatz = (umsatz) => {
-        if (umsatz.length > 0) {
-            const sum = umsatz.reduce((total, item) => total + parseFloat(item.value), 0);
-            const average = sum / umsatz.length;
-            return average;
-        } else {
-            return 0;
+    const calculateAverage = (data, type) => {
+        if (data.length > 0) {
+            const sum = data.reduce((total, item) => total + parseFloat(item.value), 0);
+            const average = sum / data.length;
+            if (type === 'umsatz') {
+                return setFormattedValue(average);
+            } else if (type === 'ebit') {
+                return setFormattedValue(average,);
+            }
         }
+        return 0;
     };
 
-    const calculateAverageEbit = (ebit) => {
-        if (ebit.length > 0) {
-            const sum = ebit.reduce((total, item) => total + parseFloat(item.value), 0);
-            const average = sum / ebit.length;
-            return average;
-        } else {
-            return 0;
-        }
-    };
-
-    const formatValue = (value) => {
+    const setFormattedValue = (value) => {
         const valueInMillion = value / 1e6;
         const roundedValue = Math.round(valueInMillion * 10) / 10;
         let formattedValue = roundedValue.toFixed(1);
 
         if (formattedValue.endsWith(".0")) {
-            formattedValue = parseInt(formattedValue).toString();
+            formattedValue = parseInt(formattedValue);
         }
 
-        return formattedValue + " Mio EUR";
+        return Number(formattedValue);
     };
 
     const handleWeiterClick = () => {
