@@ -1,11 +1,19 @@
 import React, { useEffect } from 'react';
 import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from 'react-redux';
+import {setUnternehmenwert } from '../../redux/sectionsSlice';
 const Ausgabe = () => {
+    const dispatch = useDispatch();
     const isValid = useSelector((state) => state.validation.isValid);
     const errors = useSelector((state) => state.validation.error);
+    const finishedSections = useSelector((state) => state.sections.sectionData.finishedSections);
     const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
+
+    useEffect(() => {
+        console.log("unternehmenwert:", unternehmenwert);
+        console.log("finishedSections:", finishedSections);
+        dispatch(setUnternehmenwert(unternehmenwert));
+    }, [unternehmenwert]);
 
     useEffect(() => {
         console.log("unternehmenwert:", unternehmenwert);
