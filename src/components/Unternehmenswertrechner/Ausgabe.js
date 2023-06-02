@@ -15,7 +15,7 @@ const Ausgabe = () => {
         console.log("unternehmenwert:", unternehmensbewertung);
     }, [unternehmensbewertung]);
 
-    const formatUmsatValue = (value) => {
+    const formatValue = (value) => {
         const valueInMillion = value / 1e6;
         const roundedValue = Math.round(valueInMillion * 10) / 10;
         let formattedValue = roundedValue.toFixed(1);
@@ -29,7 +29,7 @@ const Ausgabe = () => {
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
-            <p className="ertragswert">{formatUmsatValue(unternehmensbewertung)}</p>
+            <p className="ertragswert">{formatValue(unternehmensbewertung)}</p>
             <Message warning className="warning innacurate-calculation">
                 <p className="my-0">
                     Das ist ein vorläufig berechneter Wert. Füllen Sie weitere Felder aus, um einen genaueren zu Wert zu erhalten.

@@ -132,9 +132,7 @@ const BasisInfo = (props) => {
         // Check validity
         console.log("Checking validity...");
         checkValidity();
-        console.log("Branche", basisInfoData.branche);
-        console.log("Lage", basisInfoData.lage);
-        console.log("Alter", basisInfoData.alter);
+        console.log("basisInfoData", basisInfoData);
         console.log("Valid", isValid);
     }, [basisInfoData]);
 

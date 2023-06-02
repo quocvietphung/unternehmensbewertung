@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-    setPrognose, // Đổi tên hàm này từ "setChecked" thành "setPrognose"
+    setPrognose,
     setUmsatz,
     setEbit,
     setGewinnTypisch,
@@ -12,7 +12,7 @@ import {
 
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
-    const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose); // Đổi tên thuộc tính này từ "checked" thành "prognose"
+    const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
 
     const prognose2023 = {
@@ -34,13 +34,13 @@ const Kennzahlen = (props) => {
     };
 
     useEffect(() => {
-        console.log("prognose:", prognose); // Đổi tên biến này từ "checked" thành "prognose"
+        console.log("prognose:", prognose);
         console.log("kennzahlenData:", kennzahlenData);
     }, [prognose, kennzahlenData]);
 
     const handleCheckboxChange = () => {
-        dispatch(setPrognose(!prognose)); // Đổi tên hàm này từ "setChecked" thành "setPrognose"
-        if (!prognose) { // Đổi tên biến này từ "checked" thành "prognose"
+        dispatch(setPrognose(!prognose));
+        if (!prognose) {
             const newUmsatz = [...kennzahlenData.umsatz, prognose2023.umsatz];
             const newEbit = [...kennzahlenData.ebit, prognose2023.ebit];
             const newGewinn = [...kennzahlenData.gewinnTypisch.gewinn, prognose2023.gewinn];
@@ -90,7 +90,7 @@ const Kennzahlen = (props) => {
 
     const calculateAverageUmsatz = (umsatz) => {
         if (umsatz.length > 0) {
-            const sum = umsatz.reduce((total, item) => total + item.value, 0);
+            const sum = umsatz.reduce((total, item) => total + parseFloat(item.value), 0);
             const average = sum / umsatz.length;
             return average;
         } else {
@@ -100,12 +100,24 @@ const Kennzahlen = (props) => {
 
     const calculateAverageEbit = (ebit) => {
         if (ebit.length > 0) {
-            const sum = ebit.reduce((total, item) => total + item.value, 0);
+            const sum = ebit.reduce((total, item) => total + parseFloat(item.value), 0);
             const average = sum / ebit.length;
             return average;
         } else {
             return 0;
         }
+    };
+
+    const formatValue = (value) => {
+        const valueInMillion = value / 1e6;
+        const roundedValue = Math.round(valueInMillion * 10) / 10;
+        let formattedValue = roundedValue.toFixed(1);
+
+        if (formattedValue.endsWith(".0")) {
+            formattedValue = parseInt(formattedValue).toString();
+        }
+
+        return formattedValue + " Mio EUR";
     };
 
     const handleWeiterClick = () => {
@@ -122,7 +134,7 @@ const Kennzahlen = (props) => {
                         <Checkbox
                             label="Möchten Sie eine Prognose für das aktuelle Kalenderjahr angeben?"
                             toggle
-                            checked={prognose} // Đổi tên biến này từ "checked" thành "prognose"
+                            checked={prognose}
                             onChange={handleCheckboxChange}
                         />
                     </Form.Field>
