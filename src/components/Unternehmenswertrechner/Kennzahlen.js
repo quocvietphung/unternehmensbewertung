@@ -48,6 +48,10 @@ const Kennzahlen = (props) => {
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
             dispatch(setGewinnTypisch({ ...kennzahlenData.gewinnTypisch, gewinn: newGewinn }));
+            const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
+            const averageEbit = calculateAverage(newEbit, 'ebit');
+            dispatch(setAverageUmsatz(averageUmsatz));
+            dispatch(setAverageEbit(averageEbit));
         } else {
             const newUmsatz = kennzahlenData.umsatz.filter((item) => item.year !== 2023);
             const newEbit = kennzahlenData.ebit.filter((item) => item.year !== 2023);
@@ -55,6 +59,10 @@ const Kennzahlen = (props) => {
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
             dispatch(setGewinnTypisch({ ...kennzahlenData.gewinnTypisch, gewinn: newGewinn }));
+            const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
+            const averageEbit = calculateAverage(newEbit, 'ebit');
+            dispatch(setAverageUmsatz(averageUmsatz));
+            dispatch(setAverageEbit(averageEbit));
         }
     };
 
