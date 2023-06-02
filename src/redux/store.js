@@ -1,9 +1,14 @@
-// store.js
-import { configureStore } from '@reduxjs/toolkit'
-import validationReducer from "./reducers";
+import { configureStore } from '@reduxjs/toolkit';
+import sectionsReducer from './sectionsSlice';
+import validationReducer from './reducers';
+import basisInfoReducer from './basisInfoSlice';
+import kennzahlenReducer from './kennzahlenSlice';
 
-export const store = configureStore({
+export default configureStore({
     reducer: {
-        validation: validationReducer
-    }
+        sections: sectionsReducer,
+        validation: validationReducer,
+        basisInfo: basisInfoReducer,
+        kennzahlen: kennzahlenReducer,
+    },
 });

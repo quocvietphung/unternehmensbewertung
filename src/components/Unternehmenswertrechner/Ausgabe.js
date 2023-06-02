@@ -1,14 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
+import { setUnternehmenwert } from '../../redux/sectionsSlice';
 
 const Ausgabe = () => {
+    const dispatch = useDispatch();
     const isValid = useSelector((state) => state.validation.isValid);
     const errors = useSelector((state) => state.validation.error);
+    const finishedSections = useSelector((state) => state.sections.sectionData.finishedSections);
+    const basisInfoData = useSelector((state) => state.basisInfo.basisInfoData);
+    const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
+    const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
+
+    useEffect(() => {
+        console.log("unternehmenwert:", unternehmenwert);
+        console.log("finishedSections:", finishedSections);
+        dispatch(setUnternehmenwert(unternehmenwert));
+    }, [unternehmenwert]);
+
+    useEffect(() => {
+        if (finishedSections.includes('basis')) {
+            const calculateUnternehmenwert = () => {
+                const unternehmenwert =
+                    (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue) +
+                    (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue);
+                return unternehmenwert;
+            };
+
+            const unternehmenwert = calculateUnternehmenwert();
+            console.log("unternehmenwert:", unternehmenwert);
+            dispatch(setUnternehmenwert(unternehmenwert));
+        }
+    }, [finishedSections, basisInfoData, kennzahlenData]);
+
+    const formatValue = (value) => {
+        const valueInMillion = value / 1e6;
+        const roundedValue = Math.round(valueInMillion * 10) / 10;
+        let formattedValue = roundedValue.toFixed(1);
+
+        if (formattedValue.endsWith(".0")) {
+            formattedValue = parseInt(formattedValue).toString();
+        }
+
+        return formattedValue + " Mio EUR";
+    };
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
-            <p className="ertragswert">0 Mio EUR</p>
+            <p className="ertragswert">{formatValue(unternehmenwert)}</p>
             <Message warning className="warning innacurate-calculation">
                 <p className="my-0">
                     Das ist ein vorläufig berechneter Wert. Füllen Sie weitere Felder aus, um einen genaueren zu Wert zu erhalten.
@@ -20,7 +59,7 @@ const Ausgabe = () => {
             <p>
                 <strong>Wert ungültig</strong>
             </p>
-            {errors && errors.map((error, index) => <p key={index}>{error || "Ertragswert kann nicht berechnet werden"}</p>)}
+            {errors && errors.map((error, index) => <p className="error-ertragswert" key={index}>{error || "Ertragswert kann nicht berechnet werden"}</p>)}
         </Grid.Column>
     );
 

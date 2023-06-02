@@ -1,5 +1,8 @@
 .Home {
   min-height: 88vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .home-header,
   .home-text {

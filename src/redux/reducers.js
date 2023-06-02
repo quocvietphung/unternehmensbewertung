@@ -1,5 +1,4 @@
-// reducers.js
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isValid: true,
@@ -15,10 +14,10 @@ const validationSlice = createSlice({
         },
         setError: (state, action) => {
             state.error = action.payload;
-        }
-    }
-})
+        },
+    },
+});
 
-export const { setValidity, setError } = validationSlice.actions
+export const { setValidity, setError } = validationSlice.actions;
 
-export default validationSlice.reducer
+export default validationSlice.reducer;

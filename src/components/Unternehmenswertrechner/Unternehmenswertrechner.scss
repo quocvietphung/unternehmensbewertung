@@ -77,6 +77,10 @@ $margin-large: 2em;
           word-wrap: break-word;
           color: #dc3545;
 
+          .error-ertragswert{
+            font-size: 1rem;
+          }
+
           &:last-child {
             margin-right: 0;
           }

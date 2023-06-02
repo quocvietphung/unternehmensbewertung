@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ProgressSection from './ProgressSection';
 import BasisInfo from './BasisInfo';
 import Kennzahlen from './Kennzahlen';
@@ -9,82 +10,41 @@ import Anlass from "./Anlass";
 import { Header } from 'semantic-ui-react';
 import './Unternehmenswertrechner.scss';
 
-const Eingabe = () => {
-    const [sections, setSections] = useState({
-        activeSection: 'basis',
-        finishedSections: [],
-        sectionOrder: ['basis', 'kennzahlen', 'bereinigung', 'equity', 'quality', 'anlass'],
-    });
+import { setActiveSection, finishSection } from '../../redux/sectionsSlice';
 
-    // Add a new state to hold BasisInfo
-    const [basisInfo, setBasisInfo] = useState({});
-    const [kennzahlenInfo, setKennzahlenInfo] = useState({});
+const Eingabe = () => {
+    const dispatch = useDispatch();
+    const sectionData = useSelector((state) => state.sections.sectionData);
 
     const updateActiveSection = (section) => {
-        const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
-        const targetIndex = sections.sectionOrder.findIndex((s) => s === section);
-
-        if (currentIndex >= 0 && targetIndex >= 0 && currentIndex < targetIndex) {
-            setSections({
-                ...sections,
-                activeSection: section
-            });
-        } else {
-            setSections({
-                ...sections,
-                activeSection: section
-            });
-        }
-
-        console.log('Active Section:', section);
-        console.log('Finished Sections:', sections.finishedSections);
+        dispatch(setActiveSection(section));
     };
 
     const handleZuruckClick = () => {
-        const currentIndex = sections.sectionOrder.findIndex((section) => section === sections.activeSection);
+        const currentIndex = sectionData.sectionOrder.findIndex((section) => section === sectionData.activeSection);
         const previousIndex = currentIndex - 1;
 
         if (previousIndex >= 0) {
-            const previousSection = sections.sectionOrder[previousIndex];
-            console.log('Previous Section:', previousSection);
-
-            setSections({
-                ...sections,
-                activeSection: previousSection,
-            });
+            const previousSection = sectionData.sectionOrder[previousIndex];
+            dispatch(setActiveSection(previousSection));
         }
-        console.log('Finished Sections:', sections.finishedSections);
     };
 
-    const handleWeiterClick = (info) => {
-        console.log('Received info:', info);
-        // Save basis info when Weiter is clicked
-        if (sections.activeSection === 'basis') {
-            setBasisInfo(info);
-            console.log('BasisInfo updated:', info);
-        } else if (sections.activeSection === 'kennzahlen') {
-            setKennzahlenInfo(info);
-            console.log('KennzahlenInfo updated:', info);
-        }
-
-        const currentIndex = sections.sectionOrder.findIndex((s) => s === sections.activeSection);
+    const handleWeiterClick = () => {
+        const currentIndex = sectionData.sectionOrder.findIndex((section) => section === sectionData.activeSection);
         const nextIndex = currentIndex + 1;
 
-        if (nextIndex < sections.sectionOrder.length) {
-            const nextSection = sections.sectionOrder[nextIndex];
-
-            setSections(activeSections => {
-                const finishedSections = activeSections.finishedSections.includes(activeSections.activeSection)
-                    ? activeSections.finishedSections
-                    : [...activeSections.finishedSections, activeSections.activeSection];
-                return {
-                    ...activeSections,
-                    finishedSections: finishedSections,
-                    activeSection: nextSection
-                }
-            });
+        if (nextIndex < sectionData.sectionOrder.length) {
+            const nextSection = sectionData.sectionOrder[nextIndex];
+            dispatch(finishSection(sectionData.activeSection));
+            dispatch(setActiveSection(nextSection));
         }
     };
+
+    useEffect(() => {
+        console.log('Active Section:', sectionData.activeSection);
+        console.log('Finished Sections:', sectionData.finishedSections);
+    }, [sectionData]);
 
     return (
         <div className="Eingabe">
@@ -99,45 +59,43 @@ const Eingabe = () => {
                 Willkommen beim Unternehmenswertrechner
             </Header>
 
-            <ProgressSection setActiveSection={updateActiveSection} activeSection={sections.activeSection} finishedSections={sections.finishedSections}/>
+            <ProgressSection setActiveSection={updateActiveSection} activeSection={sectionData.activeSection} finishedSections={sectionData.finishedSections}/>
             <div className="unternehmenswertrechner-container">
-                {sections.activeSection === 'basis' ? (
+                {sectionData.activeSection === 'basis' ? (
                     <BasisInfo
                         sectionName="basis"
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
-                        basisInfo={basisInfo}
                     />
-                ) : sections.activeSection === 'kennzahlen' ? (
+                ) : sectionData.activeSection === 'kennzahlen' ? (
                     <Kennzahlen
                         sectionName="kennzahlen"
                         onZuruckClick={handleZuruckClick}
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
-                        kennzahlenInfo={kennzahlenInfo}
                     />
-                ) : sections.activeSection === 'bereinigung' ? (
+                ) : sectionData.activeSection === 'bereinigung' ? (
                     <Bereinigung
                         sectionName="bereinigung"
                         onZuruckClick={handleZuruckClick}
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
                     />
-                ) : sections.activeSection === 'equity' ? (
+                ) : sectionData.activeSection === 'equity' ? (
                     <EquityBridge
                         sectionName="equity"
                         onZuruckClick={handleZuruckClick}
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
                     />
-                ) : sections.activeSection === 'quality' ? (
+                ) : sectionData.activeSection === 'quality' ? (
                     <Quality
                         sectionName="quality"
                         onZuruckClick={handleZuruckClick}
                         onWeiterClick={handleWeiterClick}
                         className="shared-section"
                     />
-                ) : sections.activeSection === 'anlass' ? (
+                ) : sectionData.activeSection === 'anlass' ? (
                     <Anlass
                         sectionName="anlass"
                         onZuruckClick={handleZuruckClick}
