@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    activeSection: 'basis',
-    finishedSections: [],
-    sectionOrder: ['basis', 'kennzahlen', 'bereinigung', 'equity', 'quality', 'anlass'],
+    sectionData: {
+        activeSection: 'basis',
+        finishedSections: [],
+        sectionOrder: ['basis', 'kennzahlen', 'bereinigung', 'equity', 'quality', 'anlass'],
+    },
 };
 
 const sectionsSlice = createSlice({
@@ -11,12 +13,12 @@ const sectionsSlice = createSlice({
     initialState,
     reducers: {
         setActiveSection: (state, action) => {
-            state.activeSection = action.payload;
+            state.sectionData.activeSection = action.payload;
         },
         finishSection: (state, action) => {
             const section = action.payload;
-            if (!state.finishedSections.includes(section)) {
-                state.finishedSections.push(section);
+            if (!state.sectionData.finishedSections.includes(section)) {
+                state.sectionData.finishedSections.push(section);
             }
         },
     },
