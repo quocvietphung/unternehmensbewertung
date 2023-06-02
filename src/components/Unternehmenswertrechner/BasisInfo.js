@@ -3,7 +3,6 @@ import { Header, Form, Grid, Select, Radio, Button, Divider } from "semantic-ui-
 import { useDispatch, useSelector } from "react-redux";
 import { setBranche, setLage, setAlter } from '../../redux/basisInfoSlice';
 import { setValidity, setError } from '../../redux/reducers';
-import { setUnternehmenwert } from '../../redux/sectionsSlice';
 
 const BasisInfo = (props) => {
     const basisInfoData = useSelector(state => state.basisInfo.basisInfoData);
