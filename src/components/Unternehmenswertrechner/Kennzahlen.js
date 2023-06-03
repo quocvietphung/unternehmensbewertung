@@ -66,10 +66,10 @@ const Kennzahlen = (props) => {
         }
     };
 
-    const handleChange = (index, category, option) => {
+    const handleChange = (index, category, value) => {
         if (category === 'umsatz') {
             const newUmsatz = kennzahlenData.umsatz.map((item, i) =>
-                i === index ? { ...item, value: option } : item
+                i === index ? { ...item, value: value } : item
             );
             console.log("newUmsatz:", newUmsatz);
             dispatch(setUmsatz(newUmsatz));
@@ -78,7 +78,7 @@ const Kennzahlen = (props) => {
             dispatch(setAverageUmsatz(averageUmsatz));
         } else if (category === 'ebit') {
             const newEbit = kennzahlenData.ebit.map((item, i) =>
-                i === index ? { ...item, value: option } : item
+                i === index ? { ...item, value: value } : item
             );
             console.log("newEbit:", newEbit);
             dispatch(setEbit(newEbit));
@@ -87,7 +87,7 @@ const Kennzahlen = (props) => {
             dispatch(setAverageEbit(averageEbit));
         } else if (category === 'gewinn') {
             const newGewinnData = kennzahlenData.gewinn.data.map((item, i) =>
-                i === index ? { ...item, type: option.type, value: option.value } : item
+                i === index ? { ...item, type: value.type, value: value.value } : item
             );
             console.log("newGewinnData:", newGewinnData);
             dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
