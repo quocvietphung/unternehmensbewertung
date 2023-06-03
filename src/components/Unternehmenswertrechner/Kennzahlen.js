@@ -155,8 +155,8 @@ const Kennzahlen = (props) => {
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={(kennzahlenData.umsatz && kennzahlenData.umsatz[index]?.value) || ""}
-                                            readOnly
+                                            value={kennzahlenData.umsatz && kennzahlenData.umsatz[index]?.value}
+                                            onChange={(e) => handleChange(index, 'umsatz', e.target.value)}
                                         />
                                     </Form.Field>
                                 </Form.Group>
@@ -189,8 +189,8 @@ const Kennzahlen = (props) => {
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={(kennzahlenData.ebit && kennzahlenData.ebit[index]?.value) || ""}
-                                            readOnly
+                                            value={kennzahlenData.ebit && kennzahlenData.ebit[index]?.value}
+                                            onChange={(e) => handleChange(index, 'ebit', e.target.value)}
                                         />
                                     </Form.Field>
                                 </Form.Group>
