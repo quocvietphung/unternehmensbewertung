@@ -24,9 +24,16 @@ const Ausgabe = () => {
     }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData]);
 
     const calculateUnternehmenwert = () => {
-        const unternehmenwert =
+        const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);
+        const gewinnSum = gewinnValues.reduce((total, value) => total + value, 0);
+        const gewinnAverage = gewinnSum / gewinnValues.length;
+
+        const sumUmsatzEbit =
             (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
             (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
+
+        const unternehmenwert = sumUmsatzEbit * gewinnAverage;
+
         return unternehmenwert;
     };
 
