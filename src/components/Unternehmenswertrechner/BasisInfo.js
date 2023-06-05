@@ -193,14 +193,6 @@ const BasisInfo = (props) => {
         dispatch(setValidity(valid));
     };
 
-    const handleMinusClick = () => {
-        if (basisInfoData.alter > 1) {
-            setAlter((prevAlter) => prevAlter - 1);
-        } else {
-            window.alert("Der Minimalwert für dieses Eingabefeld wurde erreicht."); // Show alert when trying to decrement from 1
-        }
-    };
-
     const handleWeiterClick = () => {
         console.log("isValid:", isValid); // Log the value of isValid
         if (!isValid) {
