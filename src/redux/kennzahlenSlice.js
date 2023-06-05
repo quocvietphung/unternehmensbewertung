@@ -82,8 +82,8 @@ const initialState = {
             ],
         },
         averageValues: {
-            averageUmsatz: 0,
-            averageEbit: 0,
+            averageUmsatz: 25000000,
+            averageEbit: 5000000,
         },
     },
 };
