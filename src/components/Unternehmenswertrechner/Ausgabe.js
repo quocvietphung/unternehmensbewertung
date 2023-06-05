@@ -25,8 +25,8 @@ const Ausgabe = () => {
 
     const calculateUnternehmenwert = () => {
         const unternehmenwert =
-            (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue) +
-            (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue);
+            (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
+            (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
         return unternehmenwert;
     };
 
