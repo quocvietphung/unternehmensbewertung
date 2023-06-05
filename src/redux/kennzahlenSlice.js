@@ -7,34 +7,34 @@ const initialState = {
             {
                 title: "Umsatz 2020",
                 year: 2020,
-                value: 25000000,
+                value: 25000000
             },
             {
                 title: "Umsatz 2021",
                 year: 2021,
-                value: 25000000,
+                value: 25000000
             },
             {
                 title: "Umsatz 2022",
                 year: 2022,
-                value: 25000000,
+                value: 25000000
             },
         ],
         ebit: [
             {
                 title: "Ebit 2020",
                 year: 2020,
-                value: 5000000,
+                value: 5000000
             },
             {
                 title: "Ebit 2021",
                 year: 2021,
-                value: 5000000,
+                value: 5000000
             },
             {
                 title: "Ebit 2022",
                 year: 2022,
-                value: 5000000,
+                value: 5000000
             },
         ],
         gewinn: {

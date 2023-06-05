@@ -21,17 +21,18 @@ const Kennzahlen = (props) => {
         umsatz: {
             title: "Prognose 2023",
             year: 2023,
-            value: 25000000,
+            value: 25000000
         },
         ebit: {
             title: "Prognose 2023",
             year: 2023,
-            value: 5000000,
+            value: 5000000
         },
         gewinn: {
-            title: "Gewinn 2023",
+            title: "Prognose 2023",
             year: 2023,
-            value: "",
+            type: "",
+            value: null
         },
     };
 
@@ -61,7 +62,8 @@ const Kennzahlen = (props) => {
         // Check Gewinn
         kennzahlenData.gewinn.data.forEach((item) => {
             if (item.type === "") {
-                errors.push(`Bitte geben Sie für den Gewinntyp für Gewinn ${item.year} an.`);
+                const title = item.year === 2023 && prognose ? 'Prognose' : 'Gewinn';
+                errors.push(`Bitte geben Sie für den Gewinntyp für ${title} ${item.year} an.`);
             }
         });
 
