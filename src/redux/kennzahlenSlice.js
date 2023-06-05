@@ -42,14 +42,20 @@ const initialState = {
                 {
                     title: "Gewinn 2020",
                     year: 2020,
+                    type: "",
+                    value: null
                 },
                 {
                     title: "Gewinn 2021",
                     year: 2021,
+                    type: "",
+                    value: null
                 },
                 {
                     title: "Gewinn 2022",
                     year: 2022,
+                    type: "",
+                    value: null
                 },
             ],
             options: [

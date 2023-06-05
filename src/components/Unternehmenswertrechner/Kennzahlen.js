@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setValidity, setError } from '../../redux/reducers';
 
 import {
     setPrognose,
@@ -37,7 +38,37 @@ const Kennzahlen = (props) => {
     useEffect(() => {
         console.log("prognose:", prognose);
         console.log("kennzahlenData:", kennzahlenData);
+        checkValidity();
     }, [prognose, kennzahlenData]);
+
+    const checkValidity = () => {
+        let errors = [];
+
+        // Check Umsatz
+        kennzahlenData.umsatz.forEach((item) => {
+            if (item.value < 100000) {
+                errors.push(`Der Umsatz für ${item.year} muss mindestens 100.000 EUR betragen.`);
+            }
+        });
+
+        // Check EBIT
+        kennzahlenData.ebit.forEach((item) => {
+            if (item.value < 50000) {
+                errors.push(`Das EBIT für ${item.year} muss mindestens 50.000 EUR betragen.`);
+            }
+        });
+
+        // Check Gewinn
+        kennzahlenData.gewinn.data.forEach((item) => {
+            if (item.type === "") {
+                errors.push(`Bitte geben Sie für den Gewinntyp für Gewinn ${item.year} an.`);
+            }
+        });
+
+        dispatch(setError(errors));
+        const valid = errors.length === 0;
+        dispatch(setValidity(valid));
+    };
 
     const handleCheckboxChange = () => {
         dispatch(setPrognose(!prognose));
