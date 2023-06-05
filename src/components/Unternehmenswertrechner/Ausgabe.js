@@ -17,18 +17,18 @@ const Ausgabe = () => {
         console.log("finishedSections:", finishedSections);
 
         if (finishedSections.includes('basis')) {
-            const calculateUnternehmenwert = () => {
-                const unternehmenwert =
-                    (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue) +
-                    (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue);
-                return unternehmenwert;
-            };
-
             const unternehmenwert = calculateUnternehmenwert();
             console.log("unternehmenwert:", unternehmenwert);
             dispatch(setUnternehmenwert(unternehmenwert));
         }
     }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData]);
+
+    const calculateUnternehmenwert = () => {
+        const unternehmenwert =
+            (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue) +
+            (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue);
+        return unternehmenwert;
+    };
 
     const formatValue = (value) => {
         const valueInMillion = value / 1e6;
