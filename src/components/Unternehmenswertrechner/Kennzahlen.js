@@ -134,7 +134,7 @@ const Kennzahlen = (props) => {
             if (type === 'umsatz') {
                 return setFormattedValue(average);
             } else if (type === 'ebit') {
-                return setFormattedValue(average,);
+                return setFormattedValue(average);
             }
         }
         return 0;
