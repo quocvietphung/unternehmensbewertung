@@ -218,9 +218,8 @@ const Kennzahlen = (props) => {
                                             <Radio
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
-                                                value={option.value}
-                                                checked={item.value === option.value}
-                                                onChange={() => handleChange(index, 'gewinn', option)} // changed 'g' to 'gewinn' for clarity
+                                                checked={item.type === option.type}
+                                                onChange={() => handleChange(index, 'gewinn', option)}
                                                 required
                                             />
                                         </Form.Field>
