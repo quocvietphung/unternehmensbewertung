@@ -177,8 +177,7 @@ const BasisInfo = (props) => {
             errors.push("Bitte wählen Sie eine Branche aus.");
         }
         if (
-            !basisInfoData.lage ||
-            (basisInfoData.lage.key !== "städtisch" &&
+            !basisInfoData.lage || (basisInfoData.lage.key !== "städtisch" &&
                 basisInfoData.lage.key !== "ländlich")
         ) {
             errors.push("Bitte wählen Sie eine Lage aus.");
