@@ -15,10 +15,7 @@ const Ausgabe = () => {
     useEffect(() => {
         console.log("unternehmenwert:", unternehmenwert);
         console.log("finishedSections:", finishedSections);
-        dispatch(setUnternehmenwert(unternehmenwert));
-    }, [unternehmenwert]);
 
-    useEffect(() => {
         if (finishedSections.includes('basis')) {
             const calculateUnternehmenwert = () => {
                 const unternehmenwert =
@@ -31,7 +28,7 @@ const Ausgabe = () => {
             console.log("unternehmenwert:", unternehmenwert);
             dispatch(setUnternehmenwert(unternehmenwert));
         }
-    }, [finishedSections, basisInfoData, kennzahlenData]);
+    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData]);
 
     const formatValue = (value) => {
         const valueInMillion = value / 1e6;

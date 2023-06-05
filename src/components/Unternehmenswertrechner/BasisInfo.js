@@ -193,7 +193,6 @@ const BasisInfo = (props) => {
     };
 
     const handleWeiterClick = () => {
-        console.log("isValid:", isValid); // Log the value of isValid
         if (!isValid) {
             return;
         }
