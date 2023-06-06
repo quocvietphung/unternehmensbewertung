@@ -20,7 +20,7 @@ const initialState = {
             },
             {
                 title: "Gehalt 2023 (Prognose)",
-                year: 2022,
+                year: 2023,
                 value: null
             },
         ],

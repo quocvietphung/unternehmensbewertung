@@ -30,12 +30,10 @@ const Bereinigung = (props) => {
         setPopoverData((prevState) => ({ ...prevState, [popover]: false }));
     };
 
-    const handleInputChange = (name, value) => {
+    const handleInputChange = (name, value, year) => {
         if (name.includes("gehalt")) {
-            const year = parseInt(name.match(/\d+/)[0], 10); // lấy năm từ tên trường
             dispatch(setGehaltValue({ year, value }));
         } else if (name.includes("anpassungEbit")) {
-            const year = parseInt(name.match(/\d+/)[0], 10);
             dispatch(setAnpassungEbitValue({ year, value }));
         } else if (name === "typischGehalt") {
             dispatch(setTypischGehalt(value));
@@ -71,7 +69,7 @@ const Bereinigung = (props) => {
                                     required
                                     pattern="\d*"
                                     data-gtm-form-interact-field-id={index + 12}
-                                    onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                                    onChange={(e) => handleInputChange(e.target.name, e.target.value, gehaltItem.year)}
                                 />
                                 <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
                                     Keine negativen Eingaben erlaubt.
@@ -98,7 +96,7 @@ const Bereinigung = (props) => {
                                 type="text"
                                 className="form-text input-number not-required negative ebit-clean-calc"
                                 name={`anpassungEbit[${index}]`}
-                                onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                                onChange={(e) => handleInputChange(e.target.name, e.target.value, anpassungItem.year)}
                             />
                         </Form.Field>
                         <Form.Field>
@@ -107,7 +105,7 @@ const Bereinigung = (props) => {
                                 type="text"
                                 className="form-text input-number not-required disabled-all"
                                 name={`bereinigungEbit[${index}]`}
-                                onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                                onChange={(e) => handleInputChange(e.target.name, e.target.value, anpassungItem.year)}
                             />
                             <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
                                 Keine negativen Eingaben erlaubt.
