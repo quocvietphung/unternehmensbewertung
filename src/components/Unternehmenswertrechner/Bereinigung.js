@@ -18,17 +18,38 @@ const Bereinigung = (props) => {
     const prognose2023 = {
         gehalt: {
             title: "Gehalt 2023 (Prognose)",
+            year: 2023,
             value: null
         },
         anpassungEbit: {
             title: "Anpassung 2023 (Prognose)",
+            year: 2023,
             value: null,
             bereinigungEbit: null
         },
     };
 
     useEffect(() => {
-        console.log("bereinigungData", bereinigungData);
+        console.log("prognose", prognose);
+
+        if (prognose) {
+            const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023), prognose2023.gehalt];
+            const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023), prognose2023.anpassungEbit];
+            console.log("newGehalt", newGehalt)
+            dispatch(setGehaltValue(newGehalt));
+            dispatch(setAnpassungEbitValue(newAnpassungEbit));
+        } else {
+            const initialGehalt = bereinigungData.gehalt.filter(item => item.year !== 2023);
+            const initialAnpassungEbit = bereinigungData.anpassungEbit.filter(item => item.year !== 2023);
+            dispatch(setGehaltValue(initialGehalt));
+            dispatch(setAnpassungEbitValue(initialAnpassungEbit));
+        }
+
+        console.log("bereinigungData before update", bereinigungData);
+    }, [prognose]);
+
+    useEffect(() => {
+        console.log("bereinigungData after update", bereinigungData);
     }, [bereinigungData]);
 
     const [popoverData, setPopoverData] = useState({
@@ -58,8 +79,8 @@ const Bereinigung = (props) => {
 
     const renderPopupTrigger = (popover) => (
         <span className="question-mark-icon" onClick={() => handlePopupOpen(popover)}>
-      <Icon name="question circle" />
-    </span>
+            <Icon name="question circle" />
+        </span>
     );
 
     const handleWeiterClick = () => {

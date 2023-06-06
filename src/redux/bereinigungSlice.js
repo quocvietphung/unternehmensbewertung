@@ -49,19 +49,10 @@ const bereinigungSlice = createSlice({
     initialState,
     reducers: {
         setGehaltValue: (state, action) => {
-            const { value } = action.payload;
-            const gehaltItem = state.bereinigungData.gehalt.find(item => item.year === 2023);
-            if (gehaltItem) {
-                gehaltItem.value = value;
-            }
+            state.bereinigungData.gehalt = action.payload;
         },
         setAnpassungEbitValue: (state, action) => {
-            const { value, bereinigungEbit } = action.payload;
-            const anpassungItem = state.bereinigungData.anpassungEbit.find(item => item.year === 2023);
-            if (anpassungItem) {
-                anpassungItem.value = value;
-                anpassungItem.bereinigungEbit = bereinigungEbit;
-            }
+            state.bereinigungData.anpassungEbit = action.payload;
         },
         setTypischGehalt: (state, action) => {
             state.bereinigungData.typischGehalt = action.payload;
