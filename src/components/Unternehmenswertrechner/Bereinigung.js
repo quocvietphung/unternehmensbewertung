@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Grid, Header, Form, Input, Popup, Divider, Icon, Segment, Label, Button} from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -12,6 +12,10 @@ import {
 const Bereinigung = (props) => {
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log("bereinigungData", bereinigungData);
+    }, [bereinigungData]);
 
     const [popoverData, setPopoverData] = useState({
         showPopover1: false,
