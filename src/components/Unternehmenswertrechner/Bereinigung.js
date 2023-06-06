@@ -119,7 +119,12 @@ const Bereinigung = (props) => {
                     <label className="form-label" htmlFor="erklaerungAnpassungEbit">
                         Fassen Sie die oben gemachten Anpassungen kurz in eigenen Worten zusammen. Dies erscheint als Notiz auf dem Firmenwert-Report.
                     </label>
-                    <Input className="form-text erklaerungAnpassungEbit" type="text" name="erklaerungAnpassungEbit" />
+                    <Input
+                        className="form-text erklaerungAnpassungEbit"
+                        type="text"
+                        name="erklaerungAnpassungEbit"
+                        onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                    />
                 </Form.Field>
             </Grid>
         );
