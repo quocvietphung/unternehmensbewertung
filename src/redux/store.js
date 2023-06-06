@@ -3,7 +3,7 @@ import sectionsReducer from './sectionsSlice';
 import validationReducer from './reducers';
 import basisInfoReducer from './basisInfoSlice';
 import kennzahlenReducer from './kennzahlenSlice';
-import bereinigungsReducer from './bereinigungsSlice';
+import bereinigungReducer from './bereinigungSlice';
 
 export default configureStore({
     reducer: {
@@ -11,6 +11,6 @@ export default configureStore({
         validation: validationReducer,
         basisInfo: basisInfoReducer,
         kennzahlen: kennzahlenReducer,
-        bereinigung: bereinigungsReducer,
+        bereinigung: bereinigungReducer,
     },
 });

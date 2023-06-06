@@ -49,7 +49,7 @@ const initialState = {
     }
 };
 
-const bereinigungsSlice = createSlice({
+const bereinigungSlice = createSlice({
     name: 'bereinigungen',
     initialState,
     reducers: {
@@ -82,6 +82,6 @@ export const {
     setAnpassungEbitValue,
     setTypischGehalt,
     setErklaerungAnpassungEbit,
-} = bereinigungsSlice.actions;
+} = bereinigungSlice.actions;
 
-export default bereinigungsSlice.reducer;
+export default bereinigungSlice.reducer;

@@ -34,15 +34,14 @@ const Bereinigung = (props) => {
     };
 
     const renderFormFields = () => {
-        const years = ['2020', '2021', '2022', '2023 (Prognose)'];
         return (
             <Grid>
-                {years.map((year, index) => (
+                {bereinigungData.gehalt.map((gehaltItem, index) => (
                     <Grid.Column key={index} width={4}>
                         <Form>
                             <Form.Field>
                                 <label htmlFor={`gehalt[${index}]`} className="form-label">
-                                    {year}
+                                    {gehaltItem.title}
                                 </label>
                                 <Input
                                     type="text"
@@ -66,14 +65,13 @@ const Bereinigung = (props) => {
     };
 
     const renderAdditionalAdjustments = () => {
-        const years = ['2020', '2021', '2022', '2023 (Prognose)'];
         return (
             <Grid>
-                {years.map((year, index) => (
+                {bereinigungData.anpassungEbit.map((anpassungItem, index) => (
                     <Grid.Column key={index} width={4}>
                         <Form.Field>
                             <label htmlFor={`anpassungEbit[${index}]`} className="form-label">
-                                Anpassung {year}
+                                {anpassungItem.title}
                             </label>
                             <Input
                                 type="text"
