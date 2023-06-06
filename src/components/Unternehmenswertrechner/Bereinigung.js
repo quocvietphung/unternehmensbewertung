@@ -31,11 +31,12 @@ const Bereinigung = (props) => {
 
     useEffect(() => {
         console.log("prognose", prognose);
+        console.log("bereinigungData", bereinigungData);
+        console.log("bereinigungData.gehalt", bereinigungData.gehalt);
 
         if (prognose) {
             const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023), prognose2023.gehalt];
             const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023), prognose2023.anpassungEbit];
-            console.log("newGehalt", newGehalt)
             dispatch(setGehaltValue(newGehalt));
             dispatch(setAnpassungEbitValue(newAnpassungEbit));
         } else {
@@ -65,11 +66,17 @@ const Bereinigung = (props) => {
         setPopoverData((prevState) => ({ ...prevState, [popover]: false }));
     };
 
-    const handleInputChange = (name, value) => {
+    const handleInputChange = (name, value, index) => {
         if (name.includes("gehalt")) {
-            dispatch(setGehaltValue({ value }));
+            const updatedGehalt = bereinigungData.gehalt.map((item, i) =>
+                i === index ? { ...item, value: value } : item
+            );
+            dispatch(setGehaltValue(updatedGehalt));
         } else if (name.includes("anpassungEbit")) {
-            dispatch(setAnpassungEbitValue({ value }));
+            const updatedAnpassungEbit = bereinigungData.anpassungEbit.map((item, i) =>
+                i === index ? { ...item, value: value } : item
+            );
+            dispatch(setAnpassungEbitValue(updatedAnpassungEbit));
         } else if (name === "typischGehalt") {
             dispatch(setTypischGehalt(value));
         } else if (name === "erklaerungAnpassungEbit") {
@@ -104,7 +111,7 @@ const Bereinigung = (props) => {
                                     required
                                     pattern="\d*"
                                     data-gtm-form-interact-field-id={index + 12}
-                                    onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                                    onChange={(e) => handleInputChange(e.target.name, e.target.value, index)}
                                 />
                                 <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
                                     Keine negativen Eingaben erlaubt.
@@ -131,7 +138,7 @@ const Bereinigung = (props) => {
                                 type="text"
                                 className="form-text input-number not-required negative ebit-clean-calc"
                                 name={`anpassungEbit[${index}]`}
-                                onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                                onChange={(e) => handleInputChange(e.target.name, e.target.value, index)}
                             />
                         </Form.Field>
                         <Form.Field>
