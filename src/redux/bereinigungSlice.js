@@ -1,0 +1,87 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+    bereinigungData: {
+        gehalt: [
+            {
+                title: "Gehalt 2020",
+                year: 2020,
+                value: null
+            },
+            {
+                title: "Gehalt 2021",
+                year: 2021,
+                value: null
+            },
+            {
+                title: "Gehalt 2022",
+                year: 2022,
+                value: null
+            },
+            {
+                title: "Gehalt 2023 (Prognose)",
+                year: 2022,
+                value: null
+            },
+        ],
+        anpassungEbit: [
+            {
+                title: "Anpassung 2020",
+                year: 2020,
+                value: null,
+                bereinigungEbit: null
+            },
+            {
+                title: "Anpassung 2021",
+                year: 2021,
+                value: null,
+                bereinigungEbit: null
+            },
+            {
+                title: "Anpassung 2022",
+                year: 2022,
+                value: null,
+                bereinigungEbit: null
+            },
+        ],
+        typischGehalt: '',
+        erklaerungAnpassungEbit: ''
+    }
+};
+
+const bereinigungsSlice = createSlice({
+    name: 'bereinigungen',
+    initialState,
+    reducers: {
+        setGehaltValue: (state, action) => {
+            const { year, value } = action.payload;
+            const gehaltItem = state.bereinigungData.gehalt.find(item => item.year === year);
+            if (gehaltItem) {
+                gehaltItem.value = value;
+            }
+        },
+        setAnpassungEbitValue: (state, action) => {
+            const { year, value, bereinigungEbit } = action.payload;
+            const anpassungItem = state.bereinigungData.anpassungEbit.find(item => item.year === year);
+            if (anpassungItem) {
+                anpassungItem.value = value;
+                anpassungItem.bereinigungEbit = bereinigungEbit;
+            }
+        },
+        setTypischGehalt: (state, action) => {
+            state.bereinigungData.typischGehalt = action.payload;
+        },
+        setErklaerungAnpassungEbit: (state, action) => {
+            state.bereinigungData.erklaerungAnpassungEbit = action.payload;
+        },
+    },
+});
+
+export const {
+    setGehaltValue,
+    setAnpassungEbitValue,
+    setTypischGehalt,
+    setErklaerungAnpassungEbit,
+} = bereinigungsSlice.actions;
+
+export default bereinigungsSlice.reducer;
