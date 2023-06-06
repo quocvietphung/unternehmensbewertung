@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import {Grid, Header, Form, Input, Popup, Divider, Icon, Segment, Label, Button} from 'semantic-ui-react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    setGehaltValue,
+    setAnpassungEbitValue,
+    setTypischGehalt,
+    setErklaerungAnpassungEbit,
+} from '../../redux/bereinigungSlice';
 
 
 const Bereinigung = (props) => {
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
+    const dispatch = useDispatch();
 
     const [popoverData, setPopoverData] = useState({
         showPopover1: false,
@@ -19,8 +26,18 @@ const Bereinigung = (props) => {
         setPopoverData((prevState) => ({ ...prevState, [popover]: false }));
     };
 
-    const handleInputChange = (e) => {
-        // Handle logic when the input changes here
+    const handleInputChange = (name, value) => {
+        if (name.includes("gehalt")) {
+            const year = parseInt(name.match(/\d+/)[0], 10); // lấy năm từ tên trường
+            dispatch(setGehaltValue({ year, value }));
+        } else if (name.includes("anpassungEbit")) {
+            const year = parseInt(name.match(/\d+/)[0], 10);
+            dispatch(setAnpassungEbitValue({ year, value }));
+        } else if (name === "typischGehalt") {
+            dispatch(setTypischGehalt(value));
+        } else if (name === "erklaerungAnpassungEbit") {
+            dispatch(setErklaerungAnpassungEbit(value));
+        }
     };
 
     const renderPopupTrigger = (popover) => (
