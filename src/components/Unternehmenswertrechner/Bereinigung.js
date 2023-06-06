@@ -67,7 +67,7 @@ const Bereinigung = (props) => {
                                     required
                                     pattern="\d*"
                                     data-gtm-form-interact-field-id={index + 12}
-                                    onChange={handleInputChange}
+                                    onChange={(e) => handleInputChange(e.target.name, e.target.value)}
                                 />
                                 <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
                                     Keine negativen Eingaben erlaubt.
@@ -94,7 +94,7 @@ const Bereinigung = (props) => {
                                 type="text"
                                 className="form-text input-number not-required negative ebit-clean-calc"
                                 name={`anpassungEbit[${index}]`}
-                                onChange={handleInputChange}
+                                onChange={(e) => handleInputChange(e.target.name, e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field>
@@ -103,7 +103,7 @@ const Bereinigung = (props) => {
                                 type="text"
                                 className="form-text input-number not-required disabled-all"
                                 name={`bereinigungEbit[${index}]`}
-                                onChange={handleInputChange}
+                                onChange={(e) => handleInputChange(e.target.name, e.target.value)}
                             />
                             <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
                                 Keine negativen Eingaben erlaubt.
@@ -169,7 +169,7 @@ const Bereinigung = (props) => {
                                     required
                                     pattern="\d*"
                                     data-gtm-form-interact-field-id={16}
-                                    onChange={handleInputChange}
+                                    onChange={(e) => handleInputChange(e.target.name, e.target.value)}
                                 />
                                 <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
                                     Keine negativen Eingaben erlaubt.
