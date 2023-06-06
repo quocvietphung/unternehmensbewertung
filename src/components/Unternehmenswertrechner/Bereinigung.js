@@ -27,6 +27,10 @@ const Bereinigung = (props) => {
         },
     };
 
+    useEffect(() => {
+        console.log("bereinigungData", bereinigungData);
+    }, [bereinigungData]);
+
     const [popoverData, setPopoverData] = useState({
         showPopover1: false,
         showPopover2: false,
