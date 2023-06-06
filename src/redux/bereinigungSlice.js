@@ -18,11 +18,6 @@ const initialState = {
                 year: 2022,
                 value: null
             },
-            {
-                title: "Gehalt 2023 (Prognose)",
-                year: 2023,
-                value: null
-            },
         ],
         anpassungEbit: [
             {
@@ -54,15 +49,15 @@ const bereinigungSlice = createSlice({
     initialState,
     reducers: {
         setGehaltValue: (state, action) => {
-            const { year, value } = action.payload;
-            const gehaltItem = state.bereinigungData.gehalt.find(item => item.year === year);
+            const { value } = action.payload;
+            const gehaltItem = state.bereinigungData.gehalt.find(item => item.year === 2023);
             if (gehaltItem) {
                 gehaltItem.value = value;
             }
         },
         setAnpassungEbitValue: (state, action) => {
-            const { year, value, bereinigungEbit } = action.payload;
-            const anpassungItem = state.bereinigungData.anpassungEbit.find(item => item.year === year);
+            const { value, bereinigungEbit } = action.payload;
+            const anpassungItem = state.bereinigungData.anpassungEbit.find(item => item.year === 2023);
             if (anpassungItem) {
                 anpassungItem.value = value;
                 anpassungItem.bereinigungEbit = bereinigungEbit;
