@@ -15,24 +15,23 @@ const Ausgabe = () => {
     useEffect(() => {
         console.log("unternehmenwert:", unternehmenwert);
         console.log("finishedSections:", finishedSections);
-
-        if (finishedSections.includes('basis')) {
-            const unternehmenwert = calculateUnternehmenwert();
-            console.log("unternehmenwert:", unternehmenwert);
-            dispatch(setUnternehmenwert(unternehmenwert));
-        }
+        const calculatedUnternehmenwert = calculateUnternehmenwert();
+        console.log("unternehmenwert:", calculatedUnternehmenwert);
+        dispatch(setUnternehmenwert(calculatedUnternehmenwert));
     }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData]);
 
     const calculateUnternehmenwert = () => {
+        const sumEbitUmsatz = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
+            (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
         const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);
         const gewinnSum = gewinnValues.reduce((total, value) => total + value, 0);
         const gewinnAverage = gewinnSum / gewinnValues.length;
 
-        const sumUmsatzEbit =
-            (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
-            (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
+        let unternehmenwert = 0;
 
-        const unternehmenwert = sumUmsatzEbit * gewinnAverage;
+        if (finishedSections.includes('basis')) {
+            unternehmenwert = sumEbitUmsatz*gewinnAverage;
+        }
 
         return unternehmenwert;
     };
