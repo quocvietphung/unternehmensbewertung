@@ -13,8 +13,6 @@ const Ausgabe = () => {
     const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
-        console.log("unternehmenwert:", unternehmenwert);
-        console.log("finishedSections:", finishedSections);
         const calculatedUnternehmenwert = calculateUnternehmenwert();
         console.log("unternehmenwert:", calculatedUnternehmenwert);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
@@ -28,6 +26,8 @@ const Ausgabe = () => {
         const gewinnAverage = gewinnSum / gewinnValues.length;
 
         let unternehmenwert = 0;
+
+        console.log("finishedSections:", finishedSections);
 
         if (finishedSections.includes('basis')) {
             unternehmenwert = sumEbitUmsatz*gewinnAverage;
