@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import {Grid, Header, Form, Input, Popup, Divider, Icon, Segment, Label, Button} from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
+
 
 const Bereinigung = (props) => {
+    const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
+
     const [popoverData, setPopoverData] = useState({
         showPopover1: false,
         showPopover2: false,
