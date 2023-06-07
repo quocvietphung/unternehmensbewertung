@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
     setGehaltValue,
     setAnpassungEbitValue,
+    setBereinigungEbitValue,
     setTypischGehalt,
     setErklaerungAnpassungEbit,
 } from '../../redux/bereinigungSlice';
@@ -69,17 +70,9 @@ const Bereinigung = (props) => {
             );
             dispatch(setGehaltValue(updatedGehalt));
         } else if (name.includes("anpassungEbit")) {
-            const updatedAnpassungEbit = bereinigungData.anpassungEbit.map((item, i) => {
-                if (i === index) {
-                    const ebitValue = kennzahlenDataEbits.find(ebitItem => ebitItem.year === item.year)?.value || 0;
-                    const gehaltValue = bereinigungData.gehalt[index]?.value || 0;
-                    const anpassungEbitValue = value || 0;
-                    const typischGehalt = bereinigungData.typischGehalt || 0;
-                    const bereinigungEbit = parseFloat(ebitValue) + parseFloat(gehaltValue) + parseFloat(anpassungEbitValue) - parseFloat(typischGehalt);
-                    return { ...item, value: value, bereinigungEbit: bereinigungEbit };
-                }
-                return item;
-            });
+            const updatedAnpassungEbit = bereinigungData.anpassungEbit.map((item, i) =>
+                i === index ? { ...item, value: value } : item
+            );
             dispatch(setAnpassungEbitValue(updatedAnpassungEbit));
         } else if (name === "typischGehalt") {
             dispatch(setTypischGehalt(value));

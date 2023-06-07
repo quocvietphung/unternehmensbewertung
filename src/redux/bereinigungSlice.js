@@ -24,19 +24,33 @@ const initialState = {
                 title: "Anpassung 2020",
                 year: 2020,
                 value: null,
-                bereinigungEbit: null
             },
             {
                 title: "Anpassung 2021",
                 year: 2021,
                 value: null,
-                bereinigungEbit: null
             },
             {
                 title: "Anpassung 2022",
                 year: 2022,
                 value: null,
-                bereinigungEbit: null
+            },
+        ],
+        bereinigungEbit: [
+            {
+                title: "Bereinigtes EBIT 2020",
+                year: 2020,
+                value: null,
+            },
+            {
+                title: "Bereinigtes EBIT 2021",
+                year: 2021,
+                value: null,
+            },
+            {
+                title: "Bereinigtes EBIT 2022",
+                year: 2022,
+                value: null,
             },
         ],
         typischGehalt: '',
@@ -54,6 +68,9 @@ const bereinigungSlice = createSlice({
         setAnpassungEbitValue: (state, action) => {
             state.bereinigungData.anpassungEbit = action.payload;
         },
+        setBereinigungEbitValue: (state, action) => {
+            state.bereinigungData.bereinigungEbit = action.payload;
+        },
         setTypischGehalt: (state, action) => {
             state.bereinigungData.typischGehalt = action.payload;
         },
@@ -66,6 +83,7 @@ const bereinigungSlice = createSlice({
 export const {
     setGehaltValue,
     setAnpassungEbitValue,
+    setBereinigungEbitValue,
     setTypischGehalt,
     setErklaerungAnpassungEbit,
 } = bereinigungSlice.actions;
