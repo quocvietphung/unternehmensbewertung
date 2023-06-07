@@ -57,7 +57,7 @@ const Bereinigung = (props) => {
     useEffect(() => {
         calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
-    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit,]);
+    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit]);
 
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
