@@ -69,14 +69,13 @@ const Bereinigung = (props) => {
             );
             dispatch(setGehaltValue(updatedGehalt));
         } else if (name.includes("anpassungEbit")) {
-            console.log("kennzahlenDataEbits", kennzahlenDataEbits);
             const updatedAnpassungEbit = bereinigungData.anpassungEbit.map((item, i) => {
                 if (i === index) {
                     const ebitValue = kennzahlenDataEbits.find(ebitItem => ebitItem.year === item.year)?.value || 0;
                     const gehaltValue = bereinigungData.gehalt[index]?.value || 0;
                     const anpassungEbitValue = value || 0;
                     const typischGehalt = bereinigungData.typischGehalt || 0;
-                    const bereinigungEbit = ebitValue + gehaltValue + anpassungEbitValue - parseFloat(typischGehalt);
+                    const bereinigungEbit = parseFloat(ebitValue) + parseFloat(gehaltValue) + parseFloat(anpassungEbitValue) - parseFloat(typischGehalt);
                     return { ...item, value: value, bereinigungEbit: bereinigungEbit };
                 }
                 return item;
@@ -151,6 +150,8 @@ const Bereinigung = (props) => {
                             <Input
                                 type="text"
                                 className="form-text input-number not-required disabled-all"
+                                value={anpassungItem.bereinigungEbit}
+                                readOnly
                             />
                             <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
                                 Keine negativen Eingaben erlaubt.
