@@ -30,7 +30,6 @@ const Bereinigung = (props) => {
 
     useEffect(() => {
         console.log("prognose", prognose);
-        console.log("bereinigungData", bereinigungData);
         console.log("bereinigungData.gehalt", bereinigungData.gehalt);
 
         if (prognose) {
@@ -44,12 +43,10 @@ const Bereinigung = (props) => {
             dispatch(setGehaltValue(initialGehalt));
             dispatch(setAnpassungEbitValue(initialAnpassungEbit));
         }
-
-        console.log("bereinigungData before update", bereinigungData);
     }, [prognose]);
 
     useEffect(() => {
-        console.log("bereinigungData after update", bereinigungData);
+        console.log("bereinigungData", bereinigungData);
     }, [bereinigungData]);
 
     const [popoverData, setPopoverData] = useState({
