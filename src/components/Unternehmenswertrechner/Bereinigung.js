@@ -58,6 +58,22 @@ const Bereinigung = (props) => {
         console.log("bereinigungData", bereinigungData);
     }, [bereinigungData]);
 
+    const calculateBereinigungEbit = () => {
+        const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
+
+        return bereinigungData.bereinigungEbit.map((item, index) => {
+            const gehaltValue = gehalt[index].value || 0;
+            const anpassungEbitValue = anpassungEbit[index].value || 0;
+            const typischGehaltValue = typischGehalt || 0;
+            const bereinigtesEbitValue = (gehaltValue + anpassungEbitValue) - typischGehaltValue;
+
+            return {
+                ...item,
+                value: bereinigtesEbitValue,
+            };
+        });
+    };
+
     const [popoverData, setPopoverData] = useState({
         showPopover1: false,
         showPopover2: false,
