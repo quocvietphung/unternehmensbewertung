@@ -115,6 +115,7 @@ const Bereinigung = (props) => {
                                     required
                                     pattern="\d*"
                                     data-gtm-form-interact-field-id={index + 12}
+                                    value={gehaltItem.value}
                                     onChange={(e) => handleInputChange(e.target.name, e.target.value, index)}
                                 />
                                 <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
@@ -142,6 +143,7 @@ const Bereinigung = (props) => {
                                 type="text"
                                 className="form-text input-number not-required negative ebit-clean-calc"
                                 name={`anpassungEbit[${index}]`}
+                                value={anpassungItem.value}
                                 onChange={(e) => handleInputChange(e.target.name, e.target.value, index)}
                             />
                         </Form.Field>
@@ -167,6 +169,7 @@ const Bereinigung = (props) => {
                         className="form-text erklaerungAnpassungEbit"
                         type="text"
                         name="erklaerungAnpassungEbit"
+                        value={bereinigungData.erklaerungAnpassungEbit}
                         onChange={(e) => handleInputChange(e.target.name, e.target.value)}
                     />
                 </Form.Field>
@@ -222,6 +225,7 @@ const Bereinigung = (props) => {
                                 required
                                 pattern="\d*"
                                 data-gtm-form-interact-field-id={16}
+                                value={bereinigungData.typischGehalt}
                                 onChange={(e) => handleInputChange(e.target.name, e.target.value)}
                             />
                             <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
