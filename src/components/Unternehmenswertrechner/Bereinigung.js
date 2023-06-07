@@ -55,8 +55,9 @@ const Bereinigung = (props) => {
     }, [prognose]);
 
     useEffect(() => {
+        calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
-    }, [bereinigungData]);
+    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit,]);
 
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
@@ -110,7 +111,6 @@ const Bereinigung = (props) => {
         } else if (name === "erklaerungAnpassungEbit") {
             dispatch(setErklaerungAnpassungEbit(value));
         }
-        calculateBereinigungEbit();
     };
 
     const renderPopupTrigger = (popover) => (
