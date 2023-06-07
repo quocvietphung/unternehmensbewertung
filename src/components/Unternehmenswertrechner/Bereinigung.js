@@ -27,22 +27,30 @@ const Bereinigung = (props) => {
             value: null,
             bereinigungEbit: null
         },
+        bereinigungEbit: {
+            title: "Bereinigtes EBIT 2023 (Prognose)",
+            year: 2023,
+            value: null,
+        },
     };
 
     useEffect(() => {
         console.log("prognose", prognose);
-        console.log("bereinigungData.gehalt", bereinigungData.gehalt);
 
         if (prognose) {
             const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023), prognose2023.gehalt];
             const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023), prognose2023.anpassungEbit];
+            const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
             dispatch(setGehaltValue(newGehalt));
             dispatch(setAnpassungEbitValue(newAnpassungEbit));
+            dispatch(setBereinigungEbitValue(newBereinigungEbit));
         } else {
             const initialGehalt = bereinigungData.gehalt.filter(item => item.year !== 2023);
             const initialAnpassungEbit = bereinigungData.anpassungEbit.filter(item => item.year !== 2023);
+            const initialBereinigungEbit = bereinigungData.bereinigungEbit.filter(item => item.year !== 2023);
             dispatch(setGehaltValue(initialGehalt));
             dispatch(setAnpassungEbitValue(initialAnpassungEbit));
+            dispatch(setBereinigungEbitValue(initialBereinigungEbit));
         }
     }, [prognose]);
 
@@ -123,7 +131,7 @@ const Bereinigung = (props) => {
         );
     };
 
-    const renderAdditionalAdjustments = () => {
+    const renderAnpassungEbit = () => {
         return (
             <Grid>
                 {bereinigungData.anpassungEbit.map((anpassungItem, index) => (
@@ -140,12 +148,23 @@ const Bereinigung = (props) => {
                                 onChange={(e) => handleInputChange(e.target.name, e.target.value, index)}
                             />
                         </Form.Field>
+                    </Grid.Column>
+                ))}
+            </Grid>
+        );
+    };
+
+    const renderBereinigungEbit = () => {
+        return (
+            <Grid>
+                {bereinigungData.bereinigungEbit.map((bereinigungItem, index) => (
+                    <Grid.Column key={index} width={4}>
                         <Form.Field>
-                            <label className="form-label">Bereinigtes EBIT</label>
+                            <label className="form-label">{bereinigungItem.title}</label>
                             <Input
                                 type="text"
                                 className="form-text input-number not-required disabled-all"
-                                value={anpassungItem.bereinigungEbit}
+                                value={bereinigungItem.value}
                                 readOnly
                             />
                             <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
@@ -154,18 +173,15 @@ const Bereinigung = (props) => {
                         </Form.Field>
                     </Grid.Column>
                 ))}
-                <Form.Field>
-                    <label className="form-label" htmlFor="erklaerungAnpassungEbit">
-                        Fassen Sie die oben gemachten Anpassungen kurz in eigenen Worten zusammen. Dies erscheint als Notiz auf dem Firmenwert-Report.
-                    </label>
-                    <Input
-                        className="form-text erklaerungAnpassungEbit"
-                        type="text"
-                        name="erklaerungAnpassungEbit"
-                        value={bereinigungData.erklaerungAnpassungEbit}
-                        onChange={(e) => handleInputChange(e.target.name, e.target.value)}
-                    />
-                </Form.Field>
+            </Grid>
+        );
+    };
+
+    const renderAdditionalAdjustments = () => {
+        return (
+            <Grid>
+                {renderAnpassungEbit()}
+                {renderBereinigungEbit()}
             </Grid>
         );
     };
@@ -268,6 +284,18 @@ const Bereinigung = (props) => {
                             <p> Bitte geben Sie hier sonstige außerplanmäßige Einnahmen oder Ausgaben ("-") in EUR an, um den EBIT zu bereinigen.</p>
 
                             {renderAdditionalAdjustments()}
+                        </Form.Field>
+                        <Form.Field>
+                            <label className="form-label" htmlFor="erklaerungAnpassungEbit">
+                                Fassen Sie die oben gemachten Anpassungen kurz in eigenen Worten zusammen. Dies erscheint als Notiz auf dem Firmenwert-Report.
+                            </label>
+                            <Input
+                                className="form-text erklaerungAnpassungEbit"
+                                type="text"
+                                name="erklaerungAnpassungEbit"
+                                value={bereinigungData.erklaerungAnpassungEbit}
+                                onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                            />
                         </Form.Field>
                     </Segment>
 
