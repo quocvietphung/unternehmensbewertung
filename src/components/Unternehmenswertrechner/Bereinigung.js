@@ -7,7 +7,6 @@ import {
     setTypischGehalt,
     setErklaerungAnpassungEbit,
 } from '../../redux/bereinigungSlice';
-import { setAverageEbit, setAverageUmsatz, setEbit, setGewinn, setUmsatz } from "../../redux/kennzahlenSlice";
 
 const Bereinigung = (props) => {
     const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
