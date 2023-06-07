@@ -67,6 +67,8 @@ const Bereinigung = (props) => {
             const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
             const typischGehaltValue = parseFloat(typischGehalt) || 0;
             const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
+            console.log("anpassungEbitValue", anpassungEbitValue);
+            console.log("bereinigtesEbitValue", bereinigtesEbitValue);
 
             return {
                 ...item,
