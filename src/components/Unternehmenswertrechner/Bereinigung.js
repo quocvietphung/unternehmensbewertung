@@ -62,10 +62,11 @@ const Bereinigung = (props) => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
 
         const updatedBereinigungEbit = bereinigungData.bereinigungEbit.map((item, index) => {
-            const gehaltValue = gehalt[index].value || 0;
-            const anpassungEbitValue = anpassungEbit[index].value || 0;
-            const typischGehaltValue = typischGehalt || 0;
-            const bereinigtesEbitValue = (gehaltValue + anpassungEbitValue) - typischGehaltValue;
+            const kennzahlenDataEbit = parseFloat(kennzahlenDataEbits[index].value) || 0;
+            const gehaltValue = parseFloat(gehalt[index].value) || 0;
+            const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
+            const typischGehaltValue = parseFloat(typischGehalt) || 0;
+            const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
 
             return {
                 ...item,
