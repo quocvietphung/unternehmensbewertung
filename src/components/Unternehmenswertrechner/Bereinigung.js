@@ -61,7 +61,7 @@ const Bereinigung = (props) => {
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
 
-        return bereinigungData.bereinigungEbit.map((item, index) => {
+        const updatedBereinigungEbit = bereinigungData.bereinigungEbit.map((item, index) => {
             const gehaltValue = gehalt[index].value || 0;
             const anpassungEbitValue = anpassungEbit[index].value || 0;
             const typischGehaltValue = typischGehalt || 0;
@@ -72,6 +72,10 @@ const Bereinigung = (props) => {
                 value: bereinigtesEbitValue,
             };
         });
+
+        dispatch(setBereinigungEbitValue(updatedBereinigungEbit));
+
+        return updatedBereinigungEbit;
     };
 
     const [popoverData, setPopoverData] = useState({
@@ -93,13 +97,16 @@ const Bereinigung = (props) => {
                 i === index ? { ...item, value: value } : item
             );
             dispatch(setGehaltValue(updatedGehalt));
+            calculateBereinigungEbit();
         } else if (name.includes("anpassungEbit")) {
             const updatedAnpassungEbit = bereinigungData.anpassungEbit.map((item, i) =>
                 i === index ? { ...item, value: value } : item
             );
             dispatch(setAnpassungEbitValue(updatedAnpassungEbit));
+            calculateBereinigungEbit();
         } else if (name === "typischGehalt") {
             dispatch(setTypischGehalt(value));
+            calculateBereinigungEbit();
         } else if (name === "erklaerungAnpassungEbit") {
             dispatch(setErklaerungAnpassungEbit(value));
         }
