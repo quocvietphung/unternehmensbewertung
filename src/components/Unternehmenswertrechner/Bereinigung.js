@@ -14,6 +14,7 @@ const Bereinigung = (props) => {
     const kennzahlenDataEbits = useSelector((state) => state.kennzahlen.kennzahlenData.ebit);
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const dispatch = useDispatch();
+    const [prognoseChanged, setPrognoseChanged] = useState(false);
 
     const prognose2023 = {
         gehalt: {
@@ -44,6 +45,7 @@ const Bereinigung = (props) => {
             dispatch(setGehaltValue(newGehalt));
             dispatch(setAnpassungEbitValue(newAnpassungEbit));
             dispatch(setBereinigungEbitValue(newBereinigungEbit));
+            setPrognoseChanged(true);
         } else {
             const initialGehalt = bereinigungData.gehalt.filter(item => item.year !== 2023);
             const initialAnpassungEbit = bereinigungData.anpassungEbit.filter(item => item.year !== 2023);
@@ -51,13 +53,16 @@ const Bereinigung = (props) => {
             dispatch(setGehaltValue(initialGehalt));
             dispatch(setAnpassungEbitValue(initialAnpassungEbit));
             dispatch(setBereinigungEbitValue(initialBereinigungEbit));
+            setPrognoseChanged(false);
         }
     }, [prognose]);
 
     useEffect(() => {
-        calculateBereinigungEbit();
-        console.log("bereinigungData", bereinigungData);
-    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit]);
+        if (prognoseChanged) {
+            calculateBereinigungEbit();
+            console.log("bereinigungData", bereinigungData);
+        }
+    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit, prognoseChanged]);
 
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
@@ -68,7 +73,11 @@ const Bereinigung = (props) => {
             const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
             const typischGehaltValue = parseFloat(typischGehalt) || 0;
             const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
+
+            console.log("kennzahlenDataEbit", kennzahlenDataEbit);
+            console.log("gehaltValue", gehaltValue);
             console.log("anpassungEbitValue", anpassungEbitValue);
+            console.log("typischGehaltValue", typischGehaltValue);
             console.log("bereinigtesEbitValue", bereinigtesEbitValue);
 
             return {
