@@ -11,6 +11,7 @@ const Ausgabe = () => {
     const basisInfoData = useSelector((state) => state.basisInfo.basisInfoData);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
+    const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
     const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
@@ -42,6 +43,13 @@ const Ausgabe = () => {
             console.log("sumEbitUmsatzKennzahlen:", sumEbitUmsatzKennzahlen);
 
             unternehmenwert = sumEbitUmsatzKennzahlen * gewinnAverage;
+            console.log("unternehmenwert (kennzahlen):", unternehmenwert);
+        }
+
+        if (finishedSections.includes('bereinigung')) {
+            const bargeldBestand = parseFloat(equityBridgeData.bargeldBestand) || 0;
+            const finanzSchulden = parseFloat(equityBridgeData.finanzSchulden) || 0;
+            unternehmenwert = (unternehmenwert+bargeldBestand) - finanzSchulden;
             console.log("unternehmenwert (kennzahlen):", unternehmenwert);
         }
 
