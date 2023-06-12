@@ -131,7 +131,7 @@ const BasisInfo = (props) => {
     useEffect(() => {
         // Check validity
         console.log("Checking validity...");
-        checkValidity();
+        // checkValidity();
         console.log("basisInfoData", basisInfoData);
         console.log("Valid", isValid);
     }, [basisInfoData]);
