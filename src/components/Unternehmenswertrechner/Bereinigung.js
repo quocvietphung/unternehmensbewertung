@@ -43,14 +43,11 @@ const Bereinigung = (props) => {
             const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
             dispatch(setGehaltValue(newGehalt));
             dispatch(setAnpassungEbitValue(newAnpassungEbit));
-            dispatch(setBereinigungEbitValue(newBereinigungEbit));
         } else {
             const initialGehalt = bereinigungData.gehalt.filter(item => item.year !== 2023);
             const initialAnpassungEbit = bereinigungData.anpassungEbit.filter(item => item.year !== 2023);
-            const initialBereinigungEbit = bereinigungData.bereinigungEbit.filter(item => item.year !== 2023);
             dispatch(setGehaltValue(initialGehalt));
             dispatch(setAnpassungEbitValue(initialAnpassungEbit));
-            dispatch(setBereinigungEbitValue(initialBereinigungEbit));
         }
     }, [prognose]);
 
@@ -79,15 +76,9 @@ const Bereinigung = (props) => {
             });
         };
 
-        if (prognose) {
-            const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
-            const updatedBereinigungEbit = updateBereinigungEbit(newBereinigungEbit);
-            dispatch(setBereinigungEbitValue(updatedBereinigungEbit));
-        } else {
-            const initialBereinigungEbit = bereinigungData.bereinigungEbit.filter(item => item.year !== 2023);
-            const updatedBereinigungEbit = updateBereinigungEbit(initialBereinigungEbit);
-            dispatch(setBereinigungEbitValue(updatedBereinigungEbit));
-        }
+        dispatch(setBereinigungEbitValue(updatedBereinigungEbit));
+
+        return updatedBereinigungEbit;
     };
 
     const [popoverData, setPopoverData] = useState({
