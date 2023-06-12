@@ -27,6 +27,11 @@ const Bereinigung = (props) => {
             value: null,
             bereinigungEbit: null
         },
+        bereinigungEbit: {
+            title: "Bereinigtes EBIT 2023 (Prognose)",
+            year: 2023,
+            value: null,
+        },
     };
 
     useEffect(() => {
@@ -35,13 +40,17 @@ const Bereinigung = (props) => {
         if (prognose) {
             const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023), prognose2023.gehalt];
             const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023), prognose2023.anpassungEbit];
+            const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
             dispatch(setGehaltValue(newGehalt));
             dispatch(setAnpassungEbitValue(newAnpassungEbit));
+            dispatch(setBereinigungEbitValue(newBereinigungEbit));
         } else {
             const initialGehalt = bereinigungData.gehalt.filter(item => item.year !== 2023);
             const initialAnpassungEbit = bereinigungData.anpassungEbit.filter(item => item.year !== 2023);
+            const initialBereinigungEbit = bereinigungData.bereinigungEbit.filter(item => item.year !== 2023);
             dispatch(setGehaltValue(initialGehalt));
             dispatch(setAnpassungEbitValue(initialAnpassungEbit));
+            dispatch(setBereinigungEbitValue(initialBereinigungEbit));
         }
     }, [prognose]);
 
@@ -59,11 +68,7 @@ const Bereinigung = (props) => {
             const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
             const typischGehaltValue = parseFloat(typischGehalt) || 0;
             const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
-
-            console.log("kennzahlenDataEbit", kennzahlenDataEbit);
-            console.log("gehaltValue", gehaltValue);
             console.log("anpassungEbitValue", anpassungEbitValue);
-            console.log("typischGehaltValue", typischGehaltValue);
             console.log("bereinigtesEbitValue", bereinigtesEbitValue);
 
             return {
@@ -120,9 +125,9 @@ const Bereinigung = (props) => {
 
     const renderFormFields = () => {
         return (
-            <div style={{ display: 'flex' }}>
+            <Grid>
                 {bereinigungData.gehalt.map((gehaltItem, index) => (
-                    <div key={index} style={{ marginRight: '30px', marginTop: '10px', marginBottom: '10px', width: '180px' }}>
+                    <Grid.Column key={index} width={4}>
                         <Form>
                             <Form.Field>
                                 <label htmlFor={`gehalt[${index}]`} className="form-label">
@@ -144,17 +149,17 @@ const Bereinigung = (props) => {
                                 <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
                             </Form.Field>
                         </Form>
-                    </div>
+                    </Grid.Column>
                 ))}
-            </div>
+            </Grid>
         );
     };
 
     const renderAnpassungEbit = () => {
         return (
-            <div style={{ display: 'flex' }}>
+            <Grid>
                 {bereinigungData.anpassungEbit.map((anpassungItem, index) => (
-                    <div key={index} style={{ marginRight: '30px', marginTop: '10px', marginBottom: '10px', width: '180px' }}>
+                    <Grid.Column key={index} width={4}>
                         <Form.Field>
                             <label htmlFor={`anpassungEbit[${index}]`} className="form-label">
                                 {anpassungItem.title}
@@ -167,35 +172,31 @@ const Bereinigung = (props) => {
                                 onChange={(e) => handleInputChange(e.target.name, e.target.value, index)}
                             />
                         </Form.Field>
-                    </div>
+                    </Grid.Column>
                 ))}
-            </div>
+            </Grid>
         );
     };
 
     const renderBereinigungEbit = () => {
         return (
             <Grid>
-                <Grid.Column width={4}>
-                    <Form.Field>
-                        <label className="form-label">Bereinigtes EBIT</label>
-                        <div style={{ display: 'flex' }}>
-                            {bereinigungData.bereinigungEbit.map((bereinigungItem, index) => (
-                                <div key={index} style={{ marginRight: '30px', marginTop: '10px', marginBottom: '10px', width: '180px' }}>
-                                    <Input
-                                        type="text"
-                                        className="form-text input-number not-required disabled-all"
-                                        value={bereinigungItem.value}
-                                        readOnly
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                        <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                            Keine negativen Eingaben erlaubt.
-                        </div>
-                    </Form.Field>
-                </Grid.Column>
+                {bereinigungData.bereinigungEbit.map((bereinigungItem, index) => (
+                    <Grid.Column key={index} width={4}>
+                        <Form.Field>
+                            <label className="form-label">{bereinigungItem.title}</label>
+                            <Input
+                                type="text"
+                                className="form-text input-number not-required disabled-all"
+                                value={bereinigungItem.value}
+                                readOnly
+                            />
+                            <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
+                                Keine negativen Eingaben erlaubt.
+                            </div>
+                        </Form.Field>
+                    </Grid.Column>
+                ))}
             </Grid>
         );
     };

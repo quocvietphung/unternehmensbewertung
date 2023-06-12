@@ -38,14 +38,17 @@ const initialState = {
         ],
         bereinigungEbit: [
             {
+                title: "Bereinigtes EBIT 2020",
                 year: 2020,
                 value: null,
             },
             {
+                title: "Bereinigtes EBIT 2021",
                 year: 2021,
                 value: null,
             },
             {
+                title: "Bereinigtes EBIT 2022",
                 year: 2022,
                 value: null,
             },
