@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import {Grid, Header, Divider, Form, Input, Label, Button} from 'semantic-ui-react';
+import React from 'react';
+import { Grid, Header, Divider, Form, Input, Label, Button } from 'semantic-ui-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setBargeldBestand, setFinanzSchulden } from '../../redux/equityBridgeSlice';
 
 const EquityBridge = (props) => {
-    const [bargeldBestand, setBargeldBestand] = useState('');
-    const [finanzSchulden, setFinanzSchulden] = useState('');
+    const dispatch = useDispatch();
+    const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
 
-    const handleBargeldBestandChange = (e) => {
-        setBargeldBestand(e.target.value);
-    };
-
-    const handleFinanzSchuldenChange = (e) => {
-        setFinanzSchulden(e.target.value);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        if (name === 'bargeldBestand') {
+            dispatch(setBargeldBestand(value));
+        } else if (name === 'finanzSchulden') {
+            dispatch(setFinanzSchulden(value));
+        }
     };
 
     const handleWeiterClick = () => {
@@ -21,7 +24,7 @@ const EquityBridge = (props) => {
         <Grid padded className="shared-section equity">
             <Grid.Column>
                 <Header as="h2">4. Equity Bridge</Header>
-                <Divider/>
+                <Divider />
                 <Form>
                     <Header as="h3">
                         Liquide Mittel &amp; Verbindlichkeiten
@@ -29,17 +32,19 @@ const EquityBridge = (props) => {
                     </Header>
 
                     <Form.Field className="form-field">
-                        <label className="form-label">Aktueller Bargeldbestand (Bankkonten und andere bargeldähnliche Guthaben)</label>
+                        <label className="form-label">
+                            Aktueller Bargeldbestand (Bankkonten und andere bargeldähnliche Guthaben)
+                        </label>
                         <Input
                             type="number"
                             name="bargeldBestand"
-                            value={bargeldBestand}
-                            onChange={handleBargeldBestandChange}
+                            value={equityBridgeData.bargeldBestand}
+                            onChange={handleChange}
                             required
                             className="form-input"
                         />
-                        {bargeldBestand < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
-                        {bargeldBestand === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
+                        {equityBridgeData.bargeldBestand < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
+                        {equityBridgeData.bargeldBestand === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
                     </Form.Field>
 
                     <Form.Field className="form-field">
@@ -47,13 +52,13 @@ const EquityBridge = (props) => {
                         <Input
                             type="number"
                             name="finanzSchulden"
-                            value={finanzSchulden}
-                            onChange={handleFinanzSchuldenChange}
+                            value={equityBridgeData.finanzSchulden}
+                            onChange={handleChange}
                             required
                             className="form-input"
                         />
-                        {finanzSchulden < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
-                        {finanzSchulden === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
+                        {equityBridgeData.finanzSchulden < 0 && <p className="error-message">Keine negativen Eingaben erlaubt.</p>}
+                        {equityBridgeData.finanzSchulden === '' && <p className="error-message">Das ist ein Pflichtfeld</p>}
                     </Form.Field>
 
                     <Form.Field>
@@ -64,13 +69,14 @@ const EquityBridge = (props) => {
 
                     <Form.Field>
                         <div className="button-container">
-                            <Button className="click-back" onClick={props.onZuruckClick}>Zurück</Button>
+                            <Button className="click-back" onClick={props.onZuruckClick}>
+                                Zurück
+                            </Button>
                             <Button className="click-continue" primary type="submit" onClick={handleWeiterClick}>
                                 Weiter
                             </Button>
                         </div>
                     </Form.Field>
-
                 </Form>
             </Grid.Column>
         </Grid>
