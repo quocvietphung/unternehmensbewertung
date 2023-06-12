@@ -43,11 +43,14 @@ const Bereinigung = (props) => {
             const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
             dispatch(setGehaltValue(newGehalt));
             dispatch(setAnpassungEbitValue(newAnpassungEbit));
+            dispatch(setBereinigungEbitValue(newBereinigungEbit));
         } else {
             const initialGehalt = bereinigungData.gehalt.filter(item => item.year !== 2023);
             const initialAnpassungEbit = bereinigungData.anpassungEbit.filter(item => item.year !== 2023);
+            const initialBereinigungEbit = bereinigungData.bereinigungEbit.filter(item => item.year !== 2023);
             dispatch(setGehaltValue(initialGehalt));
             dispatch(setAnpassungEbitValue(initialAnpassungEbit));
+            dispatch(setBereinigungEbitValue(initialBereinigungEbit));
         }
     }, [prognose]);
 
@@ -58,23 +61,19 @@ const Bereinigung = (props) => {
 
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
-        const updateBereinigungEbit = (bereinigungEbits) => {
-            return bereinigungEbits.map((item, index) => {
-                const kennzahlenDataEbit = parseFloat(kennzahlenDataEbits[index].value) || 0;
-                const gehaltValue = parseFloat(gehalt[index].value) || 0;
-                const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
-                const typischGehaltValue = parseFloat(typischGehalt) || 0;
-                const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
 
-                console.log("anpassungEbitValue", anpassungEbitValue);
-                console.log("bereinigtesEbitValue", bereinigtesEbitValue);
+        const updatedBereinigungEbit = bereinigungData.bereinigungEbit.map((item, index) => {
+            const kennzahlenDataEbit = parseFloat(kennzahlenDataEbits[index].value) || 0;
+            const gehaltValue = parseFloat(gehalt[index].value) || 0;
+            const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
+            const typischGehaltValue = parseFloat(typischGehalt) || 0;
+            const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
 
-                return {
-                    ...item,
-                    value: bereinigtesEbitValue,
-                };
-            });
-        };
+            return {
+                ...item,
+                value: bereinigtesEbitValue,
+            };
+        });
 
         dispatch(setBereinigungEbitValue(updatedBereinigungEbit));
 
