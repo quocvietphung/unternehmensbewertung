@@ -125,9 +125,9 @@ const Bereinigung = (props) => {
 
     const renderFormFields = () => {
         return (
-            <Grid>
+            <div style={{ display: 'flex' }}>
                 {bereinigungData.gehalt.map((gehaltItem, index) => (
-                    <Grid.Column key={index} width={4}>
+                    <div key={index} style={{ marginRight: '30px', marginTop: '10px', marginBottom: '10px', width: '180px' }}>
                         <Form>
                             <Form.Field>
                                 <label htmlFor={`gehalt[${index}]`} className="form-label">
@@ -149,9 +149,9 @@ const Bereinigung = (props) => {
                                 <div className="invalid-feedback">Das ist ein Pflichtfeld</div>
                             </Form.Field>
                         </Form>
-                    </Grid.Column>
+                    </div>
                 ))}
-            </Grid>
+            </div>
         );
     };
 
@@ -159,7 +159,7 @@ const Bereinigung = (props) => {
         return (
             <div style={{ display: 'flex' }}>
                 {bereinigungData.anpassungEbit.map((anpassungItem, index) => (
-                    <div key={index} style={{ marginRight: '20px', marginTop: '10px', marginBottom: '10px', width: '180px' }}>
+                    <div key={index} style={{ marginRight: '30px', marginTop: '10px', marginBottom: '10px', width: '180px' }}>
                         <Form.Field>
                             <label htmlFor={`anpassungEbit[${index}]`} className="form-label">
                                 {anpassungItem.title}
@@ -186,7 +186,7 @@ const Bereinigung = (props) => {
                         <label className="form-label">Bereinigtes EBIT</label>
                         <div style={{ display: 'flex' }}>
                             {bereinigungData.bereinigungEbit.map((bereinigungItem, index) => (
-                                <div key={index} style={{ marginRight: '20px', marginBottom: '10px', width: '180px' }}>
+                                <div key={index} style={{ marginRight: '30px', marginTop: '10px', marginBottom: '10px', width: '180px' }}>
                                     <Input
                                         type="text"
                                         className="form-text input-number not-required disabled-all"
