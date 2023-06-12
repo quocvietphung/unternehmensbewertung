@@ -40,17 +40,13 @@ const Bereinigung = (props) => {
         if (prognose) {
             const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023), prognose2023.gehalt];
             const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023), prognose2023.anpassungEbit];
-            const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
             dispatch(setGehaltValue(newGehalt));
             dispatch(setAnpassungEbitValue(newAnpassungEbit));
-            dispatch(setBereinigungEbitValue(newBereinigungEbit));
         } else {
             const initialGehalt = bereinigungData.gehalt.filter(item => item.year !== 2023);
             const initialAnpassungEbit = bereinigungData.anpassungEbit.filter(item => item.year !== 2023);
-            const initialBereinigungEbit = bereinigungData.bereinigungEbit.filter(item => item.year !== 2023);
             dispatch(setGehaltValue(initialGehalt));
             dispatch(setAnpassungEbitValue(initialAnpassungEbit));
-            dispatch(setBereinigungEbitValue(initialBereinigungEbit));
         }
     }, [prognose]);
 
