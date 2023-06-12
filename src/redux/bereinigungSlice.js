@@ -36,7 +36,20 @@ const initialState = {
                 value: null,
             },
         ],
-        bereinigungEbit: [],
+        bereinigungEbit: [
+            {
+                year: 2020,
+                value: null,
+            },
+            {
+                year: 2021,
+                value: null,
+            },
+            {
+                year: 2022,
+                value: null,
+            },
+        ],
         typischGehalt: '',
         erklaerungAnpassungEbit: ''
     }

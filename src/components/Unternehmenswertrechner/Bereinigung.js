@@ -181,22 +181,23 @@ const Bereinigung = (props) => {
     const renderBereinigungEbit = () => {
         return (
             <Grid>
-                {bereinigungData.bereinigungEbit.map((bereinigungItem, index) => (
-                    <Grid.Column key={index} width={4}>
-                        <Form.Field>
-                            <label className="form-label">{bereinigungItem.title}</label>
+                <Grid.Column width={4}>
+                    <Form.Field>
+                        <label className="form-label">Bereinigtes EBIT</label>
+                        {bereinigungData.bereinigungEbit.map((bereinigungItem, index) => (
                             <Input
+                                key={index}
                                 type="text"
                                 className="form-text input-number not-required disabled-all"
                                 value={bereinigungItem.value}
                                 readOnly
                             />
-                            <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
-                                Keine negativen Eingaben erlaubt.
-                            </div>
-                        </Form.Field>
-                    </Grid.Column>
-                ))}
+                        ))}
+                        <div className="invalid-feedback negative-number" style={{ display: 'none' }}>
+                            Keine negativen Eingaben erlaubt.
+                        </div>
+                    </Form.Field>
+                </Grid.Column>
             </Grid>
         );
     };
