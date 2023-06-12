@@ -157,6 +157,11 @@ const Bereinigung = (props) => {
     );
 
     const handleWeiterClick = () => {
+        if (!isValid) {
+            return;
+        }
+
+        // Pass this info back to the parent when Weiter is clicked
         props.onWeiterClick();
     };
 

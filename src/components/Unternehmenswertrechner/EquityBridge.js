@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Header, Divider, Form, Input, Label, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBargeldBestand, setFinanzSchulden } from '../../redux/equityBridgeSlice';
@@ -6,6 +6,10 @@ import { setBargeldBestand, setFinanzSchulden } from '../../redux/equityBridgeSl
 const EquityBridge = (props) => {
     const dispatch = useDispatch();
     const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
+
+    useEffect(() => {
+        console.log(equityBridgeData);
+    }, [equityBridgeData]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,6 +21,11 @@ const EquityBridge = (props) => {
     };
 
     const handleWeiterClick = () => {
+        if (!isValid) {
+            return;
+        }
+
+        // Pass this info back to the parent when Weiter is clicked
         props.onWeiterClick();
     };
 
