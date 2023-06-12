@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Header, Form, Input, Popup, Divider, Icon, Segment, Label, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setValidity, setError } from '../../redux/reducers';
 import {
     setGehaltValue,
     setAnpassungEbitValue,
@@ -57,6 +58,7 @@ const Bereinigung = (props) => {
     }, [prognose]);
 
     useEffect(() => {
+        checkValidity();
         calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
     }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit]);
@@ -112,6 +114,31 @@ const Bereinigung = (props) => {
         } else if (name === "erklaerungAnpassungEbit") {
             dispatch(setErklaerungAnpassungEbit(value));
         }
+    };
+
+    const checkValidity = () => {
+        let errors = [];
+
+        bereinigungData.gehalt.forEach((gehaltItem, index) => {
+            if (!gehaltItem.value || isNaN(parseFloat(gehaltItem.value)) || parseFloat(gehaltItem.value) < 0) {
+                errors.push(`Bitte geben Sie einen gültigen Wert für Gehalt ${index + 1} ein.`);
+            }
+        });
+
+        bereinigungData.anpassungEbit.forEach((anpassungItem, index) => {
+            if (!anpassungItem.value || isNaN(parseFloat(anpassungItem.value)) || parseFloat(anpassungItem.value) < 0) {
+                errors.push(`Bitte geben Sie einen gültigen Wert für Anpassung ${index + 1} ein.`);
+            }
+        });
+
+        if (!bereinigungData.typischGehalt || isNaN(parseFloat(bereinigungData.typischGehalt)) || parseFloat(bereinigungData.typischGehalt) < 0) {
+            errors.push("Bitte geben Sie einen gültigen Wert für Branchenübliche Vergütung ein.");
+        }
+
+        // Cập nhật trạng thái tính hợp lệ và thông báo lỗi trong store
+        const valid = errors.length === 0;
+        dispatch(setValidity(valid));
+        dispatch(setError(errors));
     };
 
     const renderPopupTrigger = (popover) => (
