@@ -96,6 +96,7 @@ export const {
     setTypischGehalt,
     setErklaerungAnpassungEbit,
     setValueForBereinigungEbit,
+    setBereinigungEbitAverage,
 } = bereinigungSlice.actions;
 
 export default bereinigungSlice.reducer;

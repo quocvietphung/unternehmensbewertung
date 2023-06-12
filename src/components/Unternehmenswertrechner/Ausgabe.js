@@ -10,6 +10,7 @@ const Ausgabe = () => {
     const finishedSections = useSelector((state) => state.sections.sectionData.finishedSections);
     const basisInfoData = useSelector((state) => state.basisInfo.basisInfoData);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
+    const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
@@ -19,8 +20,6 @@ const Ausgabe = () => {
     }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData]);
 
     const calculateUnternehmenwert = () => {
-        const sumEbitUmsatz = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
-            (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
         const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);
         const gewinnSum = gewinnValues.reduce((total, value) => total + value, 0);
         const gewinnAverage = gewinnSum / gewinnValues.length;
@@ -30,8 +29,25 @@ const Ausgabe = () => {
         console.log("finishedSections:", finishedSections);
 
         if (finishedSections.includes('basis')) {
-            unternehmenwert = sumEbitUmsatz*gewinnAverage;
+            const sumEbitUmsatzBasis = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
+                (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
+            unternehmenwert = sumEbitUmsatzBasis * gewinnAverage;
+            console.log("sumEbitUmsatzBasis:", sumEbitUmsatzBasis);
         }
+
+        let bereinigungEbitAverage = 0;
+
+        if (finishedSections.includes('kennzahlen')) {
+            const sumEbitUmsatzKennzahlen = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
+                (bereinigungEbitAverage * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
+
+            console.log("sumEbitUmsatzKennzahlen:", sumEbitUmsatzKennzahlen);
+
+            unternehmenwert = bereinigungEbitAverage * gewinnAverage;
+            console.log("unternehmenwert (kennzahlen):", unternehmenwert);
+        }
+
+        console.log("unternehmenwert:", unternehmenwert);
 
         return unternehmenwert;
     };

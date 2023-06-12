@@ -7,7 +7,7 @@ import {
     setBereinigungEbitValue,
     setTypischGehalt,
     setErklaerungAnpassungEbit,
-    setValueForBereinigungEbit
+    setValueForBereinigungEbit,
 } from '../../redux/bereinigungSlice';
 
 const Bereinigung = (props) => {
