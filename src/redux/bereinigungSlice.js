@@ -77,6 +77,15 @@ const bereinigungSlice = createSlice({
         setErklaerungAnpassungEbit: (state, action) => {
             state.bereinigungData.erklaerungAnpassungEbit = action.payload;
         },
+        setValueForBereinigungEbit: (state, action) => {
+            const { year, value } = action.payload;
+            state.bereinigungData.bereinigungEbit = state.bereinigungData.bereinigungEbit.map(item => {
+                if (item.year === year) {
+                    return { ...item, value };
+                }
+                return item;
+            });
+        },
     },
 });
 
@@ -86,6 +95,7 @@ export const {
     setBereinigungEbitValue,
     setTypischGehalt,
     setErklaerungAnpassungEbit,
+    setValueForBereinigungEbit,
 } = bereinigungSlice.actions;
 
 export default bereinigungSlice.reducer;

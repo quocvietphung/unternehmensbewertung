@@ -16,6 +16,7 @@ const Kennzahlen = (props) => {
     const dispatch = useDispatch();
     const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
+    const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
 
     const prognose2023 = {
         umsatz: {
@@ -41,6 +42,10 @@ const Kennzahlen = (props) => {
         console.log("kennzahlenData:", kennzahlenData);
         // checkValidity();
     }, [prognose, kennzahlenData]);
+
+    useEffect(() => {
+        console.log("bereinigungData 1234", bereinigungData);
+    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit]);
 
     const checkValidity = () => {
         let errors = [];
