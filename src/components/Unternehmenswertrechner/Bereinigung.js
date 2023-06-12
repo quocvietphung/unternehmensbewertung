@@ -157,9 +157,9 @@ const Bereinigung = (props) => {
 
     const renderAnpassungEbit = () => {
         return (
-            <Grid>
+            <div style={{ display: 'flex' }}>
                 {bereinigungData.anpassungEbit.map((anpassungItem, index) => (
-                    <Grid.Column key={index} width={4}>
+                    <div key={index} style={{ marginRight: '20px', marginTop: '10px', marginBottom: '10px', width: '180px' }}>
                         <Form.Field>
                             <label htmlFor={`anpassungEbit[${index}]`} className="form-label">
                                 {anpassungItem.title}
@@ -172,9 +172,9 @@ const Bereinigung = (props) => {
                                 onChange={(e) => handleInputChange(e.target.name, e.target.value, index)}
                             />
                         </Form.Field>
-                    </Grid.Column>
+                    </div>
                 ))}
-            </Grid>
+            </div>
         );
     };
 
@@ -186,7 +186,7 @@ const Bereinigung = (props) => {
                         <label className="form-label">Bereinigtes EBIT</label>
                         <div style={{ display: 'flex' }}>
                             {bereinigungData.bereinigungEbit.map((bereinigungItem, index) => (
-                                <div key={index} style={{ marginRight: '10px' }}>
+                                <div key={index} style={{ marginRight: '20px', marginBottom: '10px', width: '180px' }}>
                                     <Input
                                         type="text"
                                         className="form-text input-number not-required disabled-all"
