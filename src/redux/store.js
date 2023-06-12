@@ -4,6 +4,7 @@ import validationReducer from './reducers';
 import basisInfoReducer from './basisInfoSlice';
 import kennzahlenReducer from './kennzahlenSlice';
 import bereinigungReducer from './bereinigungSlice';
+import equityBridgeReducer from './equityBridgeSlice';
 
 export default configureStore({
     reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
         basisInfo: basisInfoReducer,
         kennzahlen: kennzahlenReducer,
         bereinigung: bereinigungReducer,
+        equityBridge: equityBridgeReducer,
     },
 });
