@@ -27,11 +27,6 @@ const Bereinigung = (props) => {
             value: null,
             bereinigungEbit: null
         },
-        bereinigungEbit: {
-            title: "Bereinigtes EBIT 2023 (Prognose)",
-            year: 2023,
-            value: null,
-        },
     };
 
     useEffect(() => {
@@ -41,6 +36,7 @@ const Bereinigung = (props) => {
             const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023), prognose2023.gehalt];
             const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023), prognose2023.anpassungEbit];
             const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
+            console.log("newBereinigungEbit", newBereinigungEbit);
             dispatch(setGehaltValue(newGehalt));
             dispatch(setAnpassungEbitValue(newAnpassungEbit));
             dispatch(setBereinigungEbitValue(newBereinigungEbit));
