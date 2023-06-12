@@ -81,12 +81,12 @@ const Bereinigung = (props) => {
 
         if (prognose) {
             const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
-            const updateBereinigungEbit = updateBereinigungEbit(newBereinigungEbit);
-            dispatch(setBereinigungEbitValue(updateBereinigungEbit));
+            const updatedBereinigungEbit = updateBereinigungEbit(newBereinigungEbit);
+            dispatch(setBereinigungEbitValue(updatedBereinigungEbit));
         } else {
             const initialBereinigungEbit = bereinigungData.bereinigungEbit.filter(item => item.year !== 2023);
-            const updateBereinigungEbit = updateBereinigungEbit(initialBereinigungEbit);
-            dispatch(setBereinigungEbitValue(updateBereinigungEbit));
+            const updatedBereinigungEbit = updateBereinigungEbit(initialBereinigungEbit);
+            dispatch(setBereinigungEbitValue(updatedBereinigungEbit));
         }
     };
 
