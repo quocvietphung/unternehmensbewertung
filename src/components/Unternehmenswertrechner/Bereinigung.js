@@ -61,7 +61,7 @@ const Bereinigung = (props) => {
         checkValidity();
         calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
-    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit]);
+    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit, bereinigungData.erklaerungAnpassungEbit]);
 
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
@@ -121,13 +121,19 @@ const Bereinigung = (props) => {
 
         bereinigungData.gehalt.forEach((gehaltItem, index) => {
             if (!gehaltItem.value || isNaN(parseFloat(gehaltItem.value)) || parseFloat(gehaltItem.value) < 0) {
-                errors.push(`Bitte geben Sie einen gültigen Wert für Gehalt ${index + 1} ein.`);
+                errors.push(`Bitte geben Sie einen gültigen Wert für ${gehaltItem.title} ein.`);
             }
         });
 
         bereinigungData.anpassungEbit.forEach((anpassungItem, index) => {
             if (!anpassungItem.value || isNaN(parseFloat(anpassungItem.value)) || parseFloat(anpassungItem.value) < 0) {
-                errors.push(`Bitte geben Sie einen gültigen Wert für Anpassung ${index + 1} ein.`);
+                errors.push(`Bitte geben Sie einen gültigen Wert für ${anpassungItem.title} ein.`);
+            }
+        });
+
+        bereinigungData.bereinigungEbit.forEach((bereinigungItem, index) => {
+            if (!bereinigungItem.value || isNaN(parseFloat(bereinigungItem.value)) || parseFloat(bereinigungItem.value) < 0) {
+                errors.push(`Bitte geben Sie einen gültigen Wert für ${bereinigungItem.title} ein.`);
             }
         });
 
@@ -135,7 +141,10 @@ const Bereinigung = (props) => {
             errors.push("Bitte geben Sie einen gültigen Wert für Branchenübliche Vergütung ein.");
         }
 
-        // Cập nhật trạng thái tính hợp lệ và thông báo lỗi trong store
+        if (!bereinigungData.erklaerungAnpassungEbit || bereinigungData.erklaerungAnpassungEbit.trim() === "") {
+            errors.push("Bitte geben Sie eine Erklärung für die Anpassungen des EBITs ein.");
+        }
+
         const valid = errors.length === 0;
         dispatch(setValidity(valid));
         dispatch(setError(errors));
