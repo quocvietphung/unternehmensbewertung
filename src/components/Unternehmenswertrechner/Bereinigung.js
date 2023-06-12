@@ -16,6 +16,7 @@ const Bereinigung = (props) => {
     const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
     const kennzahlenDataEbits = useSelector((state) => state.kennzahlen.kennzahlenData.ebit);
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
+    const isValid = useSelector(state => state.validation.isValid);
     const dispatch = useDispatch();
 
     const prognose2023 = {

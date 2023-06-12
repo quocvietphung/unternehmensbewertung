@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { Grid, Header, Divider, Form, Input, Label, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setValidity, setError } from '../../redux/reducers';
 import { setBargeldBestand, setFinanzSchulden } from '../../redux/equityBridgeSlice';
 
 const EquityBridge = (props) => {
     const dispatch = useDispatch();
+    const isValid = useSelector(state => state.validation.isValid);
     const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
 
     useEffect(() => {

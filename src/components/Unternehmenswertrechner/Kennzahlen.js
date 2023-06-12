@@ -14,6 +14,7 @@ import {
 
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
+    const isValid = useSelector(state => state.validation.isValid);
     const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
