@@ -8,6 +8,7 @@ import {
     setTypischGehalt,
     setErklaerungAnpassungEbit,
     setValueForBereinigungEbit,
+    setBereinigungEbitAverage,
 } from '../../redux/bereinigungSlice';
 
 const Bereinigung = (props) => {
@@ -76,6 +77,10 @@ const Bereinigung = (props) => {
 
             dispatch(setValueForBereinigungEbit({ year: item.year, value: bereinigtesEbitValue }));
         });
+
+        const bereinigungEbitValues = bereinigungData.bereinigungEbit.map((item) => parseFloat(item.value) || 0);
+        const bereinigungEbitAverage = bereinigungEbitValues.reduce((sum, value) => sum + value, 0) / bereinigungEbitValues.length;
+        dispatch(setBereinigungEbitAverage(bereinigungEbitAverage));
     };
 
     const [popoverData, setPopoverData] = useState({

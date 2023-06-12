@@ -54,7 +54,8 @@ const initialState = {
             },
         ],
         typischGehalt: '',
-        erklaerungAnpassungEbit: ''
+        erklaerungAnpassungEbit: '',
+        bereinigungEbitAverage: 0,
     }
 };
 
@@ -85,6 +86,9 @@ const bereinigungSlice = createSlice({
                 }
                 return item;
             });
+        },
+        setBereinigungEbitAverage: (state, action) => {
+            state.bereinigungData.bereinigungEbitAverage = action.payload;
         },
     },
 });

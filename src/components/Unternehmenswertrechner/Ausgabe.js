@@ -17,7 +17,7 @@ const Ausgabe = () => {
         const calculatedUnternehmenwert = calculateUnternehmenwert();
         console.log("unternehmenwert:", calculatedUnternehmenwert);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
-    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData]);
+    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData]);
 
     const calculateUnternehmenwert = () => {
         const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);
@@ -35,15 +35,13 @@ const Ausgabe = () => {
             console.log("sumEbitUmsatzBasis:", sumEbitUmsatzBasis);
         }
 
-        let bereinigungEbitAverage = 0;
-
         if (finishedSections.includes('kennzahlen')) {
             const sumEbitUmsatzKennzahlen = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
-                (bereinigungEbitAverage * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
+                (bereinigungData.bereinigungEbitAverage * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
 
             console.log("sumEbitUmsatzKennzahlen:", sumEbitUmsatzKennzahlen);
 
-            unternehmenwert = bereinigungEbitAverage * gewinnAverage;
+            unternehmenwert = sumEbitUmsatzKennzahlen * gewinnAverage;
             console.log("unternehmenwert (kennzahlen):", unternehmenwert);
         }
 
