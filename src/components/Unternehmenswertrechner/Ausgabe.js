@@ -13,6 +13,7 @@ const Ausgabe = () => {
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
+    const qualityData = useSelector((state) => state.quality.qualityData);
     const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
@@ -22,6 +23,7 @@ const Ausgabe = () => {
         console.log("kennzahlenData:", kennzahlenData);
         console.log("bereinigungData:", bereinigungData);
         console.log("equityBridgeData:", equityBridgeData);
+        console.log("qualityData:", qualityData);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
     }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData]);
 
