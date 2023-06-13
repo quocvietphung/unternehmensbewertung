@@ -54,6 +54,41 @@ const Ausgabe = () => {
         }
     };
 
+    const calculateEquityUnternehmenwert = (qualityData, unternehmenwert) => {
+        const {
+            kundenabhaengigkeit,
+            mitarbeiterabhaengigkeit,
+            lieferantenabhaengigkeit,
+            produktdiversifikation,
+            tagesgeschaeft,
+            fernbleiben,
+            absenz,
+            kundenbeziehung
+        } = qualityData;
+
+        const kundenabhaengigkeitValue = parseFloat(kundenabhaengigkeit?.value) || 1;
+        const mitarbeiterabhaengigkeitValue = parseFloat(mitarbeiterabhaengigkeit?.value) || 1;
+        const lieferantenabhaengigkeitValue = parseFloat(lieferantenabhaengigkeit?.value) || 1;
+        const produktdiversifikationValue = parseFloat(produktdiversifikation?.value) || 1;
+        const tagesgeschaeftValue = parseFloat(tagesgeschaeft?.value) || 1;
+        const fernbleibenValue = parseFloat(fernbleiben?.value) || 1;
+        const absenzValue = parseFloat(absenz?.value) || 1;
+        const kundenbeziehungValue = parseFloat(kundenbeziehung?.value) || 1;
+
+        unternehmenwert *= kundenabhaengigkeitValue;
+        unternehmenwert *= mitarbeiterabhaengigkeitValue;
+        unternehmenwert *= lieferantenabhaengigkeitValue;
+        unternehmenwert *= produktdiversifikationValue;
+        unternehmenwert *= tagesgeschaeftValue;
+        unternehmenwert *= fernbleibenValue;
+        unternehmenwert *= absenzValue;
+        unternehmenwert *= kundenbeziehungValue;
+
+        console.log("unternehmenwert (equity):", unternehmenwert);
+
+        return unternehmenwert;
+    };
+
     const calculateUnternehmenwert = () => {
         const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);
         const gewinnSum = gewinnValues.reduce((total, value) => total + value, 0);
@@ -89,36 +124,7 @@ const Ausgabe = () => {
         }
 
         if (finishedSections.includes('equity')) {
-            const {
-                kundenabhaengigkeit,
-                mitarbeiterabhaengigkeit,
-                lieferantenabhaengigkeit,
-                produktdiversifikation,
-                tagesgeschaeft,
-                fernbleiben,
-                absenz,
-                kundenbeziehung
-            } = qualityData;
-
-            const kundenabhaengigkeitValue = parseFloat(kundenabhaengigkeit?.value) || 1;
-            const mitarbeiterabhaengigkeitValue = parseFloat(mitarbeiterabhaengigkeit?.value) || 1;
-            const lieferantenabhaengigkeitValue = parseFloat(lieferantenabhaengigkeit?.value) || 1;
-            const produktdiversifikationValue = parseFloat(produktdiversifikation?.value) || 1;
-            const tagesgeschaeftValue = parseFloat(tagesgeschaeft?.value) || 1;
-            const fernbleibenValue = parseFloat(fernbleiben?.value) || 1;
-            const absenzValue = parseFloat(absenz?.value) || 1;
-            const kundenbeziehungValue = parseFloat(kundenbeziehung?.value) || 1;
-
-            unternehmenwert *= kundenabhaengigkeitValue;
-            unternehmenwert *= mitarbeiterabhaengigkeitValue;
-            unternehmenwert *= lieferantenabhaengigkeitValue;
-            unternehmenwert *= produktdiversifikationValue;
-            unternehmenwert *= tagesgeschaeftValue;
-            unternehmenwert *= fernbleibenValue;
-            unternehmenwert *= absenzValue;
-            unternehmenwert *= kundenbeziehungValue;
-
-            console.log("unternehmenwert (equity):", unternehmenwert);
+            unternehmenwert = calculateEquityUnternehmenwert(qualityData, unternehmenwert);
         }
 
         console.log("unternehmenwert:", unternehmenwert);
