@@ -195,7 +195,7 @@ const Quality = (props) => {
                                     { value: '1.2', text: '3 Monate' },
                                     { value: '1.5', text: '3 Jahre' },
                                 ]}
-                                onChange={(e, { name, value, text }) => handleQualityChange(name, value, text)}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
                                 value={qualityData.fernbleiben?.value}
                             />
                         </Form.Field>
@@ -223,7 +223,7 @@ const Quality = (props) => {
                                         text: 'Eine unerwartete Absenz des Unternehmers von mehreren Monaten wäre sehr schwierig.',
                                     },
                                 ]}
-                                onChange={(e, { name, value, text }) => handleQualityChange(name, value, text)}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
                                 value={qualityData.absenz?.value}
                             />
                         </Form.Field>
