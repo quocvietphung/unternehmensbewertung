@@ -75,18 +75,24 @@ const Ausgabe = () => {
         const absenzValue = parseFloat(absenz?.value) || 1;
         const kundenbeziehungValue = parseFloat(kundenbeziehung?.value) || 1;
 
-        unternehmenwert *= kundenabhaengigkeitValue;
-        unternehmenwert *= mitarbeiterabhaengigkeitValue;
-        unternehmenwert *= lieferantenabhaengigkeitValue;
-        unternehmenwert *= produktdiversifikationValue;
-        unternehmenwert *= tagesgeschaeftValue;
-        unternehmenwert *= fernbleibenValue;
-        unternehmenwert *= absenzValue;
-        unternehmenwert *= kundenbeziehungValue;
+        const totalValue = (
+            kundenabhaengigkeitValue +
+            mitarbeiterabhaengigkeitValue +
+            lieferantenabhaengigkeitValue +
+            produktdiversifikationValue +
+            tagesgeschaeftValue +
+            fernbleibenValue +
+            absenzValue +
+            kundenbeziehungValue
+        );
 
-        console.log("unternehmenwert (equity):", unternehmenwert);
+        const averageValue = totalValue / Object.keys(qualityData).length;
 
-        return unternehmenwert;
+        const newUnternehmenwert = unternehmenwert * averageValue;
+
+        console.log("unternehmenwert (equity):", newUnternehmenwert);
+
+        return newUnternehmenwert;
     };
 
     const calculateUnternehmenwert = () => {
