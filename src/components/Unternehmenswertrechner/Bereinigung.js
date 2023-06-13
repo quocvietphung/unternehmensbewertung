@@ -62,7 +62,7 @@ const Bereinigung = (props) => {
         // checkValidity();
         calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
-    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit, bereinigungData.erklaerungAnpassungEbit]);
+    }, [bereinigungData]);
 
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
@@ -78,12 +78,17 @@ const Bereinigung = (props) => {
             const typischGehaltValue = parseFloat(typischGehalt) || 0;
             const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
 
-            dispatch(setValueForBereinigungEbit({ year: item.year, value: bereinigtesEbitValue }));
+            if (bereinigungData.bereinigungEbit[index].value !== bereinigtesEbitValue) { // Kiểm tra sự thay đổi trước khi dispatch
+                dispatch(setValueForBereinigungEbit({ year: item.year, value: bereinigtesEbitValue }));
+            }
         });
 
         const bereinigungEbitValues = bereinigungData.bereinigungEbit.map((item) => parseFloat(item.value) || 0);
         const bereinigungEbitAverage = bereinigungEbitValues.reduce((sum, value) => sum + value, 0) / bereinigungEbitValues.length;
-        dispatch(setBereinigungEbitAverage(bereinigungEbitAverage));
+
+        if (bereinigungData.bereinigungEbitAverage !== bereinigungEbitAverage) { // Kiểm tra sự thay đổi trước khi dispatch
+            dispatch(setBereinigungEbitAverage(bereinigungEbitAverage));
+        }
     };
 
     const [popoverData, setPopoverData] = useState({
