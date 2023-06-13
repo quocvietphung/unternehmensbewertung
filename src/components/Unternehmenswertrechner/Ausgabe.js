@@ -25,7 +25,7 @@ const Ausgabe = () => {
         console.log("equityBridgeData:", equityBridgeData);
         console.log("qualityData:", qualityData);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
-    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData]);
+    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData,qualityData]);
 
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
@@ -86,6 +86,39 @@ const Ausgabe = () => {
             const finanzSchulden = parseFloat(equityBridgeData.finanzSchulden) || 0;
             unternehmenwert = (unternehmenwert + bargeldBestand) - finanzSchulden;
             console.log("unternehmenwert (bereinigung):", unternehmenwert);
+        }
+
+        if (finishedSections.includes('equity')) {
+            const {
+                kundenabhaengigkeit,
+                mitarbeiterabhaengigkeit,
+                lieferantenabhaengigkeit,
+                produktdiversifikation,
+                tagesgeschaeft,
+                fernbleiben,
+                absenz,
+                kundenbeziehung
+            } = qualityData;
+
+            const kundenabhaengigkeitValue = parseFloat(kundenabhaengigkeit?.value) || 1;
+            const mitarbeiterabhaengigkeitValue = parseFloat(mitarbeiterabhaengigkeit?.value) || 1;
+            const lieferantenabhaengigkeitValue = parseFloat(lieferantenabhaengigkeit?.value) || 1;
+            const produktdiversifikationValue = parseFloat(produktdiversifikation?.value) || 1;
+            const tagesgeschaeftValue = parseFloat(tagesgeschaeft?.value) || 1;
+            const fernbleibenValue = parseFloat(fernbleiben?.value) || 1;
+            const absenzValue = parseFloat(absenz?.value) || 1;
+            const kundenbeziehungValue = parseFloat(kundenbeziehung?.value) || 1;
+
+            unternehmenwert *= kundenabhaengigkeitValue;
+            unternehmenwert *= mitarbeiterabhaengigkeitValue;
+            unternehmenwert *= lieferantenabhaengigkeitValue;
+            unternehmenwert *= produktdiversifikationValue;
+            unternehmenwert *= tagesgeschaeftValue;
+            unternehmenwert *= fernbleibenValue;
+            unternehmenwert *= absenzValue;
+            unternehmenwert *= kundenbeziehungValue;
+
+            console.log("unternehmenwert (equity):", unternehmenwert);
         }
 
         console.log("unternehmenwert:", unternehmenwert);
