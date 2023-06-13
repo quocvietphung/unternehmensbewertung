@@ -59,7 +59,7 @@ const Bereinigung = (props) => {
     }, [prognose]);
 
     useEffect(() => {
-        // checkValidity();
+        checkValidity();
         calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
     }, [bereinigungData]);
@@ -78,7 +78,7 @@ const Bereinigung = (props) => {
             const typischGehaltValue = parseFloat(typischGehalt) || 0;
             const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
 
-            if (bereinigungData.bereinigungEbit[index].value !== bereinigtesEbitValue) { // Kiểm tra sự thay đổi trước khi dispatch
+            if (bereinigungData.bereinigungEbit[index].value !== bereinigtesEbitValue) {
                 dispatch(setValueForBereinigungEbit({ year: item.year, value: bereinigtesEbitValue }));
             }
         });
