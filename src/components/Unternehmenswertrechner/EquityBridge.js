@@ -11,6 +11,7 @@ const EquityBridge = (props) => {
 
     useEffect(() => {
         console.log(equityBridgeData);
+        checkValidity();
     }, [equityBridgeData]);
 
     const handleChange = (e) => {
@@ -20,6 +21,31 @@ const EquityBridge = (props) => {
         } else if (name === 'finanzSchulden') {
             dispatch(setFinanzSchulden(value));
         }
+    };
+
+    const checkValidity = () => {
+        let errors = [];
+
+        if (equityBridgeData.bargeldBestand < 0) {
+            errors.push('Keine negativen Eingaben für Bargeldbestand erlaubt.');
+        }
+
+        if (equityBridgeData.bargeldBestand === '') {
+            errors.push('Bargeldbestand ist ein Pflichtfeld.');
+        }
+
+        if (equityBridgeData.finanzSchulden < 0) {
+            errors.push('Keine negativen Eingaben für Finanzschulden erlaubt.');
+        }
+
+        if (equityBridgeData.finanzSchulden === '') {
+            errors.push('Finanzschulden ist ein Pflichtfeld.');
+        }
+
+        dispatch(setError(errors));
+
+        const valid = errors.length === 0;
+        dispatch(setValidity(valid));
     };
 
     const handleWeiterClick = () => {
