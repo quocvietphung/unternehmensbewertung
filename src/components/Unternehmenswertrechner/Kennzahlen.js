@@ -12,6 +12,8 @@ import {
     setAverageEbit,
 } from '../../redux/kennzahlenSlice';
 
+import {setAnpassungEbitValue, setBereinigungEbitValue, setGehaltValue} from "../../redux/bereinigungSlice";
+
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
     const isValid = useSelector(state => state.validation.isValid);
@@ -35,6 +37,21 @@ const Kennzahlen = (props) => {
             year: 2023,
             type: "",
             value: null
+        },
+        gehalt: {
+            title: "Gehalt 2023 (Prognose)",
+            year: 2023,
+            value: null
+        },
+        anpassungEbit: {
+            title: "Anpassung 2023 (Prognose)",
+            year: 2023,
+            value: null,
+        },
+        bereinigungEbit: {
+            title: "Bereinigtes EBIT 2023 (Prognose)",
+            year: 2023,
+            value: null,
         },
     };
 
@@ -84,9 +101,15 @@ const Kennzahlen = (props) => {
             const newUmsatz = [...kennzahlenData.umsatz, prognose2023.umsatz];
             const newEbit = [...kennzahlenData.ebit, prognose2023.ebit];
             const newGewinnData = [...kennzahlenData.gewinn.data, prognose2023.gewinn];
+            const initialGehalt = [...bereinigungData.gehalt, prognose2023.gehalt];
+            const initialAnpassungEbit = [...bereinigungData.anpassungEbit, prognose2023.anpassungEbit];
+            const initialBereinigungEbit = [...bereinigungData.bereinigungEbit, prognose2023.bereinigungEbit];
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
             dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
+            dispatch(setGehaltValue(initialGehalt));
+            dispatch(setAnpassungEbitValue(initialAnpassungEbit));
+            dispatch(setBereinigungEbitValue(initialBereinigungEbit));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             const averageEbit = calculateAverage(newEbit, 'ebit');
             dispatch(setAverageUmsatz(averageUmsatz));
@@ -95,9 +118,15 @@ const Kennzahlen = (props) => {
             const newUmsatz = kennzahlenData.umsatz.filter((item) => item.year !== 2023);
             const newEbit = kennzahlenData.ebit.filter((item) => item.year !== 2023);
             const newGewinnData = kennzahlenData.gewinn.data.filter((item) => item.year !== 2023);
+            const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023)];
+            const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023)];
+            const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023)];
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
             dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
+            dispatch(setGehaltValue(newGehalt));
+            dispatch(setAnpassungEbitValue(newAnpassungEbit));
+            dispatch(setBereinigungEbitValue(newBereinigungEbit));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             const averageEbit = calculateAverage(newEbit, 'ebit');
             dispatch(setAverageUmsatz(averageUmsatz));

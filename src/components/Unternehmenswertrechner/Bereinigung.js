@@ -5,7 +5,6 @@ import { setValidity, setError } from '../../redux/reducers';
 import {
     setGehaltValue,
     setAnpassungEbitValue,
-    setBereinigungEbitValue,
     setTypischGehalt,
     setErklaerungAnpassungEbit,
     setValueForBereinigungEbit,
@@ -13,7 +12,6 @@ import {
 } from '../../redux/bereinigungSlice';
 
 const Bereinigung = (props) => {
-    const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
     const kennzahlenDataEbits = useSelector((state) => state.kennzahlen.kennzahlenData.ebit);
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const isValid = useSelector(state => state.validation.isValid);
@@ -36,26 +34,6 @@ const Bereinigung = (props) => {
             value: null,
         },
     };
-
-    useEffect(() => {
-        console.log("prognose", prognose);
-
-        if (prognose) {
-            const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023), prognose2023.gehalt];
-            const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023), prognose2023.anpassungEbit];
-            const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023), prognose2023.bereinigungEbit];
-            dispatch(setGehaltValue(newGehalt));
-            dispatch(setAnpassungEbitValue(newAnpassungEbit));
-            dispatch(setBereinigungEbitValue(newBereinigungEbit));
-        } else {
-            const initialGehalt = bereinigungData.gehalt.filter(item => item.year !== 2023);
-            const initialAnpassungEbit = bereinigungData.anpassungEbit.filter(item => item.year !== 2023);
-            const initialBereinigungEbit = bereinigungData.bereinigungEbit.filter(item => item.year !== 2023);
-            dispatch(setGehaltValue(initialGehalt));
-            dispatch(setAnpassungEbitValue(initialAnpassungEbit));
-            dispatch(setBereinigungEbitValue(initialBereinigungEbit));
-        }
-    }, [prognose]);
 
     useEffect(() => {
         checkValidity();
