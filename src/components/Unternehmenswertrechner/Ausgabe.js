@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUnternehmenwert } from '../../redux/sectionsSlice';
+import {setBereinigungEbitAverage, setValueForBereinigungEbit} from "../../redux/bereinigungSlice";
 
 const Ausgabe = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Ausgabe = () => {
     const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
+        calculateBereinigungEbit();
         const calculatedUnternehmenwert = calculateUnternehmenwert();
         console.log("unternehmenwert:", calculatedUnternehmenwert);
         console.log("kennzahlenData:", kennzahlenData);
@@ -22,6 +24,33 @@ const Ausgabe = () => {
         console.log("equityBridgeData:", equityBridgeData);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
     }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData]);
+
+    const calculateBereinigungEbit = () => {
+        const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
+
+        bereinigungData.bereinigungEbit.forEach((item, index) => {
+            if (!kennzahlenData.ebit[index] || !gehalt[index] || !anpassungEbit[index]) {
+                return;
+            }
+
+            const kennzahlenDataEbit = parseFloat(kennzahlenData.ebit[index].value) || 0;
+            const gehaltValue = parseFloat(gehalt[index].value) || 0;
+            const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
+            const typischGehaltValue = parseFloat(typischGehalt) || 0;
+            const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
+
+            if (bereinigungData.bereinigungEbit[index].value !== bereinigtesEbitValue) {
+                dispatch(setValueForBereinigungEbit({ year: item.year, value: bereinigtesEbitValue }));
+            }
+        });
+
+        const bereinigungEbitValues = bereinigungData.bereinigungEbit.map((item) => parseFloat(item.value) || 0);
+        const bereinigungEbitAverage = bereinigungEbitValues.reduce((sum, value) => sum + value, 0) / bereinigungEbitValues.length;
+
+        if (bereinigungData.bereinigungEbitAverage !== bereinigungEbitAverage) {
+            dispatch(setBereinigungEbitAverage(bereinigungEbitAverage));
+        }
+    };
 
     const calculateUnternehmenwert = () => {
         const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);

@@ -7,66 +7,17 @@ import {
     setAnpassungEbitValue,
     setTypischGehalt,
     setErklaerungAnpassungEbit,
-    setValueForBereinigungEbit,
-    setBereinigungEbitAverage,
 } from '../../redux/bereinigungSlice';
 
 const Bereinigung = (props) => {
-    const kennzahlenDataEbits = useSelector((state) => state.kennzahlen.kennzahlenData.ebit);
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const isValid = useSelector(state => state.validation.isValid);
     const dispatch = useDispatch();
 
-    const prognose2023 = {
-        gehalt: {
-            title: "Gehalt 2023 (Prognose)",
-            year: 2023,
-            value: null
-        },
-        anpassungEbit: {
-            title: "Anpassung 2023 (Prognose)",
-            year: 2023,
-            value: null,
-        },
-        bereinigungEbit: {
-            title: "Bereinigtes EBIT 2023 (Prognose)",
-            year: 2023,
-            value: null,
-        },
-    };
-
     useEffect(() => {
         // checkValidity();
-        calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
     }, [bereinigungData]);
-
-    const calculateBereinigungEbit = () => {
-        const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
-
-        bereinigungData.bereinigungEbit.forEach((item, index) => {
-            if (!kennzahlenDataEbits[index] || !gehalt[index] || !anpassungEbit[index]) {
-                return;
-            }
-
-            const kennzahlenDataEbit = parseFloat(kennzahlenDataEbits[index].value) || 0;
-            const gehaltValue = parseFloat(gehalt[index].value) || 0;
-            const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
-            const typischGehaltValue = parseFloat(typischGehalt) || 0;
-            const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
-
-            if (bereinigungData.bereinigungEbit[index].value !== bereinigtesEbitValue) {
-                dispatch(setValueForBereinigungEbit({ year: item.year, value: bereinigtesEbitValue }));
-            }
-        });
-
-        const bereinigungEbitValues = bereinigungData.bereinigungEbit.map((item) => parseFloat(item.value) || 0);
-        const bereinigungEbitAverage = bereinigungEbitValues.reduce((sum, value) => sum + value, 0) / bereinigungEbitValues.length;
-
-        if (bereinigungData.bereinigungEbitAverage !== bereinigungEbitAverage) { // Kiểm tra sự thay đổi trước khi dispatch
-            dispatch(setBereinigungEbitAverage(bereinigungEbitAverage));
-        }
-    };
 
     const [popoverData, setPopoverData] = useState({
         showPopover1: false,
