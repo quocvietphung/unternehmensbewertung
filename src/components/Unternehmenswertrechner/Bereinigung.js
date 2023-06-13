@@ -29,7 +29,6 @@ const Bereinigung = (props) => {
             title: "Anpassung 2023 (Prognose)",
             year: 2023,
             value: null,
-            bereinigungEbit: null
         },
         bereinigungEbit: {
             title: "Bereinigtes EBIT 2023 (Prognose)",
@@ -60,7 +59,6 @@ const Bereinigung = (props) => {
 
     useEffect(() => {
         checkValidity();
-        calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
     }, [bereinigungData]);
 

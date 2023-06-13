@@ -44,6 +44,10 @@ const Kennzahlen = (props) => {
         checkValidity();
     }, [prognose, kennzahlenData]);
 
+    useEffect(() => {
+        console.log("bereinigungData", bereinigungData);
+    }, [bereinigungData]);
+
     const checkValidity = () => {
         let errors = [];
 
