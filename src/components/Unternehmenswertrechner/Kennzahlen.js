@@ -44,10 +44,6 @@ const Kennzahlen = (props) => {
         checkValidity();
     }, [prognose, kennzahlenData]);
 
-    useEffect(() => {
-        console.log("bereinigungData 1234", bereinigungData);
-    }, [bereinigungData.gehalt, bereinigungData.typischGehalt, bereinigungData.anpassungEbit]);
-
     const checkValidity = () => {
         let errors = [];
 
