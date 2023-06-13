@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Header, Divider, Form, Select, Label, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setQualityData } from '../../redux/qualitySlice';
@@ -17,7 +17,10 @@ const Quality = (props) => {
         props.onWeiterClick();
     };
 
-    const handleQualityChange = (fieldName, value, text) => {
+    const handleQualityChange = (fieldName, value, options) => {
+        const selectedOption = options.find((option) => option.value === value);
+        const text = selectedOption ? selectedOption.text : "";
+
         dispatch(
             setQualityData({
                 ...qualityData,
@@ -60,7 +63,7 @@ const Quality = (props) => {
                                             'Das Unternehmen hat einen sehr diversifizierten Kundenstamm und eine schwache Abhängigkeit gegenüber den besten drei Kunden.',
                                     },
                                 ]}
-                                onChange={(e, { name, value, text }) => handleQualityChange(name, value, text)}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
                                 value={qualityData.kundenabhaengigkeit?.value}
                             />
                         </Form.Field>
@@ -88,7 +91,7 @@ const Quality = (props) => {
                                         text: 'Die wichtigsten Mitarbeiter wären in unter einer Woche erstetzbar.',
                                     },
                                 ]}
-                                onChange={(e, { name, value, text }) => handleQualityChange(name, value, text)}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
                                 value={qualityData.mitarbeiterabhaengigkeit?.value}
                             />
                         </Form.Field>
@@ -116,7 +119,7 @@ const Quality = (props) => {
                                         text: 'Das Unternehmen hat keine Abhängigkeit zu seinen Lieferanten.',
                                     },
                                 ]}
-                                onChange={(e, { name, value, text }) => handleQualityChange(name, value, text)}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
                                 value={qualityData.lieferantenabhaengigkeit?.value}
                             />
                         </Form.Field>
@@ -140,7 +143,7 @@ const Quality = (props) => {
                                         text: 'Das Unternehmen ist spezialisiert auf eine Produktkategorie.',
                                     },
                                 ]}
-                                onChange={(e, { name, value, text }) => handleQualityChange(name, value, text)}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
                                 value={qualityData.produktdiversifikation?.value}
                             />
                         </Form.Field>
@@ -172,7 +175,7 @@ const Quality = (props) => {
                                         text: 'Der Unternehmer hat kaum Zeit für strategische Fragen, da das Tagesgeschäft einen Großteil seiner Zeit fordert.',
                                     },
                                 ]}
-                                onChange={(e, { name, value, text }) => handleQualityChange(name, value, text)}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
                                 value={qualityData.tagesgeschaeft?.value}
                             />
                         </Form.Field>
@@ -248,7 +251,7 @@ const Quality = (props) => {
                                         text: 'Der Unternehmer kennt kaum Kunden persönlich.',
                                     },
                                 ]}
-                                onChange={(e, { name, value, text }) => handleQualityChange(name, value, text)}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
                                 value={qualityData.kundenbeziehung?.value}
                             />
                         </Form.Field>
@@ -268,7 +271,6 @@ const Quality = (props) => {
                             </Button>
                         </div>
                     </Form.Field>
-
                 </Form>
             </Grid.Column>
         </Grid>
