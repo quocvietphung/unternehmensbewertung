@@ -426,6 +426,12 @@ $margin-large: 2em;
             color: red;
             margin-left: 4px;
           }
+
+          .required-fields-hint {
+            margin-top: 8px;
+            color: gray;
+            font-size: 14px;
+          }
         }
       }
     }
