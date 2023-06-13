@@ -17,8 +17,9 @@ const Ausgabe = () => {
     useEffect(() => {
         const calculatedUnternehmenwert = calculateUnternehmenwert();
         console.log("unternehmenwert:", calculatedUnternehmenwert);
+        console.log("equityBridgeData:", equityBridgeData);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
-    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData]);
+    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData]);
 
     const calculateUnternehmenwert = () => {
         const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);
@@ -47,10 +48,11 @@ const Ausgabe = () => {
         }
 
         if (finishedSections.includes('bereinigung')) {
+            console.log("unternehmenwert (aktuell):", unternehmenwert);
             const bargeldBestand = parseFloat(equityBridgeData.bargeldBestand) || 0;
             const finanzSchulden = parseFloat(equityBridgeData.finanzSchulden) || 0;
-            unternehmenwert = (unternehmenwert+bargeldBestand) - finanzSchulden;
-            console.log("unternehmenwert (kennzahlen):", unternehmenwert);
+            unternehmenwert = (unternehmenwert + bargeldBestand) - finanzSchulden;
+            console.log("unternehmenwert (bereinigung):", unternehmenwert);
         }
 
         console.log("unternehmenwert:", unternehmenwert);
