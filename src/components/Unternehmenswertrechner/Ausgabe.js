@@ -17,6 +17,8 @@ const Ausgabe = () => {
     useEffect(() => {
         const calculatedUnternehmenwert = calculateUnternehmenwert();
         console.log("unternehmenwert:", calculatedUnternehmenwert);
+        console.log("kennzahlenData:", kennzahlenData);
+        console.log("bereinigungData:", bereinigungData);
         console.log("equityBridgeData:", equityBridgeData);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
     }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData]);
