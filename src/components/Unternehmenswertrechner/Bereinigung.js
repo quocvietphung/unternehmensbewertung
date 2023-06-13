@@ -36,7 +36,7 @@ const Bereinigung = (props) => {
     };
 
     useEffect(() => {
-        checkValidity();
+        // checkValidity();
         calculateBereinigungEbit();
         console.log("bereinigungData", bereinigungData);
     }, [bereinigungData]);
