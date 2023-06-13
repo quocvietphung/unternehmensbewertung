@@ -427,7 +427,7 @@ $margin-large: 2em;
               grid-gap: 8px;
             }
 
-            .button {
+            .option-button {
               width: 100%;
               height: 100px;
               display: flex;
@@ -443,6 +443,14 @@ $margin-large: 2em;
               .icon {
                 margin-bottom: 8px;
                 font-size: 24px;
+              }
+
+              &:hover {
+                background-color: orange;
+              }
+
+              &.selected-option {
+                background-color: orange;
               }
             }
           }
