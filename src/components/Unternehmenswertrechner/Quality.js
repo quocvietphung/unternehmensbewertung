@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Grid, Header, Divider, Form, Select, Label, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setQualityData } from '../../redux/qualitySlice';
@@ -8,6 +8,10 @@ const Quality = (props) => {
     const dispatch = useDispatch();
     const isValid = useSelector(state => state.validation.isValid);
     const qualityData = useSelector((state) => state.quality.qualityData);
+
+    useEffect(() => {
+        console.log("qualityData:", qualityData);
+    }, [qualityData]);
 
     const handleWeiterClick = () => {
         props.onWeiterClick();
