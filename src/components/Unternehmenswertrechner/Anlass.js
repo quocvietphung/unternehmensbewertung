@@ -46,7 +46,7 @@ const Anlass = (props) => {
                         <span className="required-mark">*</span>
                     </Header>
                     <Form.Field className="anlass-wrapper">
-                        <Grid columns={2} divided>
+                        <Grid columns={2}>
                             <Grid.Row>
                                 {radioOptions.map((option) => (
                                     <Grid.Column key={option.value}>
