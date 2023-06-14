@@ -11,6 +11,7 @@ const Quality = (props) => {
 
     useEffect(() => {
         console.log("qualityData:", qualityData);
+        checkValidity();
     }, [qualityData]);
 
     const handleWeiterClick = () => {
@@ -30,6 +31,49 @@ const Quality = (props) => {
                 },
             })
         );
+    };
+
+    const checkValidity = () => {
+        let errors = [];
+
+        // Klumpenrisiken
+        if (!qualityData.kundenabhaengigkeit || qualityData.kundenabhaengigkeit.value === "") {
+            errors.push("Bitte wählen Sie die Abhängigkeit zum Kunden aus.");
+        }
+
+        if (!qualityData.mitarbeiterabhaengigkeit || qualityData.mitarbeiterabhaengigkeit.value === "") {
+            errors.push("Bitte wählen Sie die Abhängigkeit zu den wichtigsten Mitarbeitern aus.");
+        }
+
+        if (!qualityData.lieferantenabhaengigkeit || qualityData.lieferantenabhaengigkeit.value === "") {
+            errors.push("Bitte wählen Sie die Abhängigkeit zu Lieferanten aus.");
+        }
+
+        if (!qualityData.produktdiversifikation || qualityData.produktdiversifikation.value === "") {
+            errors.push("Bitte wählen Sie die Produktdiversifikation aus.");
+        }
+
+        // Abhängigkeit zum Unternehmer
+        if (!qualityData.tagesgeschaeft || qualityData.tagesgeschaeft.value === "") {
+            errors.push("Bitte wählen Sie die Einbindung ins Tagesgeschäft aus.");
+        }
+
+        if (!qualityData.fernbleiben || qualityData.fernbleiben.value === "") {
+            errors.push("Bitte wählen Sie aus, wie lange Sie vom Unternehmen fern bleiben können.");
+        }
+
+        if (!qualityData.absenz || qualityData.absenz.value === "") {
+            errors.push("Bitte wählen Sie die unerwartete Absenz aus.");
+        }
+
+        if (!qualityData.kundenbeziehung || qualityData.kundenbeziehung.value === "") {
+            errors.push("Bitte wählen Sie die Beziehung zu den Kunden aus.");
+        }
+
+        dispatch(setError(errors));
+
+        const valid = errors.length === 0;
+        dispatch(setValidity(valid));
     };
 
     return (
