@@ -30,7 +30,7 @@ const Anlass = (props) => {
 
     const dispatch = useDispatch();
     const isValid = useSelector(state => state.validation.isValid);
-    const selectedOption = useSelector((state) => state.anlass.anlassData.selectedOption);
+    const anlassData = useSelector((state) => state.anlass.anlassData);
 
     const handleRadioChange = (e, { value }) => {
         const selectedOption = radioOptions.find(option => option.value === value);
@@ -42,18 +42,17 @@ const Anlass = (props) => {
             return;
         }
         e.preventDefault();
-        console.log(selectedOption);
     };
 
     useEffect(() => {
-        console.log('anlassData:', selectedOption);
+        console.log('anlassData:', anlassData);
         checkValidity();
-    }, [selectedOption]);
+    }, [anlassData]);
 
     const checkValidity = () => {
         let errors = [];
 
-        if (!selectedOption) {
+        if (!anlassData.selectedOption) {
             errors.push("Bitte wählen Sie eine Option aus.");
         }
 
@@ -84,13 +83,14 @@ const Anlass = (props) => {
                                             fluid
                                             icon
                                             labelPosition="left"
-                                            className={"option-button " + (selectedOption === option.value ? "selected-option" : "")}
+                                            className={"option-button " + (anlassData.selectedOption.value === option.value ? "selected-option" : "")}
                                             onClick={() => handleRadioChange(null, { value: option.value })}
                                             value={option.value}
                                         >
                                             <Icon name={option.icon} />
                                             {option.label}
                                         </Button>
+                                        <p>{anlassData.selectedOption.value}</p>
                                     </Grid.Column>
                                 ))}
                             </Grid.Row>

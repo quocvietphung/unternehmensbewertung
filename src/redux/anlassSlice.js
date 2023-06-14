@@ -11,14 +11,11 @@ const anlassSlice = createSlice({
     initialState,
     reducers: {
         setAnlass: (state, action) => {
-            state.anlassData.selectedOption = action.payload;
-        },
-        clearAnlass: (state) => {
-            state.anlassData.selectedOption = '';
+            state.anlassData = action.payload;
         },
     },
 });
 
-export const { setAnlass, clearAnlass } = anlassSlice.actions;
+export const { setAnlass } = anlassSlice.actions;
 
 export default anlassSlice.reducer;
