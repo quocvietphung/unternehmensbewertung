@@ -6,6 +6,7 @@ import kennzahlenReducer from './kennzahlenSlice';
 import bereinigungReducer from './bereinigungSlice';
 import equityBridgeReducer from './equityBridgeSlice';
 import qualityReducer from './qualitySlice';
+import anlassReducer from './anlassSlice';
 
 export default configureStore({
     reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
         bereinigung: bereinigungReducer,
         equityBridge: equityBridgeReducer,
         quality: qualityReducer,
+        anlass: anlassReducer,
     },
 });

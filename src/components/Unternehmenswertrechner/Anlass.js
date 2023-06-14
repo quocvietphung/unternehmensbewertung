@@ -1,39 +1,47 @@
-import React, { useState } from 'react';
-import { Grid, Header, Divider, Form, Radio, Button, Icon } from 'semantic-ui-react';
+import React, { useEffect } from 'react';
+import { Grid, Header, Divider, Form, Button, Icon } from 'semantic-ui-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setAnlass } from '../../redux/anlassSlice';
 
 const Anlass = (props) => {
     const radioOptions = [
         {
-            value: "Unternehmensverkauf",
-            icon: "dollar sign",
-            label: "Unternehmensverkauf"
+            value: 'Unternehmensverkauf',
+            icon: 'dollar sign',
+            label: 'Unternehmensverkauf',
         },
         {
-            value: "Unternehmenskauf",
-            icon: "shopping cart",
-            label: "Unternehmenskauf"
+            value: 'Unternehmenskauf',
+            icon: 'shopping cart',
+            label: 'Unternehmenskauf',
         },
         {
-            value: "Nachfolgeplanung",
-            icon: "users",
-            label: "Nachfolgeplanung"
+            value: 'Nachfolgeplanung',
+            icon: 'users',
+            label: 'Nachfolgeplanung',
         },
         {
-            value: "Aus Interesse / Akademische Nutzung",
-            icon: "graduation cap",
-            label: "Aus Interesse / Akademische Nutzung"
-        }
+            value: 'Aus Interesse / Akademische Nutzung',
+            icon: 'graduation cap',
+            label: 'Aus Interesse / Akademische Nutzung',
+        },
     ];
 
-    const [selectedOption, setSelectedOption] = useState('');
+    const dispatch = useDispatch();
+    const selectedOption = useSelector((state) => state.anlass.anlassData.selectedOption);
 
-    const handleRadioChange = (e, { value }) => setSelectedOption(value);
+    const handleRadioChange = (e, { value }) => {
+        dispatch(setAnlass({ selectedOption: value }));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // You can work with selectedOption here
         console.log(selectedOption);
-    }
+    };
+
+    useEffect(() => {
+        console.log('anlassData:', selectedOption);
+    }, [selectedOption]);
 
     return (
         <Grid padded className="shared-section anlass">
@@ -54,7 +62,9 @@ const Anlass = (props) => {
                                             fluid
                                             icon
                                             labelPosition="left"
-                                            className={`option-button ${selectedOption === option.value ? 'selected-option' : ''}`}
+                                            className={`option-button ${
+                                                selectedOption === option.value ? 'selected-option' : ''
+                                            }`}
                                             onClick={() => handleRadioChange(null, { value: option.value })}
                                         >
                                             <Icon name={option.icon} />
