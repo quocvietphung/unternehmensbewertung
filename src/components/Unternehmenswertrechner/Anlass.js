@@ -90,7 +90,6 @@ const Anlass = (props) => {
                                             <Icon name={option.icon} />
                                             {option.label}
                                         </Button>
-                                        <p>{anlassData.selectedOption.value}</p>
                                     </Grid.Column>
                                 ))}
                             </Grid.Row>

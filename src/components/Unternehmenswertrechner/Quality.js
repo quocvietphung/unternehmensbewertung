@@ -11,7 +11,7 @@ const Quality = (props) => {
 
     useEffect(() => {
         console.log("qualityData:", qualityData);
-        //checkValidity();
+        checkValidity();
     }, [qualityData]);
 
     const handleWeiterClick = () => {
