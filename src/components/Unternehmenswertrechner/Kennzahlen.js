@@ -58,7 +58,7 @@ const Kennzahlen = (props) => {
     useEffect(() => {
         console.log("prognose:", prognose);
         console.log("kennzahlenData:", kennzahlenData);
-        checkValidity();
+        //checkValidity();
     }, [prognose, kennzahlenData]);
 
     useEffect(() => {

@@ -15,7 +15,7 @@ const Bereinigung = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        checkValidity();
+        //checkValidity();
         console.log("bereinigungData", bereinigungData);
     }, [bereinigungData]);
 
