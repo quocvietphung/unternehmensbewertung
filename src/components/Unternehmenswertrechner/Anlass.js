@@ -84,7 +84,7 @@ const Anlass = (props) => {
                                             fluid
                                             icon
                                             labelPosition="left"
-                                            className={`option-button ${selectedOption === option.value ? 'selected-option' : ''}`}
+                                            className={"option-button " + (selectedOption === option.value ? "selected-option" : "")}
                                             onClick={() => handleRadioChange(null, { value: option.value })}
                                             value={option.value}
                                         >
