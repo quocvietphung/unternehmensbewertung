@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Grid, Header, Divider, Form, Button, Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAnlass } from '../../redux/anlassSlice';
+import {setError, setValidity} from "../../redux/reducers";
 
 const Anlass = (props) => {
     const radioOptions = [
@@ -45,7 +46,23 @@ const Anlass = (props) => {
 
     useEffect(() => {
         console.log('anlassData:', selectedOption);
+        checkValidity();
     }, [selectedOption]);
+
+    const checkValidity = () => {
+        let errors = [];
+
+        if (!selectedOption) {
+            errors.push("Bitte wählen Sie eine Option aus.");
+        }
+
+        dispatch(setError(errors));
+
+        const valid = errors.length === 0;
+        dispatch(setValidity(valid));
+
+        return valid;
+    };
 
     return (
         <Grid padded className="shared-section anlass">
