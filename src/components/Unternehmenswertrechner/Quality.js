@@ -1,9 +1,84 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Header, Divider, Form, Select, Label, Button } from 'semantic-ui-react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setQualityData } from '../../redux/qualitySlice';
+import { setValidity, setError } from '../../redux/reducers';
 
 const Quality = (props) => {
+    const dispatch = useDispatch();
+    const isValid = useSelector(state => state.validation.isValid);
+    const qualityData = useSelector((state) => state.quality.qualityData);
+
+    useEffect(() => {
+        console.log("qualityData:", qualityData);
+        checkValidity();
+    }, [qualityData]);
+
     const handleWeiterClick = () => {
+        if (!isValid) {
+            return;
+        }
+
+        // Pass this info back to the parent when Weiter is clicked
         props.onWeiterClick();
+    };
+
+    const handleQualityChange = (fieldName, value, options) => {
+        const selectedOption = options.find((option) => option.value === value);
+        const text = selectedOption ? selectedOption.text : "";
+
+        dispatch(
+            setQualityData({
+                ...qualityData,
+                [fieldName]: {
+                    value: value,
+                    text: text,
+                },
+            })
+        );
+    };
+
+    const checkValidity = () => {
+        let errors = [];
+
+        // Klumpenrisiken
+        if (!qualityData.kundenabhaengigkeit || qualityData.kundenabhaengigkeit.value === "") {
+            errors.push("Bitte wählen Sie die Abhängigkeit zum Kunden aus.");
+        }
+
+        if (!qualityData.mitarbeiterabhaengigkeit || qualityData.mitarbeiterabhaengigkeit.value === "") {
+            errors.push("Bitte wählen Sie die Abhängigkeit zu den wichtigsten Mitarbeitern aus.");
+        }
+
+        if (!qualityData.lieferantenabhaengigkeit || qualityData.lieferantenabhaengigkeit.value === "") {
+            errors.push("Bitte wählen Sie die Abhängigkeit zu Lieferanten aus.");
+        }
+
+        if (!qualityData.produktdiversifikation || qualityData.produktdiversifikation.value === "") {
+            errors.push("Bitte wählen Sie die Produktdiversifikation aus.");
+        }
+
+        // Abhängigkeit zum Unternehmer
+        if (!qualityData.tagesgeschaeft || qualityData.tagesgeschaeft.value === "") {
+            errors.push("Bitte wählen Sie die Einbindung ins Tagesgeschäft aus.");
+        }
+
+        if (!qualityData.fernbleiben || qualityData.fernbleiben.value === "") {
+            errors.push("Bitte wählen Sie aus, wie lange Sie vom Unternehmen fern bleiben können.");
+        }
+
+        if (!qualityData.absenz || qualityData.absenz.value === "") {
+            errors.push("Bitte wählen Sie die unerwartete Absenz aus.");
+        }
+
+        if (!qualityData.kundenbeziehung || qualityData.kundenbeziehung.value === "") {
+            errors.push("Bitte wählen Sie die Beziehung zu den Kunden aus.");
+        }
+
+        dispatch(setError(errors));
+
+        const valid = errors.length === 0;
+        dispatch(setValidity(valid));
     };
 
     return (
@@ -37,6 +112,8 @@ const Quality = (props) => {
                                             'Das Unternehmen hat einen sehr diversifizierten Kundenstamm und eine schwache Abhängigkeit gegenüber den besten drei Kunden.',
                                     },
                                 ]}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
+                                value={qualityData.kundenabhaengigkeit?.value}
                             />
                         </Form.Field>
                     </Form.Group>
@@ -63,6 +140,8 @@ const Quality = (props) => {
                                         text: 'Die wichtigsten Mitarbeiter wären in unter einer Woche erstetzbar.',
                                     },
                                 ]}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
+                                value={qualityData.mitarbeiterabhaengigkeit?.value}
                             />
                         </Form.Field>
                     </Form.Group>
@@ -89,6 +168,8 @@ const Quality = (props) => {
                                         text: 'Das Unternehmen hat keine Abhängigkeit zu seinen Lieferanten.',
                                     },
                                 ]}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
+                                value={qualityData.lieferantenabhaengigkeit?.value}
                             />
                         </Form.Field>
                     </Form.Group>
@@ -111,6 +192,8 @@ const Quality = (props) => {
                                         text: 'Das Unternehmen ist spezialisiert auf eine Produktkategorie.',
                                     },
                                 ]}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
+                                value={qualityData.produktdiversifikation?.value}
                             />
                         </Form.Field>
                     </Form.Group>
@@ -141,6 +224,8 @@ const Quality = (props) => {
                                         text: 'Der Unternehmer hat kaum Zeit für strategische Fragen, da das Tagesgeschäft einen Großteil seiner Zeit fordert.',
                                     },
                                 ]}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
+                                value={qualityData.tagesgeschaeft?.value}
                             />
                         </Form.Field>
                     </Form.Group>
@@ -159,6 +244,8 @@ const Quality = (props) => {
                                     { value: '1.2', text: '3 Monate' },
                                     { value: '1.5', text: '3 Jahre' },
                                 ]}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
+                                value={qualityData.fernbleiben?.value}
                             />
                         </Form.Field>
                     </Form.Group>
@@ -185,6 +272,8 @@ const Quality = (props) => {
                                         text: 'Eine unerwartete Absenz des Unternehmers von mehreren Monaten wäre sehr schwierig.',
                                     },
                                 ]}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
+                                value={qualityData.absenz?.value}
                             />
                         </Form.Field>
                     </Form.Group>
@@ -211,6 +300,8 @@ const Quality = (props) => {
                                         text: 'Der Unternehmer kennt kaum Kunden persönlich.',
                                     },
                                 ]}
+                                onChange={(e, { name, value, options }) => handleQualityChange(name, value, options)}
+                                value={qualityData.kundenbeziehung?.value}
                             />
                         </Form.Field>
                     </Form.Group>
@@ -229,7 +320,6 @@ const Quality = (props) => {
                             </Button>
                         </div>
                     </Form.Field>
-
                 </Form>
             </Grid.Column>
         </Grid>

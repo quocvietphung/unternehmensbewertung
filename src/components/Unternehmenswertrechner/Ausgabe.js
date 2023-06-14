@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Grid, Header, Icon, Message, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUnternehmenwert } from '../../redux/sectionsSlice';
+import {setBereinigungEbitAverage, setValueForBereinigungEbit} from "../../redux/bereinigungSlice";
 
 const Ausgabe = () => {
     const dispatch = useDispatch();
@@ -10,28 +11,132 @@ const Ausgabe = () => {
     const finishedSections = useSelector((state) => state.sections.sectionData.finishedSections);
     const basisInfoData = useSelector((state) => state.basisInfo.basisInfoData);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
+    const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
+    const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
+    const qualityData = useSelector((state) => state.quality.qualityData);
     const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
-        console.log("unternehmenwert:", unternehmenwert);
-        console.log("finishedSections:", finishedSections);
-        dispatch(setUnternehmenwert(unternehmenwert));
-    }, [unternehmenwert]);
+        calculateBereinigungEbit();
+        const calculatedUnternehmenwert = calculateUnternehmenwert();
+        console.log("unternehmenwert:", calculatedUnternehmenwert);
+        console.log("kennzahlenData:", kennzahlenData);
+        console.log("bereinigungData:", bereinigungData);
+        console.log("equityBridgeData:", equityBridgeData);
+        console.log("qualityData:", qualityData);
+        dispatch(setUnternehmenwert(calculatedUnternehmenwert));
+    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData,qualityData]);
 
-    useEffect(() => {
-        if (finishedSections.includes('basis')) {
-            const calculateUnternehmenwert = () => {
-                const unternehmenwert =
-                    (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue) +
-                    (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue);
-                return unternehmenwert;
-            };
+    const calculateBereinigungEbit = () => {
+        const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
 
-            const unternehmenwert = calculateUnternehmenwert();
-            console.log("unternehmenwert:", unternehmenwert);
-            dispatch(setUnternehmenwert(unternehmenwert));
+        bereinigungData.bereinigungEbit.forEach((item, index) => {
+            if (!kennzahlenData.ebit[index] || !gehalt[index] || !anpassungEbit[index]) {
+                return;
+            }
+
+            const kennzahlenDataEbit = parseFloat(kennzahlenData.ebit[index].value) || 0;
+            const gehaltValue = parseFloat(gehalt[index].value) || 0;
+            const anpassungEbitValue = parseFloat(anpassungEbit[index].value) || 0;
+            const typischGehaltValue = parseFloat(typischGehalt) || 0;
+            const bereinigtesEbitValue = (kennzahlenDataEbit + gehaltValue + anpassungEbitValue) - typischGehaltValue;
+
+            if (bereinigungData.bereinigungEbit[index].value !== bereinigtesEbitValue) {
+                dispatch(setValueForBereinigungEbit({ year: item.year, value: bereinigtesEbitValue }));
+            }
+        });
+
+        const bereinigungEbitValues = bereinigungData.bereinigungEbit.map((item) => parseFloat(item.value) || 0);
+        const bereinigungEbitAverage = bereinigungEbitValues.reduce((sum, value) => sum + value, 0) / bereinigungEbitValues.length;
+
+        if (bereinigungData.bereinigungEbitAverage !== bereinigungEbitAverage) {
+            dispatch(setBereinigungEbitAverage(bereinigungEbitAverage));
         }
-    }, [finishedSections, basisInfoData, kennzahlenData]);
+    };
+
+    const calculateEquityUnternehmenwert = (qualityData, unternehmenwert) => {
+        const {
+            kundenabhaengigkeit,
+            mitarbeiterabhaengigkeit,
+            lieferantenabhaengigkeit,
+            produktdiversifikation,
+            tagesgeschaeft,
+            fernbleiben,
+            absenz,
+            kundenbeziehung
+        } = qualityData;
+
+        const kundenabhaengigkeitValue = parseFloat(kundenabhaengigkeit?.value) || 1;
+        const mitarbeiterabhaengigkeitValue = parseFloat(mitarbeiterabhaengigkeit?.value) || 1;
+        const lieferantenabhaengigkeitValue = parseFloat(lieferantenabhaengigkeit?.value) || 1;
+        const produktdiversifikationValue = parseFloat(produktdiversifikation?.value) || 1;
+        const tagesgeschaeftValue = parseFloat(tagesgeschaeft?.value) || 1;
+        const fernbleibenValue = parseFloat(fernbleiben?.value) || 1;
+        const absenzValue = parseFloat(absenz?.value) || 1;
+        const kundenbeziehungValue = parseFloat(kundenbeziehung?.value) || 1;
+
+        const totalValue = (
+            kundenabhaengigkeitValue +
+            mitarbeiterabhaengigkeitValue +
+            lieferantenabhaengigkeitValue +
+            produktdiversifikationValue +
+            tagesgeschaeftValue +
+            fernbleibenValue +
+            absenzValue +
+            kundenbeziehungValue
+        );
+
+        const averageValue = totalValue / Object.keys(qualityData).length;
+
+        const newUnternehmenwert = unternehmenwert * averageValue;
+
+        console.log("unternehmenwert (equity):", newUnternehmenwert);
+
+        return newUnternehmenwert;
+    };
+
+    const calculateUnternehmenwert = () => {
+        const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);
+        const gewinnSum = gewinnValues.reduce((total, value) => total + value, 0);
+        const gewinnAverage = gewinnSum / gewinnValues.length;
+
+        let unternehmenwert = 0;
+
+        console.log("finishedSections:", finishedSections);
+
+        if (finishedSections.includes('basis')) {
+            const sumEbitUmsatzBasis = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
+                (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
+            unternehmenwert = sumEbitUmsatzBasis * gewinnAverage;
+            console.log("sumEbitUmsatzBasis:", sumEbitUmsatzBasis);
+        }
+
+        if (finishedSections.includes('kennzahlen')) {
+            const sumEbitUmsatzKennzahlen = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
+                (bereinigungData.bereinigungEbitAverage * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
+
+            console.log("sumEbitUmsatzKennzahlen:", sumEbitUmsatzKennzahlen);
+
+            unternehmenwert = sumEbitUmsatzKennzahlen * gewinnAverage;
+            console.log("unternehmenwert (kennzahlen):", unternehmenwert);
+        }
+
+        if (finishedSections.includes('bereinigung')) {
+            console.log("unternehmenwert (aktuell):", unternehmenwert);
+            const bargeldBestand = parseFloat(equityBridgeData.bargeldBestand) || 0;
+            const finanzSchulden = parseFloat(equityBridgeData.finanzSchulden) || 0;
+            unternehmenwert = (unternehmenwert + bargeldBestand) - finanzSchulden;
+            console.log("unternehmenwert (bereinigung):", unternehmenwert);
+        }
+
+        if (finishedSections.includes('equity')) {
+            unternehmenwert = calculateEquityUnternehmenwert(qualityData, unternehmenwert);
+        }
+
+        console.log("unternehmenwert:", unternehmenwert);
+
+        return unternehmenwert;
+    };
 
     const formatValue = (value) => {
         const valueInMillion = value / 1e6;

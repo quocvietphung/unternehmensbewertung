@@ -2,7 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     basisInfoData: {
-        branche: {},
+        branche: {
+            key: "",
+            ebitValue: 0,
+            umsatzValue: 0,
+            text: "Branche auswählen"
+        },
         lage: {
             key: 'städtisch',
             value: 1,

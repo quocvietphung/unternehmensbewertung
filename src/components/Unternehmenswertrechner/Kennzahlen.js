@@ -1,53 +1,115 @@
 import React, { useEffect } from "react";
 import { Checkbox, Label, Grid, Header, Segment, Form, Divider, Button, Radio } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setValidity, setError } from '../../redux/reducers';
 
 import {
     setPrognose,
     setUmsatz,
     setEbit,
-    setGewinnTypisch,
+    setGewinn,
     setAverageUmsatz,
     setAverageEbit,
 } from '../../redux/kennzahlenSlice';
 
+import {setAnpassungEbitValue, setBereinigungEbitValue, setGehaltValue} from "../../redux/bereinigungSlice";
+
 const Kennzahlen = (props) => {
     const dispatch = useDispatch();
+    const isValid = useSelector(state => state.validation.isValid);
     const prognose = useSelector((state) => state.kennzahlen.kennzahlenData.prognose);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
+    const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
 
     const prognose2023 = {
         umsatz: {
             title: "Prognose 2023",
             year: 2023,
-            value: 25000000,
+            value: 25000000
         },
         ebit: {
             title: "Prognose 2023",
             year: 2023,
-            value: 5000000,
+            value: 5000000
         },
         gewinn: {
-            title: "Gewinn 2023",
+            title: "Prognose 2023",
             year: 2023,
-            value: "",
+            type: "",
+            value: null
+        },
+        gehalt: {
+            title: "Gehalt 2023 (Prognose)",
+            year: 2023,
+            value: null
+        },
+        anpassungEbit: {
+            title: "Anpassung 2023 (Prognose)",
+            year: 2023,
+            value: null,
+        },
+        bereinigungEbit: {
+            title: "Bereinigtes EBIT 2023 (Prognose)",
+            year: 2023,
+            value: null,
         },
     };
 
     useEffect(() => {
         console.log("prognose:", prognose);
         console.log("kennzahlenData:", kennzahlenData);
+        checkValidity();
     }, [prognose, kennzahlenData]);
+
+    useEffect(() => {
+        console.log("bereinigungData", bereinigungData);
+    }, [bereinigungData]);
+
+    const checkValidity = () => {
+        let errors = [];
+
+        // Check Umsatz
+        kennzahlenData.umsatz.forEach((item) => {
+            if (item.value < 100000) {
+                errors.push(`Der Umsatz für ${item.year} muss mindestens 100.000 EUR betragen.`);
+            }
+        });
+
+        // Check EBIT
+        kennzahlenData.ebit.forEach((item) => {
+            if (item.value < 50000) {
+                errors.push(`Das EBIT für ${item.year} muss mindestens 50.000 EUR betragen.`);
+            }
+        });
+
+        // Check Gewinn
+        kennzahlenData.gewinn.data.forEach((item) => {
+            if (item.type === "") {
+                const title = item.year === 2023 && prognose ? 'Prognose' : 'Gewinn';
+                errors.push(`Bitte geben Sie für den Gewinntyp für ${title} ${item.year} an.`);
+            }
+        });
+
+        dispatch(setError(errors));
+        const valid = errors.length === 0;
+        dispatch(setValidity(valid));
+    };
 
     const handleCheckboxChange = () => {
         dispatch(setPrognose(!prognose));
         if (!prognose) {
             const newUmsatz = [...kennzahlenData.umsatz, prognose2023.umsatz];
             const newEbit = [...kennzahlenData.ebit, prognose2023.ebit];
-            const newGewinn = [...kennzahlenData.gewinnTypisch.gewinn, prognose2023.gewinn];
+            const newGewinnData = [...kennzahlenData.gewinn.data, prognose2023.gewinn];
+            const initialGehalt = [...bereinigungData.gehalt, prognose2023.gehalt];
+            const initialAnpassungEbit = [...bereinigungData.anpassungEbit, prognose2023.anpassungEbit];
+            const initialBereinigungEbit = [...bereinigungData.bereinigungEbit, prognose2023.bereinigungEbit];
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
-            dispatch(setGewinnTypisch({ ...kennzahlenData.gewinnTypisch, gewinn: newGewinn }));
+            dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
+            dispatch(setGehaltValue(initialGehalt));
+            dispatch(setAnpassungEbitValue(initialAnpassungEbit));
+            dispatch(setBereinigungEbitValue(initialBereinigungEbit));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             const averageEbit = calculateAverage(newEbit, 'ebit');
             dispatch(setAverageUmsatz(averageUmsatz));
@@ -55,10 +117,16 @@ const Kennzahlen = (props) => {
         } else {
             const newUmsatz = kennzahlenData.umsatz.filter((item) => item.year !== 2023);
             const newEbit = kennzahlenData.ebit.filter((item) => item.year !== 2023);
-            const newGewinn = kennzahlenData.gewinnTypisch.gewinn.filter((item) => item.year !== 2023);
+            const newGewinnData = kennzahlenData.gewinn.data.filter((item) => item.year !== 2023);
+            const newGehalt = [...bereinigungData.gehalt.filter(item => item.year !== 2023)];
+            const newAnpassungEbit = [...bereinigungData.anpassungEbit.filter(item => item.year !== 2023)];
+            const newBereinigungEbit = [...bereinigungData.bereinigungEbit.filter(item => item.year !== 2023)];
             dispatch(setUmsatz(newUmsatz));
             dispatch(setEbit(newEbit));
-            dispatch(setGewinnTypisch({ ...kennzahlenData.gewinnTypisch, gewinn: newGewinn }));
+            dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
+            dispatch(setGehaltValue(newGehalt));
+            dispatch(setAnpassungEbitValue(newAnpassungEbit));
+            dispatch(setBereinigungEbitValue(newBereinigungEbit));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             const averageEbit = calculateAverage(newEbit, 'ebit');
             dispatch(setAverageUmsatz(averageUmsatz));
@@ -66,34 +134,31 @@ const Kennzahlen = (props) => {
         }
     };
 
-    const handleChange = (index, type, value) => {
-        if (type === 'umsatz') {
+    const handleChange = (index, category, value) => {
+        if (category === 'umsatz') {
             const newUmsatz = kennzahlenData.umsatz.map((item, i) =>
-                i === index ? { ...item, value } : item
+                i === index ? { ...item, value: value } : item
             );
             console.log("newUmsatz:", newUmsatz);
             dispatch(setUmsatz(newUmsatz));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
             console.log("averageUmsatz:", averageUmsatz);
             dispatch(setAverageUmsatz(averageUmsatz));
-        } else if (type === 'ebit') {
+        } else if (category === 'ebit') {
             const newEbit = kennzahlenData.ebit.map((item, i) =>
-                i === index ? { ...item, value } : item
+                i === index ? { ...item, value: value } : item
             );
             console.log("newEbit:", newEbit);
             dispatch(setEbit(newEbit));
             const averageEbit = calculateAverage(newEbit, 'ebit');
             console.log("averageEbit:", averageEbit);
             dispatch(setAverageEbit(averageEbit));
-        } else if (type === 'gewinnTypisch') {
-            const newGewinnTypisch = {
-                ...kennzahlenData.gewinnTypisch,
-                gewinn: kennzahlenData.gewinnTypisch.gewinn.map((item, i) =>
-                    i === index ? { ...item, value } : item
-                )
-            };
-            console.log("newGewinnTypisch:", newGewinnTypisch);
-            dispatch(setGewinnTypisch(newGewinnTypisch));
+        } else if (category === 'gewinn') {
+            const newGewinnData = kennzahlenData.gewinn.data.map((item, i) =>
+                i === index ? { ...item, type: value.type, value: value.value } : item
+            );
+            console.log("newGewinnData:", newGewinnData);
+            dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
         }
     };
 
@@ -104,7 +169,7 @@ const Kennzahlen = (props) => {
             if (type === 'umsatz') {
                 return setFormattedValue(average);
             } else if (type === 'ebit') {
-                return setFormattedValue(average,);
+                return setFormattedValue(average);
             }
         }
         return 0;
@@ -115,6 +180,11 @@ const Kennzahlen = (props) => {
     };
 
     const handleWeiterClick = () => {
+        if (!isValid) {
+            return;
+        }
+
+        // Pass this info back to the parent when Weiter is clicked
         props.onWeiterClick();
     };
 
@@ -158,8 +228,8 @@ const Kennzahlen = (props) => {
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={(kennzahlenData.umsatz && kennzahlenData.umsatz[index]?.value) || ""}
-                                            readOnly
+                                            value={kennzahlenData.umsatz && kennzahlenData.umsatz[index]?.value}
+                                            onChange={(e) => handleChange(index, 'umsatz', e.target.value)}
                                         />
                                     </Form.Field>
                                 </Form.Group>
@@ -192,8 +262,8 @@ const Kennzahlen = (props) => {
                                     <Form.Field width={3} className="form-input">
                                         <input
                                             type="text"
-                                            value={(kennzahlenData.ebit && kennzahlenData.ebit[index]?.value) || ""}
-                                            readOnly
+                                            value={kennzahlenData.ebit && kennzahlenData.ebit[index]?.value}
+                                            onChange={(e) => handleChange(index, 'ebit', e.target.value)}
                                         />
                                     </Form.Field>
                                 </Form.Group>
@@ -207,22 +277,22 @@ const Kennzahlen = (props) => {
                     <Segment>
                         <Segment.Group horizontal className="segment-group">
                             <Segment></Segment>
-                            {kennzahlenData.gewinnTypisch.options.map((option, index) => (
-                                <Segment key={index} textAlign="center">{option}</Segment>
+                            {kennzahlenData.gewinn.options.map((option, index) => (
+                                <Segment key={index} textAlign="center">{option.type}</Segment>
+
                             ))}
                         </Segment.Group>
-                        {kennzahlenData.gewinnTypisch.gewinn.map((item, index) => (
+                        {kennzahlenData.gewinn.data.map((item, index) => (
                             <Segment.Group horizontal className="segment-group" key={item.title}>
                                 <Segment>{item.title}</Segment>
-                                {kennzahlenData.gewinnTypisch.options.map((option, i) => (
+                                {kennzahlenData.gewinn.options.map((option, i) => (
                                     <Segment textAlign="center" key={i}>
                                         <Form.Field>
                                             <Radio
                                                 className="form-check-input"
                                                 name={`gewinnYears[${index}]`}
-                                                value={option}
-                                                checked={kennzahlenData.gewinnTypisch.gewinn[index]?.value === option}
-                                                onChange={() => handleChange(index, 'gewinnTypisch', option)}
+                                                checked={item.type === option.type}
+                                                onChange={() => handleChange(index, 'gewinn', option)}
                                                 required
                                             />
                                         </Form.Field>
