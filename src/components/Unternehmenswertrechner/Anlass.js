@@ -28,6 +28,7 @@ const Anlass = (props) => {
     ];
 
     const dispatch = useDispatch();
+    const isValid = useSelector(state => state.validation.isValid);
     const selectedOption = useSelector((state) => state.anlass.anlassData.selectedOption);
 
     const handleRadioChange = (e, { value }) => {
@@ -35,6 +36,9 @@ const Anlass = (props) => {
     };
 
     const handleSubmit = (e) => {
+        if (!isValid) {
+            return;
+        }
         e.preventDefault();
         console.log(selectedOption);
     };
