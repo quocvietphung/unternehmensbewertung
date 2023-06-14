@@ -33,7 +33,8 @@ const Anlass = (props) => {
     const selectedOption = useSelector((state) => state.anlass.anlassData.selectedOption);
 
     const handleRadioChange = (e, { value }) => {
-        dispatch(setAnlass({ selectedOption: value }));
+        const selectedOption = radioOptions.find(option => option.value === value);
+        dispatch(setAnlass({ selectedOption }));
     };
 
     const handleSubmit = (e) => {
