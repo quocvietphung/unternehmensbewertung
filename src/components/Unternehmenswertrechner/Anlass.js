@@ -46,7 +46,7 @@ const Anlass = (props) => {
             return;
         }
 
-        navigate('/test');
+        navigate('/result');
     };
 
     useEffect(() => {
