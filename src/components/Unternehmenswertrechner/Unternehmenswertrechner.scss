@@ -30,6 +30,11 @@ $margin-large: 2em;
   justify-content: space-between;
   width: 100%;
 
+  .ertragswert {
+    font-size: 3rem;
+    color: #28a745;
+  }
+
   .Ausgabe {
     margin: 10px 20px !important;
     width: 30%;
@@ -84,11 +89,6 @@ $margin-large: 2em;
           &:last-child {
             margin-right: 0;
           }
-        }
-
-        .ertragswert {
-          font-size: 3rem;
-          color: #28a745;
         }
       }
 

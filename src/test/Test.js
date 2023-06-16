@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './Test.scss';
 
 const Test = () => {
@@ -12,7 +12,7 @@ const Test = () => {
                 <Grid.Column width={6}>
                     <div className="heading-container">
                         <h2 className="heading-title">Der Wert Ihres Unternehmens beträgt:</h2>
-                        <p>{unternehmenswert}</p>
+                        <p className="ertragswert">{unternehmenswert}</p>
                     </div>
                 </Grid.Column>
                 <Grid.Column width={10} className="custom-column">
