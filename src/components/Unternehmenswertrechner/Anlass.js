@@ -3,6 +3,7 @@ import { Grid, Header, Divider, Form, Button, Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAnlass } from '../../redux/anlassSlice';
 import {setError, setValidity} from "../../redux/reducers";
+import { useNavigate } from 'react-router-dom';
 
 const Anlass = (props) => {
     const radioOptions = [
@@ -29,6 +30,7 @@ const Anlass = (props) => {
     ];
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const isValid = useSelector(state => state.validation.isValid);
     const anlassData = useSelector((state) => state.anlass.anlassData);
 
@@ -38,10 +40,13 @@ const Anlass = (props) => {
     };
 
     const handleSubmit = (e) => {
+        e.preventDefault();
+
         if (!isValid) {
             return;
         }
-        e.preventDefault();
+
+        navigate('/test');
     };
 
     useEffect(() => {
