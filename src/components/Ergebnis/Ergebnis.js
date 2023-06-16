@@ -6,13 +6,21 @@ import '../Ergebnis/Ergebnis.scss';
 const Ergebnis = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
+    const formatUnternehmenswert = (unternehmenswert) => {
+        const roundedValue = Math.round(unternehmenswert).toString();
+
+        const formattedValue = roundedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        return formattedValue;
+    }
+
     return (
         <Grid className="enterprise-result">
             <Grid.Row columns={2}>
                 <Grid.Column width={6}>
                     <div className="heading-container">
                         <h2 className="heading-title">Der Wert Ihres Unternehmens beträgt:</h2>
-                        <p className="ertragswert">{unternehmenswert}</p>
+                        <p className="ertragswert">{formatUnternehmenswert(unternehmenswert)} €</p>
                     </div>
                 </Grid.Column>
                 <Grid.Column width={10} className="custom-column">
