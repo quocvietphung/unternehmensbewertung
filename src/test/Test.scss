@@ -1,12 +1,43 @@
-.heading-title {
-  padding: 80px 0 0 200px;
-  color: #FFFFFF !important;
-}
+.custom-grid {
+  padding: 20px;
+  background-color: #f2f2f2;
 
-.custom-column {
-  margin-top: 40px !important;
-  padding-left: 0;
-  background-color: #ffffff; /* Mã màu trắng */
-  max-width: 400px; /* Định cấu hình độ rộng tùy chỉnh, thay đổi theo ý muốn */
-  margin: 0 auto; /* Căn giữa cột trong trường hợp có độ rộng nhỏ hơn max-width */
+  .heading-container {
+    padding: 20px;
+    text-align: center;
+
+    .heading-title {
+      font-size: 24px;
+      color: #333;
+    }
+  }
+
+  .custom-column {
+    max-width: 400px;
+
+    .custom-form {
+      margin-top: 20px;
+
+      .form-field {
+        .form-title {
+          font-size: 20px;
+          color: #666;
+        }
+
+        .form-description {
+          font-size: 16px;
+          color: #999;
+        }
+      }
+
+      .form-input {
+        margin: 10px 0;
+      }
+
+      .form-button {
+        background-color: #4183c4;
+        color: #fff;
+      }
+    }
+  }
 }
