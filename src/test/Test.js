@@ -1,16 +1,18 @@
 import React from 'react';
-import { Grid, Form, Button, Segment } from 'semantic-ui-react';
+import { Grid, Form, Button } from 'semantic-ui-react';
+import { useSelector, useDispatch } from 'react-redux';
 import './Test.scss';
 
 const Test = () => {
-    const unternehmenswert = 'Der Wert Ihres Unternehmens beträgt:';
+    const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     return (
         <Grid className="custom-grid">
             <Grid.Row columns={2}>
                 <Grid.Column width={6}>
                     <div className="heading-container">
-                        <h2 className="heading-title">{unternehmenswert}</h2>
+                        <h2 className="heading-title">Der Wert Ihres Unternehmens beträgt:</h2>
+                        <p>{unternehmenswert}</p>
                     </div>
                 </Grid.Column>
                 <Grid.Column width={10} className="custom-column">

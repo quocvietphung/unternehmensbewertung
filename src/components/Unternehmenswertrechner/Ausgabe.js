@@ -14,7 +14,7 @@ const Ausgabe = () => {
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
     const qualityData = useSelector((state) => state.quality.qualityData);
-    const unternehmenwert = useSelector((state) => state.sections.sectionData.unternehmenswert);
+    const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     useEffect(() => {
         calculateBereinigungEbit();
@@ -25,7 +25,7 @@ const Ausgabe = () => {
         console.log("equityBridgeData:", equityBridgeData);
         console.log("qualityData:", qualityData);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
-    }, [unternehmenwert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData,qualityData]);
+    }, [unternehmenswert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData,qualityData]);
 
     const calculateBereinigungEbit = () => {
         const { gehalt, anpassungEbit, typischGehalt } = bereinigungData;
@@ -166,7 +166,7 @@ const Ausgabe = () => {
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
-            <p className="ertragswert">{formatValue(unternehmenwert)}</p>
+            <p className="ertragswert">{formatValue(unternehmenswert)}</p>
             <Message warning className="warning innacurate-calculation">
                 <p className="my-0">
                     Das ist ein vorläufig berechneter Wert. Füllen Sie weitere Felder aus, um einen genaueren zu Wert zu erhalten.
