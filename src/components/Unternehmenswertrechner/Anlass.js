@@ -31,6 +31,7 @@ const Anlass = (props) => {
     const dispatch = useDispatch();
     const isValid = useSelector(state => state.validation.isValid);
     const anlassData = useSelector((state) => state.anlass.anlassData);
+    const history = useHistory();
 
     const handleRadioChange = (e, { value }) => {
         const selectedOption = radioOptions.find(option => option.value === value);
