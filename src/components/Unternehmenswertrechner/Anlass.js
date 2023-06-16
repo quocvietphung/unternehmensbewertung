@@ -74,7 +74,7 @@ const Anlass = (props) => {
             <Grid.Column>
                 <Header as="h2">6. Anlass für den Unternehmenswertrechner</Header>
                 <Divider />
-                <Form onSubmit={handleSubmit}>
+                <Form>
                     <Header as="h3">
                         Bitte wählen Sie den Anlass der Bewertung aus:
                         <span className="required-mark">*</span>
@@ -107,7 +107,7 @@ const Anlass = (props) => {
                             <Button className="click-back" onClick={props.onZuruckClick}>
                                 Zurück
                             </Button>
-                            <Button primary type="submit">
+                            <Button primary type="submit" primary type="submit" onClick={handleSubmit}>
                                 Bewertung abschließen
                             </Button>
                         </div>
