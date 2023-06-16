@@ -1,14 +1,18 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import './Test.scss';
 
 const Test = () => {
     const unternehmenswert = 'Der Wert Ihres Unternehmens beträgt:';
 
     return (
-        <Header as="h2" className="heading-title">
-            {unternehmenswert}
-        </Header>
+        <Grid>
+            <Grid.Row>
+                <Grid.Column>
+                    <h2 className="heading-title">{unternehmenswert}</h2>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
     );
 };
 
