@@ -29,10 +29,18 @@ const Ergebnis = () => {
                             <h3 className="form-title">
                                 Laden Sie jetzt Ihren persönlichen PDF-Bericht herunter
                             </h3>
-                            <p className="form-description">
-                                Anonym, kostenlos und unverbindlich
-                            </p>
+                            <p className="form-description">Anonym, kostenlos und unverbindlich</p>
                         </Form.Field>
+                        <Form.Input
+                            label="Vorname"
+                            placeholder="Ihr Vorname"
+                            className="form-input"
+                        />
+                        <Form.Input
+                            label="Nachname"
+                            placeholder="Ihr Nachname"
+                            className="form-input"
+                        />
                         <Form.Input
                             label="Ihre E-Mail Adresse"
                             placeholder="Enter your E-Mail adresse"
