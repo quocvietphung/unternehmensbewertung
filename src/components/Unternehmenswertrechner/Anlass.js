@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Grid, Header, Divider, Form, Button, Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAnlass } from '../../redux/anlassSlice';
-import {setError, setValidity} from "../../redux/reducers";
+import { setError, setValidity } from "../../redux/reducers";
 import { useNavigate } from 'react-router-dom';
 
 const Anlass = (props) => {

@@ -1,0 +1,48 @@
+.enterprise-result {
+  margin: 30px !important;
+  border-radius: 30px;
+  background-color: #f2f2f2;
+
+  .heading-container {
+    padding: 20px;
+    text-align: center;
+
+    .heading-title {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .ertragswert {
+      font-size: 3rem;
+      color: #28a745;
+    }
+  }
+
+  .custom-column {
+
+    .custom-form {
+      margin-top: 20px;
+
+      .form-field {
+        .form-title {
+          font-size: 20px;
+          color: #666;
+        }
+
+        .form-description {
+          font-size: 16px;
+          color: #999;
+        }
+      }
+
+      .form-input {
+        margin: 10px 0;
+      }
+
+      .form-button {
+        background-color: #4183c4;
+        color: #fff;
+      }
+    }
+  }
+}

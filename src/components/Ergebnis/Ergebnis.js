@@ -1,12 +1,13 @@
 import React from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
+import '../Ergebnis/Ergebnis.scss';
 
 const Ergebnis = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
 
     return (
-        <Grid className="result">
+        <Grid className="enterprise-result">
             <Grid.Row columns={2}>
                 <Grid.Column width={6}>
                     <div className="heading-container">

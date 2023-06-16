@@ -4,7 +4,7 @@ import Home from '../Home/Home';
 import Unternehmenswertrechner from '../Unternehmenswertrechner/Unternehmenswertrechner';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import Ergebnis from "../Unternehmenswertrechner/Ergebnis";
+import Ergebnis from "../Ergebnis/Ergebnis";
 import Test from "../../test/Test";
 import './App.scss';
 
