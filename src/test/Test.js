@@ -15,12 +15,12 @@ const Test = () => {
 
     return (
         <Grid>
-            <Grid.Row>
-                <Grid.Column width={10}>
+            <Grid.Row columns={2}>
+                <Grid.Column width={6}>
                     <h2 className="heading-title">{unternehmenswert}</h2>
                 </Grid.Column>
-                <Grid.Column>
-                    <Form onSubmit={handleSubmit}>
+                <Grid.Column width={10} className="custom-column">
+                <Form onSubmit={handleSubmit}>
                         <Form.Input
                             label="Name"
                             placeholder="Enter your name"
