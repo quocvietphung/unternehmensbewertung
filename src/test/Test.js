@@ -4,14 +4,6 @@ import './Test.scss';
 
 const Test = () => {
     const unternehmenswert = 'Der Wert Ihres Unternehmens beträgt:';
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-
-    const handleSubmit = () => {
-        // Xử lý dữ liệu khi form được submit
-        console.log(`Name: ${name}`);
-        console.log(`Age: ${age}`);
-    };
 
     return (
         <Grid>
@@ -20,21 +12,17 @@ const Test = () => {
                     <h2 className="heading-title">{unternehmenswert}</h2>
                 </Grid.Column>
                 <Grid.Column width={10} className="custom-column">
-                <Form onSubmit={handleSubmit}>
+                    <Form>
+                        <Form.Field>
+                            <h3>Laden Sie jetzt Ihren persönlichen PDF-Bericht herunter</h3>
+                            <p>Anonym, kostenlos und unverbindlich</p>
+                        </Form.Field>
                         <Form.Input
-                            label="Name"
-                            placeholder="Enter your name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                        <Form.Input
-                            label="Age"
-                            placeholder="Enter your age"
-                            value={age}
-                            onChange={(e) => setAge(e.target.value)}
+                            label="Ihre E-Mail Adresse"
+                            placeholder="Enter your E-Mail adresse"
                         />
                         <Button type="submit" primary>
-                            Submit
+                            Bericht anfragen
                         </Button>
                     </Form>
                 </Grid.Column>
