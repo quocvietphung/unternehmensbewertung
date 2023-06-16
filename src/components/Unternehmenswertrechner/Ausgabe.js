@@ -95,6 +95,20 @@ const Ausgabe = () => {
         return newUnternehmenwert;
     };
 
+    // const calculateAlterWert = (unternehmenwert) => {
+    //     const alter = basisInfoData.alter;
+    //
+    //     if (alter > 1 && alter < 5) {
+    //         unternehmenwert *= 1;
+    //     } else if (alter > 9 && alter < 15) {
+    //         unternehmenwert *= 1,0064;
+    //     } else if (alter > 15 && alter < 25) {
+    //         unternehmenwert *= 1,27;
+    //     }  else if (alter > 9 && alter < 15) {
+    //         unternehmenwert *= 1,0064;
+    //     }
+    // };
+
     const calculateUnternehmenwert = () => {
         const gewinnValues = kennzahlenData.gewinn.data.map((item) => item.value || 0);
         const gewinnSum = gewinnValues.reduce((total, value) => total + value, 0);
