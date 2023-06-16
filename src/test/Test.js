@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
-import './Test.css'; // Import file CSS
+import './Test.scss';
 
 const Test = () => {
     const unternehmenswert = 'Der Wert Ihres Unternehmens beträgt:';
