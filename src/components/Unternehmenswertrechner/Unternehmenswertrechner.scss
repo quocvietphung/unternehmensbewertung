@@ -35,90 +35,6 @@ $margin-large: 2em;
     color: #28a745;
   }
 
-  .Ausgabe {
-    margin: 10px 20px !important;
-    width: 30%;
-    background-color: #f9f9f9;
-    padding: 10px;
-    color: #333;
-    border-radius: 60px;
-    max-height: 65vh;
-
-    .result-inner-wrapper {
-      margin: 40px 40px !important;
-      text-align: center;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 30px;
-      box-sizing: border-box;
-      overflow: auto;
-
-      .intro {
-        margin-top: 10px;
-        text-align: center;
-        color: #007bff;
-      }
-
-      .title {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-        color: #6c757d;
-      }
-
-      .icon {
-        margin-bottom: 10px;
-        color: #17a2b8;
-      }
-
-      .result {
-        display: flex;
-        justify-content: space-between;
-
-        .default,
-        .input-error {
-          font-size: 1.5rem;
-          flex: 1;
-          margin-right: 10px;
-          word-wrap: break-word;
-          color: #dc3545;
-
-          .error-ertragswert{
-            font-size: 1rem;
-          }
-
-          &:last-child {
-            margin-right: 0;
-          }
-        }
-      }
-
-      .warning {
-        &.innacurate-calculation {
-          font-size: 1.2rem;
-        }
-      }
-
-      .error-message {
-        margin-top: 20px;
-        word-wrap: break-word;
-        background-color: #ffc107;
-        color: #fff;
-
-        p {
-          margin-bottom: 10px;
-        }
-
-        &.negative-entry {
-          // Đặt quy tắc cho lớp negative-entry ở đây
-        }
-
-        &.small-entry {
-          display: none; // Áp dụng display: none cho lớp small-entry
-        }
-      }
-    }
-  }
-
   .Eingabe {
     flex: 1;
     margin: 10px 20px 30px 0;
@@ -465,6 +381,134 @@ $margin-large: 2em;
             color: gray;
             font-size: 14px;
           }
+        }
+      }
+    }
+  }
+
+  .Ausgabe {
+    margin: 10px 20px !important;
+    width: 30%;
+    background-color: #f9f9f9;
+    padding: 10px;
+    color: #333;
+    border-radius: 60px;
+    max-height: 65vh;
+
+    .result-inner-wrapper {
+      margin: 40px 40px !important;
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 30px;
+      box-sizing: border-box;
+      overflow: auto;
+
+      .intro {
+        margin-top: 10px;
+        text-align: center;
+        color: #007bff;
+      }
+
+      .title {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #6c757d;
+      }
+
+      .icon {
+        margin-bottom: 10px;
+        color: #17a2b8;
+      }
+
+      .result {
+        display: flex;
+        justify-content: space-between;
+
+        .default,
+        .input-error {
+          font-size: 1.5rem;
+          flex: 1;
+          margin-right: 10px;
+          word-wrap: break-word;
+          color: #dc3545;
+
+          .error-ertragswert{
+            font-size: 1rem;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .warning {
+        &.innacurate-calculation {
+          font-size: 1.2rem;
+        }
+      }
+
+      .error-message {
+        margin-top: 20px;
+        word-wrap: break-word;
+        background-color: #ffc107;
+        color: #fff;
+
+        p {
+          margin-bottom: 10px;
+        }
+
+        &.negative-entry {
+          // Đặt quy tắc cho lớp negative-entry ở đây
+        }
+
+        &.small-entry {
+          display: none; // Áp dụng display: none cho lớp small-entry
+        }
+      }
+    }
+  }
+
+  .result {
+    margin: 30px !important;
+    border-radius: 30px;
+    background-color: #f2f2f2;
+
+    .heading-container {
+      padding: 20px;
+      text-align: center;
+
+      .heading-title {
+        font-size: 24px;
+        color: #333;
+      }
+    }
+
+    .custom-column {
+
+      .custom-form {
+        margin-top: 20px;
+
+        .form-field {
+          .form-title {
+            font-size: 20px;
+            color: #666;
+          }
+
+          .form-description {
+            font-size: 16px;
+            color: #999;
+          }
+        }
+
+        .form-input {
+          margin: 10px 0;
+        }
+
+        .form-button {
+          background-color: #4183c4;
+          color: #fff;
         }
       }
     }
