@@ -388,7 +388,7 @@ $margin-large: 2em;
     padding: 10px;
     color: #333;
     border-radius: 60px;
-    max-height: 85vh;
+    max-height: 65vh;
 
     @media (max-width: 767px) {
       width: 80%;
@@ -438,7 +438,7 @@ $margin-large: 2em;
           }
 
           .error-ertragswert {
-            font-size: 1rem;
+            font-size: 0.8rem;
           }
 
           &:last-child {
