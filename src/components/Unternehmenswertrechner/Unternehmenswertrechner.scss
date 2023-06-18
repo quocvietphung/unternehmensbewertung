@@ -388,7 +388,11 @@ $margin-large: 2em;
     padding: 10px;
     color: #333;
     border-radius: 60px;
-    max-height: 65vh;
+    max-height: 85vh;
+
+    @media (max-width: 767px) {
+      width: 80%;
+    }
 
     .result-inner-wrapper {
       margin: 40px 40px !important;
@@ -433,7 +437,7 @@ $margin-large: 2em;
             color: #28a745;
           }
 
-          .error-ertragswert{
+          .error-ertragswert {
             font-size: 1rem;
           }
 
@@ -466,6 +470,10 @@ $margin-large: 2em;
         &.small-entry {
           display: none; // Áp dụng display: none cho lớp small-entry
         }
+      }
+
+      @media (max-width: 767px) {
+        font-size: 50%; // Giảm cỡ chữ trong .result-inner-wrapper khi bị nén
       }
     }
   }
