@@ -402,6 +402,7 @@ $margin-large: 2em;
       border-radius: 30px;
       box-sizing: border-box;
       overflow: auto;
+      word-wrap: break-word;
 
       .intro {
         margin-top: 10px;
@@ -438,7 +439,7 @@ $margin-large: 2em;
           }
 
           .error-ertragswert {
-            font-size: 0.8vw;
+            font-size: 0.75vw;
           }
 
           &:last-child {
@@ -454,7 +455,7 @@ $margin-large: 2em;
       }
 
       .error-message {
-        font-size: 0.8vw;
+        font-size: 0.72vw;
         margin-top: 20px;
         word-wrap: break-word;
         background-color: #ffc107;
