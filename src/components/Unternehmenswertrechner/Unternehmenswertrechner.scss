@@ -471,10 +471,6 @@ $margin-large: 2em;
           display: none; // Áp dụng display: none cho lớp small-entry
         }
       }
-
-      @media (max-width: 767px) {
-        font-size: 50%; // Giảm cỡ chữ trong .result-inner-wrapper khi bị nén
-      }
     }
   }
 }
