@@ -46,7 +46,6 @@ const Anlass = (props) => {
             return;
         }
 
-        props.onWeiterClick();
         navigate('/result');
     };
 

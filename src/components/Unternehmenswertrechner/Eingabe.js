@@ -99,7 +99,7 @@ const Eingabe = () => {
                     <Anlass
                         sectionName="anlass"
                         onZuruckClick={handleZuruckClick}
-                        onWeiterClick={handleWeiterClick}
+                        onhandleSubmit={handlehandleSubmit}
                         className="shared-section"
                     />
                 ) : null}
