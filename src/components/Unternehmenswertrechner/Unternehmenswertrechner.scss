@@ -416,7 +416,7 @@ $margin-large: 2em;
         margin-top: 5px;
         display: flex;
         justify-content: space-between;
-        padding: 40px;
+        padding: 15px;
         background-color: $color-white;
         border-radius: 30px;
 
@@ -445,6 +445,7 @@ $margin-large: 2em;
 
       .warning {
         &.innacurate-calculation {
+          border-radius: 30px;
           font-size: 1.2rem;
         }
       }
@@ -452,7 +453,7 @@ $margin-large: 2em;
       .error-message {
         font-size: 1.1rem;
         border-radius: 30px;
-        margin-top: 20px;
+        margin-top: 30px;
         word-wrap: break-word;
         background-color: #ffc107;
         color: #fff;
