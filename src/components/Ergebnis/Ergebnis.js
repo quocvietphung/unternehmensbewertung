@@ -15,7 +15,7 @@ const Ergebnis = () => {
     }
 
     return (
-        <Grid className="enterprise-result">
+        <Grid className="test-enterprise-result">
             <Grid.Row columns={2}>
                 <Grid.Column width={6}>
                     <div className="heading-container">
@@ -23,8 +23,8 @@ const Ergebnis = () => {
                         <p className="ertragswert">{formatUnternehmenswert(unternehmenswert)} €</p>
                     </div>
                 </Grid.Column>
-                <Grid.Column width={10} className="custom-column">
-                    <Form className="custom-form">
+                <Grid.Column width={10} className="result-column">
+                    <Form className="result-form">
                         <Form.Field>
                             <h3 className="form-title">
                                 Laden Sie jetzt Ihren persönlichen PDF-Bericht herunter

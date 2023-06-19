@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Ergebnis from "../Ergebnis/Ergebnis";
 import Test from "../../test/Test";
 import './App.scss';
+import PDF from "../../test/PDF";
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
                     <Route path="/unternehmenswert-berechnen" element={<Unternehmenswertrechner/>}/>
                     <Route path="/result" element={<Ergebnis/>}/>
                     <Route path="/test" element={<Test/>}/>
+                    <Route path="/pdf" element={<PDF/>}/>
                 </Routes>
             </div>
             <Footer/>
