@@ -1,13 +1,14 @@
 // Define color variables
 $color-primary: #008000;
 $color-primary-dark: #006400;
-$color-background: #f0f0f0;
+$color-background: rgba(242, 242, 242, 0.8);
 $color-text: #888;
 $color-white: #fff;
 $color-input-bg: #f0f0f0;
 $color-black: black;
 $color-red: #ff0000;
 $color-gold: gold;
+$gray-light: #f0f0f0;
 $shadow-color: rgba(0, 0, 0, 0.1);
 
 // Define padding and margin variables
@@ -48,7 +49,6 @@ $margin-large: 2em;
     }
 
     .nav-wrapper {
-      background-color: $color-background;
       padding: $padding-small $padding-medium * 2;
 
       .nav-item {
@@ -59,7 +59,7 @@ $margin-large: 2em;
         .nav-border {
           height: 4px;
           width: 100%;
-          background-color: $color-black; /* inactive color */
+          background-color: $color-black;
           margin-bottom: $padding-small;
         }
 
@@ -103,7 +103,6 @@ $margin-large: 2em;
         padding: $padding-medium;
         margin: $margin-medium;
         width: 100%;
-        background-color: $color-background;
         border-radius: 20px;
 
         .required-fields-hint {

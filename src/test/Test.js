@@ -15,7 +15,7 @@ const Test = () => {
     }
 
     return (
-        <Grid className="enterprise-result">
+        <Grid className="test-enterprise-result">
             <Grid.Row columns={2}>
                 <Grid.Column width={6}>
                     <div className="heading-container">
