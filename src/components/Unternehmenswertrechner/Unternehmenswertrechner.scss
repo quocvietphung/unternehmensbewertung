@@ -382,14 +382,6 @@ $margin-large: 2em;
   }
 
   .Ausgabe {
-    margin: 10px 20px !important;
-    width: 30%;
-    background-color: #f9f9f9;
-    padding: 10px;
-    color: #333;
-    border-radius: 60px;
-    max-height: 65vh;
-
     @media (max-width: 767px) {
       width: 80%;
     }
@@ -399,10 +391,11 @@ $margin-large: 2em;
       text-align: center;
       padding: 20px;
       background-color: #fff;
-      border-radius: 30px;
+      border-radius: 60px;
       box-sizing: border-box;
       overflow: auto;
       word-wrap: break-word;
+      max-height: 84vh;
 
       .intro {
         margin-top: 10px;
