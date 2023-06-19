@@ -390,33 +390,35 @@ $margin-large: 2em;
       margin: 30px 60px !important;
       text-align: center;
       padding: 20px;
-      background-color: $color-white;
-      border-radius: 60px;
       box-sizing: border-box;
       overflow: auto;
       word-wrap: break-word;
-      max-height: 84vh;
+      max-height: 100%;
 
       .intro {
         margin-top: 10px;
         text-align: center;
-        color: #007bff;
+        color: $color-white;;
       }
 
       .title {
         font-size: 1.5em;
         margin-bottom: 10px;
-        color: #6c757d;
+        color: $color-white;;
       }
 
       .icon {
         margin-bottom: 10px;
-        color: #17a2b8;
+        color: $color-white;;
       }
 
       .result {
+        margin-top: 5px;
         display: flex;
         justify-content: space-between;
+        padding: 40px;
+        background-color: $color-white;
+        border-radius: 30px;
 
         .default,
         .input-error {
