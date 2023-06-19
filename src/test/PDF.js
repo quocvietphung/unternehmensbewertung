@@ -1,7 +1,7 @@
 import React from 'react';
 import { Document, Page, Text, View, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 import { Grid, Button } from 'semantic-ui-react';
-import './pdf.scss';
+import './PDF.scss';
 
 class PDF extends React.Component {
     state = {
