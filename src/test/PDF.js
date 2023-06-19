@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Document, Page, Text, View, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 import { Grid, Button } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
@@ -17,6 +17,11 @@ const PDF = () => {
     const handleClose = () => {
         setIsViewing(false);
     };
+
+    useEffect(() => {
+        console.log('unternehmenswert:', unternehmenswert);
+        console.log('ergebnisData:', ergebnisData);
+    }, [unternehmenswert, ergebnisData]);
 
     const MyDocument = () => (
         <Document>
