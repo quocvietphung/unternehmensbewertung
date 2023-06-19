@@ -402,17 +402,6 @@ $margin-large: 2em;
         font-weight: bold;
       }
 
-      .title {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-        color: $color-white;;
-      }
-
-      .icon {
-        margin-bottom: 10px;
-        color: $color-white;;
-      }
-
       .result {
         margin-top: 5px;
         display: flex;
@@ -428,6 +417,17 @@ $margin-large: 2em;
           margin-right: 10px;
           word-wrap: break-word;
           color: #dc3545;
+
+          .title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #6c757d;
+          }
+
+          .icon {
+            margin-bottom: 10px;
+            color: #17a2b8;
+          }
 
           .ertragswert {
             font-size: 3rem;

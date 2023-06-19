@@ -172,6 +172,10 @@ const Ausgabe = () => {
 
     const resultContent = isValid ? (
         <Grid.Column className="default">
+            <Header as="h3" className="title">
+                vorläufiger Unternehmenswert
+            </Header>
+            <Icon name="arrow down" size="big" className="icon icon-white" />
             <p className="ertragswert">{formatValue(unternehmenswert)}</p>
             <Message warning className="warning innacurate-calculation">
                 <p className="my-0">
@@ -193,10 +197,6 @@ const Ausgabe = () => {
             <Grid.Row className="result-inner-wrapper text-center warning-active">
                 <Grid.Column textAlign="center">
                     <Header as="h2" className="intro">Individuelle Einschätzung Ihres Unternehmens</Header>
-                    <Header as="h3" className="title">
-                        vorläufiger Unternehmenswert
-                    </Header>
-                    <Icon name="arrow down" size="big" className="icon icon-white" />
                     <Grid className="result">
                         {resultContent}
                     </Grid>
