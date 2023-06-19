@@ -419,7 +419,7 @@ $margin-large: 2em;
           color: #dc3545;
 
           .title {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 10px;
             color: #6c757d;
           }
@@ -442,33 +442,33 @@ $margin-large: 2em;
             margin-right: 0;
           }
         }
-      }
 
-      .warning {
-        &.innacurate-calculation {
+        .warning {
+          &.innacurate-calculation {
+            border-radius: 30px;
+            font-size: 1.2rem;
+          }
+        }
+
+        .error-message {
+          font-size: 1.1rem;
           border-radius: 30px;
-          font-size: 1.2rem;
-        }
-      }
+          margin-top: 30px;
+          word-wrap: break-word;
+          background-color: #ffc107;
+          color: #fff;
 
-      .error-message {
-        font-size: 1.1rem;
-        border-radius: 30px;
-        margin-top: 30px;
-        word-wrap: break-word;
-        background-color: #ffc107;
-        color: #fff;
+          p {
+            margin-bottom: 10px;
+          }
 
-        p {
-          margin-bottom: 10px;
-        }
+          &.negative-entry {
+            // Đặt quy tắc cho lớp negative-entry ở đây
+          }
 
-        &.negative-entry {
-          // Đặt quy tắc cho lớp negative-entry ở đây
-        }
-
-        &.small-entry {
-          display: none; // Áp dụng display: none cho lớp small-entry
+          &.small-entry {
+            display: none; // Áp dụng display: none cho lớp small-entry
+          }
         }
       }
     }

@@ -199,28 +199,28 @@ const Ausgabe = () => {
                     <Header as="h2" className="intro">Individuelle Einschätzung Ihres Unternehmens</Header>
                     <Grid className="result">
                         {resultContent}
+                        {!isValid ? (
+                            <Message negative className="error-message negative-entry">
+                                <p>
+                                    Bitte beachten Sie, dass unser Unternehmenswertrechner keine negativen Werte für dieses Feld erlaubt. Für eine individuelle
+                                    Berechnung können Sie gern direkt Kontakt mit uns aufnehmen.
+                                </p>
+                                <Button icon href="mailto:info@everto-consulting.de" title="Jetzt Kontakt aufnehmen">
+                                    <Icon name="mail" />
+                                </Button>
+                            </Message>
+                        ) : (
+                            <Message className="error-message small-entry">
+                                <p>
+                                    Die von Ihnen eingegeben Kennzahlen sind leider zu gering, um einen Unternehmenswert zu berechnen. Für eine individuelle
+                                    Berechnung können Sie gern direkt Kontakt mit uns aufnehmen.
+                                </p>
+                                <Button icon href="mailto:info@everto-consulting.de" title="Jetzt Kontakt aufnehmen">
+                                    <Icon name="mail" />
+                                </Button>
+                            </Message>
+                        )}
                     </Grid>
-                    {!isValid ? (
-                        <Message negative className="error-message negative-entry">
-                            <p>
-                                Bitte beachten Sie, dass unser Unternehmenswertrechner keine negativen Werte für dieses Feld erlaubt. Für eine individuelle
-                                Berechnung können Sie gern direkt Kontakt mit uns aufnehmen.
-                            </p>
-                            <Button icon href="mailto:info@everto-consulting.de" title="Jetzt Kontakt aufnehmen">
-                                <Icon name="mail" />
-                            </Button>
-                        </Message>
-                    ) : (
-                        <Message className="error-message small-entry">
-                            <p>
-                                Die von Ihnen eingegeben Kennzahlen sind leider zu gering, um einen Unternehmenswert zu berechnen. Für eine individuelle
-                                Berechnung können Sie gern direkt Kontakt mit uns aufnehmen.
-                            </p>
-                            <Button icon href="mailto:info@everto-consulting.de" title="Jetzt Kontakt aufnehmen">
-                                <Icon name="mail" />
-                            </Button>
-                        </Message>
-                    )}
                 </Grid.Column>
             </Grid.Row>
         </Grid>
