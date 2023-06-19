@@ -1,25 +1,7 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
-
-const styles = StyleSheet.create({
-    page: {
-        flexDirection: 'row',
-        backgroundColor: '#E4E4E4',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    section: {
-        margin: 10,
-        padding: 10,
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    text: {
-        fontSize: 24,
-        textAlign: 'center',
-    },
-});
+import { Document, Page, Text, View, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import { Grid, Button } from 'semantic-ui-react';
+import './pdf.scss';
 
 class PDF extends React.Component {
     state = {
@@ -30,35 +12,44 @@ class PDF extends React.Component {
         const { isViewing } = this.state;
 
         return (
-            <div>
-                <h1>Tạo và xem PDF</h1>
-                {!isViewing && <button onClick={this.handleView}>Xem PDF</button>}
-                {isViewing && (
-                    <div>
-                        <PDFViewer width={600} height={800}>
-                            <MyDocument />
-                        </PDFViewer>
-                        <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
-                            {({ blob, url, loading, error }) =>
-                                loading ? 'Đang tạo PDF...' : 'Tải xuống PDF'
-                            }
-                        </PDFDownloadLink>
-                    </div>
-                )}
-            </div>
+            <Grid container stackable centered className="grid-container">
+                <Grid.Row>
+                    <Grid.Column>
+                        <h1>Tạo và xem PDF</h1>
+                        {!isViewing && <Button onClick={this.handleView}>Xem PDF</Button>}
+                        {isViewing && (
+                            <div>
+                                <PDFViewer width={600} height={800}>
+                                    <MyDocument />
+                                </PDFViewer>
+                                <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
+                                    {({ blob, url, loading, error }) =>
+                                        loading ? 'Đang tạo PDF...' : 'Tải xuống PDF'
+                                    }
+                                </PDFDownloadLink>
+                                <Button onClick={this.handleClose}>Đóng</Button>
+                            </div>
+                        )}
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
         );
     }
 
     handleView = () => {
         this.setState({ isViewing: true });
     };
+
+    handleClose = () => {
+        this.setState({ isViewing: false });
+    };
 }
 
 const MyDocument = () => (
     <Document>
-        <Page size="A4" style={styles.page}>
-            <View style={styles.section}>
-                <Text style={styles.text}>Hello Nam</Text>
+        <Page size="A4" className="page">
+            <View className="section">
+                <Text className="text">Hello Nam</Text>
             </View>
         </Page>
     </Document>
