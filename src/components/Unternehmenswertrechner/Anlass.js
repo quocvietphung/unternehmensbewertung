@@ -46,6 +46,7 @@ const Anlass = (props) => {
             return;
         }
 
+        props.onAnlassFinish();
         navigate('/result');
     };
 

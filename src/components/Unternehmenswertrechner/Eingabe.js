@@ -41,6 +41,10 @@ const Eingabe = () => {
         }
     };
 
+    const handleAnlassFinish = () => {
+        dispatch(finishSection(sectionData.activeSection));
+    };
+
     useEffect(() => {
         console.log('Active Section:', sectionData.activeSection);
         console.log('Finished Sections:', sectionData.finishedSections);
@@ -99,7 +103,7 @@ const Eingabe = () => {
                     <Anlass
                         sectionName="anlass"
                         onZuruckClick={handleZuruckClick}
-                        onhandleSubmit={handlehandleSubmit}
+                        onAnlassFinish={handleAnlassFinish}
                         className="shared-section"
                     />
                 ) : null}
