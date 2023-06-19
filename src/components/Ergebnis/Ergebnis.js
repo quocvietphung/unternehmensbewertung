@@ -15,6 +15,11 @@ const Ergebnis = () => {
         return formattedValue;
     }
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        dispatch(setErgebnisData({ ...ergebnisData, [name]: value }));
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = {
@@ -54,21 +59,24 @@ const Ergebnis = () => {
                             placeholder="Ihr Vorname"
                             className="form-input"
                             name="firstName"
-                            defaultValue={ergebnisData.firstName}
+                            value={ergebnisData.firstName}
+                            onChange={handleInputChange}
                         />
                         <Form.Input
                             label="Nachname"
                             placeholder="Ihr Nachname"
                             className="form-input"
                             name="lastName"
-                            defaultValue={ergebnisData.lastName}
+                            value={ergebnisData.lastName}
+                            onChange={handleInputChange}
                         />
                         <Form.Input
                             label="Ihre E-Mail Adresse"
                             placeholder="Enter your E-Mail adresse"
                             className="form-input"
                             name="email"
-                            defaultValue={ergebnisData.email}
+                            value={ergebnisData.email}
+                            onChange={handleInputChange}
                         />
                         <Button type="submit" primary className="form-button">
                             Bericht anfragen
