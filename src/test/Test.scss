@@ -1,15 +1,14 @@
 .test-enterprise-result {
   margin: 30px !important;
   border-radius: 30px;
-  background-color: #f2f2f2;
 
   .heading-container {
     padding: 20px;
     text-align: center;
 
     .heading-title {
+      color: white;
       font-size: 24px;
-      color: #333;
     }
 
     .ertragswert {
@@ -18,9 +17,12 @@
     }
   }
 
-  .custom-column {
+  .result-column {
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
 
-    .custom-form {
+    .result-form {
       margin-top: 20px;
 
       .form-field {
@@ -40,6 +42,7 @@
       }
 
       .form-button {
+        margin-top: 10px;
         background-color: #4183c4;
         color: #fff;
       }
