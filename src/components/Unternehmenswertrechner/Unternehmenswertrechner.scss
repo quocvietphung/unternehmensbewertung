@@ -387,7 +387,7 @@ $margin-large: 2em;
     }
 
     .result-inner-wrapper {
-      margin: 40px 40px !important;
+      margin: 30px 60px !important;
       text-align: center;
       padding: 20px;
       background-color: #fff;
@@ -432,7 +432,7 @@ $margin-large: 2em;
           }
 
           .error-ertragswert {
-            font-size: 0.75vw;
+            font-size: 1rem;
           }
 
           &:last-child {
@@ -443,12 +443,13 @@ $margin-large: 2em;
 
       .warning {
         &.innacurate-calculation {
-          font-size: 0.8vw;
+          font-size: 1.2rem;
         }
       }
 
       .error-message {
-        font-size: 0.72vw;
+        font-size: 1.1rem;
+        border-radius: 30px;
         margin-top: 20px;
         word-wrap: break-word;
         background-color: #ffc107;
