@@ -24,18 +24,22 @@ class PDF extends React.Component {
                 <Grid.Row>
                     <Grid.Column>
                         <h1>Create and View PDF</h1>
-                        {!isViewing && <Button onClick={this.handleView}>View PDF</Button>}
+                        {!isViewing && <Button className="button" onClick={this.handleView}>View PDF</Button>}
                         {isViewing && (
                             <div>
-                                <PDFViewer width={600} height={800}>
+                                <PDFViewer className="pdf-viewer" width={600} height={800}>
                                     <MyDocument />
                                 </PDFViewer>
-                                <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
+                                <PDFDownloadLink
+                                    className="pdf-download-link"
+                                    document={<MyDocument />}
+                                    fileName="example.pdf"
+                                >
                                     {({ blob, url, loading, error }) =>
                                         loading ? 'Generating PDF...' : 'Download PDF'
                                     }
                                 </PDFDownloadLink>
-                                <Button onClick={this.handleClose}>Close</Button>
+                                <Button className="close-button" onClick={this.handleClose}>Close</Button>
                             </div>
                         )}
                     </Grid.Column>
@@ -47,9 +51,9 @@ class PDF extends React.Component {
 
 const MyDocument = () => (
     <Document>
-        <Page size="A4">
+        <Page className="page" size="A4">
             <View>
-                <Text>
+                <Text className="text">
                     Python is a popular, powerful, flexible, and easy-to-learn programming language.
                     It has clear and readable syntax, which helps reduce program maintenance costs.
                     Python supports multiple programming paradigms, including object-oriented and
@@ -58,16 +62,16 @@ const MyDocument = () => (
                 </Text>
             </View>
             <View>
-                <Text>
+                <Text className="text">
                     Some key features of Python include: Easy to learn and use, Clear syntax,
                     Large programming community, Powerful and flexible, Supports numerous libraries
                     and extensions, Cross-platform and Multi-paradigm programming.
                 </Text>
             </View>
         </Page>
-        <Page size="A4">
+        <Page className="page" size="A4">
             <View>
-                <Text>
+                <Text className="text">
                     For beginners, Python is an excellent language to start with.
                     It has a low learning curve and comes with a wealth of learning materials and
                     online resources. For experienced programmers, Python provides
@@ -76,7 +80,7 @@ const MyDocument = () => (
                 </Text>
             </View>
             <View>
-                <Text>
+                <Text className="text">
                     Python has many applications, from web development, data analysis, machine learning
                     to software programming and game development. Whether you are looking for a
                     first programming language or a new language to add to your toolkit, Python is

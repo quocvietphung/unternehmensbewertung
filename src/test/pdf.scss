@@ -1,40 +1,36 @@
 .grid-container {
-  margin-top: 40px !important;
+  margin: 40px !important;
   background-color: #E4E4E4;
 
   h1 {
+    font-size: 24px;
     margin-bottom: 20px;
   }
 
-  button {
-    margin-top: 20px;
+  .button {
+    margin-top: 10px;
   }
 }
 
 .pdf-viewer {
-  width: 600px;
-  height: 800px;
+  margin: 40px !important;
+  padding: 10px;
 }
 
-.pdf-download {
-  margin-top: 20px;
+.pdf-download-link {
+  margin-top: 10px;
+}
+
+.close-button {
+  margin-top: 10px;
 }
 
 .page {
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+  margin-bottom: 20px;
 
-.section {
-  padding: 20px;
-  margin: 10px;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-}
-
-.text {
-  font-size: 24px;
-  text-align: center;
+  .text {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
 }
