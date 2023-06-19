@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    ergebnisData: {},
+    ergebnisData: {
+        firstName:"",
+        lastName:"",
+        email:""
+    },
 };
 
 const ergebnisSlice = createSlice({
