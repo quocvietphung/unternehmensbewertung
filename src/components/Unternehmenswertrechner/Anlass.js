@@ -46,6 +46,7 @@ const Anlass = (props) => {
             return;
         }
 
+        props.onWeiterClick();
         navigate('/result');
     };
 
@@ -107,7 +108,7 @@ const Anlass = (props) => {
                             <Button className="click-back" onClick={props.onZuruckClick}>
                                 Zurück
                             </Button>
-                            <Button primary type="submit" primary type="submit" onClick={handleSubmit}>
+                            <Button primary type="submit" onClick={handleSubmit}>
                                 Bewertung abschließen
                             </Button>
                         </div>
