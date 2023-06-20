@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
 import {useDispatch, useSelector} from 'react-redux';
 import './Test.scss';
@@ -9,6 +9,8 @@ const Test = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
     const dispatch = useDispatch();
+    const [isEmailSent, setIsEmailSent] = useState(false);
+    const [emailError, setEmailError] = useState(null);
 
     useEffect(() => {
         // checkValidity();
@@ -43,14 +45,17 @@ const Test = () => {
             body: 'This is a test email.',
         };
 
-        axios.post('http://localhost:3001/send-email', formData)
+        axios
+            .post('http://localhost:3001/send-email', formData)
             .then(response => {
                 console.log('Email sent successfully');
-                // Thực hiện các hành động khác (nếu cần) sau khi gửi email thành công
+                setIsEmailSent(true);
+                setEmailError(null);
             })
             .catch(error => {
                 console.error('Failed to send email:', error);
-                // Xử lý lỗi (nếu cần)
+                setIsEmailSent(false);
+                setEmailError('Failed to send email');
             });
     };
 
@@ -98,6 +103,12 @@ const Test = () => {
                         <Button type="submit" primary className="form-button" onClick={sendEmail}>
                             Bericht anfragen
                         </Button>
+                        {isEmailSent && (
+                            <div className="alert alert-success">Email sent successfully!</div>
+                        )}
+                        {emailError && (
+                            <div className="alert alert-error">Failed to send email. Please try again later.</div>
+                        )}
                     </Form>
                 </Grid.Column>
             </Grid.Row>
