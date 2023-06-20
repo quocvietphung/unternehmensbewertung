@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setErgebnisData } from '../../redux/ergebnisSlice';
@@ -10,7 +10,11 @@ const Ergebnis = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
     const dispatch = useDispatch();
-    const [isPDFGenerated, setIsPDFGenerated] = useState(false);
+
+    useEffect(() => {
+        // checkValidity();
+        console.log("ergebnisData", ergebnisData);
+    }, [ergebnisData]);
 
     const formatUnternehmenswert = (unternehmenswert) => {
         const roundedValue = Math.round(unternehmenswert).toString();
@@ -23,48 +27,6 @@ const Ergebnis = () => {
         dispatch(setErgebnisData({ ...ergebnisData, [name]: value }));
     }
 
-    const generatePDF = () => {
-        setIsPDFGenerated(true);
-    }
-
-    const sendEmail = () => {
-        const serviceId = 'YOUR_SERVICE_ID';
-        const templateId = 'YOUR_TEMPLATE_ID';
-        const userId = 'YOUR_USER_ID';
-
-        const doc = (
-            <Document>
-                <Page>
-                    <View>
-                        <Text>First Name: {ergebnisData.firstName}</Text>
-                        <Text>Last Name: {ergebnisData.lastName}</Text>
-                        <Text>Email: {ergebnisData.email}</Text>
-                        <Text>Unternehmenswert: {unternehmenswert}</Text>
-                    </View>
-                </Page>
-            </Document>
-        );
-
-        const pdfBlob = doc.toBlob();
-
-        emailjs.send(serviceId, templateId, {
-            to_email: ergebnisData.email,
-            from_email: 'YOUR_FROM_EMAIL',
-            subject: 'Your PDF Report',
-            message: 'Attached is your PDF report.',
-        }, {
-            'attachment.pdf': pdfBlob,
-        }, userId)
-            .then(() => {
-                console.log('Email sent successfully');
-                // Xử lý sau khi gửi email thành công
-            })
-            .catch((error) => {
-                console.error('Email sending failed:', error);
-                // Xử lý khi gửi email thất bại
-            });
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = {
@@ -73,7 +35,6 @@ const Ergebnis = () => {
             email: e.target.email.value,
         };
         dispatch(setErgebnisData(formData));
-        generatePDF();
     }
 
     return (
@@ -121,9 +82,6 @@ const Ergebnis = () => {
                             Bericht anfragen
                         </Button>
                     </Form>
-                    {isPDFGenerated && (
-                        <Button onClick={sendEmail}>Send Email with PDF</Button>
-                    )}
                 </Grid.Column>
             </Grid.Row>
         </Grid>
