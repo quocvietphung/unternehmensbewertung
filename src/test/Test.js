@@ -6,7 +6,7 @@ import { setErgebnisData } from '../redux/ergebnisSlice';
 import axios from 'axios';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
-const Test = () => {
+const Ergebnis = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
     const dispatch = useDispatch();
@@ -115,7 +115,7 @@ const Test = () => {
     );
 };
 
-const TestWithSnackbar = () => (
+const Test = () => (
     <SnackbarProvider
         maxSnack={3}
         anchorOrigin={{
@@ -124,8 +124,8 @@ const TestWithSnackbar = () => (
         }}
         autoHideDuration={5000}
     >
-        <Test />
+        <Ergebnis />
     </SnackbarProvider>
 );
 
-export default TestWithSnackbar;
+export default Test;
