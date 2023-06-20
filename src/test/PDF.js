@@ -50,6 +50,10 @@ const PDF = () => {
             to: 'quocvietphung1993@gmail.com',
             subject: 'Your PDF',
             body: 'Please find the PDF attached.',
+            attachments: [{
+                filename: 'test.pdf',
+                path: '/Users/soaica/git/unternehmensbewertung/src/pdf/test.pdf' // Đường dẫn tới tệp PDF cụ thể
+            }]
         };
 
         axios.post('http://localhost:3001/send-email', data)

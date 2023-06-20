@@ -43,6 +43,10 @@ const Ergebnis = () => {
             to: ergebnisData.email,
             subject: 'Test email',
             body: 'This is a test email.',
+            attachments: [{
+                filename: 'test.pdf',
+                path: '/Users/soaica/git/unternehmensbewertung/src/pdf/test.pdf'
+            }]
         };
 
         axios
