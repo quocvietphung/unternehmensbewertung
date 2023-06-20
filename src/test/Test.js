@@ -3,6 +3,7 @@ import { Grid, Form, Button } from 'semantic-ui-react';
 import {useDispatch, useSelector} from 'react-redux';
 import './Test.scss';
 import {setErgebnisData} from "../redux/ergebnisSlice";
+import axios from 'axios';
 
 const Test = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
@@ -34,6 +35,24 @@ const Test = () => {
         };
         dispatch(setErgebnisData(formData));
     }
+
+    const sendEmail = () => {
+        const formData = {
+            to: ergebnisData.email,
+            subject: 'Test email',
+            body: 'This is a test email.',
+        };
+
+        axios.post('http://localhost:3001/send-email', formData)
+            .then(response => {
+                console.log('Email sent successfully');
+                // Thực hiện các hành động khác (nếu cần) sau khi gửi email thành công
+            })
+            .catch(error => {
+                console.error('Failed to send email:', error);
+                // Xử lý lỗi (nếu cần)
+            });
+    };
 
     return (
         <Grid className="test-enterprise-result">
@@ -76,7 +95,7 @@ const Test = () => {
                             value={ergebnisData.email}
                             onChange={handleInputChange}
                         />
-                        <Button type="submit" primary className="form-button">
+                        <Button type="submit" primary className="form-button" onClick={sendEmail}>
                             Bericht anfragen
                         </Button>
                     </Form>
