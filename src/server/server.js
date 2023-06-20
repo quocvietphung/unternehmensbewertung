@@ -1,6 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const port = 3001;
@@ -22,11 +23,19 @@ app.post('/send-email', (req, res) => {
         }
     });
 
+    const pdfPath = path.join(__dirname, '..', 'pdf', 'test.pdf');
+
     const mailOptions = {
         from: 'solarrechner@sternsystems.de',
         to: to,
         subject: subject,
-        text: body
+        text: body,
+        attachments: [
+            {
+                filename: 'test.pdf',
+                path: pdfPath
+            }
+        ]
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
