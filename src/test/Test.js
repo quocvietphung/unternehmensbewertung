@@ -71,15 +71,21 @@ const Ergebnis = () => {
             <Grid.Row columns={2}>
                 <Grid.Column width={6}>
                     <div className="heading-container">
-                        <h2 className="heading-title">Der Wert Ihres Unternehmens beträgt:</h2>
+                        <h2 className="heading-title">
+                            Der Wert Ihres Unternehmens beträgt:
+                        </h2>
                         <p className="ertragswert">{formatUnternehmenswert(unternehmenswert)} €</p>
                     </div>
                 </Grid.Column>
                 <Grid.Column width={10} className="result-column">
                     <Form className="result-form" onSubmit={handleSubmit}>
                         <Form.Field>
-                            <h3 className="form-title">Laden Sie jetzt Ihren persönlichen PDF-Bericht herunter</h3>
-                            <p className="form-description">Anonym, kostenlos und unverbindlich</p>
+                            <h3 className="form-title">
+                                Laden Sie jetzt Ihren persönlichen PDF-Bericht herunter
+                            </h3>
+                            <p className="form-description">
+                                Anonym, kostenlos und unverbindlich
+                            </p>
                         </Form.Field>
                         <Form.Input
                             label="Vorname"
@@ -99,7 +105,7 @@ const Ergebnis = () => {
                         />
                         <Form.Input
                             label="Ihre E-Mail Adresse"
-                            placeholder="Enter your E-Mail adresse"
+                            placeholder="Geben Sie Ihre E-Mail Adresse ein"
                             className="form-input"
                             name="email"
                             value={ergebnisData.email}

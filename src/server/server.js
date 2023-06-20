@@ -1,7 +1,6 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
 const port = 3001;
@@ -13,7 +12,7 @@ app.use(cors({
 app.use(express.json());
 
 app.post('/send-email', (req, res) => {
-    const { to, subject, body } = req.body;
+    const { to, subject, body, attachments } = req.body;
 
     const transporter = nodemailer.createTransport({
         host: 'smtp.ionos.de',
@@ -23,19 +22,19 @@ app.post('/send-email', (req, res) => {
         }
     });
 
-    const pdfPath = path.join(__dirname, '..', 'pdf', 'test.pdf');
+    // We need to format the attachments in the format that nodemailer expects
+    const formattedAttachments = attachments.map((attachment) => ({
+        filename: attachment.filename,
+        path: attachment.path,
+        contentType: 'application/pdf',
+    }));
 
     const mailOptions = {
         from: 'solarrechner@sternsystems.de',
         to: to,
         subject: subject,
         text: body,
-        attachments: [
-            {
-                filename: 'test.pdf',
-                path: pdfPath
-            }
-        ]
+        attachments: formattedAttachments
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
