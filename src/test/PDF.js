@@ -45,47 +45,57 @@ const PDF = () => {
         </Document>
     );
 
-    const sendEmail = () => {
-        const data = {
-            to: 'quocvietphung1993@gmail.com',
-            subject: 'Your PDF',
-            body: 'Please find the PDF attached.',
-            attachments: [{
-                filename: 'test.pdf',
-                path: '/Users/soaica/git/unternehmensbewertung/src/pdf/test.pdf' // Đường dẫn tới tệp PDF cụ thể
-            }]
-        };
+    const savePdf = () => {
+        return new Promise(async (resolve, reject) => {
+            const blob = await pdf(<MyDocument />).toBlob();
 
-        axios.post('http://localhost:3001/send-email', data)
-            .then(response => {
-                console.log('Email sent:', response.data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function() {
+                const base64data = reader.result;
+
+                const data = {
+                    filename: 'example.pdf',
+                    pdfData: base64data
+                };
+
+                axios.post('http://localhost:3001/save-pdf', data)
+                    .then(response => {
+                        console.log('PDF saved:', response.data);
+                        resolve();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        reject(error);
+                    });
+            };
+        });
     };
 
-    const savePdf = async () => {
-        const blob = await pdf(<MyDocument />).toBlob();
+    const sendEmail = () => {
+        savePdf()
+            .then(() => {
+                const data = {
+                    to: 'quocvietphung1993@gmail.com',
+                    subject: 'Your PDF',
+                    body: 'Please find the PDF attached.',
+                    attachments: [{
+                        filename: 'example.pdf',
+                        path: '/Users/soaica/git/unternehmensbewertung/src/pdf/example.pdf'
+                    }]
+                };
 
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = function() {
-            const base64data = reader.result;
-
-            const data = {
-                filename: 'example.pdf',
-                pdfData: base64data
-            };
-
-            axios.post('http://localhost:3001/save-pdf', data)
-                .then(response => {
-                    console.log('PDF saved:', response.data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
+                axios.post('http://localhost:3001/send-email', data)
+                    .then(response => {
+                        console.log('Email sent:', response.data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
 
     return (
