@@ -2,8 +2,6 @@ import React, {useEffect, useState} from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setErgebnisData } from '../../redux/ergebnisSlice';
-import { Document, Page, Text, View, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
-import emailjs from 'emailjs-com';
 import '../Ergebnis/Ergebnis.scss';
 
 const Ergebnis = () => {
