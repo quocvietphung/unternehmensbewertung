@@ -3,6 +3,7 @@ import { Document, Page, Text, View, PDFViewer, PDFDownloadLink } from '@react-p
 import { Grid, Button } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import './PDF.scss';
+import axios from "axios";
 
 const PDF = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
@@ -49,22 +50,11 @@ const PDF = () => {
             to: 'quocvietphung1993@gmail.com',
             subject: 'Your PDF',
             body: 'Please find the PDF attached.',
-            attachments: [{
-                filename: 'test.pdf',
-                path: 'path/to/example.pdf' // Thay đổi đường dẫn tới tệp PDF thật của bạn
-            }]
         };
 
-        fetch('/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log('Email sent:', result);
+        axios.post('http://localhost:3001/send-email', data)
+            .then(response => {
+                console.log('Email sent:', response.data);
             })
             .catch(error => {
                 console.error('Error:', error);

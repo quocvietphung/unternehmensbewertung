@@ -12,7 +12,7 @@ app.use(cors({
 app.use(express.json());
 
 app.post('/send-email', (req, res) => {
-    const { to, subject, body, attachments } = req.body;
+    const { to, subject, body3 } = req.body;
 
     const transporter = nodemailer.createTransport({
         host: 'smtp.ionos.de',
@@ -23,18 +23,17 @@ app.post('/send-email', (req, res) => {
     });
 
     // We need to format the attachments in the format that nodemailer expects
-    const formattedAttachments = attachments.map((attachment) => ({
-        filename: attachment.filename,
-        path: attachment.path,
-        contentType: 'application/pdf',
-    }));
+    // const formattedAttachments = attachments.map((attachment) => ({
+    //     filename: attachment.filename,
+    //     path: attachment.path,
+    //     contentType: 'application/pdf',
+    // }));
 
     const mailOptions = {
         from: 'solarrechner@sternsystems.de',
         to: to,
         subject: subject,
         text: body,
-        attachments: formattedAttachments
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
