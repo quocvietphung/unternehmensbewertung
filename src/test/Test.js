@@ -116,7 +116,6 @@ const Test = () => {
                             autoHideDuration={5000}
                             onClose={handleSnackbarClose}
                             message={snackbarMessage}
-                            className="custom-snackbar" // Thêm lớp CSS vào đây
                         />
                     </Form>
                 </Grid.Column>
