@@ -111,14 +111,14 @@ const Test = () => {
                         <Button type="submit" primary className="form-button">
                             Bericht anfragen
                         </Button>
+                        <Snackbar
+                            open={isSnackbarOpen}
+                            autoHideDuration={5000}
+                            onClose={handleSnackbarClose}
+                            message={snackbarMessage}
+                            className="custom-snackbar" // Thêm lớp CSS vào đây
+                        />
                     </Form>
-                    <Snackbar
-                        open={isSnackbarOpen}
-                        autoHideDuration={5000}
-                        onClose={handleSnackbarClose}
-                        message={snackbarMessage}
-                    />
-
                 </Grid.Column>
             </Grid.Row>
         </Grid>
