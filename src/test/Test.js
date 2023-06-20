@@ -40,7 +40,7 @@ const Test = () => {
 
     const sendEmail = () => {
         const formData = {
-            to: 'quocvietphung1993@gmail.com',
+            to: ergebnisData.email,
             subject: 'Test email',
             body: 'This is a test email.',
         };
