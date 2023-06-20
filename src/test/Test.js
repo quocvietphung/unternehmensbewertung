@@ -116,6 +116,7 @@ const Test = () => {
                             autoHideDuration={5000}
                             onClose={handleSnackbarClose}
                             message={snackbarMessage}
+                            style={{ marginBottom:'30px', top: '0.2rem', left: 'calc(100% - 25rem)' }}
                         />
                     </Form>
                 </Grid.Column>
