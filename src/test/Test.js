@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Test.scss';
