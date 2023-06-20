@@ -4,17 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Test.scss';
 import { setErgebnisData } from '../redux/ergebnisSlice';
 import axios from 'axios';
+import Snackbar from '@mui/material/Snackbar';
 
 const Test = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
     const dispatch = useDispatch();
-    const [isEmailSent, setIsEmailSent] = useState(false);
-    const [emailError, setEmailError] = useState(null);
+    const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
 
     useEffect(() => {
         console.log('ergebnisData', ergebnisData);
-    });
+    }, [ergebnisData]);
 
     const formatUnternehmenswert = (unternehmenswert) => {
         const roundedValue = Math.round(unternehmenswert).toString();
@@ -51,14 +52,21 @@ const Test = () => {
                 console.log('Request:', response.config);
                 console.log('Response:', response.data);
                 console.log('Email sent successfully');
-                setIsEmailSent(true);
-                setEmailError(null);
+                showSnackbar('Email sent successfully!');
             })
             .catch((error) => {
                 console.error('Failed to send email:', error);
-                setIsEmailSent(false);
-                setEmailError('Failed to send email');
+                showSnackbar('Failed to send email. Please try again later.');
             });
+    };
+
+    const handleSnackbarClose = () => {
+        setIsSnackbarOpen(false);
+    };
+
+    const showSnackbar = (message) => {
+        setSnackbarMessage(message);
+        setIsSnackbarOpen(true);
     };
 
     return (
@@ -103,11 +111,14 @@ const Test = () => {
                         <Button type="submit" primary className="form-button">
                             Bericht anfragen
                         </Button>
-                        {isEmailSent && <div className="alert alert-success">Email sent successfully!</div>}
-                        {emailError && (
-                            <div className="alert alert-error">Failed to send email. Please try again later.</div>
-                        )}
                     </Form>
+                    <Snackbar
+                        open={isSnackbarOpen}
+                        autoHideDuration={5000}
+                        onClose={handleSnackbarClose}
+                        message={snackbarMessage}
+                    />
+
                 </Grid.Column>
             </Grid.Row>
         </Grid>
