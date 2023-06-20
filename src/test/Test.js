@@ -3,6 +3,7 @@ import { Grid, Form, Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Test.scss';
 import { setErgebnisData } from '../redux/ergebnisSlice';
+import { Document, Page, Text, View, PDFViewer, PDFDownloadLink, pdf } from '@react-pdf/renderer';
 import axios from 'axios';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
@@ -27,6 +28,55 @@ const Ergebnis = () => {
         dispatch(setErgebnisData({ ...ergebnisData, [name]: value }));
     };
 
+    const MyDocument = () => (
+        <Document>
+            <Page className="page" size="A4">
+                <View>
+                    <Text className="text" style={{ fontSize: 15, margin: 20 }}>
+                        First Name: {ergebnisData.firstName}
+                    </Text>
+                    <Text className="text" style={{ fontSize: 15, margin: 20 }}>
+                        Last Name: {ergebnisData.lastName}
+                    </Text>
+                    <Text className="text" style={{ fontSize: 15, margin: 20 }}>
+                        Email: {ergebnisData.email}
+                    </Text>
+                    <Text className="text" style={{ fontSize: 15, margin: 20 }}>
+                        Unternehmenswert: {unternehmenswert}
+                    </Text>
+                </View>
+            </Page>
+        </Document>
+    );
+
+    const savePdf = () => {
+        return new Promise(async (resolve, reject) => {
+            const blob = await pdf(<MyDocument />).toBlob();
+
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function() {
+                const base64data = reader.result;
+
+                const data = {
+                    filename: 'example.pdf',
+                    pdfData: base64data
+                };
+
+                axios.post('http://localhost:3001/save-pdf', data)
+                    .then(response => {
+                        console.log('PDF saved:', response.data);
+                        resolve();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        reject(error);
+                    });
+            };
+        });
+    };
+
+// ...
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = {
@@ -39,27 +89,33 @@ const Ergebnis = () => {
     };
 
     const sendEmail = () => {
-        const formData = {
-            to: ergebnisData.email,
-            subject: 'Test email',
-            body: 'This is a test email.',
-            attachments: [{
-                filename: 'test.pdf',
-                path: '/Users/soaica/git/unternehmensbewertung/src/pdf/test.pdf'
-            }]
-        };
+        savePdf()
+            .then(() => {
+                const formData = {
+                    to: ergebnisData.email,
+                    subject: 'Test email',
+                    body: 'This is a test email.',
+                    attachments: [{
+                        filename: 'example.pdf',
+                        path: '/Users/soaica/git/unternehmensbewertung/src/pdf/example.pdf'
+                    }]
+                };
 
-        axios
-            .post('http://localhost:3001/send-email', formData)
-            .then((response) => {
-                console.log('Request:', response.config);
-                console.log('Response:', response.data);
-                console.log('Email sent successfully');
-                showSnackbar('Email sent successfully!');
+                axios
+                    .post('http://localhost:3001/send-email', formData)
+                    .then((response) => {
+                        console.log('Request:', response.config);
+                        console.log('Response:', response.data);
+                        console.log('Email sent successfully');
+                        showSnackbar('Email sent successfully!');
+                    })
+                    .catch((error) => {
+                        console.error('Failed to send email:', error);
+                        showSnackbar('Failed to send email. Please try again later.');
+                    });
             })
             .catch((error) => {
-                console.error('Failed to send email:', error);
-                showSnackbar('Failed to send email. Please try again later.');
+                console.error('Error:', error);
             });
     };
 
