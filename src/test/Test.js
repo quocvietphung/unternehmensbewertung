@@ -62,7 +62,7 @@ const Ergebnis = () => {
     const showSnackbar = (message) => {
         enqueueSnackbar(message, {
             variant: message.includes('successfully') ? 'success' : 'error',
-            autoHideDuration: 5000,
+            autoHideDuration: 2000,
         });
     };
 
@@ -122,7 +122,7 @@ const Test = () => (
             vertical: 'top',
             horizontal: 'right',
         }}
-        autoHideDuration={5000}
+        autoHideDuration={2000}
     >
         <Ergebnis />
     </SnackbarProvider>
