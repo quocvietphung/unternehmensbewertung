@@ -12,7 +12,7 @@ app.use(cors({
 app.use(express.json());
 
 app.post('/send-email', (req, res) => {
-    const { to, subject, body3 } = req.body;
+    const { to, subject, body } = req.body;
 
     const transporter = nodemailer.createTransport({
         host: 'smtp.ionos.de',
