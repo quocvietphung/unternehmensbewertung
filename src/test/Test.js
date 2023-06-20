@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './Test.scss';
-import {setErgebnisData} from "../redux/ergebnisSlice";
+import { setErgebnisData } from '../redux/ergebnisSlice';
 import axios from 'axios';
 
 const Test = () => {
@@ -13,20 +13,19 @@ const Test = () => {
     const [emailError, setEmailError] = useState(null);
 
     useEffect(() => {
-        // checkValidity();
-        console.log("ergebnisData", ergebnisData);
-    }, [ergebnisData]);
+        console.log('ergebnisData', ergebnisData);
+    });
 
     const formatUnternehmenswert = (unternehmenswert) => {
         const roundedValue = Math.round(unternehmenswert).toString();
-        const formattedValue = roundedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        const formattedValue = roundedValue.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
         return formattedValue;
-    }
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         dispatch(setErgebnisData({ ...ergebnisData, [name]: value }));
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,23 +35,26 @@ const Test = () => {
             email: e.target.email.value,
         };
         dispatch(setErgebnisData(formData));
-    }
+        sendEmail();
+    };
 
     const sendEmail = () => {
         const formData = {
-            to: ergebnisData.email,
+            to: 'quocvietphung1993@gmail.com',
             subject: 'Test email',
             body: 'This is a test email.',
         };
 
         axios
             .post('http://localhost:3001/send-email', formData)
-            .then(response => {
+            .then((response) => {
+                console.log('Request:', response.config);
+                console.log('Response:', response.data);
                 console.log('Email sent successfully');
                 setIsEmailSent(true);
                 setEmailError(null);
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error('Failed to send email:', error);
                 setIsEmailSent(false);
                 setEmailError('Failed to send email');
@@ -71,9 +73,7 @@ const Test = () => {
                 <Grid.Column width={10} className="result-column">
                     <Form className="result-form" onSubmit={handleSubmit}>
                         <Form.Field>
-                            <h3 className="form-title">
-                                Laden Sie jetzt Ihren persönlichen PDF-Bericht herunter
-                            </h3>
+                            <h3 className="form-title">Laden Sie jetzt Ihren persönlichen PDF-Bericht herunter</h3>
                             <p className="form-description">Anonym, kostenlos und unverbindlich</p>
                         </Form.Field>
                         <Form.Input
@@ -100,12 +100,10 @@ const Test = () => {
                             value={ergebnisData.email}
                             onChange={handleInputChange}
                         />
-                        <Button type="submit" primary className="form-button" onClick={sendEmail}>
+                        <Button type="submit" primary className="form-button">
                             Bericht anfragen
                         </Button>
-                        {isEmailSent && (
-                            <div className="alert alert-success">Email sent successfully!</div>
-                        )}
+                        {isEmailSent && <div className="alert alert-success">Email sent successfully!</div>}
                         {emailError && (
                             <div className="alert alert-error">Failed to send email. Please try again later.</div>
                         )}
