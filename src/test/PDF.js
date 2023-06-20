@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Document, Page, Text, View, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import { Document, Page, Text, View, PDFViewer, PDFDownloadLink, pdf } from '@react-pdf/renderer';
 import { Grid, Button } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import './PDF.scss';
@@ -65,6 +65,29 @@ const PDF = () => {
             });
     };
 
+    const savePdf = async () => {
+        const blob = await pdf(<MyDocument />).toBlob();
+
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = function() {
+            const base64data = reader.result;
+
+            const data = {
+                filename: 'example.pdf',
+                pdfData: base64data
+            };
+
+            axios.post('http://localhost:3001/save-pdf', data)
+                .then(response => {
+                    console.log('PDF saved:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    };
+
     return (
         <Grid container stackable centered className="grid-container">
             <Grid.Row>
@@ -73,6 +96,7 @@ const PDF = () => {
                     {!isViewing && (
                         <div>
                             <Button className="button" onClick={handleView}>View PDF</Button>
+                            <Button className="button" onClick={savePdf}>Save PDF</Button>
                             <Button className="button" onClick={sendEmail}>Send via Email</Button>
                         </div>
                     )}
