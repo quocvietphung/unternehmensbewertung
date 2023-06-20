@@ -76,7 +76,6 @@ const Ergebnis = () => {
         });
     };
 
-// ...
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = {
