@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Test.scss';
 import { setErgebnisData } from '../redux/ergebnisSlice';
 import axios from 'axios';
-import Snackbar from '@mui/material/Snackbar';
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
 const Test = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
     const dispatch = useDispatch();
-    const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
-    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         console.log('ergebnisData', ergebnisData);
@@ -60,13 +59,11 @@ const Test = () => {
             });
     };
 
-    const handleSnackbarClose = () => {
-        setIsSnackbarOpen(false);
-    };
-
     const showSnackbar = (message) => {
-        setSnackbarMessage(message);
-        setIsSnackbarOpen(true);
+        enqueueSnackbar(message, {
+            variant: message.includes('successfully') ? 'success' : 'error',
+            autoHideDuration: 5000,
+        });
     };
 
     return (
@@ -111,13 +108,6 @@ const Test = () => {
                         <Button type="submit" primary className="form-button">
                             Bericht anfragen
                         </Button>
-                        <Snackbar
-                            open={isSnackbarOpen}
-                            autoHideDuration={5000}
-                            onClose={handleSnackbarClose}
-                            message={snackbarMessage}
-                            style={{ marginBottom:'30px', top: '0.2rem', left: 'calc(100% - 25rem)' }}
-                        />
                     </Form>
                 </Grid.Column>
             </Grid.Row>
@@ -125,4 +115,17 @@ const Test = () => {
     );
 };
 
-export default Test;
+const TestWithSnackbar = () => (
+    <SnackbarProvider
+        maxSnack={3}
+        anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+        }}
+        autoHideDuration={5000}
+    >
+        <Test />
+    </SnackbarProvider>
+);
+
+export default TestWithSnackbar;
