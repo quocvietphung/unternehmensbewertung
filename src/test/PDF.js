@@ -106,18 +106,18 @@ const PDF = () => {
         },
         tableCell: {
             margin: 'auto',
-            padding: 10, // increase padding
-            fontSize: 12, // increase font size
+            padding: 10,
+            fontSize: 12,
         },
         tableCol: {
-            width: '50%', // example for 2 columns
+            width: '50%',
             borderStyle: 'solid',
             borderWidth: 1,
             borderLeftWidth: 0,
             borderTopWidth: 0,
         },
         tableRowHeader: {
-            width: '100%', // example for 2 columns
+            width: '100%',
             borderStyle: 'solid',
             borderWidth: 1,
             borderLeftWidth: 0,
@@ -125,7 +125,7 @@ const PDF = () => {
             backgroundColor: '#f0f0f0',
         },
         tableColHeader: {
-            width: '50%', // example for 2 columns
+            width: '50%',
             borderStyle: 'solid',
             borderWidth: 1,
             borderLeftWidth: 0,
