@@ -54,7 +54,14 @@ app.post('/send-email', (req, res) => {
 
 app.post('/save-pdf', (req, res) => {
     const { filename, pdfData } = req.body;
-    const filePath = path.join(__dirname, '..' , 'components', 'Ergebnis', 'pdf', filename);
+    const directoryPath = path.join(__dirname, '..', 'components', 'Ergebnis', 'pdf');
+
+    // Ensure the directory exists as the first step
+    if (!fs.existsSync(directoryPath)) {
+        fs.mkdirSync(directoryPath, { recursive: true });
+    }
+
+    const filePath = path.join(directoryPath, filename);
 
     if (!pdfData) {
         console.error('Error: PDF data is missing');
