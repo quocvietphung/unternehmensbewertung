@@ -7,6 +7,7 @@ import axios from "axios";
 
 const PDF = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
+    const basisInfoData = useSelector(state => state.basisInfo.basisInfoData);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
 
     const [isViewing, setIsViewing] = useState(false);
@@ -117,9 +118,9 @@ const PDF = () => {
                 <Header />
                 <Text style={styles.subtitle}>1. Basis-Informationen</Text>
                 <Text style={styles.content}>
-                    Branche: Versorgungswirtschaft{'\n'}
-                    Lage: ländlich{'\n'}
-                    Alter: 120 Jahre
+                    Branche: {basisInfoData.branche ? basisInfoData.branche.text : ''} {'\n'}
+                    Lage: {basisInfoData.lage ? basisInfoData.lage.text : ''} {'\n'}
+                    Alter: {basisInfoData.alter || ''}
                 </Text>
                 <Text style={styles.subtitle}>2. Jahresabschluss-Analyse</Text>
                 <Text style={styles.content}>

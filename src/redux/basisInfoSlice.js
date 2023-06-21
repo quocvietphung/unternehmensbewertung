@@ -9,8 +9,9 @@ const initialState = {
             text: "Branche auswählen"
         },
         lage: {
-            key: 'städtisch',
+            key: "städtisch",
             value: 1,
+            text: "städtisch"
         },
         alter: 1,
     },
