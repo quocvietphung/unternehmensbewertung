@@ -31,27 +31,30 @@ const PDF = () => {
             padding: 40,
             margin: 20,
         },
+        header: {
+            marginBottom: 20,
+        },
+        headerText: {
+            textAlign: 'center',
+            fontSize: 16,
+            fontWeight: 'bold',
+        },
+        horizontalLine: {
+            borderBottomColor: '#000',
+            borderBottomWidth: 1,
+            marginBottom: 20,
+        },
+        footer: {
+            marginTop: 20,
+        },
+        footerText: {
+            textAlign: 'center',
+            fontSize: 12,
+        },
         title: {
             textAlign: 'center',
             fontSize: 30,
             fontWeight: 'bold',
-            marginBottom: 20,
-        },
-        subtitle: {
-            textAlign: 'center',
-            fontSize: 20,
-            fontWeight: 'bold',
-            marginBottom: 30,
-        },
-        author: {
-            textAlign: 'center',
-            fontSize: 16,
-            marginBottom: 50,
-        },
-        abstract: {
-            fontSize: 14,
-            lineHeight: 1.5,
-            textAlign: 'justify',
             marginBottom: 20,
         },
         content: {
@@ -68,7 +71,15 @@ const PDF = () => {
     const MyDocument = () => (
         <Document>
             <Page style={styles.page}>
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>Orgaplan Beratung</Text>
+                </View>
+                <View style={styles.horizontalLine}></View>
                 <Text style={styles.title}>Unternehmensbewertung</Text>
+                <View style={styles.horizontalLine}></View>
+                <View style={styles.footer}>
+                    <Text style={styles.footerText}>Düsseldorf Deutschland</Text>
+                </View>
             </Page>
             <Page style={styles.page}>
                 <Text style={styles.content}>Main Content Text Here</Text>
