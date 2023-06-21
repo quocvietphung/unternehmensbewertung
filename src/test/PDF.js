@@ -117,9 +117,9 @@ const PDF = () => {
                 <Header />
                 <Text style={styles.subtitle}>1. Basis-Informationen</Text>
                 <Text style={styles.content}>
-                    - Branche: Versorgungswirtschaft
-                    - Lage: ländlich
-                    - Alter: 120 Jahre
+                    Branche: Versorgungswirtschaft{'\n'}
+                    Lage: ländlich{'\n'}
+                    Alter: 120 Jahre
                 </Text>
                 <Text style={styles.subtitle}>2. Jahresabschluss-Analyse</Text>
                 <Text style={styles.content}>
