@@ -67,6 +67,12 @@ const PDF = () => {
             marginTop: 80,
             marginBottom: 20,
         },
+        subtitle: {
+            fontSize: 16,
+            fontWeight: 'bold',
+            marginTop: 10,
+            marginBottom: 5,
+        },
         content: {
             marginTop: 10,
             fontSize: 14,
@@ -96,14 +102,14 @@ const PDF = () => {
             </Page>
             <Page style={styles.page}>
                 <Header />
+                <Text style={styles.subtitle}>1. Basis-Informationen</Text>
                 <Text style={styles.content}>
-                    Basis-Informationen:
                     - Branche: Versorgungswirtschaft
                     - Lage: ländlich
                     - Alter: 120 Jahre
                 </Text>
+                <Text style={styles.subtitle}>2. Jahresabschluss-Analyse</Text>
                 <Text style={styles.content}>
-                    Jahresabschluss-Analyse:
                     {/* Add your analysis content here */}
                 </Text>
             </Page>
