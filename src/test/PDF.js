@@ -150,18 +150,33 @@ const PDF = () => {
                     </View>
                 ))}
             </View>
-            {data.map((row, rowIndex) => (
-                <View key={rowIndex} style={styles.tableRow}>
-                    <View style={styles.tableRowHeader}>
-                        <Text style={styles.tableCell}>{rowHeaders[rowIndex]}</Text>
-                    </View>
-                    {row.map((cell, cellIndex) => (
-                        <View key={cellIndex} style={styles.tableCol}>
-                            <Text style={styles.tableCell}>{cell}</Text>
+            {data.length === 0 ? (
+                rowHeaders.map((header, index) => (
+                    <View key={index} style={styles.tableRow}>
+                        <View style={styles.tableRowHeader}>
+                            <Text style={styles.tableCell}>{header}</Text>
                         </View>
-                    ))}
-                </View>
-            ))}
+                        {colHeaders.map((colHeader, colIndex) => (
+                            <View key={colIndex} style={styles.tableCol}>
+                                <Text style={styles.tableCell}></Text>
+                            </View>
+                        ))}
+                    </View>
+                ))
+            ) : (
+                data.map((row, rowIndex) => (
+                    <View key={rowIndex} style={styles.tableRow}>
+                        <View style={styles.tableRowHeader}>
+                            <Text style={styles.tableCell}>{rowHeaders[rowIndex]}</Text>
+                        </View>
+                        {row.map((cell, cellIndex) => (
+                            <View key={cellIndex} style={styles.tableCol}>
+                                <Text style={styles.tableCell}>{cell}</Text>
+                            </View>
+                        ))}
+                    </View>
+                ))
+            )}
         </View>
     );
 
@@ -193,11 +208,7 @@ const PDF = () => {
                 <Table
                     rowHeaders={['Row Header 1', 'Row Header 2', 'Row Header 3']}
                     colHeaders={['Col Header 1', 'Col Header 2', 'Col Header 3']}
-                    data={[
-                        ['A1', 'B1', 'C1'],
-                        ['A2', 'B2', 'C2'],
-                        ['A3', 'B3', 'C3'],
-                    ]}
+                    data={[]}
                 />
                 <PageNumber pageNumber="1" />
             </Page>
