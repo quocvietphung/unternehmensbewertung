@@ -12,7 +12,7 @@ const PDF = () => {
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
 
-    const [isViewing, setIsViewing] = useState(false);
+    const [isViewing, setIsViewing] = useState(true);
 
     const handleView = () => {
         setIsViewing(true);
