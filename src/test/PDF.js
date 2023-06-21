@@ -80,12 +80,25 @@ const PDF = () => {
             textAlign: 'justify',
             alignSelf: 'stretch',
         },
+        pageNumber: {
+            position: 'absolute',
+            fontSize: 12,
+            bottom: 30,
+            left: 0,
+            right: 0,
+            textAlign: 'center',
+            color: 'gray',
+        },
     });
 
     const Header = () => (
         <View style={styles.header}>
             <Text style={styles.headerText}>Orgaplan Beratung</Text>
         </View>
+    );
+
+    const PageNumber = ({ pageNumber }) => (
+        <Text style={styles.pageNumber}>{pageNumber}</Text>
     );
 
     const MyDocument = () => (
@@ -112,6 +125,7 @@ const PDF = () => {
                 <Text style={styles.content}>
                     {/* Add your analysis content here */}
                 </Text>
+                <PageNumber pageNumber="1" />
             </Page>
         </Document>
     );
