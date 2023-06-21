@@ -28,24 +28,40 @@ const PDF = () => {
         page: {
             flexDirection: 'column',
             backgroundColor: '#fff',
-            padding: 30,
+            padding: 40,
             margin: 20,
         },
         title: {
             textAlign: 'center',
-            fontSize: 24,
+            fontSize: 30,
             fontWeight: 'bold',
+            marginBottom: 20,
+        },
+        subtitle: {
+            textAlign: 'center',
+            fontSize: 20,
+            fontWeight: 'bold',
+            marginBottom: 30,
+        },
+        author: {
+            textAlign: 'center',
+            fontSize: 16,
             marginBottom: 50,
         },
-        content: {
+        abstract: {
             fontSize: 14,
             lineHeight: 1.5,
             textAlign: 'justify',
-            flex: 1,
+            marginBottom: 20,
+        },
+        content: {
+            fontSize: 12,
+            lineHeight: 1.5,
+            textAlign: 'justify',
             marginTop: 20,
             marginRight: 40,
             marginBottom: 20,
-            marginLeft: 20,
+            marginLeft: 40,
         },
     });
 
@@ -55,17 +71,7 @@ const PDF = () => {
                 <Text style={styles.title}>Unternehmensbewertung</Text>
             </Page>
             <Page style={styles.page}>
-                <Text style={styles.content}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus gravida mi id mauris tincidunt fringilla. Morbi nec aliquam tellus. In dictum pharetra mauris, at blandit mi mollis in. Nulla in lectus sem. Ut vulputate nisl quis purus dignissim feugiat. Nunc tincidunt, dui at scelerisque tempor, nisl mi tristique metus, ut cursus dui leo a dui. Sed vitae pellentesque justo. Sed dapibus diam vitae consequat tincidunt.
-
-                    Fusce ullamcorper ipsum nec enim pellentesque, eget lobortis massa congue. Curabitur rhoncus urna metus, a lacinia sapien rutrum vitae. Nulla facilisi. Nunc finibus pulvinar libero ut volutpat. Maecenas gravida tortor ac nibh maximus, vel luctus tellus posuere. Curabitur venenatis elit eget congue fringilla. Nullam pharetra pellentesque lectus, sed bibendum nisl faucibus sed. Nam nec dolor quis tellus auctor hendrerit. Aenean posuere ligula id ullamcorper tincidunt. Donec eget justo ipsum. Sed facilisis neque vel urna tincidunt, vitae mattis arcu commodo. Fusce eget tellus sed neque congue faucibus eu et est. Donec sit amet ex in justo fringilla scelerisque. Nulla facilisi.
-
-                    Vestibulum a sagittis est. Cras eget tincidunt nunc. Sed consequat lectus id metus bibendum, id tempor nunc egestas. In dignissim, dolor ut congue hendrerit, risus mauris aliquet justo, in ultrices ex leo vel ex. Praesent vehicula, leo id efficitur cursus, ligula risus consequat nisl, vitae sollicitudin odio ligula id orci. Sed suscipit turpis quis lacus tincidunt venenatis. In rhoncus aliquam lacus, ac dignissim dolor iaculis vitae. In vulputate eros sit amet orci fringilla, a fermentum mi sollicitudin. Nullam ac malesuada sapien. Curabitur mollis tempus tortor, vel posuere orci lobortis in.
-
-                    Integer faucibus scelerisque condimentum. Integer dictum dolor vel tincidunt aliquet. Mauris faucibus, metus at posuere fermentum, nisl velit consequat est, sed scelerisque sapien tortor non enim. Vestibulum congue mauris tellus, at ultrices ex rhoncus vitae. Sed nec malesuada massa. Nulla facilisi. Morbi volutpat purus et ex tristique, eu convallis urna vulputate. Quisque pulvinar nisi vel sapien tincidunt dapibus. Ut dapibus enim sed tellus eleifend sollicitudin. Vestibulum sodales pulvinar mi vel pulvinar. In vitae metus auctor, eleifend ligula vitae, consectetur nunc. Mauris aliquet mauris id elit lacinia ullamcorper. Sed bibendum semper lobortis.
-
-                    Aliquam ac diam at est iaculis eleifend a eu lorem. Sed ac aliquam orci, nec feugiat nunc. Morbi eu est tortor. Maecenas semper, justo et feugiat volutpat, tellus odio posuere metus, vel vulputate nisi tellus ut nunc. Maecenas aliquam, leo vel fringilla condimentum, elit lacus congue elit, in fermentum ex tellus eget ipsum. Nunc dignissim lobortis urna id rhoncus. Sed aliquam, lorem non faucibus molestie, ex urna scelerisque erat, ut lacinia libero lectus nec nisi. Aliquam sit amet ipsum eget felis vehicula dictum sed in neque. In auctor rhoncus urna, vitae bibendum quam vestibulum ut. In hac habitasse platea dictumst. Sed sit amet nisl quis nulla lobortis efficitur at vel ex. Mauris scelerisque consectetur lorem, vitae interdum tellus cursus et.
-                </Text>
+                <Text style={styles.content}>Main Content Text Here</Text>
             </Page>
         </Document>
     );
