@@ -115,6 +115,22 @@ const PDF = () => {
             marginTop: 5,
             fontSize: 10,
         },
+        tableRowHeader: {
+            width: '33.33%',
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderLeftWidth: 0,
+            borderTopWidth: 0,
+            backgroundColor: '#f0f0f0', // For example, to give a gray background color
+        },
+        tableColHeader: {
+            width: '33.33%',
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderLeftWidth: 0,
+            borderTopWidth: 0,
+            backgroundColor: '#d0d0d0', // For example, to give a gray background color
+        },
     });
 
     const Header = () => (
@@ -123,10 +139,21 @@ const PDF = () => {
         </View>
     );
 
-    const Table = ({ data }) => (
+    const Table = ({ rowHeaders, colHeaders, data }) => (
         <View style={styles.table}>
+            <View style={styles.tableRow}>
+                <View style={styles.tableColHeader}></View> // Empty cell for the corner
+                {colHeaders.map((cell, cellIndex) => (
+                    <View key={cellIndex} style={styles.tableColHeader}>
+                        <Text style={styles.tableCell}>{cell}</Text>
+                    </View>
+                ))}
+            </View>
             {data.map((row, rowIndex) => (
                 <View key={rowIndex} style={styles.tableRow}>
+                    <View style={styles.tableRowHeader}>
+                        <Text style={styles.tableCell}>{rowHeaders[rowIndex]}</Text>
+                    </View>
                     {row.map((cell, cellIndex) => (
                         <View key={cellIndex} style={styles.tableCol}>
                             <Text style={styles.tableCell}>{cell}</Text>
@@ -162,11 +189,15 @@ const PDF = () => {
                     Alter: {basisInfoData.alter || ''}
                 </Text>
                 <Text style={styles.subtitle}>2. Jahresabschluss-Analyse</Text>
-                <Table data={[
-                    ['A1', 'B1', 'C1'],
-                    ['A2', 'B2', 'C2'],
-                    ['A3', 'B3', 'C3'],
-                ]} />
+                <Table
+                    rowHeaders={['Row Header 1', 'Row Header 2', 'Row Header 3']}
+                    colHeaders={['Col Header 1', 'Col Header 2', 'Col Header 3']}
+                    data={[
+                        ['A1', 'B1', 'C1'],
+                        ['A2', 'B2', 'C2'],
+                        ['A3', 'B3', 'C3'],
+                    ]}
+                />
                 <PageNumber pageNumber="1" />
             </Page>
         </Document>
