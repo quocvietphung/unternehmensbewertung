@@ -223,7 +223,7 @@ const PDF = () => {
                     Vergleiche mit bereits verkauften Firmen zu.
                     Man betrachtet den Verkaufspreis hierbei als Vielfaches (Multiple) einer gewissen
                     Basiskennzahl, wie zum Beispiel dem Umsatz oder dem Gewinn des Unternehmens. Der von
-                    Everto Consulting berechnete Multiplikator basiert auf den von uns beobachteten
+                    Orgaplan Beratung berechnete Multiplikator basiert auf den von uns beobachteten
                     Marktdaten für Multiples von ähnlichen Firmen (Branche, Größe) sowie Ihren
                     firmenspezifischen Angaben.
                     Der EBIT wird für die Bewertung von mittelständischen Firmen um Sonderfaktoren und
