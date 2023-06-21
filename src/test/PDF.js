@@ -64,6 +64,7 @@ const PDF = () => {
             textAlign: 'center',
             fontSize: 30,
             fontWeight: 'bold',
+            marginTop: 80,
             marginBottom: 20,
         },
         content: {
