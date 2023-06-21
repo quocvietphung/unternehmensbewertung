@@ -68,6 +68,7 @@ const PDF = () => {
             marginBottom: 20,
         },
         content: {
+            marginTop: 10,
             fontSize: 14,
             lineHeight: 1.5,
             textAlign: 'justify',
@@ -75,12 +76,16 @@ const PDF = () => {
         },
     });
 
+    const Header = () => (
+        <View style={styles.header}>
+            <Text style={styles.headerText}>Orgaplan Beratung</Text>
+        </View>
+    );
+
     const MyDocument = () => (
         <Document>
             <Page style={styles.page}>
-                <View style={styles.header}>
-                    <Text style={styles.headerText}>Orgaplan Beratung</Text>
-                </View>
+                <Header />
                 <View style={styles.horizontalLine}></View>
                 <Text style={styles.title}>Unternehmensbewertung</Text>
                 <View style={styles.footer}>
@@ -90,6 +95,7 @@ const PDF = () => {
                 </View>
             </Page>
             <Page style={styles.page}>
+                <Header />
                 <Text style={styles.content}>Main Content Text Here</Text>
             </Page>
         </Document>
