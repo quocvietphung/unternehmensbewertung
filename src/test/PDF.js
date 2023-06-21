@@ -8,6 +8,8 @@ import axios from "axios";
 const PDF = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
     const basisInfoData = useSelector(state => state.basisInfo.basisInfoData);
+    const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
+    const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
 
     const [isViewing, setIsViewing] = useState(false);
@@ -90,11 +92,48 @@ const PDF = () => {
             textAlign: 'center',
             color: 'gray',
         },
+        table: {
+            display: 'table',
+            width: 'auto',
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderRightWidth: 0,
+            borderBottomWidth: 0,
+        },
+        tableRow: {
+            flexDirection: 'row',
+        },
+        tableCol: {
+            width: '33.33%',
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderLeftWidth: 0,
+            borderTopWidth: 0,
+        },
+        tableCell: {
+            margin: 'auto',
+            marginTop: 5,
+            fontSize: 10,
+        },
     });
 
     const Header = () => (
         <View style={styles.header}>
             <Text style={styles.headerText}>Orgaplan Beratung</Text>
+        </View>
+    );
+
+    const Table = ({ data }) => (
+        <View style={styles.table}>
+            {data.map((row, rowIndex) => (
+                <View key={rowIndex} style={styles.tableRow}>
+                    {row.map((cell, cellIndex) => (
+                        <View key={cellIndex} style={styles.tableCol}>
+                            <Text style={styles.tableCell}>{cell}</Text>
+                        </View>
+                    ))}
+                </View>
+            ))}
         </View>
     );
 
@@ -123,9 +162,11 @@ const PDF = () => {
                     Alter: {basisInfoData.alter || ''}
                 </Text>
                 <Text style={styles.subtitle}>2. Jahresabschluss-Analyse</Text>
-                <Text style={styles.content}>
-                    {/* Add your analysis content here */}
-                </Text>
+                <Table data={[
+                    ['A1', 'B1', 'C1'],
+                    ['A2', 'B2', 'C2'],
+                    ['A3', 'B3', 'C3'],
+                ]} />
                 <PageNumber pageNumber="1" />
             </Page>
         </Document>
