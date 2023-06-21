@@ -50,7 +50,7 @@ app.post('/send-email', (req, res) => {
 
 app.post('/save-pdf', (req, res) => {
     const { filename, pdfData } = req.body;
-    const path = `/Users/soaica/git/unternehmensbewertung/src/pdf/${filename}`;
+    const path = `/Users/soaica/git/unternehmensbewertung/src/components/Ergebnis/pdf/${filename}`;
 
     if (!pdfData) {
         console.error('Error: PDF data is missing');

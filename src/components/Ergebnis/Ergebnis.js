@@ -59,7 +59,7 @@ const ResultContainer = () => {
                 const base64data = reader.result;
 
                 const data = {
-                    filename: 'example.pdf',
+                    filename: 'Unternehmenswert.pdf',
                     pdfData: base64data
                 };
 
@@ -95,8 +95,8 @@ const ResultContainer = () => {
                     subject: 'Test email',
                     body: 'This is a test email.',
                     attachments: [{
-                        filename: 'example.pdf',
-                        path: '/Users/soaica/git/unternehmensbewertung/src/pdf/example.pdf'
+                        filename: 'Unternehmenswert.pdf',
+                        path: '/Users/soaica/git/unternehmensbewertung/src/components/Ergebnis/pdf/Unternehmenswert.pdf'
                     }]
                 };
 
