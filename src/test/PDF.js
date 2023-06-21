@@ -96,7 +96,16 @@ const PDF = () => {
             </Page>
             <Page style={styles.page}>
                 <Header />
-                <Text style={styles.content}>Main Content Text Here</Text>
+                <Text style={styles.content}>
+                    Basis-Informationen:
+                    - Branche: Versorgungswirtschaft
+                    - Lage: ländlich
+                    - Alter: 120 Jahre
+                </Text>
+                <Text style={styles.content}>
+                    Jahresabschluss-Analyse:
+                    {/* Add your analysis content here */}
+                </Text>
             </Page>
         </Document>
     );
