@@ -103,33 +103,33 @@ const PDF = () => {
         tableRow: {
             flexDirection: 'row',
         },
-        tableCol: {
-            width: '33.33%',
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderLeftWidth: 0,
-            borderTopWidth: 0,
-        },
         tableCell: {
             margin: 'auto',
-            marginTop: 5,
-            fontSize: 10,
+            padding: 10, // increase padding
+            fontSize: 12, // increase font size
+        },
+        tableCol: {
+            width: '50%', // example for 2 columns
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderLeftWidth: 0,
+            borderTopWidth: 0,
         },
         tableRowHeader: {
-            width: '33.33%',
+            width: '50%', // example for 2 columns
             borderStyle: 'solid',
             borderWidth: 1,
             borderLeftWidth: 0,
             borderTopWidth: 0,
-            backgroundColor: '#f0f0f0', // For example, to give a gray background color
+            backgroundColor: '#f0f0f0',
         },
         tableColHeader: {
-            width: '33.33%',
+            width: '50%', // example for 2 columns
             borderStyle: 'solid',
             borderWidth: 1,
             borderLeftWidth: 0,
             borderTopWidth: 0,
-            backgroundColor: '#d0d0d0', // For example, to give a gray background color
+            backgroundColor: '#d0d0d0',
         },
     });
 
