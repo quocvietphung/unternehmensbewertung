@@ -2,6 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const port = 3001;
@@ -50,7 +51,7 @@ app.post('/send-email', (req, res) => {
 
 app.post('/save-pdf', (req, res) => {
     const { filename, pdfData } = req.body;
-    const path = `/Users/soaica/git/unternehmensbewertung/src/components/Ergebnis/pdf/${filename}`;
+    const filePath = path.join(__dirname, '..' , 'components', 'Ergebnis', 'pdf', filename);
 
     if (!pdfData) {
         console.error('Error: PDF data is missing');
@@ -60,12 +61,12 @@ app.post('/save-pdf', (req, res) => {
 
     // Assuming pdfData is a base64 string
     const data = pdfData.replace('data:application/pdf;base64,', '');
-    fs.writeFile(path, data, 'base64', (error) => {
+    fs.writeFile(filePath, data, 'base64', (error) => {
         if (error) {
             console.error('Error:', error.message);
             res.status(500).json({ error: 'Failed to save PDF' });
         } else {
-            console.log('PDF saved:', path);
+            console.log('PDF saved:', filePath);
             res.json({ message: 'PDF saved successfully' });
         }
     });
