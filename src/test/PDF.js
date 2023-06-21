@@ -67,17 +67,17 @@ const PDF = () => {
             textAlign: 'center',
             fontSize: 30,
             fontWeight: 'bold',
-            marginTop: 80,
+            marginTop: 100,
             marginBottom: 20,
         },
         subtitle: {
             fontSize: 24,
             fontWeight: 'bold',
-            marginTop: 10,
+            marginTop: 15,
             marginBottom: 5,
         },
         content: {
-            marginTop: 10,
+            marginTop: 20,
             fontSize: 14,
             lineHeight: 1.5,
             textAlign: 'justify',
@@ -210,7 +210,30 @@ const PDF = () => {
                     colHeaders={['2020', '2021', '2022', '2023', 'Average']}
                     data={[]}
                 />
+                <Text style={styles.content}>
+                    Branchenuebliche Verguetung Geschaeftsfuehrer:
+                </Text>
                 <PageNumber pageNumber="1" />
+            </Page>
+            <Page style={styles.page}>
+                <Header />
+                <Text style={styles.subtitle}>3. Bandbreite von Bewertungsmultiples</Text>
+                <Text style={styles.content}>
+                    Die Bewertung von Firmen anhand von Multiples ist in der Praxis sehr verbreitet. Sie lassen
+                    Vergleiche mit bereits verkauften Firmen zu.
+                    Man betrachtet den Verkaufspreis hierbei als Vielfaches (Multiple) einer gewissen
+                    Basiskennzahl, wie zum Beispiel dem Umsatz oder dem Gewinn des Unternehmens. Der von
+                    Everto Consulting berechnete Multiplikator basiert auf den von uns beobachteten
+                    Marktdaten für Multiples von ähnlichen Firmen (Branche, Größe) sowie Ihren
+                    firmenspezifischen Angaben.
+                    Der EBIT wird für die Bewertung von mittelständischen Firmen um Sonderfaktoren und
+                    möglicher inhaberspezifischer Kompensation bereinigt, da andernfalls das Ergebnis
+                    erheblich verzerrt werden kann.
+                    Der Umsatz Multiple dient in diesem Rechner als Ergänzung, ist in der Regel aber weniger
+                    aussagekräftig und wird dementsprechend auch bei dieser Bewertung weniger stark
+                    gewichtet.
+                </Text>
+                <PageNumber pageNumber="2" />
             </Page>
         </Document>
     );
