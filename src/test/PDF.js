@@ -93,6 +93,7 @@ const PDF = () => {
             color: 'gray',
         },
         table: {
+            marginTop: 10,
             display: 'table',
             width: 'auto',
             borderStyle: 'solid',
