@@ -117,7 +117,7 @@ const PDF = () => {
             borderTopWidth: 0,
         },
         tableRowHeader: {
-            width: '50%', // example for 2 columns
+            width: '100%', // example for 2 columns
             borderStyle: 'solid',
             borderWidth: 1,
             borderLeftWidth: 0,
@@ -143,7 +143,7 @@ const PDF = () => {
     const Table = ({ rowHeaders, colHeaders, data }) => (
         <View style={styles.table}>
             <View style={styles.tableRow}>
-                <View style={styles.tableColHeader}></View> // Empty cell for the corner
+                <View style={[styles.tableColHeader, { width: '100%' }]}></View> {/* Empty cell */}
                 {colHeaders.map((cell, cellIndex) => (
                     <View key={cellIndex} style={styles.tableColHeader}>
                         <Text style={styles.tableCell}>{cell}</Text>
