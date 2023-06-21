@@ -45,11 +45,20 @@ const PDF = () => {
             marginBottom: 20,
         },
         footer: {
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
             marginTop: 20,
+            paddingVertical: 10,
+            backgroundColor: '#f5f5f5',
         },
         footerText: {
             textAlign: 'center',
             fontSize: 12,
+            fontStyle: 'italic',
+            color: '#888',
+            marginTop: 10,
         },
         title: {
             textAlign: 'center',
@@ -76,9 +85,10 @@ const PDF = () => {
                 </View>
                 <View style={styles.horizontalLine}></View>
                 <Text style={styles.title}>Unternehmensbewertung</Text>
-                <View style={styles.horizontalLine}></View>
                 <View style={styles.footer}>
-                    <Text style={styles.footerText}>Düsseldorf Deutschland</Text>
+                    <Text style={styles.footerText}>Schanzenstraße 58, 40549 Düsseldorf</Text>
+                    <Text style={styles.footerText}>Tel:  0211 22963989</Text>
+                    <Text style={styles.footerText}>Email:  hotline@orgaplan.org</Text>
                 </View>
             </Page>
             <Page style={styles.page}>
