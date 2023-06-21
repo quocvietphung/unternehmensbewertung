@@ -29,9 +29,9 @@ const PDF = () => {
             flexDirection: 'column',
             backgroundColor: '#fff',
             padding: 40,
-            margin: 20,
         },
         header: {
+            alignSelf: 'stretch',
             marginBottom: 20,
         },
         headerText: {
@@ -43,13 +43,14 @@ const PDF = () => {
             borderBottomColor: '#000',
             borderBottomWidth: 1,
             marginBottom: 20,
+            alignSelf: 'stretch',
         },
         footer: {
             position: 'absolute',
             bottom: 0,
             left: 0,
             right: 0,
-            marginTop: 20,
+            alignSelf: 'stretch',
             paddingVertical: 10,
             backgroundColor: '#f5f5f5',
         },
@@ -70,10 +71,7 @@ const PDF = () => {
             fontSize: 12,
             lineHeight: 1.5,
             textAlign: 'justify',
-            marginTop: 20,
-            marginRight: 40,
-            marginBottom: 20,
-            marginLeft: 40,
+            alignSelf: 'stretch',
         },
     });
 
