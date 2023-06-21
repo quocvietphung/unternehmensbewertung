@@ -27,12 +27,12 @@ const PDF = () => {
     const styles = StyleSheet.create({
         page: {
             flexDirection: 'column',
-            backgroundColor: '#fff',
             padding: 40,
         },
         header: {
-            alignSelf: 'stretch',
             marginBottom: 20,
+            backgroundColor: '#f5f5f5',
+            paddingVertical: 10,
         },
         headerText: {
             textAlign: 'center',
@@ -43,7 +43,6 @@ const PDF = () => {
             borderBottomColor: '#000',
             borderBottomWidth: 1,
             marginBottom: 20,
-            alignSelf: 'stretch',
         },
         footer: {
             position: 'absolute',
@@ -68,7 +67,7 @@ const PDF = () => {
             marginBottom: 20,
         },
         content: {
-            fontSize: 12,
+            fontSize: 14,
             lineHeight: 1.5,
             textAlign: 'justify',
             alignSelf: 'stretch',
@@ -85,8 +84,8 @@ const PDF = () => {
                 <Text style={styles.title}>Unternehmensbewertung</Text>
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Schanzenstraße 58, 40549 Düsseldorf</Text>
-                    <Text style={styles.footerText}>Tel:  0211 22963989</Text>
-                    <Text style={styles.footerText}>Email:  hotline@orgaplan.org</Text>
+                    <Text style={styles.footerText}>Tel: 0211 22963989</Text>
+                    <Text style={styles.footerText}>Email: hotline@orgaplan.org</Text>
                 </View>
             </Page>
             <Page style={styles.page}>
