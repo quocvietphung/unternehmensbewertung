@@ -118,8 +118,8 @@ const PDF = () => {
                 <Header />
                 <Text style={styles.subtitle}>1. Basis-Informationen</Text>
                 <Text style={styles.content}>
-                    Branche: {basisInfoData.branche ? basisInfoData.branche.text : ''} {'\n'}
-                    Lage: {basisInfoData.lage ? basisInfoData.lage.text : ''} {'\n'}
+                    Branche: {basisInfoData.branche?.text || ''} {'\n'}
+                    Lage: {basisInfoData.lage?.text || ''} {'\n'}
                     Alter: {basisInfoData.alter || ''}
                 </Text>
                 <Text style={styles.subtitle}>2. Jahresabschluss-Analyse</Text>
