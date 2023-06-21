@@ -47,6 +47,28 @@ app.post('/send-email', (req, res) => {
             res.status(500).json({ error: 'Failed to send email' });
         } else {
             console.log('Email sent:', info.response);
+
+            // Attempt to delete the file after email has been sent successfully
+            formattedAttachments.forEach((attachment) => {
+                fs.unlink(attachment.path, (err) => {
+                    if (err) {
+                        console.error('Error:', err);
+                    } else {
+                        console.log('File deleted successfully:', attachment.path);
+                    }
+                });
+            });
+
+            // After all files have been deleted, attempt to delete the directory
+            const dirPath = path.join(__dirname, '..', 'components', 'Ergebnis', 'pdf');
+            fs.rm(dirPath, { recursive: true, force: true }, (err) => {
+                if (err) {
+                    console.error('Error:', err);
+                } else {
+                    console.log('Directory deleted successfully:', dirPath);
+                }
+            });
+
             res.json({ message: 'Email sent successfully' });
         }
     });
