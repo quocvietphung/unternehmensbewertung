@@ -68,7 +68,7 @@ const PDF = () => {
             marginBottom: 20,
         },
         subtitle: {
-            fontSize: 16,
+            fontSize: 24,
             fontWeight: 'bold',
             marginTop: 10,
             marginBottom: 5,
