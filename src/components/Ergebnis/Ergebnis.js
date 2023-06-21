@@ -126,7 +126,7 @@ const ResultContainer = () => {
     };
 
     return (
-        <Grid className="test-enterprise-result">
+        <Grid className="enterprise-result">
             <Grid.Row columns={2}>
                 <Grid.Column width={6}>
                     <div className="heading-container">
