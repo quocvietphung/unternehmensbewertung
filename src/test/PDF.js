@@ -206,8 +206,8 @@ const PDF = () => {
                 </Text>
                 <Text style={styles.subtitle}>2. Jahresabschluss-Analyse</Text>
                 <Table
-                    rowHeaders={['Row Header 1', 'Row Header 2', 'Row Header 3']}
-                    colHeaders={['Col Header 1', 'Col Header 2', 'Col Header 3']}
+                    rowHeaders={['EBIT', 'Sonst. Bereinigung EBIT', 'Verguetung GF', 'Bereinigter EBIT', 'EBIT Wachstum', 'Umsatz', 'Gewinnmarge']}
+                    colHeaders={['2020', '2021', '2022', '2023', 'Average']}
                     data={[]}
                 />
                 <PageNumber pageNumber="1" />
