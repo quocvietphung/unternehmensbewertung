@@ -24,11 +24,14 @@ app.post('/send-email', (req, res) => {
         }
     });
 
-    const formattedAttachments = attachments.map((attachment) => ({
-        filename: attachment.filename,
-        path: attachment.path,
-        contentType: 'application/pdf',
-    }));
+    const formattedAttachments = attachments.map((attachment) => {
+        const filePath = path.join(__dirname, '..', 'components', 'Ergebnis', 'pdf', attachment.filename);
+        return {
+            filename: attachment.filename,
+            path: filePath,
+            contentType: 'application/pdf',
+        };
+    });
 
     const mailOptions = {
         from: 'solarrechner@sternsystems.de',
