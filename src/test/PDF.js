@@ -260,6 +260,18 @@ const PDF = () => {
         </View>
     );
 
+    const formatCell = (rowHeaders, rowIndex, cell) => {
+        if(rowHeaders[rowIndex] === 'EBIT') {
+            return `${cell} €`;
+        } else if (rowHeaders[rowIndex] === 'Sonst. Bereinigung EBIT' && cell !== '-' && cell !== null) {
+            return `${cell} €`;
+        } else if (cell === null) {
+            return '';
+        } else {
+            return cell;
+        }
+    }
+
     const Table = ({ rowHeaders, colHeaders, data }) => (
         <View style={styles.table}>
             <View style={styles.tableRow}>
@@ -292,7 +304,7 @@ const PDF = () => {
                         {row.map((cell, cellIndex) => (
                             <View key={cellIndex} style={styles.tableCol}>
                                 <Text style={styles.tableCell}>
-                                    {rowHeaders[rowIndex] === 'EBIT' ? `${cell} €` : cell}
+                                    {formatCell(rowHeaders, rowIndex, cell)}
                                 </Text>
                             </View>
                         ))}
