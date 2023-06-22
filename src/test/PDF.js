@@ -256,7 +256,9 @@ const PDF = () => {
                         </View>
                         {row.map((cell, cellIndex) => (
                             <View key={cellIndex} style={styles.tableCol}>
-                                <Text style={styles.tableCell}>{cell}</Text>
+                                <Text style={styles.tableCell}>
+                                    {rowHeaders[rowIndex] === 'EBIT' ? `${cell} €` : cell}
+                                </Text>
                             </View>
                         ))}
                     </View>
