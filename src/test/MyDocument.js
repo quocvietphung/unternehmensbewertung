@@ -178,18 +178,28 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             value: "-"
         });
 
+        const gehaltValues = bereinigungData.gehalt.map(gehaltObj => gehaltObj.value || 0);
+        const gehaltSum = gehaltValues.reduce((sum, value) => sum + value, 0)
+        const gehaltAverage = gehaltSum / gehaltValues.length;
+
+        console.log("gehaltSum", gehaltSum)
+
+        const verguetungGFData = bereinigungData.gehalt.map(gehaltObj => ({
+            year: gehaltObj.year,
+            value: gehaltObj.value || 0
+        }));
+
+        verguetungGFData.push({
+            year: 'Average',
+            value: gehaltAverage
+        });
+
         const ebitWachstum = calculateEBITWachstum(ebitData);
 
         const jahresAbschlussAnalyseData = {
             'EBIT': ebitData,
             'Sonst. Bereinigung EBIT': anpassungEbitData,
-            'Verguetung GF': [
-                { 'year': 2020, 'value': 10000 },
-                { 'year': 2021, 'value': 12000 },
-                { 'year': 2022, 'value': 14000 },
-                { 'year': 2023, 'value': 16000 },
-                { 'year': 'Average', 'value': 13000 }
-            ],
+            'Verguetung GF': verguetungGFData,
             'Bereinigter EBIT': [
                 { 'year': 2020, 'value': 32000 },
                 { 'year': 2021, 'value': 34200 },
