@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Document, Page, Text, View, PDFViewer, PDFDownloadLink, StyleSheet, pdf } from '@react-pdf/renderer';
+import { Document, Page, Text, View, PDFViewer, PDFDownloadLink, StyleSheet, Image, pdf } from '@react-pdf/renderer';
 import { Grid, Button } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import './PDF.scss';
@@ -25,6 +25,7 @@ const PDF = () => {
     useEffect(() => {
         console.log('unternehmenswert:', unternehmenswert);
         console.log('ergebnisData:', ergebnisData);
+        console.log('imageUrl:', imageUrl);
     }, [unternehmenswert, ergebnisData]);
 
     const styles = StyleSheet.create({
@@ -132,6 +133,12 @@ const PDF = () => {
             borderTopWidth: 0,
             backgroundColor: '#d0d0d0',
         },
+        image: {
+            marginVertical: 10, // adjust as needed
+            marginHorizontal: 100, // adjust as needed
+            width: 100, // adjust as needed
+            height: 100, // adjust as needed
+        },
     });
 
     const Header = () => (
@@ -184,6 +191,8 @@ const PDF = () => {
         <Text style={styles.pageNumber}>{pageNumber}</Text>
     );
 
+    const imageUrl = 'assets/images/marktdaten.png';
+
     const MyDocument = () => (
         <Document>
             <Page style={styles.page}>
@@ -233,6 +242,15 @@ const PDF = () => {
                     aussagekräftig und wird dementsprechend auch bei dieser Bewertung weniger stark
                     gewichtet.
                 </Text>
+                <Image
+                    style={styles.image}
+                    source={{
+                        uri: imageUrl,
+                        method: 'GET',
+                        headers: {},
+                        body: '',
+                    }}
+                />
                 <PageNumber pageNumber="2" />
             </Page>
         </Document>
