@@ -35,16 +35,16 @@ const Bereinigung = (props) => {
     const handleInputChange = (name, value, index) => {
         if (name.includes("gehalt")) {
             const updatedGehalt = bereinigungData.gehalt.map((item, i) =>
-                i === index ? { ...item, value: parseInt(value) } : item
+                i === index ? { ...item, value: value } : item
             );
             dispatch(setGehaltValue(updatedGehalt));
         } else if (name.includes("anpassungEbit")) {
             const updatedAnpassungEbit = bereinigungData.anpassungEbit.map((item, i) =>
-                i === index ? { ...item, value: parseInt(value) } : item
+                i === index ? { ...item, value: value } : item
             );
             dispatch(setAnpassungEbitValue(updatedAnpassungEbit));
         } else if (name === "typischGehalt") {
-            dispatch(setTypischGehalt(parseInt(value)));
+            dispatch(setTypischGehalt(value));
         } else if (name === "erklaerungAnpassungEbit") {
             dispatch(setErklaerungAnpassungEbit(value));
         }

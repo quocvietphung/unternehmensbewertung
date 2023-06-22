@@ -182,7 +182,8 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         const gehaltSum = gehaltValues.reduce((sum, value) => sum + value, 0)
         const gehaltAverage = gehaltSum / gehaltValues.length;
 
-        console.log("gehaltSum", gehaltSum)
+        console.log("gehaltValues", gehaltValues);
+        console.log("gehaltSum", gehaltSum);
 
         const verguetungGFData = bereinigungData.gehalt.map(gehaltObj => ({
             year: gehaltObj.year,
