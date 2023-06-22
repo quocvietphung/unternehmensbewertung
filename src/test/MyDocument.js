@@ -195,7 +195,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
 
         verguetungGFData.push({
             year: 'Average',
-            value: gehaltAverage
+            value: gehaltAverage || 0
         });
 
         const ebitWachstum = calculateEBITWachstum(ebitData);
