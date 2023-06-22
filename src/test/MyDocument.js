@@ -2,20 +2,23 @@ import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Image, pdf } from '@react-pdf/renderer';
 
 const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
+
+    const imageUrl = 'assets/images/ORGAPLANLOGO.png';
+
     const styles = StyleSheet.create({
         page: {
             flexDirection: 'column',
             padding: 40,
         },
         header: {
-            marginBottom: 20,
+            marginBottom: 10,
             backgroundColor: '#f5f5f5',
             paddingVertical: 10,
         },
-        headerText: {
-            textAlign: 'center',
-            fontSize: 16,
-            fontWeight: 'bold',
+        logo: {
+            width: 150,
+            height: 60,
+            margin: 'auto',
         },
         horizontalLine: {
             borderBottomColor: '#000',
@@ -103,13 +106,6 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             width: '50%',
             borderWidth: 0, // Removed border
             backgroundColor: '#1abc9c',
-        },
-        image: {
-            textAlign: 'justify',
-            alignSelf: 'stretch',
-            marginHorizontal: 100,
-            width: 300,
-            height: 400,
         },
     });
 
@@ -252,8 +248,19 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
     const tableData = rowHeaders.map(rowHeader => jahresAbschlussAnalyseData[rowHeader].map(datum => datum.value));
 
     const Header = () => (
-        <View style={styles.header}>
-            <Text style={styles.headerText}>Orgaplan Beratung</Text>
+        <View>
+            <View style={styles.header}>
+                <Image
+                    style={styles.logo}
+                    source={{
+                        uri: imageUrl,
+                        method: 'GET',
+                        headers: {},
+                        body: '',
+                    }}
+                />
+            </View>
+            <View style={styles.horizontalLine}></View>
         </View>
     );
 
@@ -314,13 +321,10 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         <Text style={styles.pageNumber}>{pageNumber}</Text>
     );
 
-    const imageUrl = 'assets/images/marktdaten.png';
-
     return (
         <Document>
-            <Page style={styles.page}>
+            <Page style={[styles.page, { backgroundColor: '#1abc9c' }]}>
                 <Header />
-                <View style={styles.horizontalLine}></View>
                 <Text style={styles.title}>Unternehmensbewertung</Text>
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Schanzenstraße 58, 40549 Düsseldorf</Text>
@@ -347,29 +351,18 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Header />
                 <Text style={styles.subtitle}>3. Bandbreite von Bewertungsmultiples</Text>
                 <Text style={styles.content}>
-                    Die Bewertung von Firmen anhand von Multiples ist in der Praxis sehr verbreitet. Sie lassen
-                    Vergleiche mit bereits verkauften Firmen zu.
-                    Man betrachtet den Verkaufspreis hierbei als Vielfaches (Multiple) einer gewissen
-                    Basiskennzahl, wie zum Beispiel dem Umsatz oder dem Gewinn des Unternehmens. Der von
-                    Orgaplan Beratung berechnete Multiplikator basiert auf den von uns beobachteten
-                    Marktdaten für Multiples von ähnlichen Firmen (Branche, Größe) sowie Ihren
-                    firmenspezifischen Angaben.
-                    Der EBIT wird für die Bewertung von mittelständischen Firmen um Sonderfaktoren und
-                    möglicher inhaberspezifischer Kompensation bereinigt, da andernfalls das Ergebnis
-                    erheblich verzerrt werden kann.
-                    Der Umsatz Multiple dient in diesem Rechner als Ergänzung, ist in der Regel aber weniger
-                    aussagekräftig und wird dementsprechend auch bei dieser Bewertung weniger stark
-                    gewichtet.
+                    Die Anwendung von Multiples zur Bewertung von Unternehmen ist in der Praxis weit verbreitet.
+                    Sie ermöglichen den Vergleich mit bereits verkauften Unternehmen. Dabei wird der Verkaufspreis
+                    als ein Vielfaches (Multiple) einer bestimmten Basisgröße, wie beispielsweise des Umsatzes oder
+                    Gewinns des Unternehmens, betrachtet. Bei der Berechnung des Multiplikators durch Orgaplan Beratung
+                    basieren wir auf Markt­daten, die wir für vergleichbare Unternehmen (Branche, Größe) beobachtet
+                    haben, sowie auf den spezifischen Angaben Ihres Unternehmens. Der EBIT (Ergebnis vor Zinsen und
+                    Steuern) wird bei der Bewertung von mittelständischen Unternehmen um Sonderfaktoren und mögliche
+                    Kompensationen aufgrund der Unternehmensführung bereinigt, da andernfalls das Ergebnis erheblich
+                    verfälscht werden könnte. Der Umsatz-Multiple dient in diesem Bewertungsprozess als zusätzliche
+                    Information, hat jedoch in der Regel eine geringere Aussagekraft und wird entsprechend weniger
+                    stark gewichtet.
                 </Text>
-                <Image
-                    style={styles.image}
-                    source={{
-                        uri: imageUrl,
-                        method: 'GET',
-                        headers: {},
-                        body: '',
-                    }}
-                />
                 <PageNumber pageNumber="2" />
             </Page>
         </Document>
