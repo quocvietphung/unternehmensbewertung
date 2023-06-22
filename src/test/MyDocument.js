@@ -198,19 +198,23 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             value: gehaltAverage || 0
         });
 
+        const bereinigterEbitData = bereinigungData.bereinigungEbit.map(bereinigterEbitObj => ({
+            year: bereinigterEbitObj.year,
+            value: bereinigterEbitObj.value || 0
+        }));
+
+        bereinigterEbitData.push({
+            year: 'Average',
+            value: bereinigungData.bereinigungEbitAverage || 0
+        });
+
         const ebitWachstum = calculateEBITWachstum(ebitData);
 
         const jahresAbschlussAnalyseData = {
             'EBIT': ebitData,
             'Sonst. Bereinigung EBIT': anpassungEbitData,
             'Verguetung GF': verguetungGFData,
-            'Bereinigter EBIT': [
-                { 'year': 2020, 'value': 32000 },
-                { 'year': 2021, 'value': 34200 },
-                { 'year': 2022, 'value': 36400 },
-                { 'year': 2023, 'value': 38600 },
-                { 'year': 'Average', 'value': 35300 }
-            ],
+            'Bereinigter EBIT': bereinigterEbitData,
             'EBIT Wachstum': ebitWachstum, // use calculated EBIT Wachstum
             'Umsatz': [
                 { 'year': 2020, 'value': 80000 },
