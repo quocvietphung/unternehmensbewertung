@@ -71,10 +71,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             marginTop: 10,
             display: 'table',
             width: 'auto',
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderRightWidth: 0,
-            borderBottomWidth: 0,
+            borderWidth: 0, // Removed border
         },
         tableRow: {
             flexDirection: 'row',
@@ -91,25 +88,18 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         },
         tableCol: {
             width: '50%',
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderLeftWidth: 0,
-            borderTopWidth: 0,
+            borderWidth: 0, // Removed border
         },
         tableRowHeader: {
+            margin: 2,
             width: '80%',
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderLeftWidth: 0,
-            borderTopWidth: 0,
+            borderWidth: 0, // Removed border
             backgroundColor: '#003366',
         },
         tableColHeader: {
+            marginBottom: 2,
             width: '50%',
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderLeftWidth: 0,
-            borderTopWidth: 0,
+            borderWidth: 0, // Removed border
             backgroundColor: '#1abc9c',
         },
         image: {
@@ -238,7 +228,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         const jahresAbschlussAnalyseData = {
             'EBIT': ebitData,
             'Sonst. Bereinigung EBIT': anpassungEbitData,
-            'Verguetung GF': verguetungGFData,
+            'Vergütung GF': verguetungGFData,
             'Bereinigter EBIT': bereinigterEbitData,
             'EBIT Wachstum': ebitWachstum, // use calculated EBIT Wachstum
             'Umsatz': umsatzData,
