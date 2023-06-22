@@ -102,7 +102,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             borderWidth: 1,
             borderLeftWidth: 0,
             borderTopWidth: 0,
-            backgroundColor: 'green',
+            backgroundColor: '#003366',
         },
         tableColHeader: {
             width: '50%',
@@ -110,7 +110,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             borderWidth: 1,
             borderLeftWidth: 0,
             borderTopWidth: 0,
-            backgroundColor: 'blue',
+            backgroundColor: '#1abc9c',
         },
         image: {
             textAlign: 'justify',
