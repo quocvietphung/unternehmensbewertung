@@ -183,7 +183,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             .filter(value => !isNaN(value));
 
         const gehaltSum = gehaltValues.reduce((sum, value) => sum + value, 0)
-        const gehaltAverage = gehaltSum / gehaltValues.length;
+        const gehaltAverage = Math.round(gehaltSum / gehaltValues.length);
 
         console.log("gehaltValues", gehaltValues);
         console.log("gehaltSum", gehaltSum);
