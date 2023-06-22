@@ -74,7 +74,7 @@ const PDF = () => {
         subtitle: {
             fontSize: 24,
             fontWeight: 'bold',
-            marginTop: 15,
+            marginTop: 10,
             marginBottom: 5,
         },
         content: {
@@ -134,10 +134,12 @@ const PDF = () => {
             backgroundColor: '#d0d0d0',
         },
         image: {
+            textAlign: 'justify',
+            alignSelf: 'stretch',
             marginVertical: 10, // adjust as needed
             marginHorizontal: 100, // adjust as needed
-            width: 100, // adjust as needed
-            height: 100, // adjust as needed
+            width: 300,
+            height: 380,
         },
     });
 
