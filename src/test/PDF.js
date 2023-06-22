@@ -148,57 +148,67 @@ const PDF = () => {
         },
     });
 
-    const jahresAbschlussAnalyseData = {
-        'EBIT': [
-            { 'year': 2020, 'value': 30000 },
-            { 'year': 2021, 'value': 32000 },
-            { 'year': 2022, 'value': 34000 },
-            { 'year': 2023, 'value': 36000 },
-            { 'year': 'Average', 'value': 33000 }
-        ],
-        'Sonst. Bereinigung EBIT': [
-            { 'year': 2020, 'value': 2000 },
-            { 'year': 2021, 'value': 2200 },
-            { 'year': 2022, 'value': 2400 },
-            { 'year': 2023, 'value': 2600 },
-            { 'year': 'Average', 'value': 2300 }
-        ],
-        'Verguetung GF': [
-            { 'year': 2020, 'value': 10000 },
-            { 'year': 2021, 'value': 12000 },
-            { 'year': 2022, 'value': 14000 },
-            { 'year': 2023, 'value': 16000 },
-            { 'year': 'Average', 'value': 13000 }
-        ],
-        'Bereinigter EBIT': [
-            { 'year': 2020, 'value': 32000 },
-            { 'year': 2021, 'value': 34200 },
-            { 'year': 2022, 'value': 36400 },
-            { 'year': 2023, 'value': 38600 },
-            { 'year': 'Average', 'value': 35300 }
-        ],
-        'EBIT Wachstum': [
-            { 'year': 2020, 'value': 7 },
-            { 'year': 2021, 'value': 7.5 },
-            { 'year': 2022, 'value': 8 },
-            { 'year': 2023, 'value': 8.5 },
-            { 'year': 'Average', 'value': 7.75 }
-        ],
-        'Umsatz': [
-            { 'year': 2020, 'value': 80000 },
-            { 'year': 2021, 'value': 82000 },
-            { 'year': 2022, 'value': 84000 },
-            { 'year': 2023, 'value': 86000 },
-            { 'year': 'Average', 'value': 83000 }
-        ],
-        'Gewinnmarge': [
-            { 'year': 2020, 'value': 40 },
-            { 'year': 2021, 'value': 41 },
-            { 'year': 2022, 'value': 42 },
-            { 'year': 2023, 'value': 43 },
-            { 'year': 'Average', 'value': 41.5 }
-        ]
+    const transformKennzahlenData = (kennzahlenData) => {
+        const ebitData = kennzahlenData.ebit.map(ebitObj => ({
+            year: ebitObj.year,
+            value: ebitObj.value
+        }));
+
+        ebitData.push({
+            year: 'Average',
+            value: kennzahlenData.averageValues.averageEbit
+        });
+
+        const jahresAbschlussAnalyseData = {
+            'EBIT': ebitData,
+            'Sonst. Bereinigung EBIT': [
+                { 'year': 2020, 'value': 2000000 },
+                { 'year': 2021, 'value': 2000000 },
+                { 'year': 2022, 'value': 2000000 },
+                { 'year': 2023, 'value': 2000000 },
+                { 'year': 'Average', 'value': 2000000 }
+            ],
+            'Verguetung GF': [
+                { 'year': 2020, 'value': 10000 },
+                { 'year': 2021, 'value': 12000 },
+                { 'year': 2022, 'value': 14000 },
+                { 'year': 2023, 'value': 16000 },
+                { 'year': 'Average', 'value': 13000 }
+            ],
+            'Bereinigter EBIT': [
+                { 'year': 2020, 'value': 32000 },
+                { 'year': 2021, 'value': 34200 },
+                { 'year': 2022, 'value': 36400 },
+                { 'year': 2023, 'value': 38600 },
+                { 'year': 'Average', 'value': 35300 }
+            ],
+            'EBIT Wachstum': [
+                { 'year': 2020, 'value': 7 },
+                { 'year': 2021, 'value': 7.5 },
+                { 'year': 2022, 'value': 8 },
+                { 'year': 2023, 'value': 8.5 },
+                { 'year': 'Average', 'value': 7.75 }
+            ],
+            'Umsatz': [
+                { 'year': 2020, 'value': 80000 },
+                { 'year': 2021, 'value': 82000 },
+                { 'year': 2022, 'value': 84000 },
+                { 'year': 2023, 'value': 86000 },
+                { 'year': 'Average', 'value': 83000 }
+            ],
+            'Gewinnmarge': [
+                { 'year': 2020, 'value': 40 },
+                { 'year': 2021, 'value': 41 },
+                { 'year': 2022, 'value': 42 },
+                { 'year': 2023, 'value': 43 },
+                { 'year': 'Average', 'value': 41.5 }
+            ]
+        }
+
+        return jahresAbschlussAnalyseData;
     }
+
+    const jahresAbschlussAnalyseData = transformKennzahlenData(kennzahlenData);
 
     // Extract the column headers (years) from the data
     const columnHeaders = jahresAbschlussAnalyseData['EBIT'].map(datum => datum.year);
