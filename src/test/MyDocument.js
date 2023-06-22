@@ -3,7 +3,8 @@ import { Document, Page, Text, View, StyleSheet, Image, pdf } from '@react-pdf/r
 
 const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
 
-    const imageUrl = 'assets/images/ORGAPLANLOGO.png';
+    const logoImage = 'assets/images/ORGAPLANLOGO.png';
+    const marktDaten = 'assets/images/marktdaten.png';
 
     const styles = StyleSheet.create({
         page: {
@@ -110,9 +111,9 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         image: {
             textAlign: 'justify',
             alignSelf: 'stretch',
-            marginHorizontal: 100,
-            width: 300,
-            height: 400,
+            margin: 'auto',
+            width: 350,
+            height: 300,
         },
     });
 
@@ -260,7 +261,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Image
                     style={styles.logo}
                     source={{
-                        uri: imageUrl,
+                        uri: logoImage,
                         method: 'GET',
                         headers: {},
                         body: '',
@@ -370,6 +371,15 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                     Information, hat jedoch in der Regel eine geringere Aussagekraft und wird entsprechend weniger
                     stark gewichtet.
                 </Text>
+                <Image
+                    style={styles.image}
+                    source={{
+                        uri: marktDaten,
+                        method: 'GET',
+                        headers: {},
+                        body: '',
+                    }}
+                />
                 <PageNumber pageNumber="2" />
             </Page>
         </Document>
