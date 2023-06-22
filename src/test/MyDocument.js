@@ -91,13 +91,15 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             borderWidth: 0, // Removed border
         },
         tableRowHeader: {
+            padding: 5,
             margin: 2,
             width: '80%',
             borderWidth: 0, // Removed border
             backgroundColor: '#003366',
         },
         tableColHeader: {
-            marginBottom: 2,
+            padding: 5,
+            margin: '2 1',
             width: '50%',
             borderWidth: 0, // Removed border
             backgroundColor: '#1abc9c',
