@@ -107,6 +107,13 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             borderWidth: 0, // Removed border
             backgroundColor: '#1abc9c',
         },
+        image: {
+            textAlign: 'justify',
+            alignSelf: 'stretch',
+            marginHorizontal: 100,
+            width: 300,
+            height: 400,
+        },
     });
 
     const calculateEBITWachstum = (ebitData) => {
