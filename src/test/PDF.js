@@ -124,7 +124,7 @@ const PDF = () => {
             borderTopWidth: 0,
         },
         tableRowHeader: {
-            width: '100%',
+            width: '80%',
             borderStyle: 'solid',
             borderWidth: 1,
             borderLeftWidth: 0,
@@ -258,7 +258,7 @@ const PDF = () => {
     const Table = ({ rowHeaders, colHeaders, data }) => (
         <View style={styles.table}>
             <View style={styles.tableRow}>
-                <View style={[styles.tableColHeader, { width: '100%' }]}></View> {/* Empty cell */}
+                <View style={[styles.tableColHeader, { width: '80%' }]}></View> {/* Empty cell */}
                 {colHeaders.map((cell, cellIndex) => (
                     <View key={cellIndex} style={styles.tableColHeader}>
                         <Text style={styles.tableCellHeader}>{cell}</Text>
