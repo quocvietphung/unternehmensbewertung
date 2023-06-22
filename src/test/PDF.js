@@ -193,17 +193,22 @@ const PDF = () => {
             value: kennzahlenData.averageValues.averageEbit
         });
 
+        const anpassungEbitData = bereinigungData.anpassungEbit.map(anpassungEbitObj => ({
+            year: anpassungEbitObj.year,
+            value: anpassungEbitObj.value
+        }));
+
+        // Push a dash for the average value
+        anpassungEbitData.push({
+            year: 'Average',
+            value: "-"
+        });
+
         const ebitWachstum = calculateEBITWachstum(ebitData);
 
         const jahresAbschlussAnalyseData = {
             'EBIT': ebitData,
-            'Sonst. Bereinigung EBIT': [
-                { 'year': 2020, 'value': 2000000 },
-                { 'year': 2021, 'value': 2000000 },
-                { 'year': 2022, 'value': 2000000 },
-                { 'year': 2023, 'value': 2000000 },
-                { 'year': 'Average', 'value': 2000000 }
-            ],
+            'Sonst. Bereinigung EBIT': anpassungEbitData,
             'Verguetung GF': [
                 { 'year': 2020, 'value': 10000 },
                 { 'year': 2021, 'value': 12000 },
