@@ -267,9 +267,8 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
     );
 
     const formatCell = (rowHeaders, rowIndex, cell) => {
-        if(rowHeaders[rowIndex] === 'EBIT') {
-            return `${cell} €`;
-        } else if (rowHeaders[rowIndex] === 'Sonst. Bereinigung EBIT' && cell !== '-' && cell !== null) {
+        const headersRequireEuro = ['EBIT', 'Sonst. Bereinigung EBIT', 'Verguetung GF', 'Bereinigter EBIT', 'Umsatz'];
+        if(headersRequireEuro.includes(rowHeaders[rowIndex]) && cell !== '-' && cell !== null) {
             return `${cell} €`;
         } else if (cell === null) {
             return '';
