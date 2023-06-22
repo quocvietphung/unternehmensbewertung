@@ -47,7 +47,7 @@ const Ausgabe = () => {
         });
 
         const bereinigungEbitValues = bereinigungData.bereinigungEbit.map((item) => parseFloat(item.value) || 0);
-        const bereinigungEbitAverage = bereinigungEbitValues.reduce((sum, value) => sum + value, 0) / bereinigungEbitValues.length;
+        const bereinigungEbitAverage = Math.round(bereinigungEbitValues.reduce((sum, value) => sum + value, 0) / bereinigungEbitValues.length);
 
         if (bereinigungData.bereinigungEbitAverage !== bereinigungEbitAverage) {
             dispatch(setBereinigungEbitAverage(bereinigungEbitAverage));
