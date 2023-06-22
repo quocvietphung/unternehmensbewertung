@@ -167,7 +167,7 @@ const PDF = () => {
                 count++;
                 ebitWachstum.push({
                     year: ebitData[i].year,
-                    value: Math.round(growth) // round to the nearest integer
+                    value: Math.round(growth) + "%" // round to the nearest integer and add '%'
                 });
             }
         }
@@ -176,7 +176,7 @@ const PDF = () => {
         const average = sum / count;
         ebitWachstum.push({
             year: 'Average',
-            value: Math.round(average) // round to the nearest integer
+            value: Math.round(average) + "%" // round to the nearest integer and add '%'
         });
 
         return ebitWachstum;
