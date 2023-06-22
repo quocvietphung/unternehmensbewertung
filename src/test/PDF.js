@@ -148,6 +148,40 @@ const PDF = () => {
         },
     });
 
+    const calculateEBITWachstum = (ebitData) => {
+        let ebitWachstum = [];
+        let sum = 0;
+        let count = 0;
+
+        for (let i = 0; i < ebitData.length - 1; i++) { // include 'Average'
+            if (i === 0) {
+                ebitWachstum.push({
+                    year: ebitData[i].year,
+                    value: "-" // "-" for the first year
+                });
+            } else {
+                const currentEBIT = ebitData[i].value;
+                const previousEBIT = ebitData[i - 1].value;
+                const growth = ((currentEBIT - previousEBIT) / previousEBIT) * 100; // calculate growth
+                sum += growth;
+                count++;
+                ebitWachstum.push({
+                    year: ebitData[i].year,
+                    value: growth.toFixed(2) // round to 2 decimal places
+                });
+            }
+        }
+
+        // Calculate average EBIT Wachstum
+        const average = sum / count;
+        ebitWachstum.push({
+            year: 'Average',
+            value: average.toFixed(2) // round to 2 decimal places
+        });
+
+        return ebitWachstum;
+    };
+
     const transformKennzahlenData = (kennzahlenData) => {
         const ebitData = kennzahlenData.ebit.map(ebitObj => ({
             year: ebitObj.year,
@@ -158,6 +192,8 @@ const PDF = () => {
             year: 'Average',
             value: kennzahlenData.averageValues.averageEbit
         });
+
+        const ebitWachstum = calculateEBITWachstum(ebitData);
 
         const jahresAbschlussAnalyseData = {
             'EBIT': ebitData,
@@ -182,13 +218,7 @@ const PDF = () => {
                 { 'year': 2023, 'value': 38600 },
                 { 'year': 'Average', 'value': 35300 }
             ],
-            'EBIT Wachstum': [
-                { 'year': 2020, 'value': 7 },
-                { 'year': 2021, 'value': 7.5 },
-                { 'year': 2022, 'value': 8 },
-                { 'year': 2023, 'value': 8.5 },
-                { 'year': 'Average', 'value': 7.75 }
-            ],
+            'EBIT Wachstum': ebitWachstum, // use calculated EBIT Wachstum
             'Umsatz': [
                 { 'year': 2020, 'value': 80000 },
                 { 'year': 2021, 'value': 82000 },
