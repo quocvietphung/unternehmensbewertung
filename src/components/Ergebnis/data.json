@@ -3,23 +3,23 @@
         "year": {2020,},
         "ebit": [
             {
-                "title": "Ebit 2020",
                 "year": 2020,
                 "value": 5000000
             },
             {
-                "title": "Ebit 2021",
                 "year": 2021,
                 "value": 5000000
             },
             {
-                "title": "Ebit 2022",
                 "year": 2022,
                 "value": 5000000
             },
             {
-                "title": "Ebit 2023",
                 "year": 2023,
+                "value": 5000000
+            },
+            {
+                "average": average,
                 "value": 5000000
             }
         ],
