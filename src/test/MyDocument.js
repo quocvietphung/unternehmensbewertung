@@ -156,6 +156,17 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         return ebitWachstum;
     };
 
+    const calculateGewinnmarge = (bereinigterEbitData, umsatzData) => {
+        return bereinigterEbitData.map((bereinigterEbitObj, index) => {
+            const umsatzValue = umsatzData[index]?.value || 0;
+            const gewinnmarge = umsatzValue !== 0 ? Math.round((bereinigterEbitObj.value / umsatzValue) * 100) : 'N/A';
+            return {
+                year: bereinigterEbitObj.year,
+                value: `${gewinnmarge}%`
+            };
+        });
+    };
+
     const transformKennzahlenData = () => {
         const ebitData = kennzahlenData.ebit.map(ebitObj => ({
             year: ebitObj.year,
@@ -221,6 +232,10 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             value: kennzahlenData.averageValues.averageUmsatz || 0
         });
 
+        const gewinnmargeData = calculateGewinnmarge(bereinigterEbitData, umsatzData);
+
+        console.log("gewinnmargeData", gewinnmargeData);
+
         const jahresAbschlussAnalyseData = {
             'EBIT': ebitData,
             'Sonst. Bereinigung EBIT': anpassungEbitData,
@@ -228,13 +243,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             'Bereinigter EBIT': bereinigterEbitData,
             'EBIT Wachstum': ebitWachstum, // use calculated EBIT Wachstum
             'Umsatz': umsatzData,
-            'Gewinnmarge': [
-                { 'year': 2020, 'value': 40 },
-                { 'year': 2021, 'value': 41 },
-                { 'year': 2022, 'value': 42 },
-                { 'year': 2023, 'value': 43 },
-                { 'year': 'Average', 'value': 41.5 }
-            ]
+            'Gewinnmarge': gewinnmargeData,
         }
 
         return jahresAbschlussAnalyseData;
