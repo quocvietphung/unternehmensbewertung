@@ -178,7 +178,10 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             value: "-"
         });
 
-        const gehaltValues = bereinigungData.gehalt.map(gehaltObj => gehaltObj.value || 0);
+        const gehaltValues = bereinigungData.gehalt
+            .map(gehaltObj => parseFloat(gehaltObj.value))
+            .filter(value => !isNaN(value));
+
         const gehaltSum = gehaltValues.reduce((sum, value) => sum + value, 0)
         const gehaltAverage = gehaltSum / gehaltValues.length;
 
