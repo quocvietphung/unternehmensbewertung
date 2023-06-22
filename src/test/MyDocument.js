@@ -87,7 +87,6 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         },
         tableCell: {
             margin: 'auto',
-            padding: 10,
             fontSize: 12,
         },
         tableCol: {
