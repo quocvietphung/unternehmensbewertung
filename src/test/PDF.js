@@ -148,6 +148,16 @@ const PDF = () => {
         },
     });
 
+    const data = [
+        [30000, 32000, 34000, 36000, 33000],
+        [2000, 2200, 2400, 2600, 2300],
+        [10000, 12000, 14000, 16000, 13000],
+        [32000, 34200, 36400, 38600, 35300],
+        [7, 7.5, 8, 8.5, 7.75],
+        [80000, 82000, 84000, 86000, 83000],
+        [40, 41, 42, 43, 41.5]
+    ];
+
     const Header = () => (
         <View style={styles.header}>
             <Text style={styles.headerText}>Orgaplan Beratung</Text>
@@ -181,7 +191,7 @@ const PDF = () => {
                 data.map((row, rowIndex) => (
                     <View key={rowIndex} style={styles.tableRow}>
                         <View style={styles.tableRowHeader}>
-                            <Text style={styles.tableCell}>{rowHeaders[rowIndex]}</Text>
+                            <Text style={styles.tableCellHeader}>{rowHeaders[rowIndex]}</Text>
                         </View>
                         {row.map((cell, cellIndex) => (
                             <View key={cellIndex} style={styles.tableCol}>
@@ -224,7 +234,7 @@ const PDF = () => {
                 <Table
                     rowHeaders={['EBIT', 'Sonst. Bereinigung EBIT', 'Verguetung GF', 'Bereinigter EBIT', 'EBIT Wachstum', 'Umsatz', 'Gewinnmarge']}
                     colHeaders={['2020', '2021', '2022', '2023', 'Average']}
-                    data={[]}
+                    data={data}
                 />
                 <Text style={styles.content}>
                     Branchenübliche Vergütung Geschäftsführer:
