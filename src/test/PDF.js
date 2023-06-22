@@ -330,7 +330,7 @@ const PDF = () => {
                     data={tableData}
                 />
                 <Text style={styles.content}>
-                    Branchenübliche Vergütung Geschäftsführer:
+                    Branchenübliche Vergütung Geschäftsführer: {bereinigungData.typischGehalt || ''}
                 </Text>
                 <PageNumber pageNumber="1" />
             </Page>
