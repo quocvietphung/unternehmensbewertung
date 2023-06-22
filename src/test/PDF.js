@@ -105,6 +105,12 @@ const PDF = () => {
         tableRow: {
             flexDirection: 'row',
         },
+        tableCellHeader: {
+            color:"white",
+            margin: 'auto',
+            padding: 10,
+            fontSize: 12,
+        },
         tableCell: {
             margin: 'auto',
             padding: 10,
@@ -123,7 +129,7 @@ const PDF = () => {
             borderWidth: 1,
             borderLeftWidth: 0,
             borderTopWidth: 0,
-            backgroundColor: '#f0f0f0',
+            backgroundColor: 'green',
         },
         tableColHeader: {
             width: '50%',
@@ -131,12 +137,12 @@ const PDF = () => {
             borderWidth: 1,
             borderLeftWidth: 0,
             borderTopWidth: 0,
-            backgroundColor: '#d0d0d0',
+            backgroundColor: 'blue',
         },
         image: {
             textAlign: 'justify',
             alignSelf: 'stretch',
-            marginHorizontal: 100, // adjust as needed
+            marginHorizontal: 100,
             width: 300,
             height: 400,
         },
@@ -154,7 +160,7 @@ const PDF = () => {
                 <View style={[styles.tableColHeader, { width: '100%' }]}></View> {/* Empty cell */}
                 {colHeaders.map((cell, cellIndex) => (
                     <View key={cellIndex} style={styles.tableColHeader}>
-                        <Text style={styles.tableCell}>{cell}</Text>
+                        <Text style={styles.tableCellHeader}>{cell}</Text>
                     </View>
                 ))}
             </View>
@@ -162,7 +168,7 @@ const PDF = () => {
                 rowHeaders.map((header, index) => (
                     <View key={index} style={styles.tableRow}>
                         <View style={styles.tableRowHeader}>
-                            <Text style={styles.tableCell}>{header}</Text>
+                            <Text style={styles.tableCellHeader}>{header}</Text>
                         </View>
                         {colHeaders.map((colHeader, colIndex) => (
                             <View key={colIndex} style={styles.tableCol}>
