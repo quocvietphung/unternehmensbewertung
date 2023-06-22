@@ -159,17 +159,17 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
     const transformKennzahlenData = () => {
         const ebitData = kennzahlenData.ebit.map(ebitObj => ({
             year: ebitObj.year,
-            value: ebitObj.value
+            value: ebitObj.value || 0
         }));
 
         ebitData.push({
             year: 'Average',
-            value: kennzahlenData.averageValues.averageEbit
+            value: kennzahlenData.averageValues.averageEbit || 0
         });
 
         const anpassungEbitData = bereinigungData.anpassungEbit.map(anpassungEbitObj => ({
             year: anpassungEbitObj.year,
-            value: anpassungEbitObj.value
+            value: anpassungEbitObj.value || 0
         }));
 
         // Push a dash for the average value
