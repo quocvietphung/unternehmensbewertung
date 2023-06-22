@@ -156,7 +156,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         return ebitWachstum;
     };
 
-    const transformKennzahlenData = (kennzahlenData) => {
+    const transformKennzahlenData = () => {
         const ebitData = kennzahlenData.ebit.map(ebitObj => ({
             year: ebitObj.year,
             value: ebitObj.value
@@ -217,7 +217,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         return jahresAbschlussAnalyseData;
     }
 
-    const jahresAbschlussAnalyseData = transformKennzahlenData(kennzahlenData);
+    const jahresAbschlussAnalyseData = transformKennzahlenData();
 
     // Extract the column headers (years) from the data
     const columnHeaders = jahresAbschlussAnalyseData['EBIT'].map(datum => datum.year);
