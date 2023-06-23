@@ -1,51 +1,43 @@
-import React, { useRef } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import html2canvas from 'html2canvas';
+import React from 'react';
+import { Line } from 'react-chartjs-2';
+import { Chart } from 'chart.js/auto';
 
 const ChartComponent = () => {
-    const chartRef = useRef(null);
+    Chart.register();
 
-    const data = [
-        { name: 'January', Sales: 65 },
-        { name: 'February', Sales: 59 },
-        { name: 'March', Sales: 80 },
-        // ...
-    ];
+    const data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [
+            {
+                label: 'Sales',
+                data: [65, 59, 80, 81, 56, 55],
+                fill: false,
+                borderColor: '#8884d8',
+                pointRadius: 8,
+            },
+        ],
+    };
 
-    const exportChartAsImage = () => {
-        html2canvas(chartRef.current)
-            .then((canvas) => {
-                const dataUrl = canvas.toDataURL(); // Base64 image data
-
-                // Tạo một thẻ <a> và đặt thuộc tính href thành base64 image data
-                const link = document.createElement('a');
-                link.href = dataUrl;
-
-                // Đặt thuộc tính download để đặt tên tệp tin khi tải xuống
-                link.download = 'chart.png';
-
-                // Kích hoạt sự kiện click để tải về
-                link.click();
-            })
-            .catch((error) => {
-                console.error('Error converting chart to image:', error);
-            });
+    const options = {
+        scales: {
+            x: {
+                type: 'category',
+                display: true,
+            },
+            y: {
+                display: true,
+            },
+        },
+        responsive: true,
+        maintainAspectRatio: false,
     };
 
     return (
         <div>
             <h2>Chart Example</h2>
-            <div ref={chartRef}>
-                <LineChart width={400} height={300} data={data}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="Sales" stroke="#8884d8" activeDot={{ r: 8 }} />
-                </LineChart>
+            <div>
+                <Line data={data} options={options} />
             </div>
-            <button onClick={exportChartAsImage}>Export as Image</button>
         </div>
     );
 };
