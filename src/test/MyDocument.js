@@ -384,13 +384,13 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Header />
                 <Text style={styles.subtitle}>4. Details zu qualitativen Werttreibern</Text>
                 <Text style={styles.content}>
-                    Mit Hilfe von Zu- und Abschlägen wird die Vergleichbarkeit zu ähnlichen Unternehmen durch die
-                    Ermittlung von Branchen-Multiples hergestellt. Im Idealfall sollten bei einer tiefgreifenden
-                    Analyse eine Vielzahl an Faktoren beachtet und durch einen externen Berater analysiert werden.
-                    Dies ist für eine aussagekräftige Bewertung sinnvoll, da andernfalls der Unternehmer Akteur und
-                    Betroffener gleichzeitig ist. Da der Everto Firmenwertrechner lediglich einen ersten Anhaltspunkt
-                    schaffen soll, werden nur die qualitativen Kriterien abgefragt, die unserer Erfahrung nach, die
-                    größten Auswirkungen auf den Kaufpreis haben.
+                    Um die Vergleichbarkeit mit ähnlichen Unternehmen herzustellen, werden Zu- und Abschläge verwendet,
+                    um Branchen-Multiples zu ermitteln. Bei einer gründlichen Analyse sollten idealerweise eine Vielzahl
+                    von Faktoren berücksichtigt und von einem externen Berater analysiert werden. Dies ist wichtig für
+                    eine aussagekräftige Bewertung, da der Unternehmer sonst sowohl Akteur als auch Betroffener ist.
+                    Der Orgaplan Beratung Firmenwertrechner dient lediglich als erster Anhaltspunkt und fragt daher nur
+                    nach den qualitativen Kriterien, die unserer Erfahrung nach die größten Auswirkungen auf den
+                    Kaufpreis haben.
                 </Text>
                 <PageNumber pageNumber="3" />
             </Page>
