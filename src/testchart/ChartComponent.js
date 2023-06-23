@@ -1,42 +1,34 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart } from 'chart.js/auto';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const ChartComponent = () => {
-    Chart.register();
-
-    const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [
-            {
-                label: 'Sales',
-                data: [65, 59, 80, 81, 56, 55],
-                fill: false,
-                borderColor: '#8884d8',
-                pointRadius: 8,
-            },
-        ],
-    };
-
-    const options = {
-        scales: {
-            x: {
-                type: 'category',
-                display: true,
-            },
-            y: {
-                display: true,
-            },
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-    };
+    const data = [
+        { month: 'January', sales: 65 },
+        { month: 'February', sales: 59 },
+        { month: 'March', sales: 80 },
+        { month: 'April', sales: 81 },
+        { month: 'May', sales: 56 },
+        { month: 'June', sales: 55 },
+    ];
 
     return (
         <div>
             <h2>Chart Example</h2>
             <div>
-                <Line data={data} options={options} />
+                <LineChart width={500} height={300} data={data}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Line
+                        type="monotone"
+                        dataKey="sales"
+                        stroke="#8884d8"
+                        dot={{ r: 8 }}
+                        isAnimationActive={false}
+                    />
+                </LineChart>
             </div>
         </div>
     );
