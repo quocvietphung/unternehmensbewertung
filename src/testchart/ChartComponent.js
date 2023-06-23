@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import htmlToImage from 'html-to-image';
+import html2canvas from 'html2canvas';
 
 const ChartComponent = () => {
+    const chartRef = useRef(null);
+
     const data = [
         { name: 'January', Sales: 65 },
         { name: 'February', Sales: 59 },
@@ -11,11 +13,9 @@ const ChartComponent = () => {
     ];
 
     const exportChartAsImage = () => {
-        const chart = document.getElementById('chart');
-
-        htmlToImage.toPng(chart)
-            .then((dataUrl) => {
-                // Base64 image data
+        html2canvas(chartRef.current)
+            .then((canvas) => {
+                const dataUrl = canvas.toDataURL(); // Base64 image data
                 console.log(dataUrl);
             })
             .catch((error) => {
@@ -26,7 +26,7 @@ const ChartComponent = () => {
     return (
         <div>
             <h2>Chart Example</h2>
-            <div id="chart">
+            <div ref={chartRef}>
                 <LineChart width={400} height={300} data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
