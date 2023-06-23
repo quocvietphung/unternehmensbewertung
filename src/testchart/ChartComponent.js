@@ -12,23 +12,33 @@ const ChartComponent = () => {
     ];
 
     return (
-        <div>
-            <h2>Chart Example</h2>
+        <div
+            style={{
+                background: '#fff',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh',
+            }}
+        >
             <div>
-                <LineChart width={500} height={300} data={data}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                        type="monotone"
-                        dataKey="sales"
-                        stroke="#8884d8"
-                        dot={{ r: 8 }}
-                        isAnimationActive={false}
-                    />
-                </LineChart>
+                <h2>Chart Example</h2>
+                <div>
+                    <LineChart width={500} height={300} data={data}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="month" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line
+                            type="monotone"
+                            dataKey="sales"
+                            stroke="#8884d8"
+                            dot={{ r: 8 }}
+                            isAnimationActive={false}
+                        />
+                    </LineChart>
+                </div>
             </div>
         </div>
     );
