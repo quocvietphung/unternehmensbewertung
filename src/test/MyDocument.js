@@ -52,8 +52,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         subtitle: {
             fontSize: 24,
             fontWeight: 'bold',
-            marginTop: 10,
-            marginBottom: 5,
+            marginVertical: 5,
         },
         content: {
             marginTop: 20,
@@ -392,25 +391,31 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                     nach den qualitativen Kriterien, die unserer Erfahrung nach die größten Auswirkungen auf den
                     Kaufpreis haben.
                 </Text>
-                <Text style={styles.content}>
-                    <Text style={[styles.subtitle, { fontSize: 18 }]}>4.1 Klumpenrisiken</Text>
-                    Bewertung des Ausmaßes der Abhängigkeit des Unternehmens von wenigen wichtigen Kunden. Wenn ein Unternehmen nur von wenigen Kunden abhängig ist, besteht ein höheres Risiko, wenn diese Kunden verloren gehen. Ein Unternehmen mit hoher Qualität hat eine vielfältige Kundenbasis und ist nicht stark von wenigen wichtigen Kunden abhängig.
 
-                    <Text style={[styles.subtitle, { fontSize: 18 }]}>4.2 Abhängigkeit vom Unternehmer</Text>
-                    Bestimmung des Maßes, in dem das Unternehmen von entscheidenden Unternehmensinhabern abhängt. Ein Unternehmen mit hoher Qualität hat die Fähigkeit, unabhängig von der Anwesenheit der Schlüsselunternehmer zu überleben und zu wachsen. Dies gewährleistet Nachhaltigkeit und die Fähigkeit zur Machtübertragung in der Zukunft.
+                <Text style={styles.content}>Durch Bewertung und Verbesserung der Qualität kann ein Unternehmen seinen Wert steigern. Qualität spielt eine wichtige Rolle bei der Bestimmung des Wettbewerbs und des Gewinnpotenzials eines Unternehmens sowie bei der Anziehung von Investitionen und dem Aufbau von Vertrauen bei Kunden und Stakeholdern.</Text>
 
-                    <Text style={[styles.subtitle, { fontSize: 18 }]}>4.3 Produkt- und Dienstleistungsvielfalt</Text>
-                    Ein Unternehmen mit hoher Qualität verfügt über eine vielfältige Produktpalette und Dienstleistungen. Dies trägt dazu bei, ein stabiles Einkommen zu generieren und das Risiko einer Abhängigkeit von einer bestimmten Branche oder einem bestimmten Produkt zu verringern.
+                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.1 Klumpenrisiken</Text>
+                <Text style={styles.content}>Bewertung des Ausmaßes der Abhängigkeit des Unternehmens von wenigen wichtigen Kunden. Wenn ein Unternehmen nur von wenigen Kunden abhängig ist, besteht ein höheres Risiko, wenn diese Kunden verloren gehen. Ein Unternehmen mit hoher Qualität hat eine vielfältige Kundenbasis und ist nicht stark von wenigen wichtigen Kunden abhängig.</Text>
 
-                    <Text style={[styles.subtitle, { fontSize: 18 }]}>4.4 Kundenbeziehung</Text>
-                    Die Qualität eines Unternehmens kann durch die Stärke der Kundenbeziehungen gemessen werden. Ein Unternehmen mit hoher Qualität baut und pflegt eine gute Kundenbeziehung auf, erfüllt deren Bedürfnisse und erzeugt Zufriedenheit und Vertrauen.
+                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.2 Abhängigkeit vom Unternehmer</Text>
+                <Text style={styles.content}>Bestimmung des Maßes, in dem das Unternehmen von entscheidenden Unternehmensinhabern abhängt. Ein Unternehmen mit hoher Qualität hat die Fähigkeit, unabhängig von der Anwesenheit der Schlüsselunternehmer zu überleben und zu wachsen. Dies gewährleistet Nachhaltigkeit und die Fähigkeit zur Machtübertragung in der Zukunft.</Text>
 
-                    <Text style={[styles.subtitle, { fontSize: 18 }]}>4.5 Partnerschaften und Lieferantenbeziehungen: </Text>
-                    Geschäftspartner und Lieferanten spielen eine wichtige Rolle im Geschäftsbetrieb. Ein Unternehmen mit hoher Qualität hat gute Beziehungen zu Partnern und Lieferanten, stellt termingerechte und qualitativ hochwertige Produkte und Dienstleistungen bereit und unterstützt die Geschäftstätigkeiten.
-
-                    Durch Bewertung und Verbesserung der Qualität kann ein Unternehmen seinen Wert steigern. Qualität spielt eine wichtige Rolle bei der Bestimmung des Wettbewerbs und des Gewinnpotenzials eines Unternehmens sowie bei der Anziehung von Investitionen und dem Aufbau von Vertrauen bei Kunden und Stakeholdern.
-                </Text>
                 <PageNumber pageNumber="3" />
+            </Page>
+
+            <Page style={styles.page}>
+                <Header />
+
+                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.3 Produkt- und Dienstleistungsvielfalt</Text>
+                <Text style={styles.content}>Ein Unternehmen mit hoher Qualität verfügt über eine vielfältige Produktpalette und Dienstleistungen. Dies trägt dazu bei, ein stabiles Einkommen zu generieren und das Risiko einer Abhängigkeit von einer bestimmten Branche oder einem bestimmten Produkt zu verringern.</Text>
+
+                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.4 Kundenbeziehung</Text>
+                <Text style={styles.content}>Die Qualität eines Unternehmens kann durch die Stärke der Kundenbeziehungen gemessen werden. Ein Unternehmen mit hoher Qualität baut und pflegt eine gute Kundenbeziehung auf, erfüllt deren Bedürfnisse und erzeugt Zufriedenheit und Vertrauen.</Text>
+
+                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.5 Partnerschaften und Lieferantenbeziehungen: </Text>
+                <Text style={styles.content}>Geschäftspartner und Lieferanten spielen eine wichtige Rolle im Geschäftsbetrieb. Ein Unternehmen mit hoher Qualität hat gute Beziehungen zu Partnern und Lieferanten, stellt termingerechte und qualitativ hochwertige Produkte und Dienstleistungen bereit und unterstützt die Geschäftstätigkeiten.</Text>
+
+                <PageNumber pageNumber="4" />
             </Page>
         </Document>
     );
