@@ -51,7 +51,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         subtitle: {
             fontSize: 24,
             fontWeight: 'bold',
-            marginBottom: 5,
+            marginVertical: 5,
         },
         content: {
             marginVertical: 10,
