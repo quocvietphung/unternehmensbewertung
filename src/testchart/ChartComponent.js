@@ -16,7 +16,16 @@ const ChartComponent = () => {
         html2canvas(chartRef.current)
             .then((canvas) => {
                 const dataUrl = canvas.toDataURL(); // Base64 image data
-                console.log(dataUrl);
+
+                // Tạo một thẻ <a> và đặt thuộc tính href thành base64 image data
+                const link = document.createElement('a');
+                link.href = dataUrl;
+
+                // Đặt thuộc tính download để đặt tên tệp tin khi tải xuống
+                link.download = 'chart.png';
+
+                // Kích hoạt sự kiện click để tải về
+                link.click();
             })
             .catch((error) => {
                 console.error('Error converting chart to image:', error);
