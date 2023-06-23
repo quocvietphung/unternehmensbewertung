@@ -379,7 +379,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             </Page>
             <Page style={styles.page}>
                 <Header />
-                <Text style={styles.subtitle}>4. Details zu qualitativen Werttreibern dfsfsd</Text>
+                <Text style={styles.subtitle}>4. Details zu qualitativen Werttreibern</Text>
                 <Text style={styles.content}>
                     Um die Vergleichbarkeit mit ähnlichen Unternehmen herzustellen, werden Zu- und Abschläge verwendet,
                     um Branchen-Multiples zu ermitteln. Bei einer gründlichen Analyse sollten idealerweise eine Vielzahl
