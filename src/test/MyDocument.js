@@ -14,7 +14,6 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         header: {
             marginBottom: 10,
             backgroundColor: '#f5f5f5',
-            paddingVertical: 10,
         },
         logo: {
             width: 150,
