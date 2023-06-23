@@ -403,16 +403,24 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
 
             <Page style={styles.page}>
                 <Header />
+                <Text style={styles.subtitle}>5. Vom Unternehmenswert zum Kaufpreis mittels Equity Bridge</Text>
+                <Text style={styles.content}>
+                    Der Unternehmenswertrechner ermittelt den Gesamtunternehmenswert, auch als Enterprise Value bezeichnet, des Zielunternehmens anhand von normalisierten Kennzahlen (EBIT) und unter Verwendung branchenüblicher Multiplikatoren. Dieser Wert wird durch qualitative Faktoren angepasst, um die Vergleichbarkeit mit anderen Unternehmen der Branche zu erhöhen.
+                </Text>
 
-                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.3 Produkt- und Dienstleistungsvielfalt</Text>
-                <Text style={styles.content}>Ein Unternehmen mit hoher Qualität verfügt über eine vielfältige Produktpalette und Dienstleistungen. Dies trägt dazu bei, ein stabiles Einkommen zu generieren und das Risiko einer Abhängigkeit von einer bestimmten Branche oder einem bestimmten Produkt zu verringern.</Text>
+                <Text style={styles.content}>
+                    Der Enterprise Value entspricht nicht dem Kaufpreis, sondern repräsentiert ausschließlich den Wert
+                    der operativen Vermögenswerte (Assets) des Unternehmens. Um den Wert des Eigenkapitals zu ermitteln,
+                    werden die finanziellen Verbindlichkeiten und andere Faktoren vom Enterprise Value subtrahiert und
+                    Barmittel und ähnliche Werte addiert. Es kann erhebliche Unterschiede zwischen dem ermittelten
+                    Enterprise Value und dem Kaufpreis für Unternehmensanteile, dem sogenannten Equity Value, geben.
+                    Diese Unterschiede hängen unter anderem von der Finanzierung des Zielunternehmens ab. Ohne diese
+                    Betrachtung würden Unternehmen mit unterschiedlichen Fremdfinanzierungsgraden immer den gleichen Wert haben.
+                </Text>
 
-                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.4 Kundenbeziehung</Text>
-                <Text style={styles.content}>Die Qualität eines Unternehmens kann durch die Stärke der Kundenbeziehungen gemessen werden. Ein Unternehmen mit hoher Qualität baut und pflegt eine gute Kundenbeziehung auf, erfüllt deren Bedürfnisse und erzeugt Zufriedenheit und Vertrauen.</Text>
-
-                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.5 Partnerschaften und Lieferantenbeziehungen: </Text>
-                <Text style={styles.content}>Geschäftspartner und Lieferanten spielen eine wichtige Rolle im Geschäftsbetrieb. Ein Unternehmen mit hoher Qualität hat gute Beziehungen zu Partnern und Lieferanten, stellt termingerechte und qualitativ hochwertige Produkte und Dienstleistungen bereit und unterstützt die Geschäftstätigkeiten.</Text>
-
+                <Text style={styles.content}>
+                    Das folgende Schaubild veranschaulicht die Vorgehensweise der Equity Bridge.
+                </Text>
                 <PageNumber pageNumber="4" />
             </Page>
         </Document>
