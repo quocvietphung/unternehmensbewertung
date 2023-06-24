@@ -19,7 +19,7 @@ const App = () => {
                     <Route path="/unternehmenswert-berechnen" element={<Unternehmenswertrechner/>}/>
                     <Route path="/result" element={<Ergebnis/>}/>
                     <Route path="/pdf" element={<PDF/>}/>
-                    <Route path="/test" element={ <ChartComponent />}/>
+                    <Route path="/graph" element={ <ChartComponent />}/>
                 </Routes>
             </div>
             <Footer/>
