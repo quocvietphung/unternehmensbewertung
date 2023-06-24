@@ -125,10 +125,10 @@ const BasisInfoChart = () => {
                 height: '100vh',
             }}
         >
-            <div>
+            <div style={{ height: '80vh' }}>
                 <h2>Basis Info Chart</h2>
                 <div>
-                    <RadarChart width={500} height={300} data={basisInfos.branchOptions}>
+                    <RadarChart width={1000} height={500} data={basisInfos.branchOptions}>
                         <PolarGrid />
                         <PolarAngleAxis dataKey="text" />
                         <Radar dataKey="ebitValue" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
