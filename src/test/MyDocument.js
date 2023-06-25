@@ -309,7 +309,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                         </View>
                         {row.map((cell, cellIndex) => (
                             <View key={cellIndex} style={styles.tableCol}>
-                                <Text style={[styles.tableCell, rowHeaders[rowIndex] === 'Bereinigter EBIT' ? { color: '#FFC200' } : null]}>
+                                <Text style={[styles.tableCell, rowHeaders[rowIndex] === 'Bereinigter EBIT' ? { color: '#ffc658' } : null]}>
                                     {formatCell(rowHeaders, rowIndex, cell)}
                                 </Text>
                             </View>
