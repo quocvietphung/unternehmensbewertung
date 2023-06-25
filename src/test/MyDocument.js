@@ -4,6 +4,7 @@ import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/render
 const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
 
     const logoImage = 'assets/images/ORGAPLANLOGO.png';
+    const brancheRadar = 'assets/images/branche_radar.png';
     const marktDaten = 'assets/images/marktdaten.png';
 
     const styles = StyleSheet.create({
@@ -106,10 +107,17 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             backgroundColor: '#1abc9c',
         },
         image: {
-            margin: '10 auto',
-            width: 350,
+            margin: '0 auto',
+            width: 500,
             height: 350,
         },
+        imageTitle: {
+            marginTop: 10,
+            fontSize: 14,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            marginBottom: 10
+        }
     });
 
     const calculateEBITWachstum = (ebitData) => {
@@ -353,7 +361,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             <Page style={styles.page}>
                 <Header />
                 <Text style={styles.subtitle}>3. Bandbreite von Bewertungsmultiples</Text>
-                <Text style={styles.content}>
+                <Text style={[styles.content,  { marginBottom: 0 }]}>
                     Die Anwendung von Multiples zur Bewertung von Unternehmen ist in der Praxis weit verbreitet.
                     Sie ermöglichen den Vergleich mit bereits verkauften Unternehmen. Dabei wird der Verkaufspreis
                     als ein Vielfaches (Multiple) einer bestimmten Basisgröße, wie beispielsweise des Umsatzes oder
@@ -367,14 +375,15 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                     stark gewichtet.
                 </Text>
                 <Image
-                    style={styles.image}
+                    style={[styles.image]}
                     source={{
-                        uri: marktDaten,
+                        uri: brancheRadar,
                         method: 'GET',
                         headers: {},
                         body: '',
                     }}
                 />
+                <Text style={styles.imageTitle}>Abbildung 1: Wertfaktor von EBIT und Umsatz</Text>
                 <PageNumber pageNumber="2" />
             </Page>
             <Page style={styles.page}>
