@@ -134,11 +134,11 @@ const BasisInfoChart = () => {
                         <YAxis dataKey="text" type="category" allowDataOverflow={true} width={200} />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="umsatzValue" fill="#ffc658" name="Umsatz" barSize={20} />
                         <Bar dataKey="ebitValue" fill="#82ca9d" name="EBIT" barSize={20} />
+                        <Bar dataKey="umsatzValue" fill="#ffc658" name="Umsatz" barSize={20} />
                         <XAxis type="number" label={{ angle: -90, position: 'insideLeft', offset: -10 }}>
-                            <Bar dataKey="umsatzValue" fill="#ffc658" name="Umsatz" barSize={20} />
                             <Bar dataKey="ebitValue" fill="#82ca9d" name="EBIT" barSize={20} />
+                            <Bar dataKey="umsatzValue" fill="#ffc658" name="Umsatz" barSize={20} />
                         </XAxis>
                     </BarChart>
                 </div>
