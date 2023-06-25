@@ -418,6 +418,39 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Text style={styles.imageTitle}>Abbildung 2: Wertfaktor nach Lage (Value Factor based on Location)</Text>
                 <PageNumber pageNumber="3" />
             </Page>
+
+            <Page style={styles.page}>
+                <Header />
+                <Text style={styles.content}>
+                    Der Unternehmenswert (Enterprise Value) ist ein wichtiger Kennwert bei der Finanzanalyse eines
+                    Unternehmens. Er spiegelt den Gesamtwert des Unternehmens wider, indem der Wert der Aktien und
+                    Schulden berechnet und anschließend um den vorhandenen Bargeld- und Bargeldäquivalentenbestand
+                    reduziert wird.
+                </Text>
+                <Text style={styles.content}>
+                    Um den Unternehmenswert zu berechnen, müssen Informationen über das Einkommen, den Umsatz, den
+                    Gewinn vor Steuern (EBIT) und andere relevante Faktoren gesammelt werden. Anschließend wird der
+                    Durchschnittswert des Einkommens berechnet, indem der Wert des Einkommens aggregiert und durch
+                    die Anzahl der Einträge geteilt wird. Daraufhin werden Faktoren wie Umsatz, EBIT, Branche und
+                    Position des Unternehmens verwendet, um die erforderlichen Komponenten für den Unternehmenswert
+                    zu berechnen. Das Ergebnis dieser Berechnung wird zusammengefasst, um den Unternehmenswert zu
+                    ermitteln. Der Unternehmenswert gibt den Gesamtwert des Unternehmens an und kann zur Vergleich
+                    mit dem aktuellen Marktwert des Unternehmens oder zur Bewertung des Wachstumspotenzials und der
+                    Gewinnmöglichkeiten des Unternehmens verwendet werden.
+                </Text>
+                <Image
+                    style={[styles.image, { width: 450 , height: 300}]}
+                    source={{
+                        uri: lage,
+                        method: 'GET',
+                        headers: {},
+                        body: '',
+                    }}
+                />
+                <Text style={styles.imageTitle}>Abbildung 2: Wertfaktor nach Lage (Value Factor based on Location)</Text>
+                <PageNumber pageNumber="4" />
+            </Page>
+
             <Page style={styles.page}>
                 <Header />
                 <Text style={styles.subtitle}>4. Details zu qualitativen Werttreibern</Text>
@@ -439,7 +472,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Text style={[styles.subtitle, { fontSize: 18 }]}>4.2 Abhängigkeit vom Unternehmer</Text>
                 <Text style={styles.content}>Bestimmung des Maßes, in dem das Unternehmen von entscheidenden Unternehmensinhabern abhängt. Ein Unternehmen mit hoher Qualität hat die Fähigkeit, unabhängig von der Anwesenheit der Schlüsselunternehmer zu überleben und zu wachsen. Dies gewährleistet Nachhaltigkeit und die Fähigkeit zur Machtübertragung in der Zukunft.</Text>
 
-                <PageNumber pageNumber="4" />
+                <PageNumber pageNumber="5" />
             </Page>
 
             <Page style={styles.page}>
@@ -462,7 +495,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Text style={styles.content}>
                     Das folgende Schaubild veranschaulicht die Vorgehensweise der Equity Bridge.
                 </Text>
-                <PageNumber pageNumber="5" />
+                <PageNumber pageNumber="6" />
             </Page>
         </Document>
     );
