@@ -131,7 +131,7 @@ const BasisInfoChart = () => {
                     <BarChart width={1500} height={1000} data={basisInfos.branchOptions} layout="vertical">
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis type="number" />
-                        <YAxis dataKey="text" type="category" />
+                        <YAxis dataKey="text" type="category" allowDataOverflow={true} width={200} />
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="umsatzValue" fill="#ffc658" name="Umsatz" barSize={20} />
