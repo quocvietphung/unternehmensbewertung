@@ -511,7 +511,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                     Die persönliche Beziehung des Unternehmers zu den Kunden spielt ebenfalls eine Rolle. Wenn der Unternehmer den Großteil der Kunden persönlich kennt und diese erwarten, dass er sich persönlich um sie kümmert, kann dies zu einer starken Abhängigkeit vom Unternehmer führen. Wenn der Unternehmer zwar einen großen Teil der Kunden persönlich kennt, aber diese nicht erwarten, dass er sich persönlich um sie kümmert, kann die Abhängigkeit geringer sein.
                 </Text>
                 <Text style={styles.content}>
-                    Insgesamt hat die Abhängigkeit vom Unternehmer Auswirkungen auf verschiedene Aspekte des Unternehmens. Eine geringere Abhängigkeit vom Unternehmer ermöglicht eine bessere Fokussierung auf strategische Fragen, eine reibungslose Betriebsfortführung während der Abwesenheit des Unternehmers und eine geringere Abhängigkeit von persönlichen Kundenbeziehungen. Um die Abhängigkeit vom Unternehmer zu minimieren, ist es wichtig, eine solide Organisationsstruktur aufzubauen, kompetentes Personal einzustellen und klare Prozesse zu etablieren. Dadurch wird das Unternehmen widerstandsfähiger und weniger anfällig für Störungen im Falle der Abwesenheit des Unternehmers.
+                    Insgesamt hat die Abhängigkeit vom Unternehmer Auswirkungen auf verschiedene Aspekte des Unternehmens. Eine geringere Abhängigkeit vom Unternehmer ermöglicht eine
                 </Text>
 
                 <PageNumber pageNumber="7" />
@@ -519,6 +519,9 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
 
             <Page style={styles.page}>
                 <Header />
+                <Text style={styles.content}>
+                    bessere Fokussierung auf strategische Fragen, eine reibungslose Betriebsfortführung während der Abwesenheit des Unternehmers und eine geringere Abhängigkeit von persönlichen Kundenbeziehungen. Um die Abhängigkeit vom Unternehmer zu minimieren, ist es wichtig, eine solide Organisationsstruktur aufzubauen, kompetentes Personal einzustellen und klare Prozesse zu etablieren. Dadurch wird das Unternehmen widerstandsfähiger und weniger anfällig für Störungen im Falle der Abwesenheit des Unternehmers.
+                </Text>
                 <Text style={styles.subtitle}>5. Vom Unternehmenswert zum Kaufpreis mittels Equity Bridge</Text>
                 <Text style={styles.content}>
                     Der Unternehmenswertrechner ermittelt den Gesamtunternehmenswert, auch als Enterprise Value bezeichnet, des Zielunternehmens anhand von normalisierten Kennzahlen (EBIT) und unter Verwendung branchenüblicher Multiplikatoren. Dieser Wert wird durch qualitative Faktoren angepasst, um die Vergleichbarkeit mit anderen Unternehmen der Branche zu erhöhen.
