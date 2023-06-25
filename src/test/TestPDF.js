@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     section: {
-        margin: '20 30',
+        margin: '20 20',
         padding: 10,
         flexGrow: 1
     },
@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     image: {
-        width: 200,
-        height: 200,
-        marginBottom: 10
+        margin: '10 auto',
+        width: 550,
+        height: 400,
     }
 });
 
