@@ -11,7 +11,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
     const styles = StyleSheet.create({
         page: {
             flexDirection: 'column',
-            padding: '10 30',
+            padding: '10 20',
         },
         header: {
             marginBottom: 10,
@@ -277,7 +277,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
     );
 
     const formatCell = (rowHeaders, rowIndex, cell) => {
-        const headersRequireEuro = ['EBIT', 'Sonst. Bereinigung EBIT', 'Verguetung GF', 'Bereinigter EBIT', 'Umsatz'];
+        const headersRequireEuro = ['EBIT', 'Sonst. Bereinigung EBIT', 'Vergütung GF', 'Bereinigter EBIT', 'Umsatz'];
         if(headersRequireEuro.includes(rowHeaders[rowIndex]) && cell !== '-' && cell !== null) {
             return `${cell} €`;
         } else if (cell === null) {
@@ -402,9 +402,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                     die Anzahl der Einträge geteilt wird. Daraufhin werden Faktoren wie Umsatz, EBIT, Branche und
                     Position des Unternehmens verwendet, um die erforderlichen Komponenten für den Unternehmenswert
                     zu berechnen. Das Ergebnis dieser Berechnung wird zusammengefasst, um den Unternehmenswert zu
-                    ermitteln. Der Unternehmenswert gibt den Gesamtwert des Unternehmens an und kann zur Vergleich
-                    mit dem aktuellen Marktwert des Unternehmens oder zur Bewertung des Wachstumspotenzials und der
-                    Gewinnmöglichkeiten des Unternehmens verwendet werden.
+                    ermitteln.
                 </Text>
                 <Image
                     style={[styles.image, { width: 450 , height: 300}]}
@@ -422,7 +420,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             <Page style={styles.page}>
                 <Header />
                 <Image
-                    style={[styles.image, {width: 550 , height: 400}]}
+                    style={[styles.image, {marginTop: 30, width: 580 , height: 400}]}
                     source={{
                         uri: marktDaten,
                         method: 'GET',
