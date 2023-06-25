@@ -292,7 +292,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         <View style={styles.table}>
             <View style={styles.tableRow}>
                 <View style={[styles.tableColHeader, { width: '80%' }]}></View> {/* Empty cell */}
-                {colHeaders.map((cell, cellIndex) => (
+                {colHeaders && colHeaders.map((cell, cellIndex) => (
                     <View key={cellIndex} style={styles.tableColHeader}>
                         <Text style={styles.tableCellHeader}>{cell}</Text>
                     </View>
@@ -304,7 +304,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                         <View style={styles.tableRowHeader}>
                             <Text style={styles.tableCellHeader}>{header}</Text>
                         </View>
-                        {colHeaders.map((colHeader, colIndex) => (
+                        {colHeaders && colHeaders.map((colHeader, colIndex) => (
                             <View key={colIndex} style={styles.tableCol}>
                                 <Text style={styles.tableCell}></Text>
                             </View>
