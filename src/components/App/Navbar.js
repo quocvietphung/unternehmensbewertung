@@ -7,7 +7,8 @@ const menuItems = [
     { to: "/unternehmenswert-berechnen", label: "Unternehmenswert Berechnen", icon: "calculator" },
     { to: "/pdf", label: "PDF", icon: "flask" },
     { to: "/graph", label: "Graph", icon: "chart line" }, // Updated icon name to "chart line"
-    { to: "/kontakt", label: "Kontakt", icon: "envelope" }
+    { to: "/test-pdf", label: "Test PDF", icon: "flask" },
+    { to: "/kontakt", label: "Kontakt", icon: "envelope" },
 ];
 
 const Navbar = () => {

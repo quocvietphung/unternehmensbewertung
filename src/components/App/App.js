@@ -20,6 +20,7 @@ const App = () => {
                     <Route path="/result" element={<Ergebnis/>}/>
                     <Route path="/pdf" element={<PDF/>}/>
                     <Route path="/graph" element={ <BasisInfoChart />}/>
+                    <Route path="/test-pdf" element={<PDF/>}/>
                 </Routes>
             </div>
             <Footer/>
