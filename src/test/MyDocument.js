@@ -486,7 +486,35 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Text style={[styles.subtitle, { fontSize: 18 }]}>4.2 Abhängigkeit vom Unternehmer</Text>
                 <Text style={styles.content}>Bestimmung des Maßes, in dem das Unternehmen von entscheidenden Unternehmensinhabern abhängt. Ein Unternehmen mit hoher Qualität hat die Fähigkeit, unabhängig von der Anwesenheit der Schlüsselunternehmer zu überleben und zu wachsen. Dies gewährleistet Nachhaltigkeit und die Fähigkeit zur Machtübertragung in der Zukunft.</Text>
 
-                <PageNumber pageNumber="5" />
+                <PageNumber pageNumber="6" />
+            </Page>
+
+            <Page style={styles.page}>
+                <Header />
+                <Text style={styles.content}>
+                    Hier sind die Bewertungskriterien für die Abhängigkeit vom Unternehmer:
+                </Text>
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.2.1 Tagesgeschäft</Text>
+                <Text style={styles.content}>
+                    Die Art und Weise, wie der Unternehmer seine Zeit zwischen strategischen Fragen und dem Tagesgeschäft aufteilt, beeinflusst die Abhängigkeit vom Unternehmer. Wenn der Unternehmer intensiv in strategische Fragen involviert ist, kann er sich weniger um das Tagesgeschäft kümmern. Dies ermöglicht eine bessere strategische Ausrichtung des Unternehmens. Wenn der Unternehmer hingegen einen Großteil seiner Zeit dem Tagesgeschäft widmen muss, hat er weniger Zeit für strategische Entscheidungen.
+                </Text>
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.2.2 Fernbleiben</Text>
+                <Text style={styles.content}>
+                    Die Dauer, für die der Unternehmer abwesend ist, hat Auswirkungen auf das Unternehmen. Wenn der Unternehmer nur für kurze Zeiträume abwesend ist, zum Beispiel für einige Tage oder Wochen, kann das Unternehmen den Betrieb reibungslos fortsetzen. Wenn der Unternehmer jedoch für längere Zeiträume, wie Monate oder Jahre, abwesend ist, kann dies zu erheblichen Problemen führen.
+                </Text>
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.2.3 Absenz</Text>
+                <Text style={styles.content}>
+                    Eine unerwartete Abwesenheit des Unternehmers kann das Unternehmen beeinflussen. Wenn der Unternehmer für mehrere Monate abwesend ist und dies keine großen Auswirkungen auf das Unternehmen hat, bedeutet dies, dass das Unternehmen über eine solide Organisationsstruktur und kompetentes Personal verfügt. Wenn jedoch eine unerwartete Abwesenheit des Unternehmers zu Problemen bei unerwarteten Geschäftsvorfällen führt, kann dies auf eine starke Abhängigkeit vom Unternehmer hinweisen.
+                </Text>
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.2.4 Kundenbeziehung</Text>
+                <Text style={styles.content}>
+                    Die persönliche Beziehung des Unternehmers zu den Kunden spielt ebenfalls eine Rolle. Wenn der Unternehmer den Großteil der Kunden persönlich kennt und diese erwarten, dass er sich persönlich um sie kümmert, kann dies zu einer starken Abhängigkeit vom Unternehmer führen. Wenn der Unternehmer zwar einen großen Teil der Kunden persönlich kennt, aber diese nicht erwarten, dass er sich persönlich um sie kümmert, kann die Abhängigkeit geringer sein.
+                </Text>
+                <Text style={styles.content}>
+                    Insgesamt hat die Abhängigkeit vom Unternehmer Auswirkungen auf verschiedene Aspekte des Unternehmens. Eine geringere Abhängigkeit vom Unternehmer ermöglicht eine bessere Fokussierung auf strategische Fragen, eine reibungslose Betriebsfortführung während der Abwesenheit des Unternehmers und eine geringere Abhängigkeit von persönlichen Kundenbeziehungen. Um die Abhängigkeit vom Unternehmer zu minimieren, ist es wichtig, eine solide Organisationsstruktur aufzubauen, kompetentes Personal einzustellen und klare Prozesse zu etablieren. Dadurch wird das Unternehmen widerstandsfähiger und weniger anfällig für Störungen im Falle der Abwesenheit des Unternehmers.
+                </Text>
+
+                <PageNumber pageNumber="7" />
             </Page>
 
             <Page style={styles.page}>
@@ -509,7 +537,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Text style={styles.content}>
                     Das folgende Schaubild veranschaulicht die Vorgehensweise der Equity Bridge.
                 </Text>
-                <PageNumber pageNumber="6" />
+                <PageNumber pageNumber="8" />
             </Page>
         </Document>
     );
