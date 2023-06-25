@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadarChart, PolarGrid, PolarAngleAxis, Radar, Legend, Tooltip } from 'recharts';
+import { BarChart, Bar, YAxis, XAxis, CartesianGrid, Legend, Tooltip } from 'recharts';
 
 const BasisInfoChart = () => {
     const basisInfos = {
@@ -115,19 +115,6 @@ const BasisInfoChart = () => {
         ]
     };
 
-    const renderLabels = (props) => {
-        const {cx, cy, midAngle, innerRadius, outerRadius, fill, payload, percent} = props;
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * Math.PI / 180);
-        const y = cy + radius * Math.sin(-midAngle * Math.PI / 180);
-
-        return (
-            <text x={x} y={y} fill={fill} textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
-            </text>
-        );
-    };
-
     return (
         <div
             style={{
@@ -141,14 +128,15 @@ const BasisInfoChart = () => {
             <div style={{ height: '80vh' }}>
                 <h2>Basis Info Chart</h2>
                 <div>
-                    <RadarChart width={1000} height={500} data={basisInfos.branchOptions}>
-                        <PolarGrid />
-                        <PolarAngleAxis dataKey="text" />
-                        <Radar name="EBIT" dataKey="ebitValue" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-                        <Radar name="Umsatz" dataKey="umsatzValue" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />
+                    <BarChart width={1500} height={1000} data={basisInfos.branchOptions} layout="vertical">
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis type="number" />
+                        <YAxis dataKey="text" type="category" />
                         <Tooltip />
                         <Legend />
-                    </RadarChart>
+                        <Bar dataKey="umsatzValue" fill="#ffc658" name="Umsatz" barSize={20} />
+                        <Bar dataKey="ebitValue" fill="#82ca9d" name="EBIT" barSize={20} />
+                    </BarChart>
                 </div>
             </div>
         </div>
