@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     section: {
-        margin: 10,
+        margin: '20 30',
         padding: 10,
         flexGrow: 1
     },
