@@ -28,8 +28,14 @@ const styles = StyleSheet.create({
     },
     image: {
         margin: '10 auto',
-        width: 550,
-        height: 400,
+        width: 560,
+        height: 380,
+    },
+    imageTitle: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 10
     }
 });
 
@@ -45,6 +51,7 @@ const MyDocument = () => {
                         This is a simple example of creating a PDF document using @react-pdf/renderer.
                     </Text>
                     <Image style={styles.image} src={marktDaten} />
+                    <Text style={styles.imageTitle}>Abbildung 1: Grafik Marktdaten Ebit und Umsatz</Text>
                 </View>
             </Page>
         </Document>
