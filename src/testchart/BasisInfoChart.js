@@ -126,7 +126,7 @@ const BasisInfoChart = () => {
             }}
         >
             <div style={{ height: '80vh' }}>
-                <h2 style={{ justifyContent: 'center', display: 'flex' }}>Basis Info Chart</h2>
+                <h2 style={{ justifyContent: 'center', display: 'flex' }}>Marktdaten EBIT und Umsatz/ Multiples nach Branche</h2>
                 <div>
                     <BarChart width={1500} height={1000} data={basisInfos.branchOptions} layout="vertical">
                         <CartesianGrid strokeDasharray="3 3" />
