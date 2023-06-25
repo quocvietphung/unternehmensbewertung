@@ -556,6 +556,9 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                     }}
                 />
                 <Text style={styles.imageTitle}>Abbildung 4: Vorgehensweise der Equity Bridge.</Text>
+                <Text style={styles.content}>
+                    Die Art und Weise, wie diese Vorgehensweise durchgeführt wird, hat einen erheblichen Einfluss auf die Unternehmensbewertung und letztendlich auf den Kaufpreis. Es ist wichtig sicherzustellen, dass aufgrund von Unwissenheit keine großen Vermögenswerte aufgegeben werden. In solchen Fällen wird empfohlen, eine erfahrene Transaktionsbegleitung hinzuzuziehen, da andernfalls leicht sechsstellige Beträge verloren gehen können. Obwohl der Orgaplan Unternehmenswertrechner möglicherweise einen ersten Richtwert für den Kaufpreis liefern kann, werden für die Berechnung des tatsächlichen Firmenwerts die Verbindlichkeiten des Unternehmens abgezogen und das nicht-betriebsnotwendige Vermögen addiert. Dadurch entsteht ein realistischerer Wert für die Bewertung des Unternehmens und die Bestimmung des Kaufpreises.
+                </Text>
                 <PageNumber pageNumber="9" />
             </Page>
         </Document>
