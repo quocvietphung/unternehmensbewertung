@@ -110,7 +110,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
         image: {
             margin: '0 auto',
             width: 550,
-            height: 350,
+            height: 300,
         },
         imageTitle: {
             marginTop: 10,
@@ -449,6 +449,39 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
 
                 <Text style={[styles.subtitle, { fontSize: 18 }]}>4.1 Klumpenrisiken</Text>
                 <Text style={styles.content}>Bewertung des Ausmaßes der Abhängigkeit des Unternehmens von wenigen wichtigen Kunden. Wenn ein Unternehmen nur von wenigen Kunden abhängig ist, besteht ein höheres Risiko, wenn diese Kunden verloren gehen. Ein Unternehmen mit hoher Qualität hat eine vielfältige Kundenbasis und ist nicht stark von wenigen wichtigen Kunden abhängig.</Text>
+                <Text style={styles.content}>
+                    Klumpenrisiken beziehen sich auf die Risiken, die mit einer starken Abhängigkeit von bestimmten Kunden, Mitarbeitern, Lieferanten oder Produkten in einem Unternehmen verbunden sind. Diese Abhängigkeiten können die Stabilität und Nachhaltigkeit des Unternehmens gefährden.
+                </Text>
+                <Text style={styles.content}>
+                    Im Folgenden finden Sie eine Analyse der wichtigsten Faktoren im Zusammenhang mit Klumpenrisiken:
+                </Text>
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.1.1 Kundenabhängigkeit</Text>
+                <Text style={styles.content}>
+                    Kundenabhängigkeit (kundenabhaengigkeit): Das Ausmaß der Abhängigkeit von Kunden kann sich erheblich auf die Stabilität des Unternehmens auswirken. Wenn das Unternehmen nur von wenigen Top-Kunden abhängig ist, kann es bei Veränderungen in der Beziehung zu diesen Kunden erhebliche Schwierigkeiten haben. Dies gilt insbesondere,
+                </Text>
+                <PageNumber pageNumber="5" />
+            </Page>
+
+            <Page style={styles.page}>
+                <Header />
+                <Text style={styles.content}>
+                    wenn strategische Kunden verloren gehen oder wenn Kunden einen großen Anteil des Umsatzes ausmachen. Unternehmen mit einer breiteren Kundenbasis haben ein geringeres Risiko von Klumpenrisiken.
+                </Text>
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.1.2 Mitarbeiterabhängigkeit</Text>
+                <Text style={styles.content}>
+                    Die Abhängigkeit von wichtigen Mitarbeitern kann ein Risikofaktor sein. Wenn Schlüsselmitarbeiter im Unternehmen nur schwer zu ersetzen sind, kann dies den Geschäftsbetrieb und die Entwicklung des Unternehmens beeinträchtigen. Daher ist es wichtig, ein vielfältiges und schnell ersetzbares Mitarbeiter-Team zu haben, um Klumpenrisiken zu minimieren.
+                </Text>
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.1.3 Lieferantenabhängigkeit</Text>
+                <Text style={styles.content}>
+                    Die Abhängigkeit von Lieferanten kann ebenfalls Klumpenrisiken verursachen. Wenn das Unternehmen nur einen einzigen Lieferanten für wichtige Rohstoffe oder Produkte hat, kann der Verlust dieses Lieferanten erheblichen Schaden für das Geschäft verursachen. Um dieses Risiko zu minimieren, ist es wichtig, Lieferanten zu diversifizieren und Partnerschaften mit mehreren Lieferanten aufzubauen.
+                </Text>
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.1.4 Produktdiversifikation</Text>
+                <Text style={styles.content}>
+                    Die Diversifikation der Produkte ist ein wichtiger Faktor zur Minimierung von Klumpenrisiken. Wenn das Unternehmen sich nur auf eine Produktkategorie spezialisiert hat, kann es einem hohen Risiko ausgesetzt sein, wenn sich der Markt oder die Kundennachfrage ändern. Die Diversifikation der Produkte hilft dabei, sich an Marktveränderungen anzupassen und die Abhängigkeit von einem einzelnen Produkt zu reduzieren.
+                </Text>
+                <Text style={styles.content}>
+                    Insgesamt ist es wichtig, Kunden, Mitarbeiter, Lieferanten und Produkte zu diversifizieren, um Klumpenrisiken zu minimieren. Dies erfordert eine umfassende Geschäftsstrategie und sorgfältiges Risikomanagement, um die Stabilität und Nachhaltigkeit des Unternehmens zu gewährleisten.
+                </Text>
 
                 <Text style={[styles.subtitle, { fontSize: 18 }]}>4.2 Abhängigkeit vom Unternehmer</Text>
                 <Text style={styles.content}>Bestimmung des Maßes, in dem das Unternehmen von entscheidenden Unternehmensinhabern abhängt. Ein Unternehmen mit hoher Qualität hat die Fähigkeit, unabhängig von der Anwesenheit der Schlüsselunternehmer zu überleben und zu wachsen. Dies gewährleistet Nachhaltigkeit und die Fähigkeit zur Machtübertragung in der Zukunft.</Text>
