@@ -7,7 +7,7 @@ import Navbar from './Navbar';
 import Ergebnis from "../Ergebnis/Ergebnis";
 import './App.scss';
 import PDF from "../../test/PDF";
-import BasisInfoChart from "../../testchart/BasisInfoChart";
+import QualityChart from "../../testchart/QualityChart";
 import TestPDF from "../../test/TestPDF";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
                     <Route path="/unternehmenswert-berechnen" element={<Unternehmenswertrechner/>}/>
                     <Route path="/result" element={<Ergebnis/>}/>
                     <Route path="/pdf" element={<PDF/>}/>
-                    <Route path="/graph" element={ <BasisInfoChart />}/>
+                    <Route path="/graph" element={ <QualityChart />}/>
                     <Route path="/test-pdf" element={<TestPDF/>}/>
                 </Routes>
             </div>
