@@ -7,6 +7,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
     const brancheRadar = 'assets/images/branche_radar.png';
     const lage = 'assets/images/lage.png';
     const marktDaten = 'assets/images/marktdaten.png';
+    const equity = 'assets/images/equity.png';
 
     const styles = StyleSheet.create({
         page: {
@@ -541,6 +542,21 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                     Das folgende Schaubild veranschaulicht die Vorgehensweise der Equity Bridge.
                 </Text>
                 <PageNumber pageNumber="8" />
+            </Page>
+
+            <Page style={styles.page}>
+                <Header />
+                <Image
+                    style={[styles.image]}
+                    source={{
+                        uri: equity,
+                        method: 'GET',
+                        headers: {},
+                        body: '',
+                    }}
+                />
+                <Text style={styles.imageTitle}>Abbildung 4: Vorgehensweise der Equity Bridge.</Text>
+                <PageNumber pageNumber="9" />
             </Page>
         </Document>
     );
