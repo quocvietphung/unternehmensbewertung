@@ -8,6 +8,7 @@ import Ergebnis from "../Ergebnis/Ergebnis";
 import './App.scss';
 import PDF from "../../test/PDF";
 import BasisInfoChart from "../../testchart/BasisInfoChart";
+import TestPDF from "../../test/TestPDF";
 
 const App = () => {
     return (
@@ -20,7 +21,7 @@ const App = () => {
                     <Route path="/result" element={<Ergebnis/>}/>
                     <Route path="/pdf" element={<PDF/>}/>
                     <Route path="/graph" element={ <BasisInfoChart />}/>
-                    <Route path="/test-pdf" element={<PDF/>}/>
+                    <Route path="/test-pdf" element={<TestPDF/>}/>
                 </Routes>
             </div>
             <Footer/>
