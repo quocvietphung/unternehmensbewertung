@@ -1,55 +1,26 @@
 import React from 'react';
-import { PDFViewer, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
+import { PDFViewer, Document, Page, Text, View, Image } from '@react-pdf/renderer';
+import './TestPDF.scss'; // Đường dẫn đến file TestPDF.scss
 
-// Định nghĩa kiểu dữ liệu CSS cho tài liệu PDF
-const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        justifyContent: 'center',
-        height: '100vh'
-    },
-    page: {
-        flexDirection: 'row',
-        backgroundColor: 'white'
-    },
-    section: {
-        margin: 10,
-        padding: 10,
-        flexGrow: 1
-    },
-    heading: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 10
-    },
-    paragraph: {
-        fontSize: 12,
-        marginBottom: 10
-    },
-    image: {
-        width: 200,
-        height: 200,
-        marginBottom: 10
-    }
-});
+const marktDaten = 'assets/images/marktdaten.png';
 
 const MyDocument = () => (
     <Document>
-        <Page size="A4" style={styles.page}>
-            <View style={styles.section}>
-                <Text style={styles.heading}>Hello React PDF!</Text>
-                <Text style={styles.paragraph}>
+        <Page size="A4" className="page">
+            <View className="section">
+                <Text className="heading">Hello React PDF!</Text> {/* Đổi class thành className */}
+                <Text className="paragraph">
                     This is a simple example of creating a PDF document using @react-pdf/renderer.
                 </Text>
-                <Image style={styles.image} src="/path/to/image.jpg" />
+                <Image className="image" src={marktDaten} /> {/* Đổi class thành className */}
             </View>
         </Page>
     </Document>
 );
 
 const TestPDF = () => (
-    <div style={styles.container}>
-        <PDFViewer width="600" height="800px">
+    <div className="container"> {/* Đổi class thành className */}
+        <PDFViewer width={600} height="800px">
             <MyDocument />
         </PDFViewer>
     </div>
