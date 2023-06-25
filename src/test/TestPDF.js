@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     image: {
-        margin: 'auto',
+        margin: '0 auto',
         width: 560,
         height: 380,
     },
