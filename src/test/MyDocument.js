@@ -579,6 +579,18 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
                 <EquityTable data={equityData} />
                 <PageNumber pageNumber="9" />
             </Page>
+
+            <Page style={styles.page}>
+                <Header />
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>
+                    Wie genau prognostiziert das Ergebnis einen möglichen Verkaufspreis?
+                </Text>
+
+                <Text style={styles.content}>
+                    Es gibt keinen objektiven Firmenwert. Wie in der Bandbreite der jeweiligen Multiples deutlich wird, gibt es eine große Streuung der erzielten Verkaufspreise. Letztendlich hängt dies von der jeweiligen Situation ab und ist Verhandlungssache. Der Verkaufspreis wird stark vom Interesse und der Verhandlungsstärke des Verkäufers bzw. des Käufers/Investors beeinflusst. Wenn beispielsweise ein Käufer gute strategische Gründe für eine Übernahme hat, kann der Preis deutlich höher ausfallen. Wenn der Firmeninhaber aus persönlichen Gründen unter Zeitdruck steht, das Unternehmen zu veräußern, können möglicherweise deutlich niedrigere Verkaufspreise erzielt werden. Durch einen clever gestalteten Verkaufsprozess kann die Verhandlungsposition des Verkäufers gestärkt und die Wahrscheinlichkeit eines erfolgreichen Verkaufs erhöht werden.
+                </Text>
+                <PageNumber pageNumber="10" />
+            </Page>
         </Document>
     );
 };
