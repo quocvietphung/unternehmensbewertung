@@ -103,17 +103,7 @@ const Ergebnis = () => {
                 const formData = {
                     to: [ergebnisData.email],
                     subject: 'Orgaplan Unternehmenrechner PDF Test',
-                    body: 'Hallo Ingo, Hier spricht Viet. Ich hoffe, Du hast einen schönen Urlaub mit Deiner Familie.' +
-                          'Ich sende Dir diese E-Mail von unserem lokalen Server bei Unternehmenrechenr zusammen mit ' +
-                          'einer PDF-Datei, die du Dir ansehen kannst. Ich habe das PDF programmiert, es umfasst etwa ' +
-                          '10 Seiten, ähnlich einer Hausarbeit, und alle Daten werden automatisch im PDF gespeichert und' +
-                          'gedruckt. Es war wirklich schwierig, diesen PDF-Teil zu erstellen, da ich E-Mails vom Server ' +
-                          'verarbeiten und das PDF auch noch auf Deutsch schreiben musste. Dennoch habe ich mein Bestes ' +
-                          'gegeben, um es innerhalb einer Woche abzuschließen, daher hoffe ich, dass Du mit diesem ' +
-                          'Ergebnis zufrieden sein wirst. Den Rest werde ich mit Pedro versuchen, den Server diese Woche' +
-                          'einzurichten. Ich wünsche Dir und Deiner Familie einen angenehmen Urlaub.' +
-                          'Liebe Grüße ' +
-                          'Viet',
+                    body: 'Test Email',
                     attachments: [{
                         filename: `Unternehmenswert_${ergebnisData.lastName}.pdf`,
                         path: `./pdfs/Unternehmenswert_${ergebnisData.lastName}.pdf`
