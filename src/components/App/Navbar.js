@@ -6,8 +6,6 @@ const menuItems = [
     { to: "/", label: "Home", icon: "home" },
     { to: "/unternehmenswert-berechnen", label: "Unternehmenswert Berechnen", icon: "calculator" },
     { to: "/pdf", label: "PDF", icon: "flask" },
-    { to: "/graph", label: "Graph", icon: "chart line" }, // Updated icon name to "chart line"
-    { to: "/test-pdf", label: "Test PDF", icon: "flask" },
     { to: "/kontakt", label: "Kontakt", icon: "envelope" },
 ];
 
