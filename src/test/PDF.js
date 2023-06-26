@@ -25,6 +25,7 @@ const PDF = () => {
 
     useEffect(() => {
         console.log('unternehmenswert:', unternehmenswert);
+        console.log('equityBridgeData:', equityBridgeData);
         console.log('ergebnisData:', ergebnisData);
     }, [unternehmenswert, ergebnisData]);
 

@@ -115,7 +115,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
             height: 300,
         },
         imageTitle: {
-            marginTop: 20,
+            marginTop: 10,
             fontSize: 14,
             fontWeight: 'bold',
             textAlign: 'center',
@@ -555,14 +555,14 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
                     Betrachtung würden Unternehmen mit unterschiedlichen Fremdfinanzierungsgraden immer den gleichen Wert haben.
                 </Text>
 
-                <Text style={styles.content}>
-                    Das folgende Schaubild veranschaulicht die Vorgehensweise der Equity Bridge.
-                </Text>
                 <PageNumber pageNumber="8" />
             </Page>
 
             <Page style={styles.page}>
                 <Header />
+                <Text style={styles.content}>
+                    Das folgende Schaubild veranschaulicht die Vorgehensweise der Equity Bridge.
+                </Text>
                 <Image
                     style={[styles.image]}
                     source={{
@@ -574,7 +574,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
                 />
                 <Text style={styles.imageTitle}>Abbildung 4: Vorgehensweise der Equity Bridge.</Text>
                 <Text style={styles.content}>
-                    Die Art und Weise, wie diese Vorgehensweise durchgeführt wird, hat einen erheblichen Einfluss auf die Unternehmensbewertung und letztendlich auf den Kaufpreis. Es ist wichtig sicherzustellen, dass aufgrund von Unwissenheit keine großen Vermögenswerte aufgegeben werden. In solchen Fällen wird empfohlen, eine erfahrene Transaktionsbegleitung hinzuzuziehen, da andernfalls leicht sechsstellige Beträge verloren gehen können. Obwohl der Orgaplan Unternehmenswertrechner möglicherweise einen ersten Richtwert für den Kaufpreis liefern kann, werden für die Berechnung des tatsächlichen Firmenwerts die Verbindlichkeiten des Unternehmens abgezogen und das nicht-betriebsnotwendige Vermögen addiert. Dadurch entsteht ein realistischerer Wert für die Bewertung des Unternehmens und die Bestimmung des Kaufpreises.
+                    Die Vorgehensweise bei der Durchführung dieses Prozesses hat einen erheblichen Einfluss auf die Unternehmensbewertung und letztendlich auf den Kaufpreis. Es ist von großer Bedeutung sicherzustellen, dass keine wertvollen Vermögenswerte aufgrund von Unwissenheit aufgegeben werden. In solchen Fällen wird dringend empfohlen, einen erfahrenen Transaktionsberater hinzuzuziehen, da sonst leicht beträchtliche Geldbeträge verloren gehen können. Bei der Berechnung des tatsächlichen Firmenwerts werden die Verbindlichkeiten des Unternehmens abgezogen und das nicht-betriebsnotwendige Vermögen hinzugefügt. Dadurch entsteht ein realistischerer Wert für die Bewertung des Unternehmens und die Festlegung des Kaufpreises.
                 </Text>
                 <EquityTable data={equityData} />
                 <PageNumber pageNumber="9" />
