@@ -1,7 +1,7 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 
-const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBridgeData, unternehmenswert }) => {
+const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBridgeData, unternehmenswert, ergebnisData }) => {
 
     const logoImage = 'assets/images/ORGAPLANLOGO.png';
     const brancheRadar = 'assets/images/branche_radar.png';
@@ -48,7 +48,8 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
             textAlign: 'center',
             fontSize: 30,
             fontWeight: 'bold',
-            marginVertical: 200,
+            marginTop: 200,
+            marginBottom: 80,
         },
         subtitle: {
             fontSize: 24,
@@ -388,6 +389,9 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
             <Page style={[styles.page, { backgroundColor: '#1abc9c' }]}>
                 <Header />
                 <Text style={styles.title}>Unternehmensbewertung</Text>
+                <Text style={[styles.content, { fontSize: 26, textAlign: 'center' }]}>
+                    Autor: {ergebnisData.firstName} {ergebnisData.lastName}
+                </Text>
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Schanzenstraße 58, 40549 Düsseldorf</Text>
                     <Text style={styles.footerText}>Tel: 0211 22963989</Text>
