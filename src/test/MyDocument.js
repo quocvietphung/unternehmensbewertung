@@ -12,7 +12,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
     const styles = StyleSheet.create({
         page: {
             flexDirection: 'column',
-            padding: '10 20',
+            padding: '10 30',
         },
         header: {
             marginBottom: 10,
@@ -458,7 +458,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 </Text>
                 <Text style={[styles.subtitle, { fontSize: 16 }]}>4.1.1 Kundenabhängigkeit</Text>
                 <Text style={styles.content}>
-                    Kundenabhängigkeit (kundenabhaengigkeit): Das Ausmaß der Abhängigkeit von Kunden kann sich erheblich auf die Stabilität des Unternehmens auswirken. Wenn das Unternehmen nur von wenigen Top-Kunden abhängig ist, kann es bei Veränderungen in der Beziehung zu diesen Kunden erhebliche Schwierigkeiten haben. Dies gilt insbesondere,
+                    Kundenabhängigkeit (kundenabhaengigkeit): Das Ausmaß der Abhängigkeit von Kunden kann sich erheblich auf die Stabilität des Unternehmens auswirken. Wenn das Unternehmen nur von wenigen Top-Kunden abhängig ist, kann es bei Veränderungen in
                 </Text>
                 <PageNumber pageNumber="5" />
             </Page>
@@ -466,7 +466,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             <Page style={styles.page}>
                 <Header />
                 <Text style={styles.content}>
-                    wenn strategische Kunden verloren gehen oder wenn Kunden einen großen Anteil des Umsatzes ausmachen. Unternehmen mit einer breiteren Kundenbasis haben ein geringeres Risiko von Klumpenrisiken.
+                    der Beziehung zu diesen Kunden erhebliche Schwierigkeiten haben. Dies gilt insbesondere, wenn strategische Kunden verloren gehen oder wenn Kunden einen großen Anteil des Umsatzes ausmachen. Unternehmen mit einer breiteren Kundenbasis haben ein geringeres Risiko von Klumpenrisiken.
                 </Text>
                 <Text style={[styles.subtitle, { fontSize: 16 }]}>4.1.2 Mitarbeiterabhängigkeit</Text>
                 <Text style={styles.content}>
@@ -484,14 +484,13 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                     Insgesamt ist es wichtig, Kunden, Mitarbeiter, Lieferanten und Produkte zu diversifizieren, um Klumpenrisiken zu minimieren. Dies erfordert eine umfassende Geschäftsstrategie und sorgfältiges Risikomanagement, um die Stabilität und Nachhaltigkeit des Unternehmens zu gewährleisten.
                 </Text>
 
-                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.2 Abhängigkeit vom Unternehmer</Text>
-                <Text style={styles.content}>Bestimmung des Maßes, in dem das Unternehmen von entscheidenden Unternehmensinhabern abhängt. Ein Unternehmen mit hoher Qualität hat die Fähigkeit, unabhängig von der Anwesenheit der Schlüsselunternehmer zu überleben und zu wachsen. Dies gewährleistet Nachhaltigkeit und die Fähigkeit zur Machtübertragung in der Zukunft.</Text>
-
                 <PageNumber pageNumber="6" />
             </Page>
 
             <Page style={styles.page}>
                 <Header />
+                <Text style={[styles.subtitle, { fontSize: 18 }]}>4.2 Abhängigkeit vom Unternehmer</Text>
+                <Text style={styles.content}>Bestimmung des Maßes, in dem das Unternehmen von entscheidenden Unternehmensinhabern abhängt. Ein Unternehmen mit hoher Qualität hat die Fähigkeit, unabhängig von der Anwesenheit der Schlüsselunternehmer zu überleben und zu wachsen. Dies gewährleistet Nachhaltigkeit und die Fähigkeit zur Machtübertragung in der Zukunft.</Text>
                 <Text style={styles.content}>
                     Hier sind die Bewertungskriterien für die Abhängigkeit vom Unternehmer:
                 </Text>
@@ -507,21 +506,18 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Text style={styles.content}>
                     Eine unerwartete Abwesenheit des Unternehmers kann das Unternehmen beeinflussen. Wenn der Unternehmer für mehrere Monate abwesend ist und dies keine großen Auswirkungen auf das Unternehmen hat, bedeutet dies, dass das Unternehmen über eine solide Organisationsstruktur und kompetentes Personal verfügt. Wenn jedoch eine unerwartete Abwesenheit des Unternehmers zu Problemen bei unerwarteten Geschäftsvorfällen führt, kann dies auf eine starke Abhängigkeit vom Unternehmer hinweisen.
                 </Text>
-                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.2.4 Kundenbeziehung</Text>
-                <Text style={styles.content}>
-                    Die persönliche Beziehung des Unternehmers zu den Kunden spielt ebenfalls eine Rolle. Wenn der Unternehmer den Großteil der Kunden persönlich kennt und diese erwarten, dass er sich persönlich um sie kümmert, kann dies zu einer starken Abhängigkeit vom Unternehmer führen. Wenn der Unternehmer zwar einen großen Teil der Kunden persönlich kennt, aber diese nicht erwarten, dass er sich persönlich um sie kümmert, kann die Abhängigkeit geringer sein.
-                </Text>
-                <Text style={styles.content}>
-                    Insgesamt hat die Abhängigkeit vom Unternehmer Auswirkungen auf verschiedene Aspekte des Unternehmens. Eine geringere Abhängigkeit vom Unternehmer ermöglicht eine
-                </Text>
 
                 <PageNumber pageNumber="7" />
             </Page>
 
             <Page style={styles.page}>
                 <Header />
+                <Text style={[styles.subtitle, { fontSize: 16 }]}>4.2.4 Kundenbeziehung</Text>
                 <Text style={styles.content}>
-                    bessere Fokussierung auf strategische Fragen, eine reibungslose Betriebsfortführung während der Abwesenheit des Unternehmers und eine geringere Abhängigkeit von persönlichen Kundenbeziehungen. Um die Abhängigkeit vom Unternehmer zu minimieren, ist es wichtig, eine solide Organisationsstruktur aufzubauen, kompetentes Personal einzustellen und klare Prozesse zu etablieren. Dadurch wird das Unternehmen widerstandsfähiger und weniger anfällig für Störungen im Falle der Abwesenheit des Unternehmers.
+                    Die persönliche Beziehung des Unternehmers zu den Kunden spielt ebenfalls eine Rolle. Wenn der Unternehmer den Großteil der Kunden persönlich kennt und diese erwarten, dass er sich persönlich um sie kümmert, kann dies zu einer starken Abhängigkeit vom Unternehmer führen. Wenn der Unternehmer zwar einen großen Teil der Kunden persönlich kennt, aber diese nicht erwarten, dass er sich persönlich um sie kümmert, kann die Abhängigkeit geringer sein.
+                </Text>
+                <Text style={styles.content}>
+                    Insgesamt hat die Abhängigkeit vom Unternehmer Auswirkungen auf verschiedene Aspekte des Unternehmens. Eine geringere Abhängigkeit vom Unternehmer ermöglicht eine bessere Fokussierung auf strategische Fragen, eine reibungslose Betriebsfortführung während der Abwesenheit des Unternehmers und eine geringere Abhängigkeit von persönlichen Kundenbeziehungen.
                 </Text>
                 <Text style={styles.subtitle}>5. Vom Unternehmenswert zum Kaufpreis mittels Equity Bridge</Text>
                 <Text style={styles.content}>
