@@ -3,7 +3,7 @@ import { PDFViewer, PDFDownloadLink, pdf } from '@react-pdf/renderer';
 import { Grid, Button } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import './PDF.scss';
-import MyDocument from "./MyDocument";
+import MyDocument from "../components/Ergebnis/MyDocument";
 
 const PDF = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);

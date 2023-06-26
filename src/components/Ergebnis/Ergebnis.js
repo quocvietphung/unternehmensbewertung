@@ -3,12 +3,17 @@ import { Grid, Form, Button } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Ergebnis/Ergebnis.scss';
 import { setErgebnisData } from '../../redux/ergebnisSlice';
-import { Document, Page, Text, View, pdf } from '@react-pdf/renderer';
+import { pdf } from '@react-pdf/renderer';
 import axios from 'axios';
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import MyDocument from "./MyDocument";
 
 const ResultContainer = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
+    const basisInfoData = useSelector(state => state.basisInfo.basisInfoData);
+    const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
+    const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
+    const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
     const dispatch = useDispatch();
     const { enqueueSnackbar } = useSnackbar();
@@ -28,27 +33,6 @@ const ResultContainer = () => {
         dispatch(setErgebnisData({ ...ergebnisData, [name]: value }));
     };
 
-    const MyDocument = () => (
-        <Document>
-            <Page className="page" size="A4">
-                <View>
-                    <Text className="text" style={{ fontSize: 15, margin: 20 }}>
-                        First Name: {ergebnisData.firstName}
-                    </Text>
-                    <Text className="text" style={{ fontSize: 15, margin: 20 }}>
-                        Last Name: {ergebnisData.lastName}
-                    </Text>
-                    <Text className="text" style={{ fontSize: 15, margin: 20 }}>
-                        Email: {ergebnisData.email}
-                    </Text>
-                    <Text className="text" style={{ fontSize: 15, margin: 20 }}>
-                        Unternehmenswert: {unternehmenswert}
-                    </Text>
-                </View>
-            </Page>
-        </Document>
-    );
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = {
@@ -62,7 +46,13 @@ const ResultContainer = () => {
 
     const savePdf = () => {
         return new Promise(async (resolve, reject) => {
-            const blob = await pdf(<MyDocument />).toBlob();
+            const blob = await pdf(<MyDocument
+                kennzahlenData={kennzahlenData}
+                basisInfoData={basisInfoData}
+                bereinigungData={bereinigungData}
+                equityBridgeData={equityBridgeData}
+                unternehmenswert={unternehmenswert}
+            />).toBlob();
 
             const reader = new FileReader();
             reader.readAsDataURL(blob);
