@@ -59,7 +59,7 @@ const ResultContainer = () => {
                 const base64data = reader.result;
 
                 const data = {
-                    filename: 'Unternehmenswert.pdf',
+                    filename: `Unternehmenswert_${ergebnisData.lastName}.pdf`,
                     pdfData: base64data
                 };
 
@@ -95,8 +95,8 @@ const ResultContainer = () => {
                     subject: 'Test email',
                     body: 'This is a test email.',
                     attachments: [{
-                        filename: 'Unternehmenswert.pdf',
-                        path: './components/Ergebnis/pdf/Unternehmenswert.pdf'
+                        filename: `Unternehmenswert_${ergebnisData.lastName}.pdf`,
+                        path: `./components/Ergebnis/pdf/Unternehmenswert_${ergebnisData.lastName}.pdf`
                     }]
                 };
 
