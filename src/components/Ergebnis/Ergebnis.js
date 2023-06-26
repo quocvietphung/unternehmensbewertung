@@ -49,6 +49,17 @@ const ResultContainer = () => {
         </Document>
     );
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = {
+            firstName: e.target.firstName.value,
+            lastName: e.target.lastName.value,
+            email: e.target.email.value,
+        };
+        dispatch(setErgebnisData(formData));
+        sendEmail();
+    };
+
     const savePdf = () => {
         return new Promise(async (resolve, reject) => {
             const blob = await pdf(<MyDocument />).toBlob();
@@ -74,17 +85,6 @@ const ResultContainer = () => {
                     });
             };
         });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formData = {
-            firstName: e.target.firstName.value,
-            lastName: e.target.lastName.value,
-            email: e.target.email.value,
-        };
-        dispatch(setErgebnisData(formData));
-        sendEmail();
     };
 
     const sendEmail = () => {
