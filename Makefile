@@ -1,4 +1,4 @@
-.PHONY: install start build test dc-build dc-up dc-down clean help
+.PHONY: install start server build test dc-build dc-up dc-down clean help
 
 install:
 	@echo "Installing dependencies..."
