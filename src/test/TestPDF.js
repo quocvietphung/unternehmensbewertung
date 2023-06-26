@@ -76,6 +76,28 @@ const styles = StyleSheet.create({
         borderWidth: 0, // Removed border
         backgroundColor: '#1abc9c',
     },
+    borderWrapper: {
+        marginTop: 10,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'gold',
+        padding: 10,
+        height: 120,
+        borderRadius: 30,
+    },
+    leftText: {
+        fontWeight: 'bold',
+        maxWidth: 180,
+        wordWrap: 'break-word',
+        marginLeft: 30
+    },
+    rightText: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginRight: 30
+    },
 });
 
 const MyDocument = () => {
@@ -111,6 +133,10 @@ const MyDocument = () => {
                     </Text>
                     <Image style={styles.image} src={marktDaten} />
                     <Text style={styles.imageTitle}>Abbildung 1: Grafik Marktdaten Ebit und Umsatz</Text>
+                    <View style={styles.borderWrapper}>
+                        <Text style={styles.leftText}>Ungefährer Wert des Eigenkapitals (Verkaufspreis)</Text>
+                        <Text style={styles.rightText}>100000 €</Text>
+                    </View>
                     <EquityTable data={equityData} />
                 </View>
             </Page>
