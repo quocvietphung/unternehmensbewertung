@@ -26,10 +26,10 @@ app.post('/send-email', (req, res) => {
     });
 
     const formattedAttachments = attachments.map((attachment) => {
-        const filePath = path.join(__dirname, '..', 'components', 'Ergebnis', 'pdf', attachment.filename);
+        console.log("****Path*****",attachment.path);
         return {
             filename: attachment.filename,
-            path: filePath,
+            path: attachment.path,
             contentType: 'application/pdf',
         };
     });
@@ -49,9 +49,8 @@ app.post('/send-email', (req, res) => {
         } else {
             console.log('Email sent:', info.response);
 
-            // Attempt to delete the file after email has been sent successfully
-            formattedAttachments.forEach((attachment) => {
-                fs.unlink(attachment.path, (err) => {
+            formattedAttachments.forEach(attachment => {
+                fs.rm(attachment.path, { force: true }, (err) => {
                     if (err) {
                         console.error('Error:', err);
                     } else {
@@ -60,24 +59,15 @@ app.post('/send-email', (req, res) => {
                 });
             });
 
-            // After all files have been deleted, attempt to delete the directory
-            const dirPath = path.join(__dirname, '..', 'components', 'Ergebnis', 'pdf');
-            fs.rm(dirPath, { recursive: true, force: true }, (err) => {
-                if (err) {
-                    console.error('Error:', err);
-                } else {
-                    console.log('Directory deleted successfully:', dirPath);
-                }
-            });
-
             res.json({ message: 'Email sent successfully' });
         }
     });
 });
 
 app.post('/save-pdf', (req, res) => {
-    const { filename, pdfData } = req.body;
-    const directoryPath = path.join(__dirname, '..', 'components', 'Ergebnis', 'pdf');
+    const { filename, pdfData , directoryPath} = req.body;
+
+    console.log("directoryPath",directoryPath)
 
     // Ensure the directory exists as the first step
     if (!fs.existsSync(directoryPath)) {
