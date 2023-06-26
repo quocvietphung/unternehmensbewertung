@@ -47,6 +47,7 @@ const PDF = () => {
                                     basisInfoData={basisInfoData}
                                     bereinigungData={bereinigungData}
                                     equityBridgeData={equityBridgeData}
+                                    unternehmenswert={unternehmenswert}
                                 />
                             </PDFViewer>
                             <PDFDownloadLink
@@ -57,6 +58,7 @@ const PDF = () => {
                                         basisInfoData={basisInfoData}
                                         bereinigungData={bereinigungData}
                                         equityBridgeData={equityBridgeData}
+                                        unternehmenswert={unternehmenswert}
                                     />
                                 }
                                 fileName="example.pdf"

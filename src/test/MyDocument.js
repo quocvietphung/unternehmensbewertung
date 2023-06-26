@@ -1,7 +1,7 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 
-const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBridgeData }) => {
+const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBridgeData, unternehmenswert }) => {
 
     const logoImage = 'assets/images/ORGAPLANLOGO.png';
     const brancheRadar = 'assets/images/branche_radar.png';
@@ -331,6 +331,12 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
         }
     }
 
+    const formatUnternehmenswert = (unternehmenswert) => {
+        const roundedValue = Math.round(unternehmenswert).toString();
+        const formattedValue = roundedValue.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        return formattedValue;
+    };
+
     const Table = ({ rowHeaders, colHeaders, data }) => (
         <View style={styles.table}>
             <View style={styles.tableRow}>
@@ -616,7 +622,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
 
                 <View style={styles.borderWrapper}>
                     <Text style={styles.leftText}>Ungefährer Wert des Eigenkapitals (Verkaufspreis)</Text>
-                    <Text style={styles.rightText}>100000 €</Text>
+                    <Text style={styles.rightText}>{formatUnternehmenswert(unternehmenswert)} €</Text>
                 </View>
 
                 <PageNumber pageNumber="10" />
