@@ -120,6 +120,28 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
             fontWeight: 'bold',
             textAlign: 'center',
             marginBottom: 10
+        },
+        borderWrapper: {
+            marginTop: 30,
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            backgroundColor: '#ffc658',
+            padding: 10,
+            height: 120,
+            borderRadius: 30,
+        },
+        leftText: {
+            fontWeight: 'bold',
+            maxWidth: 180,
+            wordWrap: 'break-word',
+            marginLeft: 30
+        },
+        rightText: {
+            fontSize: 26,
+            fontWeight: 'bold',
+            marginRight: 30
         }
     });
 
@@ -583,12 +605,18 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
             <Page style={styles.page}>
                 <Header />
                 <Text style={[styles.subtitle, { fontSize: 16 }]}>
-                    Wie genau prognostiziert das Ergebnis einen möglichen Verkaufspreis?
+                    Wie exakt prognostiziert das Ergebnis einen möglichen Verkaufspreis?
                 </Text>
 
                 <Text style={styles.content}>
                     Es gibt keinen objektiven Firmenwert. Wie in der Bandbreite der jeweiligen Multiples deutlich wird, gibt es eine große Streuung der erzielten Verkaufspreise. Letztendlich hängt dies von der jeweiligen Situation ab und ist Verhandlungssache. Der Verkaufspreis wird stark vom Interesse und der Verhandlungsstärke des Verkäufers bzw. des Käufers/Investors beeinflusst. Wenn beispielsweise ein Käufer gute strategische Gründe für eine Übernahme hat, kann der Preis deutlich höher ausfallen. Wenn der Firmeninhaber aus persönlichen Gründen unter Zeitdruck steht, das Unternehmen zu veräußern, können möglicherweise deutlich niedrigere Verkaufspreise erzielt werden. Durch einen clever gestalteten Verkaufsprozess kann die Verhandlungsposition des Verkäufers gestärkt und die Wahrscheinlichkeit eines erfolgreichen Verkaufs erhöht werden.
                 </Text>
+
+                <View style={styles.borderWrapper}>
+                    <Text style={styles.leftText}>Ungefährer Wert des Eigenkapitals (Verkaufspreis)</Text>
+                    <Text style={styles.rightText}>100000 €</Text>
+                </View>
+
                 <PageNumber pageNumber="10" />
             </Page>
         </Document>
