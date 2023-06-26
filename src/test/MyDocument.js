@@ -1,7 +1,7 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 
-const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
+const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBridgeData }) => {
 
     const logoImage = 'assets/images/ORGAPLANLOGO.png';
     const brancheRadar = 'assets/images/branche_radar.png';
@@ -91,6 +91,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             fontSize: 12,
         },
         tableCol: {
+            backgroundColor: '#f5f5f5',
             width: '50%',
             borderWidth: 0, // Removed border
         },
@@ -259,6 +260,26 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
 
 // Convert the data into the format expected by the Table component
     const tableData = rowHeaders.map(rowHeader => jahresAbschlussAnalyseData[rowHeader].map(datum => datum.value));
+
+    const equityData = {
+        'Nettofinanzschulden': 100,
+        'Nicht betriebsnotwendiges Vermögen': 100,
+    };
+
+    const EquityTable = ({ data }) => (
+        <View style={styles.table}>
+            {Object.entries(data).map(([header, value]) => (
+                <View key={header} style={styles.tableRow}>
+                    <View style={styles.tableRowHeader}>
+                        <Text style={styles.tableCellHeader}>{header}</Text>
+                    </View>
+                    <View key={value} style={styles.tableCol}>
+                        <Text style={[styles.tableCell, styles.tableCell]}>{value}</Text>
+                    </View>
+                </View>
+            ))}
+        </View>
+    );
 
     const Header = () => (
         <View>
@@ -555,6 +576,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
                 <Text style={styles.content}>
                     Die Art und Weise, wie diese Vorgehensweise durchgeführt wird, hat einen erheblichen Einfluss auf die Unternehmensbewertung und letztendlich auf den Kaufpreis. Es ist wichtig sicherzustellen, dass aufgrund von Unwissenheit keine großen Vermögenswerte aufgegeben werden. In solchen Fällen wird empfohlen, eine erfahrene Transaktionsbegleitung hinzuzuziehen, da andernfalls leicht sechsstellige Beträge verloren gehen können. Obwohl der Orgaplan Unternehmenswertrechner möglicherweise einen ersten Richtwert für den Kaufpreis liefern kann, werden für die Berechnung des tatsächlichen Firmenwerts die Verbindlichkeiten des Unternehmens abgezogen und das nicht-betriebsnotwendige Vermögen addiert. Dadurch entsteht ein realistischerer Wert für die Bewertung des Unternehmens und die Bestimmung des Kaufpreises.
                 </Text>
+                <EquityTable data={equityData} />
                 <PageNumber pageNumber="9" />
             </Page>
         </Document>

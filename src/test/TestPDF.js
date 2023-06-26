@@ -1,5 +1,6 @@
 import React from 'react';
 import { PDFViewer, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
+import {useSelector} from "react-redux";
 
 // Define the CSS styles for the PDF document
 const styles = StyleSheet.create({
@@ -36,11 +37,69 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 10
-    }
+    },
+    table: {
+        marginTop: 10,
+        display: 'table',
+        width: 'auto',
+        borderWidth: 0, // Removed border
+    },
+    tableRow: {
+        flexDirection: 'row',
+    },
+    tableCellHeader: {
+        color:"white",
+        margin: 'auto',
+        padding: 10,
+        fontSize: 12,
+    },
+    tableCell: {
+        margin: 'auto',
+        fontSize: 12,
+    },
+    tableCol: {
+        backgroundColor: '#f5f5f5',
+        width: '50%',
+        borderWidth: 0, // Removed border
+    },
+    tableRowHeader: {
+        padding: 5,
+        margin: 2,
+        width: '80%',
+        borderWidth: 0, // Removed border
+        backgroundColor: '#003366',
+    },
+    tableColHeader: {
+        padding: 5,
+        margin: '2 1',
+        width: '50%',
+        borderWidth: 0, // Removed border
+        backgroundColor: '#1abc9c',
+    },
 });
 
 const MyDocument = () => {
     const marktDaten = 'assets/images/marktdaten.png';
+
+    const equityData = {
+        'Nettofinanzschulden': 100,
+        'Nicht betriebsnotwendiges Vermögen': 100,
+    };
+
+    const EquityTable = ({ data }) => (
+        <View style={styles.table}>
+            {Object.entries(data).map(([header, value]) => (
+                <View key={header} style={styles.tableRow}>
+                    <View style={styles.tableRowHeader}>
+                        <Text style={styles.tableCellHeader}>{header}</Text>
+                    </View>
+                    <View key={value} style={styles.tableCol}>
+                        <Text style={[styles.tableCell, styles.tableCell]}>{value}</Text>
+                    </View>
+                </View>
+            ))}
+        </View>
+    );
 
     return (
         <Document>
@@ -52,6 +111,7 @@ const MyDocument = () => {
                     </Text>
                     <Image style={styles.image} src={marktDaten} />
                     <Text style={styles.imageTitle}>Abbildung 1: Grafik Marktdaten Ebit und Umsatz</Text>
+                    <EquityTable data={equityData} />
                 </View>
             </Page>
         </Document>

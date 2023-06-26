@@ -10,6 +10,7 @@ const PDF = () => {
     const basisInfoData = useSelector(state => state.basisInfo.basisInfoData);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
     const bereinigungData = useSelector((state) => state.bereinigung.bereinigungData);
+    const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
     const ergebnisData = useSelector((state) => state.ergebnis.ergebnisData);
 
     const [isViewing, setIsViewing] = useState(true);
@@ -53,6 +54,7 @@ const PDF = () => {
                                         kennzahlenData={kennzahlenData}
                                         basisInfoData={basisInfoData}
                                         bereinigungData={bereinigungData}
+                                        equityBridgeData={equityBridgeData}
                                     />
                                 }
                                 fileName="example.pdf"
