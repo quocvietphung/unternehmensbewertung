@@ -262,8 +262,8 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
     const tableData = rowHeaders.map(rowHeader => jahresAbschlussAnalyseData[rowHeader].map(datum => datum.value));
 
     const equityData = {
-        'Nettofinanzschulden': 100,
-        'Nicht betriebsnotwendiges Vermögen': 100,
+        'Nettofinanzschulden': equityBridgeData.finanzSchulden,
+        'Nicht betriebsnotwendiges Vermögen': equityBridgeData.bargeldBestand,
     };
 
     const EquityTable = ({ data }) => (

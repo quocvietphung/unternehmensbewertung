@@ -46,6 +46,7 @@ const PDF = () => {
                                     kennzahlenData={kennzahlenData}
                                     basisInfoData={basisInfoData}
                                     bereinigungData={bereinigungData}
+                                    equityBridgeData={equityBridgeData}
                                 />
                             </PDFViewer>
                             <PDFDownloadLink
