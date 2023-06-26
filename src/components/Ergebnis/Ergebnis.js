@@ -129,8 +129,7 @@ const Ergebnis = () => {
 
     const showSnackbar = (message) => {
         const variant = message.includes('successfully') ? 'success' :
-            message.includes('sending') ? 'warning' :
-                'error';  // I'm assuming the 'warning' variant corresponds to a yellow color.
+            message.includes('sending') ? 'warning' : 'error';
 
         enqueueSnackbar(message, {
             variant: variant,
