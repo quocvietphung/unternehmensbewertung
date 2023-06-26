@@ -122,7 +122,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
             marginBottom: 10
         },
         borderWrapper: {
-            marginTop: 30,
+            marginTop: 10,
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -611,6 +611,8 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
                 <Text style={styles.content}>
                     Es gibt keinen objektiven Firmenwert. Wie in der Bandbreite der jeweiligen Multiples deutlich wird, gibt es eine große Streuung der erzielten Verkaufspreise. Letztendlich hängt dies von der jeweiligen Situation ab und ist Verhandlungssache. Der Verkaufspreis wird stark vom Interesse und der Verhandlungsstärke des Verkäufers bzw. des Käufers/Investors beeinflusst. Wenn beispielsweise ein Käufer gute strategische Gründe für eine Übernahme hat, kann der Preis deutlich höher ausfallen. Wenn der Firmeninhaber aus persönlichen Gründen unter Zeitdruck steht, das Unternehmen zu veräußern, können möglicherweise deutlich niedrigere Verkaufspreise erzielt werden. Durch einen clever gestalteten Verkaufsprozess kann die Verhandlungsposition des Verkäufers gestärkt und die Wahrscheinlichkeit eines erfolgreichen Verkaufs erhöht werden.
                 </Text>
+
+                <View style={[styles.horizontalLine, { borderBottomColor: '#1abc9c', marginTop: 50 , marginBottom: 10 }]}></View>
 
                 <View style={styles.borderWrapper}>
                     <Text style={styles.leftText}>Ungefährer Wert des Eigenkapitals (Verkaufspreis)</Text>
