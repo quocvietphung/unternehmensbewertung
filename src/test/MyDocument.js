@@ -114,7 +114,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData }) => {
             height: 300,
         },
         imageTitle: {
-            marginTop: 10,
+            marginTop: 20,
             fontSize: 14,
             fontWeight: 'bold',
             textAlign: 'center',
