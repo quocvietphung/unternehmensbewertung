@@ -61,8 +61,11 @@ const ResultContainer = () => {
 
                 const data = {
                     filename: `Unternehmenswert_${ergebnisData.lastName}.pdf`,
-                    pdfData: base64data
+                    pdfData: base64data,
+                    directoryPath: './pdfs'  // tạo thư mục 'pdfs' tại đường dẫn hiện hành
                 };
+
+                console.log('******data******', data);
 
                 axios.post('http://localhost:3001/save-pdf', data)
                     .then(response => {
@@ -86,7 +89,7 @@ const ResultContainer = () => {
                     body: 'This is a test email.',
                     attachments: [{
                         filename: `Unternehmenswert_${ergebnisData.lastName}.pdf`,
-                        path: `./components/Ergebnis/pdf/Unternehmenswert_${ergebnisData.lastName}.pdf`
+                        path: `./pdfs/Unternehmenswert_${ergebnisData.lastName}.pdf`
                     }]
                 };
 
