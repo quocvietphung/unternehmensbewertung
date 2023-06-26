@@ -273,7 +273,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
                     <View style={styles.tableRowHeader}>
                         <Text style={styles.tableCellHeader}>{header}</Text>
                     </View>
-                    <View key={value} style={styles.tableCol}>
+                    <View style={styles.tableCol}>
                         <Text style={[styles.tableCell, styles.tableCell]}>{value}</Text>
                     </View>
                 </View>
