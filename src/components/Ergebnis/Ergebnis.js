@@ -130,7 +130,7 @@ const Ergebnis = () => {
 
     const showSnackbar = (message) => {
         const variant = message.includes('successfully') ? 'success' :
-            message.includes('sending') ? 'warning' : 'error';
+            message.includes('sending') ? 'info' : 'error';
 
         enqueueSnackbar(message, {
             variant: variant,
