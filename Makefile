@@ -1,4 +1,4 @@
-.PHONY: install start build test dc-build dc-up dc-down clean help
+.PHONY: install start server build test dc-build dc-up dc-down clean help
 
 install:
 	@echo "Installing dependencies..."
@@ -7,6 +7,10 @@ install:
 start:
 	@echo "Starting development server..."
 	npm start
+
+server:
+	@echo "Running Node server..."
+	npm run server
 
 build:
 	@echo "Building production version..."
@@ -36,6 +40,7 @@ help:
 	@echo "Available commands:"
 	@echo "  make install             - Install dependencies"
 	@echo "  make start               - Start development server"
+	@echo "  make server 			  - Run Node server"
 	@echo "  make build               - Build production version"
 	@echo "  make test                - Run tests"
 	@echo "  make dc-build            - Build Docker Compose services"

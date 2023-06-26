@@ -5,8 +5,8 @@ import { Menu, Icon } from 'semantic-ui-react';
 const menuItems = [
     { to: "/", label: "Home", icon: "home" },
     { to: "/unternehmenswert-berechnen", label: "Unternehmenswert Berechnen", icon: "calculator" },
-    { to: "/test", label: "Testseite", icon: "flask" },
-    { to: "/kontakt", label: "Kontakt", icon: "envelope" }
+    { to: "/pdf", label: "PDF", icon: "flask" },
+    { to: "/kontakt", label: "Kontakt", icon: "envelope" },
 ];
 
 const Navbar = () => {

@@ -129,8 +129,7 @@ const BasisInfo = (props) => {
     };
 
     useEffect(() => {
-        console.log("Checking validity...");
-        checkValidity();
+        // checkValidity();
         console.log("basisInfoData", basisInfoData);
         console.log("Valid", isValid);
     }, [basisInfoData]);
@@ -172,17 +171,16 @@ const BasisInfo = (props) => {
 
     const checkValidity = () => {
         let errors = [];
+
         if (!basisInfoData.branche || basisInfoData.branche.key === "") {
             errors.push("Bitte wählen Sie eine Branche aus.");
         }
-        if (
-            !basisInfoData.lage || (basisInfoData.lage.key !== "städtisch" &&
-                basisInfoData.lage.key !== "ländlich")
-        ) {
+
+        if (!basisInfoData.lage || (basisInfoData.lage.key !== "städtisch" && basisInfoData.lage.key !== "ländlich")) {
             errors.push("Bitte wählen Sie eine Lage aus.");
         }
         if (!basisInfoData.alter || basisInfoData.alter <= 0) {
-            errors.push("Der Minimalwert für dieses Eingabefeld wurde erreicht.");
+            errors.push("Der Minimalwert für dieses Eingabefeld wurde erreicht oder das Feld ist leer.");
         }
 
         dispatch(setError(errors));

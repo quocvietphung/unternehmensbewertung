@@ -1,13 +1,14 @@
 // Define color variables
 $color-primary: #008000;
 $color-primary-dark: #006400;
-$color-background: #f0f0f0;
+$color-background: rgba(255, 255, 255, 0.8);
 $color-text: #888;
 $color-white: #fff;
 $color-input-bg: #f0f0f0;
 $color-black: black;
 $color-red: #ff0000;
 $color-gold: gold;
+$gray-light: #f0f0f0;
 $shadow-color: rgba(0, 0, 0, 0.1);
 
 // Define padding and margin variables
@@ -30,98 +31,9 @@ $margin-large: 2em;
   justify-content: space-between;
   width: 100%;
 
-  .Ausgabe {
-    margin: 10px 20px !important;
-    width: 30%;
-    background-color: #f9f9f9;
-    padding: 10px;
-    color: #333;
-    border-radius: 60px;
-    max-height: 65vh;
-
-    .result-inner-wrapper {
-      margin: 40px 40px !important;
-      text-align: center;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 30px;
-      box-sizing: border-box;
-      overflow: auto;
-
-      .intro {
-        margin-top: 10px;
-        text-align: center;
-        color: #007bff;
-      }
-
-      .title {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-        color: #6c757d;
-      }
-
-      .icon {
-        margin-bottom: 10px;
-        color: #17a2b8;
-      }
-
-      .result {
-        display: flex;
-        justify-content: space-between;
-
-        .default,
-        .input-error {
-          font-size: 1.5rem;
-          flex: 1;
-          margin-right: 10px;
-          word-wrap: break-word;
-          color: #dc3545;
-
-          .error-ertragswert{
-            font-size: 1rem;
-          }
-
-          &:last-child {
-            margin-right: 0;
-          }
-        }
-
-        .ertragswert {
-          font-size: 3rem;
-          color: #28a745;
-        }
-      }
-
-      .warning {
-        &.innacurate-calculation {
-          font-size: 1.2rem;
-        }
-      }
-
-      .error-message {
-        margin-top: 20px;
-        word-wrap: break-word;
-        background-color: #ffc107;
-        color: #fff;
-
-        p {
-          margin-bottom: 10px;
-        }
-
-        &.negative-entry {
-          // Đặt quy tắc cho lớp negative-entry ở đây
-        }
-
-        &.small-entry {
-          display: none; // Áp dụng display: none cho lớp small-entry
-        }
-      }
-    }
-  }
-
   .Eingabe {
     flex: 1;
-    margin: 10px 20px 30px 0;
+    margin: 10px 50px 30px 0;
     background-color: $color-background;
     padding: $padding-large;
     border-radius: 60px;
@@ -137,7 +49,6 @@ $margin-large: 2em;
     }
 
     .nav-wrapper {
-      background-color: $color-background;
       padding: $padding-small $padding-medium * 2;
 
       .nav-item {
@@ -148,7 +59,7 @@ $margin-large: 2em;
         .nav-border {
           height: 4px;
           width: 100%;
-          background-color: $color-black; /* inactive color */
+          background-color: $color-black;
           margin-bottom: $padding-small;
         }
 
@@ -192,7 +103,6 @@ $margin-large: 2em;
         padding: $padding-medium;
         margin: $margin-medium;
         width: 100%;
-        background-color: $color-background;
         border-radius: 20px;
 
         .required-fields-hint {
@@ -464,6 +374,99 @@ $margin-large: 2em;
             margin-top: 8px;
             color: gray;
             font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .Ausgabe {
+    @media (max-width: 767px) {
+      width: 80%;
+    }
+
+    .result-inner-wrapper {
+      margin: 30px 60px !important;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow: auto;
+      word-wrap: break-word;
+      max-height: 100%;
+
+      .intro {
+        margin-top: 10px;
+        text-align: center;
+        color: $color-white;
+        font-weight: bold;
+      }
+
+      .result {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+        background-color: $color-background;
+        border-radius: 30px;
+
+        .default,
+        .input-error {
+          font-size: 1.5rem;
+          flex: 1;
+          margin-right: 10px;
+          word-wrap: break-word;
+          color: #dc3545;
+
+          .title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #6c757d;
+          }
+
+          .icon {
+            margin-bottom: 10px;
+            color: #17a2b8;
+          }
+
+          .ertragswert {
+            font-size: 3rem;
+            color: #1abc9c;
+          }
+
+          .error-ertragswert {
+            font-size: 1rem;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        .warning {
+          &.innacurate-calculation {
+            border-radius: 30px;
+            font-size: 1.2rem;
+          }
+        }
+
+        .error-message {
+          font-size: 1.1rem;
+          border-radius: 30px;
+          margin-top: 30px;
+          word-wrap: break-word;
+          background-color: #ffc107;
+          color: #fff;
+
+          p {
+            margin-bottom: 10px;
+          }
+
+          &.negative-entry {
+            // Đặt quy tắc cho lớp negative-entry ở đây
+          }
+
+          &.small-entry {
+            display: none; // Áp dụng display: none cho lớp small-entry
           }
         }
       }
