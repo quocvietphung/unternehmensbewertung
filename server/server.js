@@ -26,7 +26,7 @@ app.post('/send-email', (req, res) => {
     });
 
     const formattedAttachments = attachments.map((attachment) => {
-        console.log("****Path*****",attachment.path);
+        console.log("Path name :",attachment.path);
         return {
             filename: attachment.filename,
             path: attachment.path,

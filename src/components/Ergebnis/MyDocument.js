@@ -19,7 +19,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
             backgroundColor: '#f5f5f5',
         },
         logo: {
-            width: 150,
+            width: 160,
             height: 60,
             margin: 'auto',
         },
