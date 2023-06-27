@@ -11,7 +11,7 @@ const EquityBridge = (props) => {
 
     useEffect(() => {
         console.log(equityBridgeData);
-       // checkValidity();
+        checkValidity();
     }, [equityBridgeData]);
 
     const handleChange = (e) => {
