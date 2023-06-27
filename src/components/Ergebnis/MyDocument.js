@@ -390,7 +390,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
                 <Header />
                 <Text style={styles.title}>Unternehmensbewertung</Text>
                 <Text style={[styles.content, { fontSize: 26, textAlign: 'center' }]}>
-                    Autor: {ergebnisData.firstName} {ergebnisData.lastName}
+                    Kundenname: {ergebnisData.firstName} {ergebnisData.lastName}
                 </Text>
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Schanzenstraße 58, 40549 Düsseldorf</Text>
