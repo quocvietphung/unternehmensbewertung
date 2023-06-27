@@ -10,16 +10,17 @@
 
   .home-container {
     margin-top: 30px;
-    padding: 20px 20px;
 
     .home-grid {
       margin-top: 20px;
     }
 
     .home-box {
+      height: 400px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       padding: 10px;
       border: 1px solid #ccc;
       margin: 10px;
@@ -40,6 +41,7 @@
 
     .home-text {
       text-align: center;
+      word-wrap: break-word;
     }
   }
 }
