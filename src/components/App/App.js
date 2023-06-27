@@ -6,8 +6,8 @@ import Unternehmenswertrechner from '../Unternehmenswertrechner/Unternehmenswert
 import Footer from './Footer';
 import Navbar from './Navbar';
 import './App.scss';
-import PDF from "../../test/PDF";
 import Ergebnis from "../Ergebnis/Ergebnis";
+import PDF from "../../test/PDF";
 import QualityChart from "../../testchart/QualityChart";
 import TestPDF from "../../test/TestPDF";
 
@@ -27,7 +27,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         <Route path="/unternehmenswert-berechnen" element={<Unternehmenswertrechner/>}/>
-                        {/*<Route path="/result" element={<Ergebnis/>}/>*/}
+                        <Route path="/result" element={<Ergebnis/>}/>
                         {/*<Route path="/pdf" element={<PDF/>}/>*/}
                     </Routes>
                 </div>
