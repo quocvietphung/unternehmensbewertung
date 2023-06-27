@@ -11,14 +11,14 @@ const menuItems = [
 
 const Navbar = () => {
     const renderMenuItems = () => {
-        return menuItems.map((item) => (
+        return menuItems.map((item, index) => (
             <Menu.Item
                 key={item.to}
                 as={NavLink}
                 exact={item.to === "/"}
                 to={item.to}
                 activeClassName="active"
-                className={item.to === "/kontakt" ? "contact-item" : ""}
+                className={index === menuItems.length - 1 ? "last-item" : ""}
             >
                 <Icon name={item.icon} />
                 {item.label}
