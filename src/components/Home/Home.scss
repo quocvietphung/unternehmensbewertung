@@ -1,5 +1,5 @@
 .Home {
-  min-height: 65vh;
+  min-height: 85vh;
   max-width: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
     }
 
     .home-box {
-      height: 400px;
+      width: 400px;
       display: flex;
       flex-direction: column;
       align-items: center;
