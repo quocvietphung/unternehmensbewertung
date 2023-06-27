@@ -7,7 +7,15 @@
   margin: 80px auto;
   background-color: rgba(255, 255, 255, 0.8);
 
-  .home-header,
-  .home-text {
+  .home-container {
+    .home-header,
+    .home-text {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        margin-right: 5px;
+      }
+    }
   }
 }
