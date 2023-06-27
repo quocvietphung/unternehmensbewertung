@@ -2,12 +2,16 @@
   min-height: 65vh;
   max-width: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 80px auto;
   background-color: rgba(255, 255, 255, 0.8);
 
   .home-container {
+    margin-top: 30px;
+    padding: 20px 20px;
+
     .home-grid {
       margin-top: 20px;
     }
