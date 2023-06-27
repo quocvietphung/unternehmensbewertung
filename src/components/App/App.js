@@ -5,9 +5,9 @@ import Home from '../Home/Home';
 import Unternehmenswertrechner from '../Unternehmenswertrechner/Unternehmenswertrechner';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import Ergebnis from "../Ergebnis/Ergebnis";
 import './App.scss';
 import PDF from "../../test/PDF";
+import Ergebnis from "../Ergebnis/Ergebnis";
 import QualityChart from "../../testchart/QualityChart";
 import TestPDF from "../../test/TestPDF";
 
