@@ -5,10 +5,10 @@ import '../Ergebnis/Ergebnis.scss';
 import { setErgebnisData } from '../../redux/ergebnisSlice';
 import { pdf } from '@react-pdf/renderer';
 import axios from 'axios';
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import MyDocument from "./MyDocument";
 
-const ResultContainer = () => {
+const Ergebnis = () => {
     const unternehmenswert = useSelector((state) => state.sections.sectionData.unternehmenswert);
     const basisInfoData = useSelector(state => state.basisInfo.basisInfoData);
     const kennzahlenData = useSelector((state) => state.kennzahlen.kennzahlenData);
@@ -45,48 +45,65 @@ const ResultContainer = () => {
     };
 
     const savePdf = () => {
-        return new Promise(async (resolve, reject) => {
-            const blob = await pdf(<MyDocument
+        return new Promise((resolve, reject) => {
+            pdf(<MyDocument
                 kennzahlenData={kennzahlenData}
                 basisInfoData={basisInfoData}
                 bereinigungData={bereinigungData}
                 equityBridgeData={equityBridgeData}
+                ergebnisData={ergebnisData}
                 unternehmenswert={unternehmenswert}
-            />).toBlob();
+            />).toBlob().then(blob => {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    if (reader.error) {
+                        console.error('Error:', reader.error);
+                        showSnackbar('Failed to convert PDF to Blob. Please try again later.');
+                        reject(reader.error);
+                    } else {
+                        const base64data = reader.result;
 
-            const reader = new FileReader();
-            reader.readAsDataURL(blob);
-            reader.onloadend = function() {
-                const base64data = reader.result;
+                        const data = {
+                            filename: `Unternehmenswert_${ergebnisData.lastName}.pdf`,
+                            pdfData: base64data,
+                            directoryPath: './pdfs'
+                        };
 
-                const data = {
-                    filename: `Unternehmenswert_${ergebnisData.lastName}.pdf`,
-                    pdfData: base64data,
-                    directoryPath: './pdfs'  // tạo thư mục 'pdfs' tại đường dẫn hiện hành
+                        console.log('******data******', data);
+
+                        axios.post('http://localhost:3001/save-pdf', data)
+                            .then(response => {
+                                console.log('PDF saved:', response.data);
+                                resolve();
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                reject(error);
+                            });
+                    }
                 };
 
-                console.log('******data******', data);
+                reader.onerror = function (error) {
+                    console.error('Error:', error);
+                    reject(error);
+                };
 
-                axios.post('http://localhost:3001/save-pdf', data)
-                    .then(response => {
-                        console.log('PDF saved:', response.data);
-                        resolve();
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        reject(error);
-                    });
-            };
+                reader.readAsDataURL(blob);
+            }).catch(error => {
+                console.error('Error:', error);
+                reject(error);
+            });
         });
     };
 
     const sendEmail = () => {
+        showSnackbar('Email sending...');
         savePdf()
             .then(() => {
                 const formData = {
-                    to: ergebnisData.email,
-                    subject: 'Test email',
-                    body: 'This is a test email.',
+                    to: [ergebnisData.email],
+                    subject: 'Orgaplan Unternehmenrechner PDF Test',
+                    body: 'Test Email',
                     attachments: [{
                         filename: `Unternehmenswert_${ergebnisData.lastName}.pdf`,
                         path: `./pdfs/Unternehmenswert_${ergebnisData.lastName}.pdf`
@@ -112,8 +129,11 @@ const ResultContainer = () => {
     };
 
     const showSnackbar = (message) => {
+        const variant = message.includes('successfully') ? 'success' :
+            message.includes('sending') ? 'info' : 'error';
+
         enqueueSnackbar(message, {
-            variant: message.includes('successfully') ? 'success' : 'error',
+            variant: variant,
             autoHideDuration: 2000,
         });
     };
@@ -172,18 +192,5 @@ const ResultContainer = () => {
         </Grid>
     );
 };
-
-const Ergebnis = () => (
-    <SnackbarProvider
-        maxSnack={3}
-        anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-        }}
-        autoHideDuration={2000}
-    >
-        <ResultContainer />
-    </SnackbarProvider>
-);
 
 export default Ergebnis;

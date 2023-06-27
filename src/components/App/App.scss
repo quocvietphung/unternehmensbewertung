@@ -3,6 +3,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  overflow: auto;
   min-height: 94vh;
   color: #333; /* Set default text color */
 
@@ -38,17 +39,17 @@
       margin-right: 0.25rem;
     }
 
-    .contact-item {
+    .last-item {
       border-right: 1px solid #ddd;
       padding-right: 20px;
-      margin-right: 5rem;
-
-      &:last-child {
-        margin-right: 5rem;
-      }
+      margin-right: 15rem;
     }
   }
 }
+
+//html, body {
+//  background-color: red;
+//}
 
 .Footer {
   width: 100%;

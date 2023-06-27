@@ -47,6 +47,7 @@ const PDF = () => {
                                     basisInfoData={basisInfoData}
                                     bereinigungData={bereinigungData}
                                     equityBridgeData={equityBridgeData}
+                                    ergebnisData={ergebnisData}
                                     unternehmenswert={unternehmenswert}
                                 />
                             </PDFViewer>
@@ -58,6 +59,7 @@ const PDF = () => {
                                         basisInfoData={basisInfoData}
                                         bereinigungData={bereinigungData}
                                         equityBridgeData={equityBridgeData}
+                                        ergebnisData={ergebnisData}
                                         unternehmenswert={unternehmenswert}
                                     />
                                 }

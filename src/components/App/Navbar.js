@@ -5,20 +5,20 @@ import { Menu, Icon } from 'semantic-ui-react';
 const menuItems = [
     { to: "/", label: "Home", icon: "home" },
     { to: "/unternehmenswert-berechnen", label: "Unternehmenswert Berechnen", icon: "calculator" },
-    { to: "/pdf", label: "PDF", icon: "flask" },
-    { to: "/kontakt", label: "Kontakt", icon: "envelope" },
+    // { to: "/pdf", label: "PDF", icon: "flask" },
+    // { to: "/kontakt", label: "Kontakt", icon: "envelope" },
 ];
 
 const Navbar = () => {
     const renderMenuItems = () => {
-        return menuItems.map((item) => (
+        return menuItems.map((item, index) => (
             <Menu.Item
                 key={item.to}
                 as={NavLink}
                 exact={item.to === "/"}
                 to={item.to}
                 activeClassName="active"
-                className={item.to === "/kontakt" ? "contact-item" : ""}
+                className={index === menuItems.length - 1 ? "last-item" : ""}
             >
                 <Icon name={item.icon} />
                 {item.label}
