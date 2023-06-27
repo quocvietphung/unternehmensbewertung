@@ -56,14 +56,14 @@ const Kennzahlen = (props) => {
     };
 
     useEffect(() => {
-        console.log("prognose:", prognose);
-        console.log("kennzahlenData:", kennzahlenData);
+        // console.log("prognose:", prognose);
+        // console.log("kennzahlenData:", kennzahlenData);
         checkValidity();
     }, [prognose, kennzahlenData]);
 
-    useEffect(() => {
-        console.log("bereinigungData", bereinigungData);
-    }, [bereinigungData]);
+    // useEffect(() => {
+    //     console.log("bereinigungData", bereinigungData);
+    // }, [bereinigungData]);
 
     const checkValidity = () => {
         let errors = [];
@@ -139,25 +139,25 @@ const Kennzahlen = (props) => {
             const newUmsatz = kennzahlenData.umsatz.map((item, i) =>
                 i === index ? { ...item, value: value } : item
             );
-            console.log("newUmsatz:", newUmsatz);
+            // console.log("newUmsatz:", newUmsatz);
             dispatch(setUmsatz(newUmsatz));
             const averageUmsatz = calculateAverage(newUmsatz, 'umsatz');
-            console.log("averageUmsatz:", averageUmsatz);
+            // console.log("averageUmsatz:", averageUmsatz);
             dispatch(setAverageUmsatz(averageUmsatz));
         } else if (category === 'ebit') {
             const newEbit = kennzahlenData.ebit.map((item, i) =>
                 i === index ? { ...item, value: value } : item
             );
-            console.log("newEbit:", newEbit);
+            // console.log("newEbit:", newEbit);
             dispatch(setEbit(newEbit));
             const averageEbit = calculateAverage(newEbit, 'ebit');
-            console.log("averageEbit:", averageEbit);
+            // console.log("averageEbit:", averageEbit);
             dispatch(setAverageEbit(averageEbit));
         } else if (category === 'gewinn') {
             const newGewinnData = kennzahlenData.gewinn.data.map((item, i) =>
                 i === index ? { ...item, type: value.type, value: value.value } : item
             );
-            console.log("newGewinnData:", newGewinnData);
+            // console.log("newGewinnData:", newGewinnData);
             dispatch(setGewinn({ ...kennzahlenData.gewinn, data: newGewinnData }));
         }
     };

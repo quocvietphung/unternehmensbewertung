@@ -10,7 +10,6 @@ const EquityBridge = (props) => {
     const equityBridgeData = useSelector((state) => state.equityBridge.equityBridgeData);
 
     useEffect(() => {
-        console.log(equityBridgeData);
         checkValidity();
     }, [equityBridgeData]);
 

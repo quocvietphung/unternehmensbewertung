@@ -51,7 +51,7 @@ const Anlass = (props) => {
     };
 
     useEffect(() => {
-        console.log('anlassData:', anlassData);
+        // console.log('anlassData:', anlassData);
         checkValidity();
     }, [anlassData]);
 

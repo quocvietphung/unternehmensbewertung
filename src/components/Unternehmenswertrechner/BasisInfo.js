@@ -130,8 +130,8 @@ const BasisInfo = (props) => {
 
     useEffect(() => {
         checkValidity();
-        console.log("basisInfoData", basisInfoData);
-        console.log("Valid", isValid);
+        // console.log("basisInfoData", basisInfoData);
+        // console.log("Valid", isValid);
     }, [basisInfoData]);
 
     const handleChange = (event, { name, value }) => {

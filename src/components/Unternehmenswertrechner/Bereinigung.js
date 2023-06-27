@@ -16,7 +16,7 @@ const Bereinigung = (props) => {
 
     useEffect(() => {
         checkValidity();
-        console.log("bereinigungData", bereinigungData);
+        // console.log("bereinigungData", bereinigungData);
     }, [bereinigungData]);
 
     const [popoverData, setPopoverData] = useState({

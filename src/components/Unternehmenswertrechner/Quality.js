@@ -10,7 +10,7 @@ const Quality = (props) => {
     const qualityData = useSelector((state) => state.quality.qualityData);
 
     useEffect(() => {
-        console.log("qualityData:", qualityData);
+        // console.log("qualityData:", qualityData);
         checkValidity();
     }, [qualityData]);
 

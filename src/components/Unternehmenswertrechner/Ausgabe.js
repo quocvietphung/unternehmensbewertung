@@ -19,11 +19,11 @@ const Ausgabe = () => {
     useEffect(() => {
         calculateBereinigungEbit();
         const calculatedUnternehmenwert = calculateUnternehmenwert();
-        console.log("unternehmenwert:", calculatedUnternehmenwert);
-        console.log("kennzahlenData:", kennzahlenData);
-        console.log("bereinigungData:", bereinigungData);
-        console.log("equityBridgeData:", equityBridgeData);
-        console.log("qualityData:", qualityData);
+        // console.log("unternehmenwert:", calculatedUnternehmenwert);
+        // console.log("kennzahlenData:", kennzahlenData);
+        // console.log("bereinigungData:", bereinigungData);
+        // console.log("equityBridgeData:", equityBridgeData);
+        // console.log("qualityData:", qualityData);
         dispatch(setUnternehmenwert(calculatedUnternehmenwert));
     }, [unternehmenswert, finishedSections, basisInfoData, kennzahlenData, bereinigungData, equityBridgeData,qualityData]);
 
@@ -90,7 +90,7 @@ const Ausgabe = () => {
 
         const newUnternehmenwert = unternehmenwert * averageValue;
 
-        console.log("unternehmenwert (equity):", newUnternehmenwert);
+        // console.log("unternehmenwert (equity):", newUnternehmenwert);
 
         return newUnternehmenwert;
     };
@@ -120,23 +120,23 @@ const Ausgabe = () => {
 
         let unternehmenwert = 0;
 
-        console.log("finishedSections:", finishedSections);
+        // console.log("finishedSections:", finishedSections);
 
         if (finishedSections.includes('basis')) {
             const sumEbitUmsatzBasis = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
                 (kennzahlenData.averageValues.averageEbit * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
             unternehmenwert = sumEbitUmsatzBasis * gewinnAverage;
-            console.log("sumEbitUmsatzBasis:", sumEbitUmsatzBasis);
+            // console.log("sumEbitUmsatzBasis:", sumEbitUmsatzBasis);
         }
 
         if (finishedSections.includes('kennzahlen')) {
             const sumEbitUmsatzKennzahlen = (kennzahlenData.averageValues.averageUmsatz * basisInfoData.branche.umsatzValue * basisInfoData.lage.value) +
                 (bereinigungData.bereinigungEbitAverage * basisInfoData.branche.ebitValue * basisInfoData.lage.value);
 
-            console.log("sumEbitUmsatzKennzahlen:", sumEbitUmsatzKennzahlen);
+            // console.log("sumEbitUmsatzKennzahlen:", sumEbitUmsatzKennzahlen);
 
             unternehmenwert = sumEbitUmsatzKennzahlen * gewinnAverage;
-            console.log("unternehmenwert (kennzahlen):", unternehmenwert);
+            // console.log("unternehmenwert (kennzahlen):", unternehmenwert);
         }
 
         if (finishedSections.includes('bereinigung')) {
@@ -144,14 +144,14 @@ const Ausgabe = () => {
             const bargeldBestand = parseFloat(equityBridgeData.bargeldBestand) || 0;
             const finanzSchulden = parseFloat(equityBridgeData.finanzSchulden) || 0;
             unternehmenwert = (unternehmenwert + bargeldBestand) - finanzSchulden;
-            console.log("unternehmenwert (bereinigung):", unternehmenwert);
+            // console.log("unternehmenwert (bereinigung):", unternehmenwert);
         }
 
         if (finishedSections.includes('equity')) {
             unternehmenwert = calculateEquityUnternehmenwert(qualityData, unternehmenwert);
         }
 
-        console.log("unternehmenwert:", unternehmenwert);
+        // console.log("unternehmenwert:", unternehmenwert);
 
         unternehmenwert = calculateAlterWert(unternehmenwert);
 
