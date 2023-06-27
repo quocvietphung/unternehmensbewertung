@@ -13,7 +13,7 @@ const Home = () => {
                     <Grid.Row>
                         <Grid.Column>
                             <div className="home-box">
-                                <Icon name="check" className="home-icon" color="blue" />
+                                <Icon name="building" className="home-icon" color="blue" />
                                 <p className="home-text">
                                     Orgaplan Beratung erkennt die Bedeutung des Unternehmenswerts für das Geschäft.
                                     Der Unternehmenswert (Enterprise Value) ist ein wichtiger Indikator, der den Gesamtwert eines Unternehmens repräsentiert.
@@ -23,7 +23,7 @@ const Home = () => {
                         </Grid.Column>
                         <Grid.Column>
                             <div className="home-box">
-                                <Icon name="check" className="home-icon" color="green" />
+                                <Icon name="chart line" className="home-icon" color="green" />
                                 <p className="home-text">
                                     Orgaplan Beratung konzentriert sich darauf, die Leistung und Rentabilität zu verbessern, um den Unternehmenswert zu steigern.
                                     Das Unternehmen trifft strategische Entscheidungen zur Produktentwicklung, Kundengewinnung und Erweiterung des Dienstleistungsportfolios, um Umsatz und Gewinn zu steigern.
@@ -35,7 +35,7 @@ const Home = () => {
                     <Grid.Row>
                         <Grid.Column>
                             <div className="home-box">
-                                <Icon name="check" className="home-icon" color="yellow" />
+                                <Icon name="handshake" className="home-icon" color="yellow" />
                                 <p className="home-text">
                                     Darüber hinaus legt Orgaplan Beratung großen Wert auf den Aufbau einer starken Marktposition und einer positiven Unternehmenskultur.
                                     Durch Bereitstellung hochwertiger Dienstleistungen und den Aufbau langfristiger Kundenbeziehungen schafft das Unternehmen Vertrauen und Wettbewerbsfähigkeit auf dem Markt.
@@ -45,7 +45,7 @@ const Home = () => {
                         </Grid.Column>
                         <Grid.Column>
                             <div className="home-box">
-                                <Icon name="check" className="home-icon" color="red" />
+                                <Icon name="calculator" className="home-icon" color="red" />
                                 <p className="home-text">
                                     Auf dieser Homepage haben wir eine Methode zur Berechnung des Unternehmenswerts anhand wichtiger Kriterien wie Branche, Unternehmensalter, Umsatz, EBIT, Gewinn, Equity Bridge und Qualität entwickelt.
                                     Sie können dies tun, indem Sie die relevanten Informationen im Abschnitt "Unternehmenswert berechnen" eingeben, und das Ergebnis des Unternehmenswerts wird Ihnen als PDF-Datei per E-Mail zugesandt.
