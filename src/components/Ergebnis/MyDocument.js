@@ -48,7 +48,7 @@ const MyDocument = ({ kennzahlenData, basisInfoData, bereinigungData, equityBrid
             textAlign: 'center',
             fontSize: 30,
             fontWeight: 'bold',
-            marginTop: 200,
+            marginTop: 150,
             marginBottom: 80,
         },
         subtitle: {
