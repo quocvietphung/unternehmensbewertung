@@ -61,6 +61,11 @@ const Navbar = () => {
                     button
                     className="icon"
                     direction="left"
+                    style={{
+                        padding: '10px',
+                        fontSize: '36px',
+                        backgroundColor: '#f0f0f0',
+                    }}
                 >
                     <Dropdown.Menu>
                         {dropdownItems.map((item) => (
