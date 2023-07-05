@@ -475,3 +475,29 @@ $margin-large: 2em;
     }
   }
 }
+
+/* Media Queries */
+
+@media (max-width: 767px) {
+  .Eingabe {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .Ausgabe {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .Eingabe {
+    padding: $padding-medium;
+    border-radius: 30px;
+  }
+
+  .Ausgabe {
+    padding: $padding-medium;
+    border-radius: 30px;
+  }
+}
