@@ -61,7 +61,9 @@ const Navbar = () => {
                     fontSize: '20px',
                 }}
             >
-                <Dropdown.Menu>
+                <Dropdown.Menu
+                    style={{ marginTop: 10, borderRadius: 20 }}
+                >
                     {dropdownItems.map((item) => (
                         <Dropdown.Item
                             key={item.key}
