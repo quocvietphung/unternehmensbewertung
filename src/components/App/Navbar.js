@@ -55,7 +55,6 @@ const Navbar = () => {
         return (
             <Dropdown
                 icon={{ name: 'bars', size: 'large' }}
-                className="icon"
                 direction="left"
                 style={{
                     padding: '10px',
