@@ -1,12 +1,11 @@
 .Home {
   min-height: 85vh;
-  max-width: 100vh;
+  margin: 50px !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px auto;
-  background-color: #f5f5f5;
   border-radius: 30px;
 
   .home-container {
@@ -29,6 +28,11 @@
       text-align: justify;
       border-radius: 30px;
       background-color: white;
+
+      @media (max-width: 767px) {
+        height: auto;
+        margin: 10px 0;
+      }
     }
 
     .home-icon {
@@ -37,6 +41,8 @@
     }
 
     .home-header {
+      background-color: white;
+      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
