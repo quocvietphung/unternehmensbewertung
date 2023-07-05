@@ -55,15 +55,11 @@ const Navbar = () => {
         return (
             <Dropdown
                 icon={{ name: 'bars', size: 'large' }}
-                floating
-                labeled
-                button
                 className="icon"
                 direction="left"
                 style={{
                     padding: '10px',
                     fontSize: '20px',
-                    backgroundColor: '#f0f0f0',
                 }}
             >
                 <Dropdown.Menu>
