@@ -51,10 +51,10 @@ const Home = () => {
                                     to="/unternehmenswert-berechnen"
                                     className="home-button"
                                     color="yellow"
-                                    style={{ marginBottom: 10, padding: 15, borderRadius: 20 }}
+                                    style={{ marginBottom: 20, padding: 15, borderRadius: 20 }}
                                 >
                                     <Icon name="calculator" className="home-button-icon" color="red" />
-                                    Los geht's
+                                     Unternehmen berechnen
                                 </Button>
                                 <p className="home-text">
                                     Auf dieser Homepage haben wir eine Methode zur Berechnung des Unternehmenswerts anhand wichtiger Kriterien wie Branche, Unternehmensalter, Umsatz, EBIT, Gewinn, Equity Bridge und Qualität entwickelt.
