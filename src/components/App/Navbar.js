@@ -17,7 +17,7 @@ const Navbar = () => {
             setIsSmallScreen(window.innerWidth < 720);
         };
 
-        handleResize(); // Kiểm tra kích thước màn hình khi lần đầu render
+        handleResize();
 
         window.addEventListener("resize", handleResize);
 
@@ -54,7 +54,7 @@ const Navbar = () => {
 
         return (
             <Dropdown
-                icon="bars"
+                icon={{ name: 'bars', size: 'large' }}
                 floating
                 labeled
                 button
@@ -62,7 +62,7 @@ const Navbar = () => {
                 direction="left"
                 style={{
                     padding: '10px',
-                    fontSize: '26px',
+                    fontSize: '20px',
                     backgroundColor: '#f0f0f0',
                 }}
             >
@@ -88,7 +88,7 @@ const Navbar = () => {
                 <span className="logo-text">ORGAPLAN Beratung GmbH</span>
             </Menu.Item>
             {isSmallScreen ? (
-                <Menu.Menu position="left">
+                <Menu.Menu position="right">
                     <Menu.Item>{renderMobileMenu()}</Menu.Item>
                 </Menu.Menu>
             ) : (
