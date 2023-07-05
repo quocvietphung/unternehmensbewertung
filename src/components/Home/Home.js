@@ -51,7 +51,7 @@ const Home = () => {
                                     to="/unternehmenswert-berechnen"
                                     className="home-button"
                                     color="yellow"
-                                    style={{ marginBottom: 20, padding: 15, borderRadius: 20 }}
+                                    style={{ marginBottom: 10, padding: 15, borderRadius: 20 }}
                                 >
                                     <Icon name="calculator" className="home-button-icon" color="red" />
                                     Los geht's
