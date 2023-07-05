@@ -53,34 +53,32 @@ const Navbar = () => {
         }));
 
         return (
-            <Menu.Item>
-                <Dropdown
-                    icon="bars"
-                    floating
-                    labeled
-                    button
-                    className="icon"
-                    direction="left"
-                    style={{
-                        padding: '10px',
-                        fontSize: '36px',
-                        backgroundColor: '#f0f0f0',
-                    }}
-                >
-                    <Dropdown.Menu>
-                        {dropdownItems.map((item) => (
-                            <Dropdown.Item
-                                key={item.key}
-                                as={item.as}
-                                exact={item.exact}
-                                to={item.to}
-                                text={item.text}
-                                icon={item.icon}
-                            />
-                        ))}
-                    </Dropdown.Menu>
-                </Dropdown>
-            </Menu.Item>
+            <Dropdown
+                icon="bars"
+                floating
+                labeled
+                button
+                className="icon"
+                direction="left"
+                style={{
+                    padding: '10px',
+                    fontSize: '26px',
+                    backgroundColor: '#f0f0f0',
+                }}
+            >
+                <Dropdown.Menu>
+                    {dropdownItems.map((item) => (
+                        <Dropdown.Item
+                            key={item.key}
+                            as={item.as}
+                            exact={item.exact}
+                            to={item.to}
+                            text={item.text}
+                            icon={item.icon}
+                        />
+                    ))}
+                </Dropdown.Menu>
+            </Dropdown>
         );
     };
 
@@ -89,10 +87,12 @@ const Navbar = () => {
             <Menu.Item as={NavLink} exact to="/" activeClassName="active" className="logo-item">
                 <span className="logo-text">ORGAPLAN Beratung GmbH</span>
             </Menu.Item>
-            {isSmallScreen ? renderMobileMenu() : (
-                <Menu.Menu position="right">
-                    {renderMenuItems()}
+            {isSmallScreen ? (
+                <Menu.Menu position="left">
+                    <Menu.Item>{renderMobileMenu()}</Menu.Item>
                 </Menu.Menu>
+            ) : (
+                <Menu.Menu position="right">{renderMenuItems()}</Menu.Menu>
             )}
         </Menu>
     );
