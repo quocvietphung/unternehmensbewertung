@@ -84,7 +84,7 @@ const Navbar = () => {
             </Menu.Item>
             {isSmallScreen ? (
                 <Menu.Menu position="right">
-                    <Menu.Item>{renderMobileMenu()}</Menu.Item>
+                    {renderMobileMenu()}
                 </Menu.Menu>
             ) : (
                 <Menu.Menu position="right">{renderMenuItems()}</Menu.Menu>
