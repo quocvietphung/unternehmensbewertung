@@ -1,0 +1,70 @@
+.App {
+  background-image: url('../../../public/assets/images/cover.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: auto;
+  min-height: 94vh;
+  color: #333; /* Set default text color */
+
+  .Navbar {
+    margin: 10px !important;
+    background-color: #f0f0f0;
+    border-radius: 20px !important;
+    height: 60px;
+
+    .logo-item {
+      background-color: #fff;
+      padding: 15px 20px;
+      margin-right: 1rem;
+
+      .logo-text {
+        color: #f2711c;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+
+    a {
+      color: #000 !important;
+
+      &:hover {
+        color: #2185d0 !important;
+      }
+    }
+
+    a.active {
+      color: #2185d0 !important;
+    }
+
+    .icon {
+      margin-right: 0.25rem;
+    }
+
+    .last-item {
+      border-right: 1px solid #ddd;
+      padding-right: 20px;
+      margin-right: 2rem;
+    }
+  }
+}
+
+//html, body {
+//  background-color: red;
+//}
+
+.Footer {
+  width: 100%;
+  background-color: #1b1c1d;
+  padding: 20px 0;
+  color: #fff;
+
+  .text-white {
+    color: #000;
+  }
+
+  .text-orange {
+    color: #f2711c;
+    font-weight: bold;
+  }
+}

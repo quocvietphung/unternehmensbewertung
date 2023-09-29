@@ -1,0 +1,57 @@
+.Home {
+  min-height: 85vh;
+  margin: 50px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  border-radius: 30px;
+
+  .home-container {
+    margin-top: 30px;
+
+    .home-grid {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .home-box {
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 10px;
+      text-align: justify;
+      border-radius: 30px;
+      background-color: white;
+
+      @media (max-width: 767px) {
+        height: auto;
+        margin: 10px 0;
+      }
+    }
+
+    .home-icon {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .home-header {
+      background-color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: justify;
+    }
+
+    .home-text {
+      text-align: center;
+      word-wrap: break-word;
+    }
+  }
+}
